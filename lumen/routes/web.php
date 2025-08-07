@@ -58,3 +58,6 @@ $router->get("/league-trainers/gym", "LeagueTrainerController@getGymLeaders");
 $router->get("/league-trainers/e4", "LeagueTrainerController@getE4");
 $router->get("/league-trainers/champion", "LeagueTrainerController@getChampions");
 $router->get("/league-trainers/superboss", "LeagueTrainerController@getSuperboss");
+$router->get("/abilities", "AbilityController@getAll");
+$router->get("/moves", "MoveController@getAll");
+$router->get("/svmoves", "MoveController@getSVMoves");
