@@ -1,0 +1,186 @@
+@use "../abstracts/colours" as c;
+
+.update-text {
+    cursor: default;
+    text-decoration: none;
+}
+
+#main-title, #welcome-heading {
+    text-align: center;
+    background: linear-gradient(#D6B67E 0%, #A68954 100%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#update-con, #welcome-con {
+    border: 2px solid #7E5A32;
+    border-radius: 10px;
+    height: min-content;
+    background-color: c.$body-wood;
+}
+
+#update-con.dark-mode, #welcome-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#main-site-updates {
+    margin-left: 10px;
+    margin-right: 10px;
+    li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        &:not(:last-of-type) {
+            border-bottom: 3px solid #D6B67E;
+        }
+    }
+}
+
+.update-title {
+    margin-top: 5px;
+}
+
+.update-text {
+    padding-bottom: 5px;
+}
+
+.update-con {
+    display: flex;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.update-date {
+    text-decoration: none;
+    cursor: default;
+    text-align: right;
+}
+
+#main-update {
+    margin-top: 20px;
+}
+
+#main-welcome {
+    margin-top: 20px;
+}
+
+#welcome-heading {
+    text-align: center;
+}
+
+#welcome-text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#welcome-con {
+    margin-bottom: 20px;
+}
+
+#welcome-feature-con {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.welcome-feature {
+    width: 100%;
+    display: flex;
+    border: 2px solid #7E5A32;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(#D6B67E 0%, #A68954 100%);
+    // background-image: linear-gradient(#F2E2C4, #E5B472, #D18E5D);
+    margin-top: 10px;
+    &:hover {
+        text-decoration: none;
+    }
+    div {
+        width: 100%;
+    }
+    text-align: center;
+}
+
+.feature-image {
+    height: 200px;
+    border: 2px solid #7E5A32;
+    margin-bottom: 5px;
+    background-repeat: no-repeat;
+}
+
+
+.feature-title {
+    margin-bottom: 5px;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+#feature-custom-image {
+    background-image: url(../images/cd.png);
+    background-size: cover;
+}
+
+#feature-gw-image {
+    background-image: url(../images/gw.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#feature-usage-image {
+    background-image: url(../images/usage.png);
+    background-size: cover;
+}
+
+#feature-league-image {
+    background-image: url(../images/cl.png);
+    background-size: cover;
+    background-position: center;
+}
+
+@media screen and (min-width: 550px) {
+    .welcome-feature {
+        width: 45%;
+        text-align: left;
+    }
+
+    .feature-title {
+        text-align: left;
+    }
+
+    #welcome-feature-con {
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #main-site-updates {
+        li {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    }
+
+    .update-title {
+        margin-top: 10px;
+    }
+    
+    #feature-usage-image {
+        background-image: url(../images/usage.png);
+        background-size: cover;
+        background-position: left;
+    }
+
+    #main-title, #welcome-heading {
+        font-size: 20px;
+    }
+
+    #welcome-con {
+        padding-bottom: 10px;
+    }
+}

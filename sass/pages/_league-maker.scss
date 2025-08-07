@@ -1,0 +1,315 @@
+@use "../abstracts/colours" as c;
+
+.select-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.league-title {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    background-image: c.$wood;
+}
+
+#selection-con {
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding: 0;
+}
+
+#gym-leader-con, #e4-con, #champion-con {
+    border-bottom: 1px solid c.$dark-wood;
+}
+
+#gym-leader-con, #e4-con, #champion-con, #superboss-con {
+    background-color: c.$body-wood;
+}
+
+#gym-leader-con.dark-mode, #e4-con.dark-mode, #champion-con.dark-mode, #superboss-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#gym-leader-con {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    h3 {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+}
+
+#select-submit-con {
+    display: flex;
+    justify-content: center;
+    background-color: c.$body-wood;
+    padding-bottom: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#select-submit-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#league-con {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(42, 42, 42);
+    visibility: 0;
+    opacity: 0;
+    display: none;
+    transition: all ease-in-out 0.5s;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+  
+     &::-webkit-scrollbar-thumb {
+        background: c.$dark-wood;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+        background: c.$rhea-wood;
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: c.$dark-wood!important;
+    }
+  
+    &::-webkit-scrollbar-button:vertical:decrement {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,2 14,10 2,10" fill="white"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:vertical:increment {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="2,6 14,6 8,14" fill="white"/></svg>') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+
+    &::-webkit-scrollbar-button:horizontal:decrement {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%222%2C8 10%2C2 10%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:horizontal:increment {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%226%2C2 14%2C8 6%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+
+    &::-webkit-scrollbar-button:end:decrement,
+    &::-webkit-scrollbar-button:start:increment {
+        display: none;
+    }
+}
+
+#mode-select {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+#mode-select-con {
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#mode-indicator {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    text-align: center;
+    background-image: c.$wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 50px;
+}
+
+#gym-leaders, #e4-members, #final-champions-con {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.gym-div, .e4-div, #champion-link, #superboss-link {
+    margin-top: 10px;
+    h3 {
+        margin-bottom: 10px;
+    }
+}
+
+#champion-link, #superboss-link {
+    min-width: 25%;
+}
+
+.trainer-type, .trainer-name {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 15px;
+}
+
+.trainer-type {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.trainer-type.variety, .trainer-name.variety {
+    text-shadow: 1px 1px black;
+}
+
+.gym-div div, .e4-div div, #champion-link div, #superboss-link div {
+    vertical-align: bottom, bottom;
+    background-position: bottom, bottom;
+    background-size: contain, contain;
+    background-repeat: no-repeat, no-repeat;
+    // background-color: rgb(237, 237, 237);
+}
+
+.gym-div div {
+    height: 60px;
+}
+
+.e4-div div {
+    height: 80px;
+}
+
+#champion-link div, #superboss-link div {
+    height: 110px;
+}
+
+#save-league {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#league-credit {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    order: 1;
+    margin-top: 10px;
+}
+
+#my-league-title {
+    width: 100%;
+    text-align: center;
+    order: -1;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#submit-name {
+    margin-top: 20px;
+}
+
+.trainer-select {
+    margin-bottom: 10px;
+    width: 60%;
+}
+
+.type-select {
+    width: 60%;
+}
+
+.gym-div {
+    width: 29%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.e4-div {
+    width: 46%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#champion-link, #superboss-link {
+    width: 96%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#spinner-load {
+    display: flex;
+    justify-content: center;
+}
+
+.mode-button {
+    width: 33%;
+    height: 150%;
+}
+
+#difference-text-lm p {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+@media screen and (min-width: 500px) {
+    #tips-league #tips_area {
+        grid-column: 3/5;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .select-con {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .trainer-select {
+        margin-bottom: 10px;
+        width: auto;
+    }
+    
+    .type-select {
+        width: auto;
+    }
+
+    .gym-div, .e4-div, #champion-link, #superboss-link {
+        width: auto;
+    }
+
+    .trainer-type, .trainer-name {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .mode-button {
+        width: 20%;
+        height: 150%;
+    }
+
+    #tips-league #tips_area {
+        grid-column: 9/13;
+    }
+
+    #mode-select {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,155 @@
+@use "../abstracts/colours" as c;
+
+.bug {
+    background-color: c.$bug;
+}
+
+.dark {
+    background-color: c.$dark;
+}
+
+.dragon {
+    background-color: c.$dragon;
+}
+
+.electric {
+    background-color: c.$electric;
+}
+
+.fairy {
+    background-color: c.$fairy;
+}
+
+.fighting {
+    background-color: c.$fighting;
+}
+
+.fire {
+    background-color: c.$fire;
+}
+
+.flying {
+    background-color: c.$flying;
+}
+
+.ghost {
+    background-color: c.$ghost;
+}
+
+.grass {
+    background-color: c.$grass;
+}
+
+.ground {
+    background-color: c.$ground;
+}
+
+.ice {
+    background-color: c.$ice;
+}
+
+.normal {
+    background-color: c.$normal;
+}
+
+.poison {
+    background-color: c.$poison;
+}
+
+.psychic {
+    background-color: c.$psychic;
+}
+
+.rock {
+    background-color: c.$rock;
+}
+
+.steel {
+    background-color: c.$steel;
+}
+
+.water {
+    background-color: c.$water;
+}
+
+.variety {
+    background-image: c.$variety;
+}
+
+.bug-border {
+    border: 2px solid c.$bug;
+}
+
+.dark-border {
+    border: 2px solid c.$dark;
+}
+
+.dragon-border {
+    border: 2px solid c.$dragon;
+}
+
+.electric-border {
+    border: 2px solid c.$electric;
+}
+
+.fairy-border {
+    border: 2px solid c.$fairy;
+}
+
+.fighting-border {
+    border: 2px solid c.$fighting;
+}
+
+.fire-border {
+    border: 2px solid c.$fire;
+}
+
+.flying-border {
+    border: 2px solid c.$flying;
+}
+
+.ghost-border {
+    border: 2px solid c.$ghost;
+}
+
+.grass-border {
+    border: 2px solid c.$grass;
+}
+
+.ground-border {
+    border: 2px solid c.$ground;
+}
+
+.ice-border {
+    border: 2px solid c.$ice;
+}
+
+.normal-border {
+    border: 2px solid c.$normal;
+}
+
+.poison-border {
+    border: 2px solid c.$poison;
+}
+
+.psychic-border {
+    border: 2px solid c.$psychic;
+}
+
+.rock-border {
+    border: 2px solid c.$rock;
+}
+
+.steel-border {
+    border: 2px solid c.$steel;
+}
+
+.water-border {
+    border: 2px solid c.$water;
+}
+
+.variety-border {
+    border: 2px solid transparent;
+    border-image: c.$variety;
+    border-image-slice: 1;
+}

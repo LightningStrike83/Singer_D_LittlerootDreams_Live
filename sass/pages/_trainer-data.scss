@@ -1,0 +1,240 @@
+@use "../abstracts/colours" as c;
+
+#games {
+    margin-bottom: 10px;
+    ul {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+#games-trainer {
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+#games-trainer.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#rbg_chars, #y_chars, #gsc_chars, #c_chars, #rs_chars, #frlg_chars, #e_chars, #dp_chars, #hgss_chars, #pt_chars, #bw_chars, #b2w2_chars, #b2w2c_chars, #xy_chars, #oras_chars, #sm_chars, #usum_chars, #lgpe_chars, #swsh_chars, #bdsp_chars, #sv_chars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid c.$dark-wood;
+    padding-top: 10px;
+    display: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-image: c.$wood;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#rbg_chars.dark-mode, #y_chars.dark-mode, #gsc_chars.dark-mode, #c_chars.dark-mode, #rs_chars.dark-mode, #frlg_chars.dark-mode, #e_chars.dark-mode, #dp_chars.dark-mode, #hgss_chars.dark-mode, #pt_chars.dark-mode, #bw_chars.dark-mode, #b2w2_chars.dark-mode, #b2w2c_chars.dark-mode, #xy_chars.dark-mode, #oras_chars.dark-mode, #sm_chars.dark-mode, #usum_chars.dark-mode, #lgpe_chars.dark-mode, #swsh_chars.dark-mode, #bdsp_chars.dark-mode, #sv_chars.dark-mode {
+    background-image: none;
+    background-color: c.$rhea-wood;
+}
+
+.character_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width: 33%;
+    align-items: baseline;
+}
+
+#spoilers {
+    color: c.$red;
+    text-shadow: 0.5px 0.5px rgb(35, 35, 35);
+}
+
+#note {
+    margin-bottom: 20px;
+    text-align: center;
+    p {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+#table {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#trainer_image {
+    height: 300px;
+    border: 2px solid c.$dark-wood;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: c.$white-gradient;
+}
+
+#trainer_image.dark-mode {
+    background-image: none;
+    background-color: c.$black;
+}
+
+#pokemon {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 100px;
+}
+
+.pokemon_image {
+    height: 100px;
+    border: 2px solid c.$dark-wood;
+    background-image: c.$white-gradient;
+}
+
+.pokemon_image.dark-mode {
+    background-image: none;
+    background-color: c.$black;
+}
+
+.text {
+    height: 30px;
+    border: 2px solid c.$dark-wood;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    background-image: c.$white-gradient;
+}
+
+.text.dark-mode {
+    background-image: none;
+    background-color: c.$black;
+}
+
+.text p {
+    font-size: 12px!important;
+    padding-left: 5px;
+    color: black!important;
+}
+
+.text.dark-mode p {
+    color: white!important;
+}
+
+#trainer_image img {
+    height: 200px;
+}
+
+.pokemon_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon_image img {
+    height: 90px;
+}
+
+.pokemon {
+    width: 50%;
+    flex-direction: column;
+}
+
+#td-redirect {
+    text-decoration: underline;
+}
+
+.game_title {
+    width: 50%;
+    min-height: 55px;
+    margin-bottom: 10px;
+}
+
+#td_title {
+    width: 100%;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    background-image: c.$wood;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#td_credit {
+    text-align: center;
+    background-image: c.$wood;
+    border: 2px solid c.$dark-wood;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.game p {
+    line-height: 15px;
+}
+
+.td_ref_text {
+    margin-bottom: 10px;
+}
+
+#td_ref_credit {
+    text-decoration: underline;
+}
+
+#trainer-contact {
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 428px) {
+    .game p {
+        line-height: 20px;
+    }
+
+    .game_title {
+        min-height: 50px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .pokemon {
+        width: 33.3%;
+    }
+
+    #td_title {
+        margin-bottom: 20px;
+    }
+
+    .game_title {
+        width: 33%;
+    }
+
+    .character_name {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #table {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .text {
+        width: 160px;
+    }
+
+    .pokemon {
+        width: auto;
+    }
+
+    #trainer_image {
+        width: 250px;
+    }
+}

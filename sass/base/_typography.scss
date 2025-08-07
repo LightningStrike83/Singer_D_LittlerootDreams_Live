@@ -1,0 +1,119 @@
+@use "../abstracts/colours" as c;
+
+p, a, label, li:not(#usage_tips li, #pokedex_tips li) {
+    font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 12px;
+    line-height: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    color: c.$white;
+}
+
+a:hover {
+    opacity: 50%;
+    transition: ease-in-out all 0.5s;
+    text-decoration: underline;
+}
+
+li {
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+li p {
+    font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+li div {
+    display: flex;
+    flex-direction: row;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    color: c.$white;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: c.$white;
+    background-color: c.$red;
+}
+
+h3 {
+    font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: c.$white;
+}
+
+#main_title {
+    h3 {
+        font-size: 30px;
+        font-family: 'Silkscreen', Arial, Helvetica, sans-serif;
+    }
+}
+
+#my-league-title, #my-pokedex-title, #my-collection-title {
+    font-size: 30px!important;
+    border-bottom: 2px solid white;
+    padding-bottom: 15px;
+}
+
+.header-link {
+    font-size: 14px;
+}
+
+@media screen and (min-width: 428px) {
+    p, li, a, label {
+        font-size: 14px!important;
+    }
+
+    #about_title, #about_devs h3 {
+        font-size: 27px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    p, li, a, label {
+        font-size: 16px!important;
+    }
+
+    #about_title, #about_devs h3 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    p, li, a, label {
+        font-size: 18px!important;
+    }
+
+    #about_title, #about_devs h3 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}

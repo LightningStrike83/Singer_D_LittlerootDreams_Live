@@ -1,0 +1,143 @@
+@use "../abstracts/colours" as c;
+
+#code-con {
+    display: flex;
+    justify-content: center;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+
+#code-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#code-text {
+    margin-bottom: 5px;
+}
+
+#guess-who-area {
+    margin-top: 20px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#guess-who-area.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#pokemon-con, #board-con {
+    display: flex;
+    flex-direction: column;
+    p {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+#board-con {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+}
+
+#pokemon-con {
+    order: 1;
+}
+
+.board-piece {
+    background-image: c.$white-gradient;
+    width: 20%;
+    border: 3px solid c.$dark-wood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 1;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+}
+
+#gw-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#gw-generate {
+    width: 100px;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.gw-image {
+    margin-top: 5px;
+    max-height: 80px!important;
+    margin-bottom: 5px;
+}
+
+.gw-name {
+    margin-bottom: 0!important;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-image: c.$wood;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.gw-key {
+    display: none;
+}
+
+#shiny-checkbox-con {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#gw-select {
+    align-self: center;
+    width: 90%;
+}
+
+#select-image {
+    margin-top: 20px;
+    width: 50%;
+    align-self: center;
+}
+
+#bingo-con {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .gw-name {
+        font-size: 14px;
+    }
+
+    #pokemon-con {
+        order: 0;
+    }
+
+    #guess-who-area {
+        padding-top: 20px;
+    }
+
+    #board-con {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        border-bottom: none;
+    }
+}
