@@ -1,0 +1,417 @@
+@use "../abstracts/colours" as c;
+
+#create-new {
+    border: 2px dashed c.$dark-wood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    background-color: c.$body-wood;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+    &:hover {
+        background-color: white;
+        p {
+            color: c.$body-wood;
+        }
+    }
+}
+
+#create-new.dark-mode {
+    background-color: c.$night-wood;
+    &:hover {
+        background-color: rgb(215, 215, 215);
+        p {
+            color: c.$night-wood;
+        }
+    }
+}
+
+.storage-box {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid c.$dark-wood;
+    border: 2px dashed c.$dark-wood;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: #777777bf;
+}
+
+.storage-box.dark-mode {
+    background-color: #141414bf;
+}
+
+.bt-content-con {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-options-con {
+    width: 100%;
+    border: 2px solid c.$dark-wood;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: c.$body-wood;
+    overflow: scroll;
+    height: 500px;
+    margin-bottom: 20px;
+    h3 {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        background-image: c.$wood;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: 2px solid c.$dark-wood;
+        width: 100%;
+    }
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+  
+     &::-webkit-scrollbar-thumb {
+        background: c.$dark-wood;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+        background: c.$rhea-wood;
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: c.$dark-wood!important;
+    }
+  
+    &::-webkit-scrollbar-button:vertical:decrement {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,2 14,10 2,10" fill="white"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:vertical:increment {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="2,6 14,6 8,14" fill="white"/></svg>') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+
+    &::-webkit-scrollbar-button:horizontal:decrement {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%222%2C8 10%2C2 10%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:horizontal:increment {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%226%2C2 14%2C8 6%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+}
+
+.box-options-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+.storage {
+    width: 100%;
+}
+
+.usable-pokemon, .unusable-pokemon {
+    border: 2px solid c.$dark-wood;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: c.$body-wood;
+    overflow: scroll;
+    h3 {
+        background-image: c.$wood;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid c.$dark-wood;
+        width: 100%;
+    }
+    height: 400px;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+  
+     &::-webkit-scrollbar-thumb {
+        background: c.$dark-wood;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+        background: c.$rhea-wood;
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: c.$dark-wood!important;
+    }
+  
+    &::-webkit-scrollbar-button:vertical:decrement {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,2 14,10 2,10" fill="white"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:vertical:increment {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="2,6 14,6 8,14" fill="white"/></svg>') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+
+    &::-webkit-scrollbar-button:horizontal:decrement {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%222%2C8 10%2C2 10%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:horizontal:increment {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%226%2C2 14%2C8 6%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+}
+
+.usable-pokemon.dark-mode, .unusable-pokemon.dark-mode {
+    background-color: c.$night-wood;
+}
+
+.box-name-con, .box-remove-con {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: c.$wood;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid c.$dark-wood;
+    align-items: center;
+}
+
+.box-remove-con {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.box-name-con {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-remove-con {
+    margin-bottom: 0;
+    margin-top: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-image: none;
+    background-color: c.$red;
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(215, 215, 215);
+        p {
+            color: red;
+        }
+    }
+}
+
+.box-remove-con.dark-mode {
+    background-color: rgb(179, 0, 0);
+    &:hover {
+        background-color: rgb(215, 215, 215);
+        p {
+            color: rgb(179, 0, 0);
+        }
+    }
+}
+
+.box-name {
+    margin-right: 10px;
+}
+
+.box-input {
+    margin-right: 10px;
+}
+
+.name-change, .nickname-drop {
+    cursor: pointer;
+}
+
+.change-con {
+    margin-top: 20px;
+    display: none;
+}
+
+.bt-pokemon-box {
+    width: 33%;
+    background-image: c.$white-gradient;
+    border: 2px solid c.$dark-wood;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    img {
+        padding: 5px;
+    }
+    p {
+        background-image: c.$wood;
+        text-align: center;
+        font-size: 11px!important;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+}
+
+.bt-pokemon-home, .usable-home, .unusable-home {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bt-pokemon-home {
+    justify-content: center;
+
+    .spinner-con {
+        margin-top: 20px;
+    }
+}
+
+.add-button {
+    border-radius: 0!important;
+}
+
+.bt-pokemon-box div {
+    margin-top: 0;
+    width: 100%!important;
+    flex-direction: column;
+    input {
+        width: 100%;
+        border: 2px solid c.$dark-wood;
+    }
+}
+
+.move-div {
+    button {
+        width: 50%;
+        border-radius: 0!important;
+    }
+}
+
+.unusable-button, .release-button, .usable-button {
+    border-radius: 0!important;
+}
+
+.expand-div-usable, .expand-div-unusable {
+    // background-image: c.$wood;
+    background-color: c.$rhea-wood;
+    text-align: center;
+    margin-bottom: 20px;
+    border-left: 2px solid c.$dark-wood;
+    border-right: 2px solid c.$dark-wood;
+    border-bottom: 2px solid c.$dark-wood;
+    padding: 5px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+    &:hover {
+        background-color: rgb(215, 215, 215);
+        p {
+            color: c.$rhea-wood;
+        }
+    }
+}
+
+.usable-pokemon.expand, .unusable-pokemon.expand {
+    height: auto;
+}
+
+.line-divider {
+    margin-top: 10px;
+    border-bottom: 3px solid c.$dark-wood;
+    width: 100%;
+}
+
+.minimize-con {
+    background-color: c.$rhea-wood;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(215, 215, 215);
+        p {
+            color: c.$rhea-wood;
+        }
+    }
+}
+
+@media screen and (min-width: 428px) {
+    .bt-pokemon-box {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .box-options-con, .storage {
+        width: 49%;
+    }
+
+    .box-options-con {
+        height: 800px;
+    }
+
+    .bt-content-con {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .box-options-con {
+        margin-left: 5px;
+    }
+
+    .usable-pokemon, .unusable-pokemon {
+        margin-right: 5px;
+    }
+
+    .box-remove-con {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .bt-pokemon-box {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .bt-pokemon-box {
+        p {
+            font-size: 14px!important;
+        }
+    }
+}

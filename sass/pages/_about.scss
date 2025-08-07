@@ -1,0 +1,191 @@
+@use "../abstracts/colours" as c;
+
+#about_site {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#about_text, #thanks_text, #special_thanks_list {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#about_text p {
+    padding-bottom: 20px;
+}
+
+#about_title, #about_devs h3, #thanks_title {
+    font-family: 'Silkscreen';
+    font-size: 20px;
+    text-align: center;
+}
+
+#about_title, #dev_title, #thanks_title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: c.$wood;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.dev_name {
+    text-align: center;
+    padding-top: 0px!important;
+    margin-bottom: 10px;
+}
+
+.cc_ref {
+    text-decoration: underline;
+}
+
+#site_con, #dev_con, #special_thanks_con {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    background-color: c.$body-wood;
+}
+
+#site_con.dark-mode, #dev_con.dark-mode, #special_thanks_con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#lightning_div, #flan_div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#lightning_pic {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#lightning_text p, #flan_text p {
+    margin-bottom: 20px;
+}
+
+#lightning_text {
+    padding-left: 20px;
+}
+
+#flan_text {
+    padding-right: 20px;
+}
+
+#pokemon_l, #pokemon_f {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#lightning_team, #flan_team {
+    margin-bottom: 20px;
+}
+
+#lightning_team p, #flan_team p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pokemon_member {
+    max-height: 10%;
+    background-image: url(../images/about/pokeball-full.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.trainer_favs {
+    display: flex;
+    flex-direction: column;
+}
+
+.champion-title {
+    font-size: 16px;
+    background-image: c.$wood;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#lightning_image {
+    margin-bottom: 10px;
+}
+
+#special_thanks_list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+@media screen and (min-width: 428px) {
+    img {
+        max-height: 275px;
+    }
+
+    .pokemon_member {
+        max-height: 100%;
+    }
+
+    .champion-title {
+        font-size: 16px!important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    img {
+        max-height: 350px;
+    }
+
+    #about_title, #about_devs h3, #thanks_title {
+        font-size: 25px;
+    }
+
+    #lightning_div, #flan_div {
+        flex-direction: row;
+    }
+
+    #lightning_pic {
+        width: 200%;
+    }
+
+    #lightning_text p, #flan_text p {
+        margin-bottom: 30px;
+    }
+
+    #lightning_team, #flan_team {
+        margin-bottom: 30px;
+    }
+
+    .dev_name {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .champion-title {
+        font-size: 18px!important;
+    }
+
+    #lightning_image {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #lightning_pic {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #about_title, #about_devs h3, #thanks_title {
+        font-size: 30px;
+    }
+
+    .champion-title {
+        font-size: 20px!important;
+    }
+}

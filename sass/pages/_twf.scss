@@ -1,0 +1,261 @@
+@use "../abstracts/colours" as c;
+
+#fight-con, #twf-submit-area {
+    background-color: c.$body-wood;
+    padding: 0;
+    padding-bottom: 20px;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#fight-con.dark-mode, #twf-submit-area.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#prompt-area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+#button-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#prompt-count {
+    margin-bottom: 10px;
+}
+
+#generate-button {
+    align-self: center;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+#twf-contact {
+    text-decoration: underline;
+}
+
+#prompt-submit-con {
+    margin-bottom: 20px;
+}
+
+#prompt-submit {
+    border: 1px solid c.$dark-wood;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    h3 {
+        margin-bottom: 10px;
+    }
+    background-image: c.$wood;
+    display: flex;
+    flex-direction: column;
+}
+
+#fill {
+    text-decoration: underline;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.outsource {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.prompt-title {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+}
+
+.prompt-credit {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#prompt-generate {
+    border: 1px solid c.$dark-wood;
+    padding: 20px;
+    background-image: c.$wood;
+    width: 80%;
+    align-self: center;
+}
+
+#redirect {
+    margin-top: 10px;
+}
+
+#full-list {
+    text-align: center;
+}
+
+.twf-lightbox {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: c.$transparentblack;
+}
+
+.lb-title {
+    text-align: center;
+    background-image: c.$wood;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#full-list-popup-con {
+    display: none;
+    padding-left: 10px;
+    transition: all ease-in-out 0.5s;
+    z-index: 20;
+}
+
+#prompt-submission {
+    display: none;
+    padding-left: 10px;
+    z-index: 20;
+}
+
+.lb-prompt-home {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // background-image: c.$reverse-wood;
+    background-color: #A68954;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+}
+
+#full-list-home {
+    overflow: scroll;
+    margin-top: 20px;
+    height: 87vh;
+}
+
+.lb-credit {
+    margin-top: 10px;
+}
+
+#lb-submission {
+    margin-top: 10px;
+}
+
+.lb-prompt-field {
+    width: 90%;
+}
+
+#lb-desc {
+    height: 100px;
+}
+
+.lb-prompt-label {
+    margin-bottom: 5px;
+}
+
+#lb-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submit-confirm {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#twf-button-con {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.lb-title-home {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-image: c.$wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding: 20px;
+    transition: all ease-in-out 0.5s;
+}
+
+.title-con {
+    text-align: center;
+    cursor: pointer;
+}
+
+#battle-prompts, #challenge-prompts {
+    display: none;
+    transition: all ease-out 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    flex-direction: column;
+}
+
+#difference-con {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: c.$transparentblack;
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+    z-index: 20;
+}
+
+#difference-text {
+    margin-top: 10%;
+    p {
+        padding: 20px;
+        border: 1px solid white;
+        background-color: c.$light-wood;
+        border-radius: 20px;
+    }
+}
+
+.prompt-explanation {
+    font-weight: bolder;
+}
+
+#challenge-house {
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.twf-title {
+    background-image: c.$wood;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    // border-bottom: 2px solid c.$dark-wood;
+}
+
+#disclaimer p {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+@media screen and (min-width: 768px) {
+    .lb-prompt-field {
+        width: 50%;
+    }
+}

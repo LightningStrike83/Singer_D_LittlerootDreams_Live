@@ -1,0 +1,47 @@
+@use "../abstracts/colours" as c;
+
+#ref-con {
+    margin-top: 20px;
+    padding-top: 10px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+#ref-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#ref-list, #pic-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#ref-links, #pic-list, #image-credit-con {
+    margin-top: 10px;
+}
+
+#image-credit-con {
+    padding-top: 10px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+}
+
+#image-credit-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#ref-instructions, #image-instructions {
+    margin-bottom: 20px;
+}
+
+.ref-credit {
+    margin-left: 20px;
+    list-style-type: disc;
+    padding-bottom: 20px;
+    a {
+        text-decoration: underline;
+    }
+}
