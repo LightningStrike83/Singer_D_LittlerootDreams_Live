@@ -277,13 +277,88 @@ function calculatePokemon() {
 
     Promise.all(fetchPromises).then(() => {
         console.log("All fetches done, results:", results);
-        
+
         let finalresults = [];
+
+        const allArrays = [results.abilityResults, results.move1Results, results.move2Results, results.move3Results, results.move4Results]
+
+        const activeArrays = allArrays.filter(a => Array.isArray(a) && a.length > 0)
+
+        if (activeArrays.length > 1) {
+            const commonNumbers = activeArrays.reduce((acc, current) => acc.filter(item => current.includes(item)))
+            console.log("Common to all:", commonNumbers)
+            finalresults.push(...commonNumbers)
+
+
+            populateResults(finalresults)
+
+        } else if (activeArrays.length === 1) {
+            const numbers = activeArrays[0]
+
+            finalresults.push(...numbers)
+
+            console.log(finalresults)
+
+            populateResults(finalresults)
+
+        }
     }).catch(error => {
         console.error("Error during fetches:", error);
     });
         
     }
+}
+
+function populateResults(finalresults, i = 0) {
+    const resultsCon = document.querySelector("#results");
+
+    if (finalresults.length === 0) {
+        const resultsCon = document.querySelector("#results");
+        const img = document.createElement("img")
+        const p = document.createElement("p")
+        const div = document.createElement("div")
+
+        resultsCon.innerHTML = ""
+
+        img.src = "../images/pokemon_images/201qm.png"
+        p.textContent = "Sorry, there are no Pokemon that match those results"
+        div.setAttribute("id", "no-results-con")
+
+        div.appendChild(img)
+        div.appendChild(p)
+        resultsCon.appendChild(div)
+    }
+
+    if (i >= finalresults.length) return; 
+
+    if (i === 0) {
+        resultsCon.innerHTML = ""
+    }
+
+    fetch(`${baseURL}search/${finalresults[i]}`)
+        .then(response => response.json())
+        .then(function(response){
+            console.log(response);
+
+            const img = document.createElement("img");
+            const p = document.createElement("p");
+            const div = document.createElement("div");
+
+            img.src = `../images/pokemon_images/${response[0].number}.png`;
+            p.textContent = `${response[0].name}`;
+            div.setAttribute("data-ScarVio", `${response[0].in_ScarVio}`);
+
+            div.appendChild(img);
+            div.appendChild(p);
+            resultsCon.appendChild(div);
+
+            populateResults(finalresults, i + 1);
+        })
+        .catch(err => {
+            console.error("Fetch error:", err);
+
+            populateResults(finalresults, i + 1);
+        });
 }
 
 svButton.addEventListener("click", svMoves)
