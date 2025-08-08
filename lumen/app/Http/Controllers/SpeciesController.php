@@ -120,5 +120,9 @@ class SpeciesController extends Species {
         return response()->json($species);
     }
     
+    public function getOne($id) {
+        $species = Species::select('id', 'number', 'name', 'in_ScarVio')->where("id", "=", $id)->orderBy('number', 'asc')->get();
+        return response()->json($species);
+    }
 }
 

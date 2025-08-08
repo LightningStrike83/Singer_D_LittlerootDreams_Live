@@ -34,6 +34,7 @@ $router->get("/trainer-lines/all/{id}", "TrainerFullLineController@getTrainer");
 $router->get("/trainer-lines/all-orre", "TrainerFullOrreLineController@getAll");
 $router->get("/trainer-lines/all-orre/{id}", "TrainerFullOrreLineController@getTrainer");
 $router->get("/api-search/{id}", "SpeciesController@getConvert");
+$router->get("/search/{id}", "SpeciesController@getOne");
 $router->get("/gen/all", "SpeciesController@getAll");
 $router->get("/gen/all-no-alt", "SpeciesController@getAllNoAlt");
 $router->get("/gen/all-no-alt/dex", "SpeciesController@getAllNoAltDex");
