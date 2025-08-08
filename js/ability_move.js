@@ -2,6 +2,8 @@ const baseURL = "https://littlerootdreams.com/lumen/public/"
 const moveLists = document.querySelectorAll(".move-select")
 const svButton = document.querySelector("#sv-moves")
 const abilityList = document.querySelector("#ability-select")
+const calculateButton = document.querySelector("#am-calculate")
+const PokeAPI = "https://pokeapi.co/api/v2/move/"
 
 function listPopulation() {
 
@@ -69,4 +71,220 @@ function svMoves() {
     })
 }
 
+function calculatePokemon() {
+    const ability = document.querySelector("#ability-select")
+    const abilityValue = ability.options[ability.selectedIndex].dataset.abilitykey
+    const move1 = document.querySelector("#am-move1")
+    const move1Value = move1.options[move1.selectedIndex].dataset.movekey
+    const move2 = document.querySelector("#am-move2")
+    const move2Value = move2.options[move2.selectedIndex].dataset.movekey
+    const move3 = document.querySelector("#am-move3")
+    const move3Value = move3.options[move3.selectedIndex].dataset.movekey
+    const move4 = document.querySelector("#am-move4")
+    const move4Value = move4.options[move4.selectedIndex].dataset.movekey
+
+    let fetchPromises = [];
+
+    let data = {
+        ability: "",
+        move1: "",
+        move2: "",
+        move3: "",
+        move4: ""
+    };
+
+    let results = {
+        abilityResults: [],
+        move1Results: [],
+        move2Results: [],
+        move3Results: [],
+        move4Results: [],
+    }
+
+    if (abilityValue !== undefined) {
+        data.ability = abilityValue
+    }
+    
+    if (move1Value !== undefined) {
+        data.move1 = move1Value
+    }
+    
+    if (move2Value !== undefined) {
+        data.move2 = move2Value
+    }
+    
+    if (move3Value !== undefined) {
+        data.move3 = move3Value
+    }
+    
+    if (move4Value !== undefined) {
+        data.move4 = move4Value
+    }
+
+    if (data.move1 !== "" && (data.move1 === data.move2 || data.move1 === data.move3 || data.move1 === data.move4)) {
+        console.log("1 is the same!")
+    } else if (data.move2 !== "" && (data.move2 === data.move1 || data.move2 === data.move3 || data.move2 === data.move4)) {
+        console.log("2 is the same!")
+    } else if (data.move3 !== "" && (data.move3 === data.move1 || data.move3 === data.move2 || data.move3 === data.move4)) {
+        console.log("3 is the same!")
+    } else if (data.move4 !== "" && (data.move4 === data.move1 || data.move4 === data.move2 || data.move4 === data.move3)) {
+        console.log("4 is the same!")
+    } else {
+        if (data.ability !== "") {
+        const p = fetch(`${baseURL}pokemon-ability/${data.ability}`)
+        .then(response => response.json())
+        .then(function(response){
+            response.forEach(ability => {
+                results.abilityResults.push(ability.id);
+            });
+        });
+
+        fetchPromises.push(p);
+    }
+
+        if (data.move1 !== "") {
+           const p = fetch(`${PokeAPI}${data.move1}`)
+            .then(response => response.json())
+            .then(function(response){
+                const pokemonList = response.learned_by_pokemon;
+
+                let innerPromises = [];
+
+                pokemonList.forEach(pokemon => {
+                    const url = pokemon.url;
+                    const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+
+                    if (match) {
+                        const number = match[1];
+
+                        const innerP = fetch(`${baseURL}api-search/${number}`)
+                        .then(response => response.json())
+                        .then(function(response){
+                        if (response.length > 0 && response[0].id !== undefined) {
+                            results.move1Results.push(response[0].id);
+                        } else {
+                            console.warn("Unexpected or empty response for number:", number, response);
+                        }
+                    });
+
+                        innerPromises.push(innerP);
+                    }
+                });
+
+                return Promise.all(innerPromises);
+
+                });
+
+                fetchPromises.push(p);
+        }
+
+        if (data.move2 !== "") {
+            const p = fetch(`${PokeAPI}${data.move2}`)
+            .then(response => response.json())
+            .then(function(response){
+                const pokemonList = response.learned_by_pokemon;
+                let innerPromises = [];
+
+                pokemonList.forEach(pokemon => {
+                    const url = pokemon.url;
+                    const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                    if (match) {
+                        const number = match[1];
+                        const innerP = fetch(`${baseURL}api-search/${number}`)
+                        .then(response => response.json())
+                        .then(function(response){
+                            if (response.length > 0 && response[0].id !== undefined) {
+                                results.move2Results.push(response[0].id);
+                            } else {
+                                console.warn("Unexpected or empty response for number:", number, response);
+                            }
+                        });
+
+                        innerPromises.push(innerP);
+                    }
+                });
+
+                return Promise.all(innerPromises);
+            });
+
+            fetchPromises.push(p);
+        }
+
+
+        if (data.move3 !== "") {
+            const p = fetch(`${PokeAPI}${data.move3}`)
+            .then(response => response.json())
+            .then(function(response){
+                const pokemonList = response.learned_by_pokemon;
+                let innerPromises = [];
+
+                pokemonList.forEach(pokemon => {
+                    const url = pokemon.url;
+                    const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                    if (match) {
+                        const number = match[1];
+                        const innerP = fetch(`${baseURL}api-search/${number}`)
+                        .then(response => response.json())
+                        .then(function(response){
+                            if (response.length > 0 && response[0].id !== undefined) {
+                                results.move3Results.push(response[0].id);
+                            } else {
+                                console.warn("Unexpected or empty response for number:", number, response);
+                            }
+                        });
+
+                        innerPromises.push(innerP);
+                    }
+                });
+
+                return Promise.all(innerPromises);
+            });
+
+            fetchPromises.push(p);
+        }
+
+        if (data.move4 !== "") {
+            const p = fetch(`${PokeAPI}${data.move4}`)
+            .then(response => response.json())
+            .then(function(response){
+                const pokemonList = response.learned_by_pokemon;
+                let innerPromises = [];
+
+                pokemonList.forEach(pokemon => {
+                    const url = pokemon.url;
+                    const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                    if (match) {
+                        const number = match[1];
+                        const innerP = fetch(`${baseURL}api-search/${number}`)
+                        .then(response => response.json())
+                        .then(function(response){
+                            if (response.length > 0 && response[0].id !== undefined) {
+                                results.move4Results.push(response[0].id);
+                            } else {
+                                console.warn("Unexpected or empty response for number:", number, response);
+                            }
+                        });
+
+                        innerPromises.push(innerP);
+                    }
+                });
+
+                return Promise.all(innerPromises);
+            });
+
+            fetchPromises.push(p);
+        }
+
+    Promise.all(fetchPromises).then(() => {
+        console.log("All fetches done, results:", results);
+        
+        let finalresults = [];
+    }).catch(error => {
+        console.error("Error during fetches:", error);
+    });
+        
+    }
+}
+
 svButton.addEventListener("click", svMoves)
+calculateButton.addEventListener("click", calculatePokemon)

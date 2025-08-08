@@ -115,7 +115,10 @@ class SpeciesController extends Species {
         return response()->json($species);
     }
     
-    
+    public function getConvert($id) {
+        $species = Species::select('id', 'number', 'name')->where("pokeapi_number", "=", $id)->orderBy('number', 'asc')->get();
+        return response()->json($species);
+    }
     
 }
 

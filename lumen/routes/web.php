@@ -32,7 +32,8 @@ $router->get("/trainer-lines/main-orre/{id}", "TrainerOrreLineController@getTrai
 $router->get("/trainer-lines/all", "TrainerFullLineController@getAll");
 $router->get("/trainer-lines/all/{id}", "TrainerFullLineController@getTrainer");
 $router->get("/trainer-lines/all-orre", "TrainerFullOrreLineController@getAll");
-$router->get("/trainer-lines/all-orre/{id}", "TrainerFullOrreLineController@getTrainer");;
+$router->get("/trainer-lines/all-orre/{id}", "TrainerFullOrreLineController@getTrainer");
+$router->get("/api-search/{id}", "SpeciesController@getConvert");
 $router->get("/gen/all", "SpeciesController@getAll");
 $router->get("/gen/all-no-alt", "SpeciesController@getAllNoAlt");
 $router->get("/gen/all-no-alt/dex", "SpeciesController@getAllNoAltDex");
@@ -61,3 +62,4 @@ $router->get("/league-trainers/superboss", "LeagueTrainerController@getSuperboss
 $router->get("/abilities", "AbilityController@getAll");
 $router->get("/moves", "MoveController@getAll");
 $router->get("/svmoves", "MoveController@getSVMoves");
+$router->get("/pokemon-ability/{id}", "SpeciesAbilityController@getOne");
