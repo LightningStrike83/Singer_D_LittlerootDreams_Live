@@ -132,9 +132,10 @@
     background-position: center;
 }
 
-#feature-usage-image {
-    background-image: url(../images/usage.png);
+#feature-am-image {
+    background-image: url(../images/am.png);
     background-size: cover;
+    background-position: center;
 }
 
 #feature-league-image {
@@ -168,12 +169,6 @@
 
     .update-title {
         margin-top: 10px;
-    }
-    
-    #feature-usage-image {
-        background-image: url(../images/usage.png);
-        background-size: cover;
-        background-position: left;
     }
 
     #main-title, #welcome-heading {
