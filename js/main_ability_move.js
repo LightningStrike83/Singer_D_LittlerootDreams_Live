@@ -8,6 +8,7 @@ const loadCon = document.querySelector("#am-loading")
 const errorCon = document.querySelector("#error-con")
 const dynamicError = document.querySelector("#dynamic-error")
 const topText = document.querySelector(".top-text")
+const initialText = document.querySelector("#am-initial")
 
 function listPopulation() {
      fetch(`${baseURL}abilities`)
@@ -91,6 +92,7 @@ function calculatePokemon() {
     hideCon.innerHTML = ""
     dynamicError.textContent = ""
     errorCon.style.display = "none"
+    initialText.style.display = "none"
 
     gsap.to(window, { duration: 1, scrollTo: ("#am-results-con")})
 
