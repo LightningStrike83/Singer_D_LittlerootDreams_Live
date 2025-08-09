@@ -5,3 +5,10 @@
 #pokeapi {
     text-decoration: underline;
 }
+
+#no-results-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
