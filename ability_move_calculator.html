@@ -21,8 +21,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="MyWebSite">
     <link rel="manifest" href="../images/favicon/site.webmanifest">
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script defer src="js/main_darkmode.js?version=1.0"></script>
-    <script defer src="js/ability_move.js?version=1.0"></script>
+    <script defer src="js/main_ability_move.js?version=1.0"></script>
     <script defer src="js/main.js?version=1.0"></script>
 </head>
 <body class="dm">
@@ -160,10 +162,11 @@
             <h2 class="hidden">Ability & Move Calculator</h2>
             <p id="instructions_text" class="dm">Building a team and wondering if anyone has a specific combination of an ability and moves? Look no further! Input the data from the select menus and this page will return any Pokemon with that combination, if there is any!<br> Don't wanna calculate an ability? No problem! This page can calculate using as much or as little information provided!</p>
             <p id="am-credit">This page is partially powered by <a id="pokeapi" href="">PokeAPI</a></p>
+            <p id="am-note">Note: The Scarlet and Violet filter functionality will be changed to Pokemon Champions once it is released</p>
         </div>
     </section>
 
-    <section id="am-select-con" class="grid-con">
+    <section id="am-select-con" class="grid-con dm">
         <div class="col-span-full" id="am-select">
             <select name="ability" id="ability-select" class="am-select">
                 <option value="">--Select an Ability--</option>
@@ -187,15 +190,34 @@
                 </select>
             </div>
 
-            <button id="am-calculate">Calculate</button>
-            <button id="sv-moves">Show Gen 9 Moves Only?</button>
+            <div id="button-con">
+              <button id="sv-moves">Show Gen 9 Moves Only?</button>
+
+              <button id="am-calculate">Calculate</button>
+            </div>
         </div>
     </section>
 
-    <section id="am-results-con" class="grid-con">
+    <section id="am-results-con" class="grid-con dm">
         <div class="col-span-full">
-            <p>Results:</p>
+            <h3 id="results-title">Results:</h3>
+            <div id="am-loading">
+              <img src="images/spinner.gif" alt="Loading spinner">
+              <p>Loading...</p>
+            </div>
             <div id="results"></div>
+            <div id="am-hide-con"></div>
+            <div id="error-con">
+              <img src="images/pokemon_images/201ex.png" alt="Image of Unown !">
+              <p>Error: <span id="dynamic-error"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="td_arrow_con" class="grid-con to-top">
+        <h1 class="hidden">To Top Arrow Button</h1>
+        <div id="td_arrow" class="col-span-full">
+            <button class="top-text">↑ To Top</button>
         </div>
     </section>
 

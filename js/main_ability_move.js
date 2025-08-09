@@ -4,9 +4,12 @@ const svButton = document.querySelector("#sv-moves")
 const abilityList = document.querySelector("#ability-select")
 const calculateButton = document.querySelector("#am-calculate")
 const PokeAPI = "https://pokeapi.co/api/v2/move/"
+const loadCon = document.querySelector("#am-loading")
+const errorCon = document.querySelector("#error-con")
+const dynamicError = document.querySelector("#dynamic-error")
+const topText = document.querySelector(".top-text")
 
 function listPopulation() {
-
      fetch(`${baseURL}abilities`)
         .then(response => response.json())
         .then(function(response){
@@ -82,6 +85,14 @@ function calculatePokemon() {
     const move3Value = move3.options[move3.selectedIndex].dataset.movekey
     const move4 = document.querySelector("#am-move4")
     const move4Value = move4.options[move4.selectedIndex].dataset.movekey
+    const hideCon = document.querySelector("#am-hide-con")
+
+    loadCon.style.display = "flex"
+    hideCon.innerHTML = ""
+    dynamicError.textContent = ""
+    errorCon.style.display = "none"
+
+    gsap.to(window, { duration: 1, scrollTo: ("#am-results-con")})
 
     let fetchPromises = [];
 
@@ -121,14 +132,28 @@ function calculatePokemon() {
         data.move4 = move4Value
     }
 
+    if (abilityValue === undefined && move1Value === undefined && move2Value === undefined && move3Value === undefined && move4Value === undefined) {
+        loadCon.style.display = "none"
+        dynamicError.textContent = "No selections have been made"
+        errorCon.style.display = "block"
+    }
+
     if (data.move1 !== "" && (data.move1 === data.move2 || data.move1 === data.move3 || data.move1 === data.move4)) {
-        console.log("1 is the same!")
+        dynamicError.textContent = "There is a similar section to the first move"
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
     } else if (data.move2 !== "" && (data.move2 === data.move1 || data.move2 === data.move3 || data.move2 === data.move4)) {
-        console.log("2 is the same!")
+        dynamicError.textContent = "There is a similar section to the second move"
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
     } else if (data.move3 !== "" && (data.move3 === data.move1 || data.move3 === data.move2 || data.move3 === data.move4)) {
-        console.log("3 is the same!")
+        dynamicError.textContent = "There is a similar section to the third move"
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
     } else if (data.move4 !== "" && (data.move4 === data.move1 || data.move4 === data.move2 || data.move4 === data.move3)) {
-        console.log("4 is the same!")
+        dynamicError.textContent = "There is a similar section to the fourth move"
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
     } else {
         if (data.ability !== "") {
         const p = fetch(`${baseURL}pokemon-ability/${data.ability}`)
@@ -170,6 +195,8 @@ function calculatePokemon() {
                     div.appendChild(img)
                     div.appendChild(p)
                     resultsCon.appendChild(div)
+
+                    loadCon.style.display = "none"
 
                     return Promise.reject(new Error("No Pokémon found for move"));
                 }
@@ -231,6 +258,8 @@ function calculatePokemon() {
                     div.appendChild(p)
                     resultsCon.appendChild(div)
 
+                    loadCon.style.display = "none"
+
                     return Promise.reject(new Error("No Pokémon found for move"));
                 }
 
@@ -288,6 +317,8 @@ function calculatePokemon() {
                     div.appendChild(p)
                     resultsCon.appendChild(div)
 
+                    loadCon.style.display = "none"
+
                     return Promise.reject(new Error("No Pokémon found for move"));
                 }
 
@@ -344,6 +375,8 @@ function calculatePokemon() {
                     div.appendChild(p)
                     resultsCon.appendChild(div)
 
+                    loadCon.style.display = "none"
+
                     return Promise.reject(new Error("No Pokémon found for move"));
                 }
 
@@ -373,8 +406,6 @@ function calculatePokemon() {
         }
 
     Promise.all(fetchPromises).then(() => {
-        console.log("All fetches done, results:", results);
-
         let finalresults = [];
 
         const allArrays = [results.abilityResults, results.move1Results, results.move2Results, results.move3Results, results.move4Results]
@@ -383,7 +414,7 @@ function calculatePokemon() {
 
         if (activeArrays.length > 1) {
             const commonNumbers = activeArrays.reduce((acc, current) => acc.filter(item => current.includes(item)))
-            console.log("Common to all:", commonNumbers)
+
             finalresults.push(...commonNumbers)
 
 
@@ -394,13 +425,13 @@ function calculatePokemon() {
 
             finalresults.push(...numbers)
 
-            console.log(finalresults)
-
             populateResults(finalresults)
 
         }
     }).catch(error => {
-        console.error("Error during fetches:", error);
+        dynamicError.textContent = `${error}`
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
     });
         
     }
@@ -408,8 +439,9 @@ function calculatePokemon() {
 
 function populateResults(finalresults, i = 0) {
     const resultsCon = document.querySelector("#results");
+    const hideCon = document.querySelector("#am-hide-con")
 
-    console.log("finalResults length:", finalresults.length)
+    finalresults.sort((a, b) => a - b);
 
     if (finalresults.length === 0) {
         const resultsCon = document.querySelector("#results");
@@ -427,17 +459,26 @@ function populateResults(finalresults, i = 0) {
         div.appendChild(p)
         resultsCon.appendChild(div)
 
+        loadCon.style.display = "none"
+
         return;
     }
 
     if (i >= finalresults.length) {
         const button = document.createElement("button")
+        const divs = document.querySelectorAll(".am-result")
 
         button.innerText = "Show Scarlet and Violet Pokemon only?"
         button.setAttribute("id", "show-sv-button")
         button.addEventListener("click", deleteNonSV)
 
-        resultsCon.appendChild(button)
+        hideCon.appendChild(button)
+
+        sortDivs()
+
+        divs.forEach(div => div.style.display = "block")
+
+        loadCon.style.display = "none"
 
         return;
     }
@@ -449,18 +490,19 @@ function populateResults(finalresults, i = 0) {
     fetch(`${baseURL}search/${finalresults[i]}`)
         .then(response => response.json())
         .then(function(response){
-            console.log(response);
-
             const img = document.createElement("img");
             const p = document.createElement("p");
             const div = document.createElement("div");
             
 
             img.src = `../images/pokemon_images/${response[0].number}.png`;
+            img.setAttribute("alt", `Image of ${response[0].name}`)
             p.textContent = `${response[0].name}`;
+            p.setAttribute("class", "result-name")
             div.setAttribute("data-ScarVio", `${response[0].in_ScarVio}`);
             div.setAttribute("class", "am-result")
-            
+            div.setAttribute("data-sort", `${response[0].number}`)
+            div.style.display = "none"
 
             div.appendChild(img);
             div.appendChild(p);
@@ -470,7 +512,9 @@ function populateResults(finalresults, i = 0) {
             populateResults(finalresults, i + 1);
         })
         .catch(err => {
-            console.error("Fetch error:", err);
+            dynamicError.textContent = `${error}`
+            loadCon.style.display = "none"
+            errorCon.style.display = "block"
 
             populateResults(finalresults, i + 1);
         });
@@ -483,9 +527,9 @@ function deleteNonSV() {
     const button = document.querySelector("#show-sv-button")
 
     pokeDivs.forEach(div => {
-        if (div.dataset.ScarVio !== "y") {
+        if (div.dataset.scarvio !== "y") {
             if (div.style.display === "none") {
-                div.style.display = "flex"
+                div.style.display = "grid"
 
                 button.innerText = "Show Scarlet and Violet Pokemon only?"
             } else {
@@ -495,7 +539,40 @@ function deleteNonSV() {
             }
         }
     })
+
+    gsap.to(window, { duration: 1, scrollTo: ("#am-results-con")})
+}
+
+function sortDivs() {
+    const resultsCon = document.querySelector("#results");
+    const divs = Array.from(resultsCon.querySelectorAll("div"));
+
+    divs.sort((a, b) => {
+        const parseValue = (str) => {
+            const match = str.match(/^(\d+)([a-z]*)$/i);
+            if (!match) return [0, '']; // fallback
+            return [Number(match[1]), match[2].toLowerCase()];
+        };
+
+        const [numA, suffixA] = parseValue(a.dataset.sort);
+        const [numB, suffixB] = parseValue(b.dataset.sort);
+
+        if (numA !== numB) {
+            return numA - numB; // numeric sort
+        } else {
+            if (suffixA < suffixB) return -1;
+            if (suffixA > suffixB) return 1;
+            return 0;
+        }
+    });
+
+    divs.forEach(div => resultsCon.appendChild(div));
+}
+
+function toTop() {
+    gsap.to(window, { duration: 1, scrollTo: (0)})
 }
 
 svButton.addEventListener("click", svMoves)
 calculateButton.addEventListener("click", calculatePokemon)
+topText.addEventListener("click", toTop)

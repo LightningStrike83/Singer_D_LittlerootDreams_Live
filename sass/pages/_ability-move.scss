@@ -1,3 +1,5 @@
+@use "../abstracts/colours" as c;
+
 #am-credit {
     margin-bottom: 10px;
 }
@@ -11,4 +13,157 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#am-select-con, #am-results-con {
+    border-radius: 20px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#am-select-con.dark-mode, #am-results-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#am-select-con {
+    margin-bottom: 20px;
+}
+
+#am-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ability-select {
+    margin-bottom: 20px;
+    display: flex;
+    justify-self: center;
+}
+
+.move-select {
+    margin-bottom: 20px;
+}
+
+#move-con {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+#button-con {
+    display: flex;
+    flex-direction: column;
+}
+
+#sv-moves {
+    margin-bottom: 20px;
+}
+
+#results-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.am-result {
+    width: 30%;
+    height: 100%;
+    border: 3px solid c.$dark-wood;
+    border-radius: 20px;
+    background-image: c.$white-gradient;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.result-name {
+    text-align: center;
+    background-image: c.$wood;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: calc(100% - 2px);
+}
+
+#am-hide-con {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#am-loading {
+    margin-top: 30px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        margin-top: 10px;
+    }
+}
+
+#am-note {
+    margin: 5px;
+}
+
+#error-con {
+    display: none;
+    text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+    #move-con {
+        justify-content: space-around;
+    }
+
+    .am-result {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 728px) {
+    #sv-moves {
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    #button-con {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .am-result {
+        width: 15%;
+    }
+
+    .result-name {
+        padding: 5px;
+        font-size: calc(100% - 1px)!important;
+    }
+
+    #am-note {
+        font-size: calc(100% - 2px)!important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .am-result {
+        width: 12%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .am-result {
+        width: 10%;
+    }
 }
