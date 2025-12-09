@@ -20,7 +20,7 @@
     background-color: c.$night-wood;
 }
 
-#rbg_chars, #y_chars, #gsc_chars, #c_chars, #rs_chars, #frlg_chars, #e_chars, #dp_chars, #hgss_chars, #pt_chars, #bw_chars, #b2w2_chars, #b2w2c_chars, #xy_chars, #oras_chars, #sm_chars, #usum_chars, #lgpe_chars, #swsh_chars, #bdsp_chars, #sv_chars {
+#rbg_chars, #y_chars, #gsc_chars, #c_chars, #rs_chars, #frlg_chars, #e_chars, #dp_chars, #hgss_chars, #pt_chars, #bw_chars, #b2w2_chars, #b2w2c_chars, #xy_chars, #oras_chars, #sm_chars, #usum_chars, #lgpe_chars, #swsh_chars, #bdsp_chars, #sv_chars, #za_chars {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -34,7 +34,7 @@
     margin-right: 10px;
 }
 
-#rbg_chars.dark-mode, #y_chars.dark-mode, #gsc_chars.dark-mode, #c_chars.dark-mode, #rs_chars.dark-mode, #frlg_chars.dark-mode, #e_chars.dark-mode, #dp_chars.dark-mode, #hgss_chars.dark-mode, #pt_chars.dark-mode, #bw_chars.dark-mode, #b2w2_chars.dark-mode, #b2w2c_chars.dark-mode, #xy_chars.dark-mode, #oras_chars.dark-mode, #sm_chars.dark-mode, #usum_chars.dark-mode, #lgpe_chars.dark-mode, #swsh_chars.dark-mode, #bdsp_chars.dark-mode, #sv_chars.dark-mode {
+#rbg_chars.dark-mode, #y_chars.dark-mode, #gsc_chars.dark-mode, #c_chars.dark-mode, #rs_chars.dark-mode, #frlg_chars.dark-mode, #e_chars.dark-mode, #dp_chars.dark-mode, #hgss_chars.dark-mode, #pt_chars.dark-mode, #bw_chars.dark-mode, #b2w2_chars.dark-mode, #b2w2c_chars.dark-mode, #xy_chars.dark-mode, #oras_chars.dark-mode, #sm_chars.dark-mode, #usum_chars.dark-mode, #lgpe_chars.dark-mode, #swsh_chars.dark-mode, #bdsp_chars.dark-mode, #sv_chars.dark-mode, #za_chars.dark-mode {
     background-image: none;
     background-color: c.$rhea-wood;
 }

@@ -18,6 +18,7 @@ let lgpeGame = document.querySelector("#lgpe");
 let swshGame = document.querySelector("#swsh");
 let bdspGame = document.querySelector("#bdsp");
 let svGame = document.querySelector("#sv");
+let zaGame = document.querySelector("#za");
 
 const characterDivs = document.querySelectorAll('.character_name');
 const gameDivs = document.querySelectorAll('.game')
@@ -132,6 +133,10 @@ function openSV() {
     toggleAndHide("sv_chars");
 }
 
+function openZA() {
+    toggleAndHide("za_chars");
+}
+
 function toggleCheckbox(checkbox) {
   checkbox.checked = !checkbox.checked;
 }
@@ -214,6 +219,7 @@ lgpeGame.addEventListener('click', openLGPE);
 swshGame.addEventListener('click', openSWSH);
 bdspGame.addEventListener('click', openBDSP);
 svGame.addEventListener('click', openSV);
+zaGame.addEventListener('click', openZA);
 
 characterDivs.forEach(div => {
     div.addEventListener('click', function() {
