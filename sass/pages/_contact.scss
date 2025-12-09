@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-#contact-form input:not(#submit-contact) {
+#contact-form input:not(#submit-contact, #privacy) {
     margin-top: 5px;
     border-radius: 10px;
     padding: 5px;
@@ -75,8 +75,15 @@
     flex-direction: column;
 }
 
+#privacy-con {
+    margin-top: 10px;
+    a {
+        text-decoration: underline;
+    }
+}
+
 @media screen and (min-width: 768px) {
-    #contact-form input:not(#submit-contact) {
+    #contact-form input:not(#submit-contact, #privacy) {
         width: 50%;
     }
 

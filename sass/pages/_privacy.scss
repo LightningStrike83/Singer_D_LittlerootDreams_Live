@@ -1,0 +1,30 @@
+@use "../abstracts/colours" as c;
+
+#privacy-info-con {
+    padding-top: 20px;
+    background-color: c.$body-wood;
+    border-radius: 20px;
+    margin-top: 20px;
+    border: 2px solid c.$dark-wood;
+
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+#privacy-info-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#privacy-update-text {
+    text-align: right;
+}
+
+.privacy-title {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#privacy-info {
+    margin-top: 20px;
+}
