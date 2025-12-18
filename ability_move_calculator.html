@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Ability & Move Calculator- Littleroot Dreams</title>
+    <title>Ability, Move, & Type Calculator- Littleroot Dreams</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css?version=2.0">
@@ -126,7 +126,7 @@
                       <ul id="info-links">
                         <li><a href="trainer_data.html">Trainer Data</a></li>
                         <li class="horizontal-line"></li>
-                        <li><a href="ability_move_calculator.html">Ability & Move Calculator</a></li>
+                        <li><a href="ability_move_calculator.html">Ability, Move, & Type Calculator</a></li>
                         <li class="horizontal-line"></li>
                         <li><a href="sandwich.html">Area Zero Sandwich Filter</a></li>
                         <li class="horizontal-line"></li>
@@ -155,13 +155,13 @@
 
     <section id="title-box-tracker" class="grid-con">
         <div class="col-span-full" id="title">
-            <h2 id="main_title">Ability & Move Calculator</h2>
+            <h2 id="main_title">Ability, Move, & Type Calculator</h2>
         </div>
     </section>
 
     <section id="desc-box-tracker" class="grid-con">
         <div class="col-span-full dm" id="instructions">
-            <h2 class="hidden">Ability & Move Calculator</h2>
+            <h2 class="hidden">Ability, Move, & Type Calculator</h2>
             <p id="instructions_text" class="dm">Building a team and wondering if anyone has a specific combination of an ability and moves? Look no further! Input the data from the select menus and this page will return any Pokemon with that combination, if there is any!<br> Don't wanna calculate an ability? No problem! This page can calculate using as much or as little information provided!</p>
             <p id="am-credit">This page is partially powered by <a id="pokeapi" href="">PokeAPI</a> and is currently using Generation 9 Scarlet & Violet ability and move information. <br>Older generation information is not available at this time.</p>
             <p id="am-note">Note: The Scarlet and Violet filter functionality will be changed to Pokemon Champions once it is released</p>
@@ -173,6 +173,51 @@
             <select name="ability" id="ability-select" class="am-select">
                 <option value="">--Select an Ability--</option>
             </select>
+
+            <div id="am-type-con">
+              <select name="type1" id="am-type1">
+                <option value="">--Select A Type--</option>
+                <option value="bug">Bug</option>
+                <option value="dark">Dark</option>
+                <option value="dragon">Dragon</option>
+                <option value="electric">Electric</option>
+                <option value="fairy">Fairy</option>
+                <option value="fighting">Fighting</option>
+                <option value="fire">Fire</option>
+                <option value="flying">Flying</option>
+                <option value="ghost">Ghost</option>
+                <option value="grass">Grass</option>
+                <option value="ground">Ground</option>
+                <option value="ice">Ice</option>
+                <option value="normal">Normal</option>
+                <option value="poison">Poison</option>
+                <option value="psychic">Psychic</option>
+                <option value="rock">Rock</option>
+                <option value="steel">Steel</option>
+                <option value="water">Water</option>
+              </select>
+              <select name="type2" id="am-type2">
+                <option value="">--Select A Type--</option>
+                <option value="bug">Bug</option>
+                <option value="dark">Dark</option>
+                <option value="dragon">Dragon</option>
+                <option value="electric">Electric</option>
+                <option value="fairy">Fairy</option>
+                <option value="fighting">Fighting</option>
+                <option value="fire">Fire</option>
+                <option value="flying">Flying</option>
+                <option value="ghost">Ghost</option>
+                <option value="grass">Grass</option>
+                <option value="ground">Ground</option>
+                <option value="ice">Ice</option>
+                <option value="normal">Normal</option>
+                <option value="poison">Poison</option>
+                <option value="psychic">Psychic</option>
+                <option value="rock">Rock</option>
+                <option value="steel">Steel</option>
+                <option value="water">Water</option>
+              </select>
+            </div>
 
             <div id="move-con">
                 <select name="move1" id="am-move1" class="move-select">
@@ -253,7 +298,7 @@
             <h1 class="hidden">Game Info Mobile Menu</h1>
             <div class="col-start-2 col-span-1 mobile-links">
                 <a class="header-link" href="trainer_data.html">Trainer Data</a>
-                <a class="header-link" href="ability_move_calculator.html">Ability & Move Calculator</a>
+                <a class="header-link" href="ability_move_calculator.html">Ability, Move, & Type Calculator</a>
                 <a class="header-link" href="sandwich.html">Area Zero Sandwich Filter</a>
                 <a class="header-link" href="usage.html">Pokemon Usage</a>
             </div>
