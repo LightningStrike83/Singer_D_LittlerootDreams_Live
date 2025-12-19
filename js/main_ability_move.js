@@ -1,9 +1,11 @@
 const baseURL = "https://littlerootdreams.com/lumen/public/"
 const moveLists = document.querySelectorAll(".move-select")
+const typeLists = document.querySelectorAll(".type-select")
 const svButton = document.querySelector("#sv-moves")
 const abilityList = document.querySelector("#ability-select")
 const calculateButton = document.querySelector("#am-calculate")
 const PokeAPI = "https://pokeapi.co/api/v2/move/"
+const PokeAPIType = "https://pokeapi.co/api/v2/type/"
 const loadCon = document.querySelector("#am-loading")
 const errorCon = document.querySelector("#error-con")
 const dynamicError = document.querySelector("#dynamic-error")
@@ -87,6 +89,10 @@ function calculatePokemon() {
     const move4 = document.querySelector("#am-move4")
     const move4Value = move4.options[move4.selectedIndex].dataset.movekey
     const hideCon = document.querySelector("#am-hide-con")
+    const type1 = document.querySelector("#am-type1")
+    const type1Value = type1.options[type1.selectedIndex].value
+    const type2 = document.querySelector("#am-type2")
+    let type2Value = type2.options[type2.selectedIndex].value
 
     loadCon.style.display = "flex"
     hideCon.innerHTML = ""
@@ -103,7 +109,9 @@ function calculatePokemon() {
         move1: "",
         move2: "",
         move3: "",
-        move4: ""
+        move4: "",
+        type1: "",
+        type2: ""
     };
 
     let results = {
@@ -112,6 +120,7 @@ function calculatePokemon() {
         move2Results: [],
         move3Results: [],
         move4Results: [],
+        typeResults: [],
     }
 
     if (abilityValue !== undefined) {
@@ -134,26 +143,43 @@ function calculatePokemon() {
         data.move4 = move4Value
     }
 
-    if (abilityValue === undefined && move1Value === undefined && move2Value === undefined && move3Value === undefined && move4Value === undefined) {
+    if (type1Value !== undefined) {
+        data.type1 = type1Value
+    }
+    
+    if (type1Value === "" && type2Value !== undefined) {
+        data.type1 = type2Value
+        type2Value = ""
+    }
+
+    if (type2Value !== undefined) {
+        data.type2 = type2Value
+    }
+
+    if (abilityValue === undefined && move1Value === undefined && move2Value === undefined && move3Value === undefined && move4Value === undefined && type1 === undefined && type2Value === undefined) {
         loadCon.style.display = "none"
         dynamicError.textContent = "No selections have been made"
         errorCon.style.display = "block"
     }
 
     if (data.move1 !== "" && (data.move1 === data.move2 || data.move1 === data.move3 || data.move1 === data.move4)) {
-        dynamicError.textContent = "There is a similar section to the first move"
+        dynamicError.textContent = "There is a similar selection to the first move"
         loadCon.style.display = "none"
         errorCon.style.display = "block"
     } else if (data.move2 !== "" && (data.move2 === data.move1 || data.move2 === data.move3 || data.move2 === data.move4)) {
-        dynamicError.textContent = "There is a similar section to the second move"
+        dynamicError.textContent = "There is a similar selection to the second move"
         loadCon.style.display = "none"
         errorCon.style.display = "block"
     } else if (data.move3 !== "" && (data.move3 === data.move1 || data.move3 === data.move2 || data.move3 === data.move4)) {
-        dynamicError.textContent = "There is a similar section to the third move"
+        dynamicError.textContent = "There is a similar selection to the third move"
         loadCon.style.display = "none"
         errorCon.style.display = "block"
     } else if (data.move4 !== "" && (data.move4 === data.move1 || data.move4 === data.move2 || data.move4 === data.move3)) {
-        dynamicError.textContent = "There is a similar section to the fourth move"
+        dynamicError.textContent = "There is a similar selection to the fourth move"
+        loadCon.style.display = "none"
+        errorCon.style.display = "block"
+    } else if (data.type1 !== "" && (data.type2 === data.type1)) {
+        dynamicError.textContent = "The two selected types are the same; please unselect one"
         loadCon.style.display = "none"
         errorCon.style.display = "block"
     } else {
@@ -168,6 +194,128 @@ function calculatePokemon() {
 
         fetchPromises.push(p);
     }
+        if (data.type1 !== "" && data.type2 !== "") {
+            const p = new Promise((resolve, reject) => {
+                const allResults = [];
+                let innerPromises = [];
+
+                const t1 = fetch(`${PokeAPIType}${data.type1}`)
+                    .then(response => response.json())
+                    .then(response => {
+                        response.pokemon.forEach(result => {
+                            const url = result.pokemon.url;
+                            const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                            if (match) {
+                                const number = match[1];
+                                const innerP = fetch(`${baseURL}api-search/${number}`)
+                                    .then(res => res.json())
+                                    .then(res => {
+                                        if (res.length > 0 && res[0].id !== undefined) {
+                                            allResults.push(res[0].id);
+                                        } else {
+                                            console.warn("Unexpected or empty response for number:", number, res);
+                                        }
+                                    });
+                                innerPromises.push(innerP);
+                            }
+                        });
+                    });
+
+                const t2 = fetch(`${PokeAPIType}${data.type2}`)
+                    .then(response => response.json())
+                    .then(response => {
+                        response.pokemon.forEach(result => {
+                            const url = result.pokemon.url;
+                            const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                            if (match) {
+                                const number = match[1];
+                                const innerP = fetch(`${baseURL}api-search/${number}`)
+                                    .then(res => res.json())
+                                    .then(res => {
+                                        if (res.length > 0 && res[0].id !== undefined) {
+                                            allResults.push(res[0].id);
+                                        } else {
+                                            console.warn("Unexpected or empty response for number:", number, res);
+                                        }
+                                    });
+                                innerPromises.push(innerP);
+                            }
+                        });
+                    });
+
+                Promise.all([t1, t2])
+                    .then(() => Promise.all(innerPromises))
+                    .then(() => {
+                        allResults.sort((a, b) => a - b);
+
+                        const counts = {};
+                        allResults.forEach(num => counts[num] = (counts[num] || 0) + 1);
+
+                        const commonTypes = allResults.filter(num => counts[num] === 2);
+                        const uniqueCommonTypes = [...new Set(commonTypes)];
+
+                        if (uniqueCommonTypes.length > 0) {
+                            uniqueCommonTypes.forEach(pokemon => results.typeResults.push(pokemon));
+                        } else {
+                            const resultsCon = document.querySelector("#results");
+                            const img = document.createElement("img")
+                            const p = document.createElement("p")
+                            const div = document.createElement("div")
+
+                            resultsCon.innerHTML = ""
+
+                            img.src = "../images/pokemon_images/201qm.png"
+                            p.textContent = "Sorry, there are no Pokemon that match those results"
+                            div.setAttribute("id", "no-results-con")
+
+                            div.appendChild(img)
+                            div.appendChild(p)
+                            resultsCon.appendChild(div)
+
+                            loadCon.style.display = "none"
+
+                            return
+                        }
+
+                        console.log(uniqueCommonTypes)
+
+                        resolve();
+                    })
+                    .catch(reject);
+            });
+
+            fetchPromises.push(p);
+        } else if (data.type1 !== "") {
+            const p = new Promise((resolve, reject) => {
+                let innerPromises = []
+
+                fetch(`${PokeAPIType}${data.type1}`)
+                .then(response => response.json())
+                .then(response => {
+                    response.pokemon.forEach(result => {
+                        const url = result.pokemon.url;
+                        const match = url.match(/(?:^|\/)(\d+)(?:\/|$)/);
+                        if (match) {
+                            const number = match[1];
+                            const innerP = fetch(`${baseURL}api-search/${number}`)
+                                .then(res => res.json())
+                                .then(res => {
+                                    if (res.length > 0 && res[0].id !== undefined) {
+                                        results.typeResults.push(res[0].id);
+                                    }
+                                });
+                            innerPromises.push(innerP);
+}
+                            });
+
+                    return Promise.all(innerPromises);
+                })
+                .then(resolve)
+                .catch(reject);
+            })
+
+            fetchPromises.push(p);
+        }
 
         if (data.move1 !== "") {
            const p = fetch(`${PokeAPI}${data.move1}`)
@@ -408,20 +556,23 @@ function calculatePokemon() {
         }
 
     Promise.all(fetchPromises).then(() => {
-        let finalresults = [];
+        let finalresults = []
 
-        const allArrays = [results.abilityResults, results.move1Results, results.move2Results, results.move3Results, results.move4Results]
+        const allArrays = [
+            results.abilityResults, 
+            results.move1Results, 
+            results.move2Results, 
+            results.move3Results, 
+            results.move4Results, 
+            results.typeResults
+        ];
 
-        const activeArrays = allArrays.filter(a => Array.isArray(a) && a.length > 0)
+        const activeArrays = allArrays.filter(a => Array.isArray(a) && a.length > 0);
 
         if (activeArrays.length > 1) {
-            const commonNumbers = activeArrays.reduce((acc, current) => acc.filter(item => current.includes(item)))
-
-            finalresults.push(...commonNumbers)
-
-
-            populateResults(finalresults)
-
+            const commonNumbers = activeArrays.reduce((acc, current) => acc.filter(item => current.includes(item)));
+            finalresults.push(...commonNumbers);
+            populateResults(finalresults);
         } else if (activeArrays.length === 1) {
             const numbers = activeArrays[0]
 
@@ -430,11 +581,29 @@ function calculatePokemon() {
             populateResults(finalresults)
 
         }
-    }).catch(error => {
-        dynamicError.textContent = `${error}`
-        loadCon.style.display = "none"
-        errorCon.style.display = "block"
-    });
+        else if (activeArrays.length === 0) {
+            const resultsCon = document.querySelector("#results");
+            const img = document.createElement("img")
+            const p = document.createElement("p")
+            const div = document.createElement("div")
+
+            resultsCon.innerHTML = ""
+
+            img.src = "../images/pokemon_images/201qm.png"
+            p.textContent = "Sorry, there are no Pokemon that match those results"
+            div.setAttribute("id", "no-results-con")
+
+            div.appendChild(img)
+            div.appendChild(p)
+            resultsCon.appendChild(div)
+
+            loadCon.style.display = "none"
+        }
+        }).catch(error => {
+            dynamicError.textContent = `${error}`
+            loadCon.style.display = "none"
+            errorCon.style.display = "block"
+        });
         
     }
 }
