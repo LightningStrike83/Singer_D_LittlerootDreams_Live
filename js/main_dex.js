@@ -8,6 +8,8 @@ const baseURL = "https://littlerootdreams.com/lumen/public/"
 const errorHandle = document.querySelector("#error-handle")
 const dexName = document.querySelector("#custom-dex-form")
 const nameForm = document.querySelector("#download-dex-con")
+const typeCon = document.querySelector("#types_count")
+const countCon = document.querySelector("#count_con")
 
 let finalName = ""
 let count = 0
@@ -227,6 +229,8 @@ function drop(event) {
   event.preventDefault();
   const targetDropArea = event.target.closest(".pokedex_box");
   const draggedPokemon = document.querySelector(".dragging");
+  const type1 = draggedPokemon.parentNode.dataset.type1
+  const type2 = draggedPokemon.parentNode.dataset.type2
 
   if (!targetDropArea || !draggedPokemon) {
     return;
@@ -295,12 +299,17 @@ function drop(event) {
       }
     }
 
+    draggedPokemon.setAttribute("data-type1", `${type1}`)
+    draggedPokemon.setAttribute("data-type2",`${type2}`)
+
     currentDropArea.removeChild(draggedPokemon);
     targetDropArea.appendChild(draggedPokemon);
   }
 
   draggedPokemon.classList.remove("dragging");
   event.target.classList.remove("drag-enter");
+
+  countTypes()
 }
 
 function returnToOriginalPosition(event) {
@@ -314,10 +323,12 @@ function returnToOriginalPosition(event) {
       currentDropArea.removeChild(draggedPokemon);
       originalPosition.appendChild(draggedPokemon);
       draggedPokemon.classList.remove("dragging");
+
+      countTypes()
     }
   }
 
-dragImages.forEach(function (image) {
+  dragImages.forEach(function (image) {
   image.addEventListener("dragstart", dragStart);
   image.addEventListener("dragend", dragEnd);
 });
@@ -404,6 +415,52 @@ function openNameForm() {
   nameForm.style.opacity = "1"
 }
 
+function openTypeCount() {
+  const typeTitle = document.querySelector("#type_title")
+
+  if (countCon.style.display === "flex") {
+    countCon.style.display = "none"
+    typeTitle.style.borderBottomLeftRadius = "20px"
+    typeTitle.style.borderBottomRightRadius = "20px"
+  } else {
+    countCon.style.display = "flex"
+    typeTitle.style.borderBottomLeftRadius = "0px"
+    typeTitle.style.borderBottomRightRadius = "0px"
+  }
+}
+
+function countTypes() {
+  const pokedexBoxes = document.querySelectorAll(".pokedex_box")
+
+  const typeCounts = document.querySelectorAll(".type_count")
+
+  typeCounts.forEach(type => type.textContent = "0")
+
+  pokedexBoxes.forEach(box => {
+    const image = box.querySelector("img")
+    
+    if (image !== null) {
+      const type1 = image.dataset.type1
+      const type2 = image.dataset.type2
+      const typeCount1 = document.querySelector(`#${type1}_count`)
+
+      var num1 = Number(typeCount1.textContent)
+
+      typeCount1.textContent = num1 + 1
+
+      console.log(type2)
+
+      if (type2 !== "") {
+        const typeCount2 = document.querySelector(`#${type2}_count`)
+
+        var num2 = Number(typeCount2.textContent)
+
+        typeCount2.textContent = num2 + 1
+      }
+    }
+  })
+}
+
 spriteArea.addEventListener("dragover", dragOver);
 spriteArea.addEventListener("dragenter", dragEnter);
 spriteArea.addEventListener("dragleave", dragLeave);
@@ -412,3 +469,4 @@ submitbutton.addEventListener("click", populateBoxArea)
 downloadButton.addEventListener("click", openNameForm)
 dexName.addEventListener("submit", exportDivToImage)
 tips.addEventListener("click", openTips)
+typeCon.addEventListener("click", openTypeCount)
