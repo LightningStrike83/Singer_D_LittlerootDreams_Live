@@ -269,7 +269,7 @@
               <p>Water: <span class="type_count" id="water_count">0</span></p>
             </div>
 
-            <p id="typing_note">Note: Due to the programming of the dex maker and type counter, some Pokemon will be counted differently due to possessing more than one typing option. The list is as follows:<br>-Wormadam as Solo Bug<br>-Oricorio as Solo Flying<br>-Zacian and Zamazenta in their Hero of Many Battles forms<br>-Urshifu as Solo Fighting<br>-Rotom, Arceus, Meloetta, Calyrex, Ogerpon in base form<br>-Variant Pokemon without typings will have their original form's typing</p>
+            <p id="typing_note">Note: Due to the programming of the dex maker and type counter, some Pokemon will be counted differently due to possessing more than one typing option. The list is as follows:<br>-Wormadam as Solo Bug<br>-Oricorio as Solo Flying<br>-Zacian and Zamazenta in their Hero of Many Battles forms<br>-Urshifu as Solo Fighting<br>-UFO as Solo Electric<br>-Castform, Rotom, Arceus, Meloetta, Calyrex, Ogerpon in base form</p>
           </div>
         </div>
     </section>
@@ -283,7 +283,7 @@
                 <div id="filter" class="dm">
                     <p id="filter_title">Filter:</p>
                     <select id="cd-filter-select">
-                        <option selected disabled>--Please Select A Region--</option>
+                        <option selected disabled value="">--Please Select A Region--</option>
                         <option value="all">All</option>
                         <option value="kanto">Kanto</option>
                         <option value="johto">Johto</option>
@@ -296,6 +296,34 @@
                         <option value="hisui">Hisui</option>
                         <option value="paldea">Paldea + Kitakami</option>
                         <option value="regionals">Regional Forms</option>
+                        <option value="megas">Mega Evolutions</option>
+                        <option value="gmaxes">GMaxes</option>
+                        <option value="cs_variants">Variants & Other</option>
+                        <option value="pokestars">Pokestar Studios</option>
+                        <option value="beta">Beta + Demo</option>
+                    </select>
+
+                    <select id="cd-type-select">
+                      <option selected disabled value="">--Please Select A Type--</option>
+                      <option value="all">All</option>
+                      <option value="bug">Bug</option>
+                      <option value="dark">Dark</option>
+                      <option value="dragon">Dragon</option>
+                      <option value="electric">Electric</option>
+                      <option value="fairy">Fairy</option>
+                      <option value="fighting">Fighting</option>
+                      <option value="fire">Fire</option>
+                      <option value="flying">Flying</option>
+                      <option value="ghost">Ghost</option>
+                      <option value="grass">Grass</option>
+                      <option value="ground">Ground</option>
+                      <option value="ice">Ice</option>
+                      <option value="normal">Normal</option>
+                      <option value="poison">Poison</option>
+                      <option value="psychic">Psychic</option>
+                      <option value="rock">Rock</option>
+                      <option value="steel">Steel</option>
+                      <option value="water">Water</option>
                     </select>
                 </div>
                 <div id="pokemon_sprites">
@@ -1325,220 +1353,317 @@
                     <div class="sprite_item paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/1024.png" alt="Terapagos"><p class="pokemon_name dm">Terapagos</p></div>
                     <div class="sprite_item paldea dm" data-type1="poison" data-type2="ghost"><img src="images/pokemon_images/1025.png" alt="Pecharunt"><p class="pokemon_name dm">Pecharunt</p></div>
                 </div>
-                <h3 id="regional" class="filter_text">Regional Form Models</h3>
-                <p class="regional_text filter_text">Alolan Forms</p>
+                <h3 id="regional" class="filter_text alola_text galar_text hisui_text paldea_text ice_text normal_text dark_text electric_text psychic_text steel_text fairy_text ghost_text fire_text grass_text dragon_text ground_text rock_text poison_text">Regional Form Models</h3>
+                <p class="regional_text filter_text alola_text ice_text normal_text dark_text electric_text psychic_text steel_text fairy_text ghost_text fire_text grass_text dragon_text ground_text rock_text poison_text regionals_text">Alolan Forms</p>
                 <div id="alolan_sprites">
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/019a.png" alt="Alolan Rattata"><p class="pokemon_name dm">Alolan Rattata</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/020a.png" alt="Alolan Raticate"><p class="pokemon_name dm">Alolan Raticate</p></div>
-                    <div class="sprite_item regionals dm" data-type1="electric" data-type2="psychic"><img src="images/pokemon_images/026a.png" alt="Alolan Raichu"><p class="pokemon_name dm">Alolan Raichu</p></div>
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2="ice"><img src="images/pokemon_images/027a.png" alt="Alolan Sandshrew"><p class="pokemon_name dm">Alolan Sandshrew</p></div>
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2="ice"><img src="images/pokemon_images/028a.png" alt="Alolan Sandslash"><p class="pokemon_name dm">Alolan Sandslash</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/037a.png" alt="Alolan Vulpix"><p class="pokemon_name dm">Alolan Vulpix</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ice" data-type2="fairy"><img src="images/pokemon_images/038a.png" alt="Alolan Ninetales"><p class="pokemon_name dm">Alolan Ninetales</p></div>
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/050a.png" alt="Alolan Diglett"><p class="pokemon_name dm">Alolan Diglett</p></div>
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/051a.png" alt="Alolan Dugtrio"><p class="pokemon_name dm">Alolan Dugtrio</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/052a.png" alt="Alolan Meowth"><p class="pokemon_name dm">Alolan Meowth</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/053a.png" alt="Alolan Persian"><p class="pokemon_name dm">Alolan Persian</p></div>
-                    <div class="sprite_item regionals dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/074a.png" alt="Alolan Geodude"><p class="pokemon_name dm">Alolan Geodude</p></div>
-                    <div class="sprite_item regionals dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/075a.png" alt="Alolan Graveler"><p class="pokemon_name dm">Alolan Graveler</p></div>
-                    <div class="sprite_item regionals dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/076a.png" alt="Alolan Golem"><p class="pokemon_name dm">Alolan Golem</p></div>
-                    <div class="sprite_item regionals dm" data-type1="poison" data-type2="dark"><img src="images/pokemon_images/088a.png" alt="Alolan Grimer"><p class="pokemon_name dm">Alolan Grimer</p></div>
-                    <div class="sprite_item regionals dm" data-type1="poison" data-type2="dark"><img src="images/pokemon_images/089a.png" alt="Alolan Muk"><p class="pokemon_name dm">Alolan Muk</p></div>
-                    <div class="sprite_item regionals dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/103a.png" alt="Alolan Exeggutor"><p class="pokemon_name dm">Alolan Exeggutor</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/105a.png" alt="Alolan Marowak"><p class="pokemon_name dm">Alolan Marowak</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/019a.png" alt="Alolan Rattata"><p class="pokemon_name dm">Alolan Rattata</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/020a.png" alt="Alolan Raticate"><p class="pokemon_name dm">Alolan Raticate</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="electric" data-type2="psychic"><img src="images/pokemon_images/026a.png" alt="Alolan Raichu"><p class="pokemon_name dm">Alolan Raichu</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="steel" data-type2="ice"><img src="images/pokemon_images/027a.png" alt="Alolan Sandshrew"><p class="pokemon_name dm">Alolan Sandshrew</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="steel" data-type2="ice"><img src="images/pokemon_images/028a.png" alt="Alolan Sandslash"><p class="pokemon_name dm">Alolan Sandslash</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/037a.png" alt="Alolan Vulpix"><p class="pokemon_name dm">Alolan Vulpix</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="ice" data-type2="fairy"><img src="images/pokemon_images/038a.png" alt="Alolan Ninetales"><p class="pokemon_name dm">Alolan Ninetales</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/050a.png" alt="Alolan Diglett"><p class="pokemon_name dm">Alolan Diglett</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/051a.png" alt="Alolan Dugtrio"><p class="pokemon_name dm">Alolan Dugtrio</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/052a.png" alt="Alolan Meowth"><p class="pokemon_name dm">Alolan Meowth</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/053a.png" alt="Alolan Persian"><p class="pokemon_name dm">Alolan Persian</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/074a.png" alt="Alolan Geodude"><p class="pokemon_name dm">Alolan Geodude</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/075a.png" alt="Alolan Graveler"><p class="pokemon_name dm">Alolan Graveler</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="rock" data-type2="electric"><img src="images/pokemon_images/076a.png" alt="Alolan Golem"><p class="pokemon_name dm">Alolan Golem</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="poison" data-type2="dark"><img src="images/pokemon_images/088a.png" alt="Alolan Grimer"><p class="pokemon_name dm">Alolan Grimer</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="poison" data-type2="dark"><img src="images/pokemon_images/089a.png" alt="Alolan Muk"><p class="pokemon_name dm">Alolan Muk</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/103a.png" alt="Alolan Exeggutor"><p class="pokemon_name dm">Alolan Exeggutor</p></div>
+                    <div class="sprite_item regionals alola dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/105a.png" alt="Alolan Marowak"><p class="pokemon_name dm">Alolan Marowak</p></div>
             </div>
-                <p class="regional_text filter_text">Galarian Forms</p>
+                <p class="regional_text filter_text galar_text steel_text psychic_text fairy_text poison_text fighting_text ice_text flying_text dark_text ghost_text normal_text ice_text ground_text regionals_text regionals_text">Galarian Forms</p>
                 <div id="galarian_sprites">
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/052g.png" alt="Galarian Meowth"><p class="pokemon_name dm">Galarian Meowth</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/077g.png" alt="Galarian Ponyta"><p class="pokemon_name dm">Galarian Ponyta</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="fairy"><img src="images/pokemon_images/078g.png" alt="Galarian Rapidash"><p class="pokemon_name dm">Galarian Rapidash</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/079g.png" alt="Galarian Slowpoke"><p class="pokemon_name dm">Galarian Slowpoke</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="poison"><img src="images/pokemon_images/080g.png" alt="Galarian Slowbro"><p class="pokemon_name dm">Galarian Slowbro</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/083g.png" alt="Galarian Farfetch'd"><p class="pokemon_name dm">Galarian Farfetch'd</p></div>
-                    <div class="sprite_item regionals dm" data-type1="poison" data-type2="fairy"><img src="images/pokemon_images/110g.png" alt="Galarian Weezing"><p class="pokemon_name dm">Galarian Weezing</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="ice"><img src="images/pokemon_images/122g.png" alt="Galarian Mr. Mime"><p class="pokemon_name dm">Galarian Mr. Mime</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="flying"><img src="images/pokemon_images/144g.png" alt="Galarian Articuno"><p class="pokemon_name dm">Galarian Articuno</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fighting" data-type2="flying"><img src="images/pokemon_images/145g.png" alt="Galarian Zapdos"><p class="pokemon_name dm">Galarian Zapdos</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2="flying"><img src="images/pokemon_images/146g.png" alt="Galarian Moltres"><p class="pokemon_name dm">Galarian Moltres</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="poison"><img src="images/pokemon_images/199g.png" alt="Galarian Slowking"><p class="pokemon_name dm">Galarian Slowking</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ghost" data-type2=""><img src="images/pokemon_images/222g.png" alt="Galarian Corsola"><p class="pokemon_name dm">Galarian Corsola</p></div>
-                    <div class="sprite_item regionals dm" data-type1="normal" data-type2="dark"><img src="images/pokemon_images/263g.png" alt="Galarian Zigzagoon"><p class="pokemon_name dm">Galarian Zigzagoon</p></div>
-                    <div class="sprite_item regionals dm" data-type1="normal" data-type2="dark"><img src="images/pokemon_images/264g.png" alt="Galarian Linoone"><p class="pokemon_name dm">Galarian Linoone</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/554g.png" alt="Galarian Darumaka"><p class="pokemon_name dm">Galarian Darumaka</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/555g.png" alt="Galarian Darmanitan"><p class="pokemon_name dm">Galarian Darmanitan</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ghost" data-type2="ground"><img src="images/pokemon_images/562g.png" alt="Galarian Yamask"><p class="pokemon_name dm">Galarian Yamask</p></div>
-                    <div class="sprite_item regionals dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/618g.png" alt="Galarian Stunfisk"><p class="pokemon_name dm">Galarian Stunfisk</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/052g.png" alt="Galarian Meowth"><p class="pokemon_name dm">Galarian Meowth</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/077g.png" alt="Galarian Ponyta"><p class="pokemon_name dm">Galarian Ponyta</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2="fairy"><img src="images/pokemon_images/078g.png" alt="Galarian Rapidash"><p class="pokemon_name dm">Galarian Rapidash</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/079g.png" alt="Galarian Slowpoke"><p class="pokemon_name dm">Galarian Slowpoke</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2="poison"><img src="images/pokemon_images/080g.png" alt="Galarian Slowbro"><p class="pokemon_name dm">Galarian Slowbro</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/083g.png" alt="Galarian Farfetch'd"><p class="pokemon_name dm">Galarian Farfetch'd</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="poison" data-type2="fairy"><img src="images/pokemon_images/110g.png" alt="Galarian Weezing"><p class="pokemon_name dm">Galarian Weezing</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2="ice"><img src="images/pokemon_images/122g.png" alt="Galarian Mr. Mime"><p class="pokemon_name dm">Galarian Mr. Mime</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2="flying"><img src="images/pokemon_images/144g.png" alt="Galarian Articuno"><p class="pokemon_name dm">Galarian Articuno</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="fighting" data-type2="flying"><img src="images/pokemon_images/145g.png" alt="Galarian Zapdos"><p class="pokemon_name dm">Galarian Zapdos</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="dark" data-type2="flying"><img src="images/pokemon_images/146g.png" alt="Galarian Moltres"><p class="pokemon_name dm">Galarian Moltres</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2="poison"><img src="images/pokemon_images/199g.png" alt="Galarian Slowking"><p class="pokemon_name dm">Galarian Slowking</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="ghost" data-type2=""><img src="images/pokemon_images/222g.png" alt="Galarian Corsola"><p class="pokemon_name dm">Galarian Corsola</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="normal" data-type2="dark"><img src="images/pokemon_images/263g.png" alt="Galarian Zigzagoon"><p class="pokemon_name dm">Galarian Zigzagoon</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="normal" data-type2="dark"><img src="images/pokemon_images/264g.png" alt="Galarian Linoone"><p class="pokemon_name dm">Galarian Linoone</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/554g.png" alt="Galarian Darumaka"><p class="pokemon_name dm">Galarian Darumaka</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/555g.png" alt="Galarian Darmanitan"><p class="pokemon_name dm">Galarian Darmanitan</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="ghost" data-type2="ground"><img src="images/pokemon_images/562g.png" alt="Galarian Yamask"><p class="pokemon_name dm">Galarian Yamask</p></div>
+                    <div class="sprite_item regionals galar dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/618g.png" alt="Galarian Stunfisk"><p class="pokemon_name dm">Galarian Stunfisk</p></div>
                 </div>
-                <p class="regional_text filter_text">Hisuian Forms</p>
+                <p class="regional_text filter_text hisui_text fire_text rock_text grass_text electric_text ghost_text poison_text dark_text fighting_text water_text normal_text psychic_text flying_text steel_text dragon_text ice_text regionals_text">Hisuian Forms</p>
                 <div id="hisuian_sprites">
-                    <div class="sprite_item regionals dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/058h.png" alt="Hisuian Growlithe"><p class="pokemon_name dm">Hisuian Growlithe</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/059h.png" alt="Hisuian Arcanine"><p class="pokemon_name dm">Hisuian Arcanine</p></div>
-                    <div class="sprite_item regionals dm" data-type1="electric" data-type2="grass"><img src="images/pokemon_images/100h.png" alt="Hisuian Voltorb"><p class="pokemon_name dm">Hisuian Voltorb</p></div>
-                    <div class="sprite_item regionals dm" data-type1="electric" data-type2="grass"><img src="images/pokemon_images/101h.png" alt="Hisuian Electrode"><p class="pokemon_name dm">Hisuian Electrode</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/157h.png" alt="Hisuian Typhlosion"><p class="pokemon_name dm">Hisuian Typhlosion</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dark" data-type2="poison"><img src="images/pokemon_images/211h.png" alt="Hisuian Qwilfish"><p class="pokemon_name dm">Hisuian Qwilfish</p></div>
-                    <div class="sprite_item regionals dm" data-type1="poison" data-type2="fighting"><img src="images/pokemon_images/215h.png" alt="Hisuian Sneasel"><p class="pokemon_name dm">Hisuian Sneasel</p></div>
-                    <div class="sprite_item regionals dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/503h.png" alt="Hisuian Samurott"><p class="pokemon_name dm">Hisuian Samurott</p></div>
-                    <div class="sprite_item regionals dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/549h.png" alt="Hisuian Lilligant"><p class="pokemon_name dm">Hisuian Lilligant</p></div>
-                    <div class="sprite_item regionals dm" data-type1="normal" data-type2="ghost"><img src="images/pokemon_images/570h.png" alt="Hisuian Zorua"><p class="pokemon_name dm">Hisuian Zorua</p></div>
-                    <div class="sprite_item regionals dm" data-type1="normal" data-type2="ghost"><img src="images/pokemon_images/571h.png" alt="Hisuian Zoroark"><p class="pokemon_name dm">Hisuian Zoroark</p></div>
-                    <div class="sprite_item regionals dm" data-type1="psychic" data-type2="flying"><img src="images/pokemon_images/628h.png" alt="Hisuian Braviary"><p class="pokemon_name dm">Hisuian Braviary</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dragon" data-type2="steel"><img src="images/pokemon_images/705h.png" alt="Hisuian Sliggoo"><p class="pokemon_name dm">Hisuian Sliggoo</p></div>
-                    <div class="sprite_item regionals dm" data-type1="dragon" data-type2="steel"><img src="images/pokemon_images/706h.png" alt="Hisuian Goodra"><p class="pokemon_name dm">Hisuian Goodra</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ice" data-type2="rock"><img src="images/pokemon_images/713h.png" alt="Hisuian Avalugg"><p class="pokemon_name dm">Hisuian Avalugg</p></div>
-                    <div class="sprite_item regionals dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/724h.png" alt="Hisuian Decidueye"><p class="pokemon_name dm">Hisuian Decidueye</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/058h.png" alt="Hisuian Growlithe"><p class="pokemon_name dm">Hisuian Growlithe</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/059h.png" alt="Hisuian Arcanine"><p class="pokemon_name dm">Hisuian Arcanine</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="electric" data-type2="grass"><img src="images/pokemon_images/100h.png" alt="Hisuian Voltorb"><p class="pokemon_name dm">Hisuian Voltorb</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="electric" data-type2="grass"><img src="images/pokemon_images/101h.png" alt="Hisuian Electrode"><p class="pokemon_name dm">Hisuian Electrode</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/157h.png" alt="Hisuian Typhlosion"><p class="pokemon_name dm">Hisuian Typhlosion</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="dark" data-type2="poison"><img src="images/pokemon_images/211h.png" alt="Hisuian Qwilfish"><p class="pokemon_name dm">Hisuian Qwilfish</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="poison" data-type2="fighting"><img src="images/pokemon_images/215h.png" alt="Hisuian Sneasel"><p class="pokemon_name dm">Hisuian Sneasel</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/503h.png" alt="Hisuian Samurott"><p class="pokemon_name dm">Hisuian Samurott</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/549h.png" alt="Hisuian Lilligant"><p class="pokemon_name dm">Hisuian Lilligant</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="normal" data-type2="ghost"><img src="images/pokemon_images/570h.png" alt="Hisuian Zorua"><p class="pokemon_name dm">Hisuian Zorua</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="normal" data-type2="ghost"><img src="images/pokemon_images/571h.png" alt="Hisuian Zoroark"><p class="pokemon_name dm">Hisuian Zoroark</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="psychic" data-type2="flying"><img src="images/pokemon_images/628h.png" alt="Hisuian Braviary"><p class="pokemon_name dm">Hisuian Braviary</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="dragon" data-type2="steel"><img src="images/pokemon_images/705h.png" alt="Hisuian Sliggoo"><p class="pokemon_name dm">Hisuian Sliggoo</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="dragon" data-type2="steel"><img src="images/pokemon_images/706h.png" alt="Hisuian Goodra"><p class="pokemon_name dm">Hisuian Goodra</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="ice" data-type2="rock"><img src="images/pokemon_images/713h.png" alt="Hisuian Avalugg"><p class="pokemon_name dm">Hisuian Avalugg</p></div>
+                    <div class="sprite_item regionals hisui dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/724h.png" alt="Hisuian Decidueye"><p class="pokemon_name dm">Hisuian Decidueye</p></div>
                 </div>
-                <p class="regional_text filter_text">Paldean Forms</p>
+                <p class="regional_text filter_text paldea_text fighting_text fire_text water_text poison_text ground_text regionals_text">Paldean Forms</p>
                 <div id="paldean_sprites">
-                    <div class="sprite_item regionals dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/128p.png" alt="Paldean Tauros"><p class="pokemon_name dm">Paldean Tauros (Combat Breed)</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fighting" data-type2="fire"><img src="images/pokemon_images/128pb.png" alt="Paldean Tauros Blaze Breed"><p class="pokemon_name dm">Paldean Tauros (Blaze Breed)</p></div>
-                    <div class="sprite_item regionals dm" data-type1="fighting" data-type2="water"><img src="images/pokemon_images/128pa.png" alt="Paldean Tauros Aqua Breed"><p class="pokemon_name dm">Paldean Tauros (Aqua Breed)</p></div>
-                    <div class="sprite_item regionals dm" data-type1="ground" data-type2="poison"><img src="images/pokemon_images/194p.png" alt="Paldean Wooper"><p class="pokemon_name dm">Paldean Wooper</p></div>
+                    <div class="sprite_item regionals paldea dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/128p.png" alt="Paldean Tauros"><p class="pokemon_name dm">Paldean Tauros (Combat Breed)</p></div>
+                    <div class="sprite_item regionals paldea dm" data-type1="fighting" data-type2="fire"><img src="images/pokemon_images/128pb.png" alt="Paldean Tauros Blaze Breed"><p class="pokemon_name dm">Paldean Tauros (Blaze Breed)</p></div>
+                    <div class="sprite_item regionals paldea dm" data-type1="fighting" data-type2="water"><img src="images/pokemon_images/128pa.png" alt="Paldean Tauros Aqua Breed"><p class="pokemon_name dm">Paldean Tauros (Aqua Breed)</p></div>
+                    <div class="sprite_item regionals paldea dm" data-type1="ground" data-type2="poison"><img src="images/pokemon_images/194p.png" alt="Paldean Wooper"><p class="pokemon_name dm">Paldean Wooper</p></div>
                 </div>
-                <h3 id="mega_gmax" class="filter_text">Mega and Gigantamax Forms</h3>
-                <p class="regional_text filter_text">Mega & Primal Pokemon</p>
+                <h3 id="mega_gmax" class="filter_text kanto_text johto_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Mega and Gigantamax Forms</h3>
+                <p class="regional_text filter_text kanto_text johto_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Mega & Primal Pokemon</p>
                 <div id="mega_sprites">
-                  <div class="sprite_item megas dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003m.png" alt="Mega Venusaur"><p class="pokemon_name dm">Mega Venusaur</p></div>
-                  <div class="sprite_item megas dm" data-type1="fire" data-type2="dragon"><img src="images/pokemon_images/006mx.png" alt="Mega Charizard X"><p class="pokemon_name dm">Mega Charizard X</p></div>
-                  <div class="sprite_item megas dm" data-type1="fire" data-type2="flying"><img src="images/pokemon_images/006my.png" alt="Mega Charizard Y"><p class="pokemon_name dm">Mega Charizard Y</p></div>
-                  <div class="sprite_item megas dm" data-type1="water" data-type2=""><img src="images/pokemon_images/009m.png" alt=""><p class="pokemon_name dm">Mega Blastoise</p></div>
-                  <div class="sprite_item megas dm" data-type1="bug" data-type2="poison"><img src="images/pokemon_images/015m.png" alt="Mega Beedrill"><p class="pokemon_name dm">Mega Beedrill</p></div>
-                  <div class="sprite_item megas dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/018m.png" alt="Mega Pidgeot"><p class="pokemon_name dm">Mega Pidgeot</p></div>
-                  <div class="sprite_item megas dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/026mx.png" alt="Mega Racihu X"><p class="pokemon_name dm">Mega Raichu X</p></div>
-                  <div class="sprite_item megas dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/026my.png" alt="Mega Raichu Y"><p class="pokemon_name dm">Mega Raichu Y</p></div>
-                  <div class="sprite_item megas dm" data-type1="fairy" data-type2="flying"><img src="images/pokemon_images/036m.png" alt="Mega Clefable"><p class="pokemon_name dm">Mega Clefable</p></div>
-                  <div class="sprite_item megas dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/065m.png" alt="Mega Alakazam"><p class="pokemon_name dm">Mega Alakazam</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Victeebel</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Slowbro</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Gengar</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Kangaskhan</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Starmie</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Pinsir</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Gyarados</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Aerodactyl</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Dragonite</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Aerodactyl</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Mewtwo X</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Mewtwo Y</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Meganium</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Feraligatr</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Ampharos</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Steelix</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Scizor</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Heracross</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Skarmory</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Houndoom</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Tyranitar</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Sceptile</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Blaziken</p></div>
-                  <div class="sprite_item megas dm" data-type1="water" data-type2="ground"><img src="images/pokemon_images/260m.png" alt="Mega Swampert"><p class="pokemon_name dm">Mega Swampert</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Gardevoir</p></div>
-                  <div class="sprite_item megas dm" data-type1="dark" data-type2="ghost"><img src="images/pokemon_images/302m.png" alt="Mega Sableye"><p class="pokemon_name dm">Mega Sableye</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Mawile</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Aggron</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Medicham</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Manectric</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Sharpedo</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Camerupt</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Altaria</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Banette</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Chimecho</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Absol</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Absol Z</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Glalie</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Salamence</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Metagross</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Salamence</p></div>
-                  <div class="sprite_item megas dm" data-type1="dragon" data-type2="psychic"><img src="images/pokemon_images/380m.png" alt="Mega Latias"><p class="pokemon_name dm">Mega Latias</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Latios</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Primal Kyogre</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Primal Groudon</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Rayquaza</p></div>
-                  <div class="sprite_item megas dm" data-type1="fighting" data-type2="flying"><img src="images/pokemon_images/398m.png" alt="Mega Staraptor"><p class="pokemon_name dm">Mega Staraptor</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Lopunny</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Garchomp</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Garchomp Z</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Lucario</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Lucario Z</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Abomasnow</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Gallade</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Frosslass</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Heatran</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Darkrai</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Emboar</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Excadrill</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Audino</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Scolipede</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Scrafty</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Eelektross</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Chandelure</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Golurk</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Chesnaught</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Delphox</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Greninja</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Pyroar</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Floette</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Meowstic</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Malamar</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Barbarcle</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Dragalage</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Hawlucha</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Zygarde</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Diancie</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Crabominable</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Golisopod</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Drampa</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Magearna</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Zeraora</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Falinks</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Scovillain</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Glimmora</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Tatsugiri</p></div>
-                  <div class="sprite_item megas dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="Mega "><p class="pokemon_name dm">Mega Baxcalibur</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003m.png" alt="Mega Venusaur"><p class="pokemon_name dm">Mega Venusaur</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="fire" data-type2="dragon"><img src="images/pokemon_images/006mx.png" alt="Mega Charizard X"><p class="pokemon_name dm">Mega Charizard X</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="fire" data-type2="flying"><img src="images/pokemon_images/006my.png" alt="Mega Charizard Y"><p class="pokemon_name dm">Mega Charizard Y</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="water" data-type2=""><img src="images/pokemon_images/009m.png" alt=""><p class="pokemon_name dm">Mega Blastoise</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="bug" data-type2="poison"><img src="images/pokemon_images/015m.png" alt="Mega Beedrill"><p class="pokemon_name dm">Mega Beedrill</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/018m.png" alt="Mega Pidgeot"><p class="pokemon_name dm">Mega Pidgeot</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/026mx.png" alt="Mega Racihu X"><p class="pokemon_name dm">Mega Raichu X</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/026my.png" alt="Mega Raichu Y"><p class="pokemon_name dm">Mega Raichu Y</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="fairy" data-type2="flying"><img src="images/pokemon_images/036m.png" alt="Mega Clefable"><p class="pokemon_name dm">Mega Clefable</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/065m.png" alt="Mega Alakazam"><p class="pokemon_name dm">Mega Alakazam</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/071m.png" alt="Mega Victeebel"><p class="pokemon_name dm">Mega Victeebel</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="water" data-type2="psychic"><img src="images/pokemon_images/080m.png" alt="Mega Slowbro"><p class="pokemon_name dm">Mega Slowbro</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="ghost" data-type2="poison"><img src="images/pokemon_images/094m.png" alt="Mega Gengar"><p class="pokemon_name dm">Mega Gengar</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/115m.png" alt="Mega Kangaskhan"><p class="pokemon_name dm">Mega Kangaskhan</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="water" data-type2="psychic"><img src="images/pokemon_images/121m.png" alt="Mega Starmie"><p class="pokemon_name dm">Mega Starmie</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="bug" data-type2="flying"><img src="images/pokemon_images/127m.png" alt="Mega Pinsir"><p class="pokemon_name dm">Mega Pinsir</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/130m.png" alt="Mega Gyarados"><p class="pokemon_name dm">Mega Gyarados</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="rock" data-type2="flying"><img src="images/pokemon_images/142m.png" alt="Mega Aerodactyl"><p class="pokemon_name dm">Mega Aerodactyl</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="dragon" data-type2="flying"><img src="images/pokemon_images/149m.png" alt="Mega Dragonite"><p class="pokemon_name dm">Mega Dragonite</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="psychic" data-type2="fighting"><img src="images/pokemon_images/150mx.png" alt="Mega Mewtwo X"><p class="pokemon_name dm">Mega Mewtwo X</p></div>
+                  <div class="sprite_item megas kanto dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/150my.png" alt="Mega Mewtwo Y"><p class="pokemon_name dm">Mega Mewtwo Y</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="grass" data-type2="fairy"><img src="images/pokemon_images/154m.png" alt="Mega Meganium"><p class="pokemon_name dm">Mega Meganium</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/160m.png" alt="Mega Feraligatr"><p class="pokemon_name dm">Mega Feraligatr</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="electric" data-type2="dragon"><img src="images/pokemon_images/181m.png" alt="Mega Ampharos"><p class="pokemon_name dm">Mega Ampharos</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/208m.png" alt="Mega Steelix"><p class="pokemon_name dm">Mega Steelix</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="bug" data-type2="steel"><img src="images/pokemon_images/212m.png" alt="Mega Scizor"><p class="pokemon_name dm">Mega Scizor</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="bug" data-type2="fighting"><img src="images/pokemon_images/214m.png" alt="Mega Heracross"><p class="pokemon_name dm">Mega Heracross</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="steel" data-type2="flying"><img src="images/pokemon_images/227m.png" alt="Mega Skarmory"><p class="pokemon_name dm">Mega Skarmory</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="dark" data-type2="fire"><img src="images/pokemon_images/229m.png" alt="Mega Houndoom"><p class="pokemon_name dm">Mega Houndoom</p></div>
+                  <div class="sprite_item megas johto dm" data-type1="rock" data-type2="dark"><img src="images/pokemon_images/248m.png" alt="Mega Tyranitar"><p class="pokemon_name dm">Mega Tyranitar</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/254m.png" alt="Mega Sceptile"><p class="pokemon_name dm">Mega Sceptile</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="fire" data-type2="fighting"><img src="images/pokemon_images/257m.png" alt="Mega Blaziken"><p class="pokemon_name dm">Mega Blaziken</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="water" data-type2="ground"><img src="images/pokemon_images/260m.png" alt="Mega Swampert"><p class="pokemon_name dm">Mega Swampert</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="psychic" data-type2="fairy"><img src="images/pokemon_images/282m.png" alt="Mega "><p class="pokemon_name dm">Mega Gardevoir</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dark" data-type2="ghost"><img src="images/pokemon_images/302m.png" alt="Mega Sableye"><p class="pokemon_name dm">Mega Sableye</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="steel" data-type2="fairy"><img src="images/pokemon_images/303m.png" alt="Mega "><p class="pokemon_name dm">Mega Mawile</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/306m.png" alt="Mega "><p class="pokemon_name dm">Mega Aggron</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="psychic" data-type2="fighting"><img src="images/pokemon_images/308m.png" alt="Mega "><p class="pokemon_name dm">Mega Medicham</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/310m.png" alt="Mega "><p class="pokemon_name dm">Mega Manectric</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/319m.png" alt="Mega "><p class="pokemon_name dm">Mega Sharpedo</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="fire" data-type2="ground"><img src="images/pokemon_images/323m.png" alt="Mega "><p class="pokemon_name dm">Mega Camerupt</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dragon" data-type2="fairy"><img src="images/pokemon_images/334m.png" alt="Mega "><p class="pokemon_name dm">Mega Altaria</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="ghost" data-type2=""><img src="images/pokemon_images/354m.png" alt="Mega "><p class="pokemon_name dm">Mega Banette</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="psychic" data-type2="steel"><img src="images/pokemon_images/358m.png" alt="Mega "><p class="pokemon_name dm">Mega Chimecho</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/359m.png" alt="Mega "><p class="pokemon_name dm">Mega Absol</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dark" data-type2="ghost"><img src="images/pokemon_images/359mz.png" alt="Mega "><p class="pokemon_name dm">Mega Absol Z</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/362m.png" alt="Mega Glalie"><p class="pokemon_name dm">Mega Glalie</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dragon" data-type2="flying"><img src="images/pokemon_images/373m.png" alt="Mega Salamence"><p class="pokemon_name dm">Mega Salamence</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="steel" data-type2="psychic"><img src="images/pokemon_images/376m.png" alt="Mega Metagross"><p class="pokemon_name dm">Mega Metagross</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dragon" data-type2="psychic"><img src="images/pokemon_images/380m.png" alt="Mega Latias"><p class="pokemon_name dm">Mega Latias</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dragon" data-type2="psychic"><img src="images/pokemon_images/381m.png" alt="Mega Latios"><p class="pokemon_name dm">Mega Latios</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="water" data-type2=""><img src="images/pokemon_images/382m.png" alt="Primal Kyogre"><p class="pokemon_name dm">Primal Kyogre</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="ground" data-type2="fire"><img src="images/pokemon_images/383m.png" alt="Primal Groudon"><p class="pokemon_name dm">Primal Groudon</p></div>
+                  <div class="sprite_item megas hoenn dm" data-type1="dragon" data-type2="flying"><img src="images/pokemon_images/384m.png" alt="Mega Rayquaza"><p class="pokemon_name dm">Mega Rayquaza</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="fighting" data-type2="flying"><img src="images/pokemon_images/398m.png" alt="Mega Staraptor"><p class="pokemon_name dm">Mega Staraptor</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="normal" data-type2="fighting"><img src="images/pokemon_images/428m.png" alt="Mega Lopunny"><p class="pokemon_name dm">Mega Lopunny</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="dragon" data-type2="ground"><img src="images/pokemon_images/445m.png" alt="Mega Garchomp"><p class="pokemon_name dm">Mega Garchomp</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="dragon" data-type2=""><img src="images/pokemon_images/445mz.png" alt="Mega Garchomp Z"><p class="pokemon_name dm">Mega Garchomp Z</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="fighting" data-type2="steel"><img src="images/pokemon_images/448m.png" alt="Mega Lucario"><p class="pokemon_name dm">Mega Lucario</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="fighting" data-type2="steel"><img src="images/pokemon_images/448mz.png" alt="Mega Lucario Z"><p class="pokemon_name dm">Mega Lucario Z</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="grass" data-type2="ice"><img src="images/pokemon_images/460m.png" alt="Mega Abomasnow"><p class="pokemon_name dm">Mega Abomasnow</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="psychic" data-type2="fighting"><img src="images/pokemon_images/475m.png" alt="Mega Gallade"><p class="pokemon_name dm">Mega Gallade</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="ice" data-type2="ghost"><img src="images/pokemon_images/478m.png" alt="Mega Froslass"><p class="pokemon_name dm">Mega Froslass</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="fire" data-type2="steel"><img src="images/pokemon_images/485m.png" alt="Mega Heatran"><p class="pokemon_name dm">Mega Heatran</p></div>
+                  <div class="sprite_item megas sinnoh dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/491m.png" alt="Mega Darkrai"><p class="pokemon_name dm">Mega Darkrai</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="fire" data-type2="fighting"><img src="images/pokemon_images/500m.png" alt="Mega Emboar"><p class="pokemon_name dm">Mega Emboar</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="ground" data-type2="steel"><img src="images/pokemon_images/530m.png" alt="Mega Excadrill"><p class="pokemon_name dm">Mega Excadrill</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="normal" data-type2="fairy"><img src="images/pokemon_images/531m.png" alt="Mega Audino"><p class="pokemon_name dm">Mega Audino</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="bug" data-type2="poison"><img src="images/pokemon_images/545m.png" alt="Mega Scolipede"><p class="pokemon_name dm">Mega Scolipede</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="dark" data-type2="fighting"><img src="images/pokemon_images/560m.png" alt="Mega Scrafty"><p class="pokemon_name dm">Mega Scrafty</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/604m.png" alt="Mega Eelektross"><p class="pokemon_name dm">Mega Eelektross</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/609m.png" alt="Mega Chandelure"><p class="pokemon_name dm">Mega Chandelure</p></div>
+                  <div class="sprite_item megas unova dm" data-type1="ground" data-type2="ghost"><img src="images/pokemon_images/623m.png" alt="Mega Golurk"><p class="pokemon_name dm">Mega Golurk</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/652m.png" alt="Mega Chesnaught"><p class="pokemon_name dm">Mega Chesnaught</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="fire" data-type2="psychic"><img src="images/pokemon_images/655m.png" alt="Mega Delphox"><p class="pokemon_name dm">Mega Delphox</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/658m.png" alt="Mega Greninja"><p class="pokemon_name dm">Mega Greninja</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="normal" data-type2="fire"><img src="images/pokemon_images/668m.png" alt="Mega Pyroar"><p class="pokemon_name dm">Mega Pyroar</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="fairy" data-type2=""><img src="images/pokemon_images/670m.png" alt="Mega Floette"><p class="pokemon_name dm">Mega Floette</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/678m.png" alt="Mega Meowstic"><p class="pokemon_name dm">Mega Meowstic</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="dark" data-type2="psychic"><img src="images/pokemon_images/687m.png" alt="Mega Malamar"><p class="pokemon_name dm">Mega Malamar</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="fighting" data-type2="rock"><img src="images/pokemon_images/689m.png" alt="Mega Barbarcle"><p class="pokemon_name dm">Mega Barbarcle</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="poison" data-type2="dragon"><img src="images/pokemon_images/691m.png" alt="Mega Dragalage"><p class="pokemon_name dm">Mega Dragalage</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="fighting" data-type2="flying"><img src="images/pokemon_images/701m.png" alt="Mega Hawlucha"><p class="pokemon_name dm">Mega Hawlucha</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="ground" data-type2="dragon"><img src="images/pokemon_images/718m.png" alt="Mega Zygarde"><p class="pokemon_name dm">Mega Zygarde</p></div>
+                  <div class="sprite_item megas kalos dm" data-type1="rock" data-type2="fairy"><img src="images/pokemon_images/719m.png" alt="Mega Diancie"><p class="pokemon_name dm">Mega Diancie</p></div>
+                  <div class="sprite_item megas alola dm" data-type1="fighting" data-type2="ice"><img src="images/pokemon_images/740m.png" alt="Mega Crabominable"><p class="pokemon_name dm">Mega Crabominable</p></div>
+                  <div class="sprite_item megas alola dm" data-type1="bug" data-type2="steel"><img src="images/pokemon_images/768m.png" alt="Mega Golisopod"><p class="pokemon_name dm">Mega Golisopod</p></div>
+                  <div class="sprite_item megas alola dm" data-type1="normal" data-type2="dragon"><img src="images/pokemon_images/780m.png" alt="Mega Drampa"><p class="pokemon_name dm">Mega Drampa</p></div>
+                  <div class="sprite_item megas alola dm" data-type1="steel" data-type2="fairy"><img src="images/pokemon_images/801m.png" alt="Mega Magearna"><p class="pokemon_name dm">Mega Magearna</p></div>
+                  <div class="sprite_item megas alola dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/807m.png" alt="Mega Zeraora"><p class="pokemon_name dm">Mega Zeraora</p></div>
+                  <div class="sprite_item megas galar dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/870m.png" alt="Mega Falinks"><p class="pokemon_name dm">Mega Falinks</p></div>
+                  <div class="sprite_item megas paldea dm" data-type1="grass" data-type2="fire"><img src="images/pokemon_images/952m.png" alt="Mega Scovillain"><p class="pokemon_name dm">Mega Scovillain</p></div>
+                  <div class="sprite_item megas paldea dm" data-type1="rock" data-type2="poison"><img src="images/pokemon_images/970m.png" alt="Mega Glimmora"><p class="pokemon_name dm">Mega Glimmora</p></div>
+                  <div class="sprite_item megas paldea dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978m.png" alt="Mega Tatsugiri"><p class="pokemon_name dm">Mega Tatsugiri</p></div>
+                  <div class="sprite_item megas paldea dm" data-type1="dragon" data-type2="ice"><img src="images/pokemon_images/998m.png" alt="Mega Baxcalibur"><p class="pokemon_name dm">Mega Baxcalibur</p></div>
                 </div>
-                <p class="regional_text">Gigantamax Pokemon</p>
+                <p class="regional_text filter_text kanto_text unova_text alola_text galar_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Gigantamax / Eternamax Pokemon</p>
                 <div id="gmax_sprites">
-                  <div class="sprite_item gmaxes dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003g.png" alt="GMax Venusaur"><p class="pokemon_name dm">G-Max Venusaur</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="fire" data-type2="flying"><img src="images/pokemon_images/006g.png" alt="GMax Charizard"><p class="pokemon_name dm">G-Max Charizard</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="water" data-type2=""><img src="images/pokemon_images/009g.png" alt="GMax Blastoise"><p class="pokemon_name dm">G-Max Blastoise</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="bug" data-type2="flying"><img src="images/pokemon_images/012g.png" alt="GMax Butterfree"><p class="pokemon_name dm">G-Max Butterfree</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/025g.png" alt="GMax Pikachu"><p class="pokemon_name dm">G-Max Pikachu</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/052gm.png" alt="GMax Meowth"><p class="pokemon_name dm">G-Max Meowth</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/068g.png" alt="GMax Machamp"><p class="pokemon_name dm">G-Max Machamp</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="ghost" data-type2="poison"><img src="images/pokemon_images/094g.png" alt="GMax Gengar"><p class="pokemon_name dm">G-Max Gengar</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="water" data-type2=""><img src="images/pokemon_images/099g.png" alt="GMax Kingler"><p class="pokemon_name dm">G-Max Kingler</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="water" data-type2="ice"><img src="images/pokemon_images/131g.png" alt="GMax Lapras"><p class="pokemon_name dm">G-Max Lapras</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/133g.png" alt="GMax Eevee"><p class="pokemon_name dm">G-Max Eevee</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Snorlax</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Garbodor</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Melmetal</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Rillaboom</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Cinderace</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Inteleon</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Corviknight</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Orbeetle</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Drednaw</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Coalossal</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Flapple</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Appletun</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Sandaconda</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Toxtricity</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Centiskorch</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Hatterene</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Grimmsnarl</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Alcremie</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Copperajah</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Duraludon</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Urshifu (Single Strike)</p></div>
-                  <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="images/pokemon_images/" alt="GMax "><p class="pokemon_name dm">G-Max Urshifu (Rapid Strike)</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003g.png" alt="GMax Venusaur"><p class="pokemon_name dm">G-Max Venusaur</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="fire" data-type2="flying"><img src="images/pokemon_images/006g.png" alt="GMax Charizard"><p class="pokemon_name dm">G-Max Charizard</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="water" data-type2=""><img src="images/pokemon_images/009g.png" alt="GMax Blastoise"><p class="pokemon_name dm">G-Max Blastoise</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="bug" data-type2="flying"><img src="images/pokemon_images/012g.png" alt="GMax Butterfree"><p class="pokemon_name dm">G-Max Butterfree</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/025g.png" alt="GMax Pikachu"><p class="pokemon_name dm">G-Max Pikachu</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/052gm.png" alt="GMax Meowth"><p class="pokemon_name dm">G-Max Meowth</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/068g.png" alt="GMax Machamp"><p class="pokemon_name dm">G-Max Machamp</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="ghost" data-type2="poison"><img src="images/pokemon_images/094g.png" alt="GMax Gengar"><p class="pokemon_name dm">G-Max Gengar</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="water" data-type2=""><img src="images/pokemon_images/099g.png" alt="GMax Kingler"><p class="pokemon_name dm">G-Max Kingler</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="water" data-type2="ice"><img src="images/pokemon_images/131g.png" alt="GMax Lapras"><p class="pokemon_name dm">G-Max Lapras</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/133g.png" alt="GMax Eevee"><p class="pokemon_name dm">G-Max Eevee</p></div>
+                  <div class="sprite_item gmaxes kanto dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/143g.png" alt="GMax Snorlax"><p class="pokemon_name dm">G-Max Snorlax</p></div>
+                  <div class="sprite_item gmaxes unova dm" data-type1="poison" data-type2=""><img src="images/pokemon_images/569g.png" alt="GMax Garbodor"><p class="pokemon_name dm">G-Max Garbodor</p></div>
+                  <div class="sprite_item gmaxes alola dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/809g.png" alt="GMax Melmetal"><p class="pokemon_name dm">G-Max Melmetal</p></div>
+                  <div class="sprite_item gmaxes dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/812g.png" alt="GMax Rillaboom"><p class="pokemon_name dm">G-Max Rillaboom</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="fire" data-type2=""><img src="images/pokemon_images/815g.png" alt="GMax Cinderace"><p class="pokemon_name dm">G-Max Cinderace</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="water" data-type2=""><img src="images/pokemon_images/818g.png" alt="GMax Inteleon"><p class="pokemon_name dm">G-Max Inteleon</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="flying" data-type2="steel"><img src="images/pokemon_images/823g.png" alt="GMax Corviknight"><p class="pokemon_name dm">G-Max Corviknight</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="bug" data-type2="psychic"><img src="images/pokemon_images/826g.png" alt="GMax Orbeetle"><p class="pokemon_name dm">G-Max Orbeetle</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="water" data-type2="rock"><img src="images/pokemon_images/834g.png" alt="GMax Drednaw"><p class="pokemon_name dm">G-Max Drednaw</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="rock" data-type2="fire"><img src="images/pokemon_images/839g.png" alt="GMax Coalossal"><p class="pokemon_name dm">G-Max Coalossal</p></div>
+                  <div class="sprite_item gmaxes dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/841g.png" alt="GMax Flapple"><p class="pokemon_name dm">G-Max Flapple</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/842g.png" alt="GMax Appletun"><p class="pokemon_name dm">G-Max Appletun</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="ground" data-type2=""><img src="images/pokemon_images/844g.png" alt="GMax Sandaconda"><p class="pokemon_name dm">G-Max Sandaconda</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="electric" data-type2="poison"><img src="images/pokemon_images/849g.png" alt="GMax Toxtricity"><p class="pokemon_name dm">G-Max Toxtricity</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="bug" data-type2="fire"><img src="images/pokemon_images/851g.png" alt="GMax Centiskorch"><p class="pokemon_name dm">G-Max Centiskorch</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="psychic" data-type2="fairy"><img src="images/pokemon_images/858g.png" alt="GMax Hatterene"><p class="pokemon_name dm">G-Max Hatterene</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="dark" data-type2="fairy"><img src="images/pokemon_images/861g.png" alt="GMax Grimmsnarl"><p class="pokemon_name dm">G-Max Grimmsnarl</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="fairy" data-type2=""><img src="images/pokemon_images/869g.png" alt="GMax Alcremie"><p class="pokemon_name dm">G-Max Alcremie</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/879g.png" alt="GMax Copperajah"><p class="pokemon_name dm">G-Max Copperajah</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="steel" data-type2="dragon"><img src="images/pokemon_images/884g.png" alt="GMax Duraludon"><p class="pokemon_name dm">G-Max Duraludon</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="poison" data-type2="dragon"><img src="images/pokemon_images/890e.png" alt="Eternamax Eternatus"><p class="pokemon_name dm">Eternamax Eternatus</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="fighting" data-type2="dark"><img src="images/pokemon_images/892g.png" alt="GMax Urshifu (Single Strike)"><p class="pokemon_name dm">G-Max Urshifu (Single Strike)</p></div>
+                  <div class="sprite_item gmaxes galar dm" data-type1="fighting" data-type2="water"><img src="images/pokemon_images/892rg.png" alt="GMax Urshifu (Rapid Strike)"><p class="pokemon_name dm">G-Max Urshifu (Rapid Strike)</p></div>
                 </div>
-                <h3 id="other" class="filter_text">Variants, Beta, and Other Pokemon</h3>
-                <p class="regional_text">Canon / Side Game Unique Variants</p>
-                <div id="variant_sprites"></div>
-                <p class="regional_text">Beta Pokemon</p>
-                <div id="beta_sprites"></div>
+                <h3 id="other" class="filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text">Variants, Beta, and Other Pokemon</h3>
+                <p class="regional_text filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text">Canon / Side Game / Anime Unique Variants & Creatures</p>
+                <div id="variant_sprites">
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr20.png" alt="Venustoise"><p class="pokemon_name dm">Venustoise</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr15.png" alt="Peakychu"><p class="pokemon_name dm">Peakychu</p></div>
+                  <div class="sprite_item cs_variants dm"><img src="images/pokemon_images/vr4.png" alt="Crystal Onix"><p class="pokemon_name dm">Crystal Onix</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr16.png" alt="Mosslax"><p class="pokemon_name dm">Mosslax</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/vr21.png" alt="Mewtwo (Armoured)"><p class="pokemon_name dm">Mewtwo (Armoured)</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/vr1.png" alt="Shadow Mewtwo"><p class="pokemon_name dm">Shadow Mewtwo</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="psychic" data-type2="fighting"><img src="images/pokemon_images/vr2.png" alt="Shadow Mega Mewtwo X"><p class="pokemon_name dm">Shadow Mega Mewtwo X</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/vr5.png" alt="Spiky-Eared Pichu"><p class="pokemon_name dm">Spiky-Eared Pichu</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr17.png" alt="Smearguru"><p class="pokemon_name dm">Smearguru</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="psychic" data-type2="flying"><img src="images/pokemon_images/vr6.png" alt="Shadow Lugia"><p class="pokemon_name dm">Shadow Lugia</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr7.png" alt="Meta Groudon"><p class="pokemon_name dm">Meta Groudon</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr22.png" alt="Nightmare Rayquaza"><p class="pokemon_name dm">Nightmare Rayquaza</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr14.png" alt="Professor Tangrowth"><p class="pokemon_name dm">Professor Tangrowth</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="steel" data-type2="dragon"><img src="images/pokemon_images/vr3.png" alt="Primal Dialga"><p class="pokemon_name dm">Primal Dialga</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/658a.png" alt="Ash-Greninja"><p class="pokemon_name dm">Ash-Greninja</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr9.png" alt="Bittercold"><p class="pokemon_name dm">Bittercold</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr11.png" alt="Dark Matter"><p class="pokemon_name dm">Dark Matter</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr10.png" alt="Dark Rust"><p class="pokemon_name dm">Dark Rust</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr8.png" alt="Hyperrogue Ange Floette"><p class="pokemon_name dm">Hyperrogue Ange Floette</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr13.png" alt="Missingno."><p class="pokemon_name dm">Missingno.</p></div>
+                  <div class="sprite_item cs_variants dm"><img src="images/pokemon_images/vr18.png" alt="Substitute Doll"><p class="pokemon_name dm">Substitute Doll</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr12.png" alt="Dark Matter"><p class="pokemon_name dm">Void Shadow</p></div>
+                </div>
+                <p class="regional_text filter_text fighting_text grass_text dark_text psychic_text normal_text steel_text ghost_text electric_text fire_text">Pokestar Studios Opponents</p>
+                <div id="pokestar_sprites">
+                  <div class="sprite_item pokestars dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/ps2.png" alt="Black Belt"><p class="pokemon_name dm">Black Belt</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/ps1.png" alt="Black Door"><p class="pokemon_name dm">Black Door</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="dark" data-type2="psychic"><img src="images/pokemon_images/ps3.png" alt="Brycen-Man"><p class="pokemon_name dm">Brycen-Man</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="steel" data-type2="normal"><img src="images/pokemon_images/ps4.png" alt="F-00"><p class="pokemon_name dm">F-00</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="steel" data-type2="normal"><img src="images/pokemon_images/ps5.png" alt="F-00 (Runaway)"><p class="pokemon_name dm">F-00 (Runaway)</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/ps6.png" alt="Humanoid"><p class="pokemon_name dm">Humanoid</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="dark" data-type2="ghost"><img src="images/pokemon_images/ps7.png" alt="Majin"><p class="pokemon_name dm">Majin</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/ps8.png" alt="MT"><p class="pokemon_name dm">MT</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="steel" data-type2="electric"><img src="images/pokemon_images/ps9.png" alt="MT2"><p class="pokemon_name dm">MT2</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/ps10.png" alt="Monica"><p class="pokemon_name dm">Monica</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="dark" data-type2=""><img src="images/pokemon_images/ps11.png" alt="Monster"><p class="pokemon_name dm">Monster</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/ps13.png" alt="Transport"><p class="pokemon_name dm">Transport</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/ps14.png" alt="UFO"><p class="pokemon_name dm">UFO</p></div>
+                  <div class="sprite_item pokestars dm" data-type1="fire" data-type2=""><img src="images/pokemon_images/ps16.png" alt="White Door"><p class="pokemon_name dm">White Door</p></div>
+                </div>
+                <p class="regional_text filter_text">Beta & Demo Unique Pokemon</p>
+                <div id="beta_sprites">
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta1.png" alt="Hanamogura"><p class="pokemon_name dm">Hanamogura</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta10.png" alt="Honoguma"><p class="pokemon_name dm">Honoguma</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta11.png" alt="Volbear"><p class="pokemon_name dm">Borubea</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta12.png" alt="Dynabear"><p class="pokemon_name dm">Dynabear</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta13.png" alt="Kurusu"><p class="pokemon_name dm">Dainabea</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta14.png" alt="Aqua"><p class="pokemon_name dm">Akua</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta15.png" alt="Aquaria"><p class="pokemon_name dm">Akueria</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta2.png" alt="Bobo"><p class="pokemon_name dm">Bobo</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta16.png" alt="Mikon"><p class="pokemon_name dm">Mikon</p></div>
+                   <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta17.png" alt="Monja"><p class="pokemon_name dm">Monja</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta18.png" alt="Jaranra"><p class="pokemon_name dm">Jaranra</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta8.png" alt="Haneei"><p class="pokemon_name dm">Hanei</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta23.png" alt="Shibirefugu"><p class="pokemon_name dm">Shibirefugu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta24.png" alt="Gyopin"><p class="pokemon_name dm">Gyopin</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta25.png" alt="Manbo"><p class="pokemon_name dm">Manbo</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta26.png" alt="Ikari"><p class="pokemon_name dm">Ikari</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta27.png" alt="Gurotesu"><p class="pokemon_name dm">Gurotesu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta28.png" alt="Para"><p class="pokemon_name dm">Para</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta3.png" alt="Tsuheddo"><p class="pokemon_name dm">Tsuheddo</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta29.png" alt="Animon"><p class="pokemon_name dm">Animon</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta30.png" alt="Hinazu"><p class="pokemon_name dm">Hinazu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta31.png" alt="Tsuinzu"><p class="pokemon_name dm">Tsuinzu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta32.png" alt="Konya"><p class="pokemon_name dm">Konya</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta33.png" alt="Rinrin"><p class="pokemon_name dm">Rinrin</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta34.png" alt="Berurun"><p class="pokemon_name dm">Berurun</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta4.png" alt="Politoed (Beta)"><p class="pokemon_name dm">Nyorotono</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta35.png" alt="Mitsuboshi"><p class="pokemon_name dm">Mitsuboshi</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta36.png" alt="Pushikon"><p class="pokemon_name dm">Pushikon</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta37.png" alt="Taban"><p class="pokemon_name dm">Taban</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta38.png" alt="Betobebi"><p class="pokemon_name dm">Betobebi</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta39.png" alt="Gongu"><p class="pokemon_name dm">Gongu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta40.png" alt="Kapoera"><p class="pokemon_name dm">Kapoera</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta41.png" alt="Pudi"><p class="pokemon_name dm">Pudi</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta5.png" alt="Haneko"><p class="pokemon_name dm">Haneko</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta22.png" alt="Poponeko"><p class="pokemon_name dm">Poponeko</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta6.png" alt="Wataneko"><p class="pokemon_name dm">Wataneko</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta19.png" alt="Baririna"><p class="pokemon_name dm">Baririna</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta42.png" alt="Tsubomitto"><p class="pokemon_name dm">Tsubomitto</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta43.png" alt="Bomushika"><p class="pokemon_name dm">Bomushika</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta9.png" alt="Kotora"><p class="pokemon_name dm">Kotora</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta44.png" alt="Raitora"><p class="pokemon_name dm">Raitora</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta45.png" alt="Madamu"><p class="pokemon_name dm">Madamu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta46.png" alt="Norowara"><p class="pokemon_name dm">Norowara</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta47.png" alt="Kyonpan"><p class="pokemon_name dm">Kyonpan</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta48.png" alt="Happi"><p class="pokemon_name dm">Happi</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta49.png" alt="Purakkusu"><p class="pokemon_name dm">Purakkusu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta50.png" alt="Urufuman"><p class="pokemon_name dm">Urufuman</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta51.png" alt="Waurufu"><p class="pokemon_name dm">Waurufu</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta52.png" alt="Porigon2"><p class="pokemon_name dm">Porigon2</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta20.png" alt="Nameru"><p class="pokemon_name dm">Nameru</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta53.png" alt="Kingudora"><p class="pokemon_name dm">Kingudora</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta54.png" alt="Rai"><p class="pokemon_name dm">Rai</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta55.png" alt="En"><p class="pokemon_name dm">En</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta56.png" alt="Sui"><p class="pokemon_name dm">Sui</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta57.png" alt="Nyura"><p class="pokemon_name dm">Nyura</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta7.png" alt="Teiru"><p class="pokemon_name dm">Teiru</p></div>
+                  <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta21.png" alt="Rifi"><p class="pokemon_name dm">Rifi</p></div>
+                </div>
 
-                <!-- <div class="sprite_item gmaxes dm" data-type1="" data-type2=""><img src="" alt=""><p class="pokemon_name dm"></p></div> -->
+                <!-- <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="" alt=""><p class="pokemon_name dm"></p></div> -->
             </div>
         </div>
  
