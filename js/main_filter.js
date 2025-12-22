@@ -1,34 +1,60 @@
 const filter = document.querySelector("#cd-filter-select")
+const typeFilter = document.querySelector("#cd-type-select")
 
 function showSelection() {
     const sprites = document.querySelectorAll(".sprite_item")
     const regionalText = document.querySelectorAll(".filter_text")
     const filterSelection = filter.value
-
-    regionalText.forEach(text => {
-      text.classList.add("hidden")
-    })
+    const typeFilterSelection = typeFilter.value
 
     sprites.forEach(sprite => {
-      sprite.classList.remove("hidden")
+      let matchesRegion = true
+      let matchesType = true
 
-      if (!sprite.classList.contains(filterSelection)) {
-        sprite.classList.add("hidden")
+      if (filterSelection !== "" && filterSelection !== "all") {
+        matchesRegion = sprite.classList.contains(filterSelection)
       }
 
-      if (filterSelection === "all") {
-        sprite.classList.remove("hidden")
+      if (typeFilterSelection !== "" && typeFilterSelection !== "all") {
+        matchesType =
+          sprite.dataset.type1 === typeFilterSelection ||
+          sprite.dataset.type2 === typeFilterSelection
       }
 
-      if (filterSelection === "all" || filterSelection === "regionals") {
-        regionalText.forEach(text => {
-          text.classList.remove("hidden")
-        })
+      if (matchesRegion && matchesType) {
+        sprite.style.display = ""
+      } else {
+        sprite.style.display = "none"
       }
+      
+    })
+
+    regionalText.forEach(text => {
+      let matchesRegion = true
+      let matchesType = true
+
+      if (filterSelection !== "" && filterSelection !== "all") {
+        matchesRegion = text.classList.contains(`${filterSelection}_text`)
+      }
+
+      if (typeFilterSelection !== "" && typeFilterSelection !== "all") {
+        matchesType = text.classList.contains(`${typeFilterSelection}_text`)
+      }
+
+      if (matchesRegion && matchesType) {
+        text.style.display = ""
+      } else {
+        text.style.display = "none"
+      }
+
+      // if (!text.classList.contains(`${filterSelection}_text`)) {
+      //   text.style.display = "none"
+      // }
     })
 }
 
 filter.addEventListener("change", showSelection)
+typeFilter.addEventListener("change", showSelection)
 
 // let all = document.querySelector("#all");
 // let kanto = document.querySelector("#kanto");

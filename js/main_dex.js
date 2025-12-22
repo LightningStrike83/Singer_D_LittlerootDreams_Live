@@ -442,13 +442,14 @@ function countTypes() {
     if (image !== null) {
       const type1 = image.dataset.type1
       const type2 = image.dataset.type2
-      const typeCount1 = document.querySelector(`#${type1}_count`)
+      
+      if (type1 !== "") {
+        const typeCount1 = document.querySelector(`#${type1}_count`)
 
-      var num1 = Number(typeCount1.textContent)
+        var num1 = Number(typeCount1.textContent)
 
-      typeCount1.textContent = num1 + 1
-
-      console.log(type2)
+        typeCount1.textContent = num1 + 1
+      }
 
       if (type2 !== "") {
         const typeCount2 = document.querySelector(`#${type2}_count`)
