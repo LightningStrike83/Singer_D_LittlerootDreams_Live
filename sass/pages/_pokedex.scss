@@ -99,13 +99,13 @@
 }
 
 
-#pokemon_sprites, #alolan_sprites, #galarian_sprites, #hisuian_sprites, #paldean_sprites, #mega_sprites, #gmax_sprites, #variant_sprites, #pokestar_sprites, #beta_sprites {
+#pokemon_sprites, #alolan_sprites, #galarian_sprites, #hisuian_sprites, #paldean_sprites, #mega_sprites, #gmax_sprites, #variant_sprites, #pokestar_sprites, #beta_sprites, #other_sprites {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta {
+.kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta, .other_sprite {
     border: 2px solid c.$dark-wood;
     text-align: center;
     width: 33.3%;
@@ -453,7 +453,7 @@
 
 @media screen and (min-width: 1024px) {
 
-    .kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta {
+    .kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta, .other_sprite {
         width: 20%;
     }
 
