@@ -175,6 +175,15 @@
             </div>
         </div>
 
+        <div id="mode_select" class="m-col-span-6">
+          <h2 class="hidden">Mode Select Area</h2>
+          <h3 id="mode_title">Mode Select:</h3>
+          <div id="mode_con">
+            <p class="mode_select_button active">Drag and Drop</p>
+            <p class="mode_select_button">Click</p>
+          </div>
+        </div>
+
         <div id="types_count" class="col-span-full ml-col-start-7 ml-col-end-13 dm">
           <h2 class="hidden">Types Count Area</h2>
           <h3 id="type_title"><span class="type_arrow">▼</span> Type Counter <span class="type_arrow">▼</span></h3>
@@ -269,7 +278,7 @@
               <p>Water: <span class="type_count" id="water_count">0</span></p>
             </div>
 
-            <p id="typing_note">Note: Due to the programming of the dex maker and type counter, some Pokemon will be counted differently due to possessing more than one typing option. The list is as follows:<br>-Wormadam as Solo Bug<br>-Oricorio as Solo Flying<br>-Zacian and Zamazenta in their Hero of Many Battles forms<br>-Urshifu as Solo Fighting<br>-UFO as Solo Electric<br>-Castform, Rotom, Arceus, Meloetta, Calyrex, Ogerpon in base form</p>
+            <p id="typing_note">Note: Due to the programming of the dex maker and type counter, all instances of some Pokemon will be counted differently due to possessing more than one typing option. The list is as follows:<br>-Castform as Solo Normal<br>-Wormadam as Solo Bug<br>-Rotom as Solo Electric<br>-Darmanitan and Galarian Darmanitan as Solo Fire / Ice<br>-Meloetta as Solo Normal<br>-Hoopa as Solo Psychic<br>-Oricorio as Solo Flying<br>-Necrozma as Solo Psychic<br>-Zacian and Zamazenta as solo Fairy / Fighting<br>-Urshifu as Solo Fighting<br>-Calyrex as Solo Psychic<br>-Ogerpon as Solo Grass<br>-UFO as Solo Electric<br></p>
           </div>
         </div>
     </section>
@@ -298,6 +307,7 @@
                         <option value="regionals">Regional Forms</option>
                         <option value="megas">Mega Evolutions</option>
                         <option value="gmaxes">GMaxes</option>
+                        <option value="other_sprite">Other Form Models</option>
                         <option value="cs_variants">Variants & Other</option>
                         <option value="pokestars">Pokestar Studios</option>
                         <option value="beta">Beta + Demo</option>
@@ -974,7 +984,7 @@
                     <div class="sprite_item unova dm" data-type1="flying" data-type2="ground"><img src="images/pokemon_images/645.png" alt="Landorus"><p class="pokemon_name dm">Landorus</p></div>
                     <div class="sprite_item unova dm" data-type1="dragon" data-type2="ice"><img src="images/pokemon_images/646.png" alt="Kyurem"><p class="pokemon_name dm">Kyurem</p></div>
                     <div class="sprite_item unova dm" data-type1="water" data-type2="fighting"><img src="images/pokemon_images/647.png" alt="Keldeo"><p class="pokemon_name dm">Keldeo</p></div>
-                    <div class="sprite_item unova dm" data-type1="normal" data-type2="psychic"><img src="images/pokemon_images/648.png" alt="Meloetta"><p class="pokemon_name dm">Meloetta</p></div>
+                    <div class="sprite_item unova dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/648.png" alt="Meloetta"><p class="pokemon_name dm">Meloetta</p></div>
                     <div class="sprite_item unova dm" data-type1="bug" data-type2="steel"><img src="images/pokemon_images/649.png" alt="Genesect"><p class="pokemon_name dm">Genesect</p></div>
                     <div class="sprite_item kalos dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/650.png" alt="Chespin"><p class="pokemon_name dm">Chespin</p></div>
                     <div class="sprite_item kalos dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/651.png" alt="Quilladin"><p class="pokemon_name dm">Quilladin</p></div>
@@ -1046,7 +1056,7 @@
                     <div class="sprite_item kalos dm" data-type1="dark" data-type2="flying"><img src="images/pokemon_images/717.png" alt="Yveltal"><p class="pokemon_name dm">Yveltal</p></div>
                     <div class="sprite_item kalos dm" data-type1="ground" data-type2="dragon"><img src="images/pokemon_images/718.png" alt="Zygarde"><p class="pokemon_name dm">Zygarde</p></div>
                     <div class="sprite_item kalos dm" data-type1="rock" data-type2="fairy"><img src="images/pokemon_images/719.png" alt="Diancie"><p class="pokemon_name dm">Diancie</p></div>
-                    <div class="sprite_item kalos dm" data-type1="psychic" data-type2="ghost"><img src="images/pokemon_images/720.png" alt="Hoopa"><p class="pokemon_name dm">Hoopa</p></div>
+                    <div class="sprite_item kalos dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/720.png" alt="Hoopa"><p class="pokemon_name dm">Hoopa</p></div>
                     <div class="sprite_item kalos dm" data-type1="fire" data-type2="water"><img src="images/pokemon_images/721.png" alt="Volcanion"><p class="pokemon_name dm">Volcanion</p></div>
                     <div class="sprite_item alola dm" data-type1="grass" data-type2="flying"><img src="images/pokemon_images/722.png" alt="Rowlet"><p class="pokemon_name dm">Rowlet</p></div>
                     <div class="sprite_item alola dm" data-type1="grass" data-type2="flying"><img src="images/pokemon_images/723.png" alt="Dartrix"><p class="pokemon_name dm">Dartrix</p></div>
@@ -1559,8 +1569,91 @@
                   <div class="sprite_item gmaxes galar dm" data-type1="fighting" data-type2="dark"><img src="images/pokemon_images/892g.png" alt="GMax Urshifu (Single Strike)"><p class="pokemon_name dm">G-Max Urshifu (Single Strike)</p></div>
                   <div class="sprite_item gmaxes galar dm" data-type1="fighting" data-type2="water"><img src="images/pokemon_images/892rg.png" alt="GMax Urshifu (Rapid Strike)"><p class="pokemon_name dm">G-Max Urshifu (Rapid Strike)</p></div>
                 </div>
-                <h3 id="other" class="filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text">Variants, Beta, and Other Pokemon</h3>
-                <p class="regional_text filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text">Canon / Side Game / Anime Unique Variants & Creatures</p>
+                <h3 id="other" class="filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text fairy_text">Variants, Beta, and Other Pokemon</h3>
+                <p id="other_models" class="filter_text regional_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text megas_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text psychic_text rock_text steel_text water_text">Other Form Models</p>
+                <div id="other_sprites">
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/351f.png" alt="Castform (Sunny)"><p class="pokemon_name dm">Castform (Sunny)</p></div>
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/351w.png" alt="Castform (Rainy)"><p class="pokemon_name dm">Castform (Rainy)</p></div>
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/351i.png" alt="Castform (Snowy)"><p class="pokemon_name dm">Castform (Snowy)</p></div>
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/386a.png" alt="Deoxys (Attack Forme)"><p class="pokemon_name dm">Deoxys (Attack Forme)</p></div>
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/386d.png" alt="Deoxys (Defense Forme)"><p class="pokemon_name dm">Deoxys (Defense Forme)</p></div>
+                  <div class="sprite_item other_sprite hoenn dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/386s.png" alt="Deoxys (Speed Forme)"><p class="pokemon_name dm">Deoxys (Speed Forme)</p></div>
+                  <div class="sprite_item other sinnoh dm" data-type1="bug" data-type2=""><img src="images/pokemon_images/412s.png" alt="Burmy (Sandy Cloak)"><p class="pokemon_name dm">Burmy (Sandy Cloak)</p></div>
+                  <div class="sprite_item other sinnoh dm" data-type1="bug" data-type2=""><img src="images/pokemon_images/412t.png" alt="Burmy (Trashy Cloak)"><p class="pokemon_name dm">Burmy (Trashy Cloak)</p></div>
+                  <div class="sprite_item other sinnoh dm" data-type1="bug" data-type2=""><img src="images/pokemon_images/413s.png" alt="Wormadam (Sandy Cloak)"><p class="pokemon_name dm">Wormadam (Sandy Cloak)</p></div>
+                  <div class="sprite_item other sinnoh dm" data-type1="bug" data-type2=""><img src="images/pokemon_images/413t.png" alt="Wormadam (Trashy Cloak)"><p class="pokemon_name dm">Wormadam (Trashy Cloak)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/421o.png" alt="Cherrim (Overcast)"><p class="pokemon_name dm">Cherrim (Overcast)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="water" data-type2=""><img src="images/pokemon_images/422e.png" alt="Shellos (East Sea)"><p class="pokemon_name dm">Shellos (East Sea)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="water" data-type2="ground"><img src="images/pokemon_images/423e.png" alt="Gastrodon (East Sea)"><p class="pokemon_name dm">Gastrodon (East Sea)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/479f.png" alt="Rotom (Fan)"><p class="pokemon_name dm">Rotom (Fan)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/479i.png" alt="Rotom (Frost)"><p class="pokemon_name dm">Rotom (Frost)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/479h.png" alt="Rotom (Heat)"><p class="pokemon_name dm">Rotom (Heat)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/479m.png" alt="Rotom (Mow)"><p class="pokemon_name dm">Rotom (Mow)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/479w.png" alt="Rotom (Wash)"><p class="pokemon_name dm">Rotom (Wash)</p></div>
+                  <div class="sprite_item other_sprite sinnoh sinnoh dm" data-type1="steel" data-type2="dragon"><img src="images/pokemon_images/483o.png" alt="Dialga (Origin Form)"><p class="pokemon_name dm">Dialga (Origin Form)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/484o.png" alt="Palkia (Origin Form)"><p class="pokemon_name dm">Palkia (Origin Form)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="ghost" data-type2="dragon"><img src="images/pokemon_images/487o.png" alt="Giratina (Origin Form)"><p class="pokemon_name dm">Giratina (Origin Form)</p></div>
+                  <div class="sprite_item other_sprite sinnoh dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/492s.png" alt="Shaymin (Sky Form)"><p class="pokemon_name dm">Shaymin (Sky Form)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/521f.png" alt="Unfezant (Female)"><p class="pokemon_name dm">Unfezant (Female)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="fire" data-type2=""><img src="images/pokemon_images/555z.png" alt="Darmanitan (Zen Mode)"><p class="pokemon_name dm">Darmanitan (Zen Mode)</p></div>
+                  <div class="sprite_item other_sprite galar regionals dm" data-type1="ice" data-type2=""><img src="images/pokemon_images/555gz.png" alt="Galarian Darmanitan (Zen Mode)"><p class="pokemon_name dm">Galarian Darmanitan (Zen Mode)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/585f.png" alt="Deerling (Summer)"><p class="pokemon_name dm">Deerling (Summer)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/585s.png" alt="Deerling (Fall)"><p class="pokemon_name dm">Deerling (Fall)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/585w.png" alt="Deerling (Winter)"><p class="pokemon_name dm">Deerling (Winter)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/586f.png" alt="Sawsbuck (Summer)"><p class="pokemon_name dm">Sawsbuck (Summer)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/586s.png" alt="Sawsbuck (Fall)"><p class="pokemon_name dm">Sawsbuck (Fall)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2="grass"><img src="images/pokemon_images/586w.png" alt="Sawsbuck (Winter)"><p class="pokemon_name dm">Sawsbuck (Winter)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="water" data-type2="ghost"><img src="images/pokemon_images/592f.png" alt="Frillish (Female)"><p class="pokemon_name dm">Frillish (Female)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="water" data-type2="ghost"><img src="images/pokemon_images/593f.png" alt="Jellicent (Female)"><p class="pokemon_name dm">Jellicent (Female)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="flying" data-type2=""><img src="images/pokemon_images/641t.png" alt="Tornadus (Therian Forme)"><p class="pokemon_name dm">Tornadus (Therian Forme)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="flying" data-type2="electric"><img src="images/pokemon_images/642t.png" alt="Thundurus (Therian Forme)"><p class="pokemon_name dm">Thundurus (Therian Forme)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="flying" data-type2="ground"><img src="images/pokemon_images/645t.png" alt="Landorus (Therian Forme)"><p class="pokemon_name dm">Landorus (Therian Forme)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="ice" data-type2="dragon"><img src="images/pokemon_images/646b.png" alt="Black Kyurem"><p class="pokemon_name dm">Black Kyurem</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="ice" data-type2="dragon"><img src="images/pokemon_images/646w.png" alt="White Kyurem"><p class="pokemon_name dm">White Kyurem</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="water" data-type2="fighting"><img src="images/pokemon_images/647r.png" alt="Keldeo (Resolute)"><p class="pokemon_name dm">Keldeo (Resolute)</p></div>
+                  <div class="sprite_item other_sprite unova dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/648p.png" alt="Meloetta (Pirouette)"><p class="pokemon_name dm">Meloetta (Pirouette)</p></div>
+                  <div class="sprite_item other_sprite kalos dm" data-type1="ground" data-type2="dragon"><img src="images/pokemon_images/718d.png" alt="Zygarde (10%)"><p class="pokemon_name dm">Zygarde (10%)</p></div>
+                  <div class="sprite_item other_sprite kalos dm" data-type1="ground" data-type2="dragon"><img src="images/pokemon_images/718r.png" alt="Zygarde (Complete)"><p class="pokemon_name dm">Zygarde (Complete)</p></div>
+                  <div class="sprite_item other_sprite kalos dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/720u.png" alt="Hoopa Unbound"><p class="pokemon_name dm">Hoopa Unbound</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="flying" data-type2=""><img src="images/pokemon_images/741e.png" alt="Oricorio (Pom-Pom)"><p class="pokemon_name dm">Oricorio (Pom-Pom)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="flying" data-type2=""><img src="images/pokemon_images/741p.png" alt="Oricorio (Pa'u)"><p class="pokemon_name dm">Oricorio (Pa'u)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="flying" data-type2=""><img src="images/pokemon_images/741g.png" alt="Oricorio (Sensu)"><p class="pokemon_name dm">Oricorio (Sensu)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="rock" data-type2=""><img src="images/pokemon_images/745mn.png" alt="Lycanroc (Midnight)"><p class="pokemon_name dm">Lycanroc (Midnight)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="rock" data-type2=""><img src="images/pokemon_images/745d.png" alt="Lycanroc (Dusk)"><p class="pokemon_name dm">Lycanroc (Dusk)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/800dm.png" alt="Necrozma (Dusk Mane)"><p class="pokemon_name dm">Necrozma (Dusk Mane)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/800dw.png" alt="Necrozma (Dawn Wings)"><p class="pokemon_name dm">Necrozma (Dawn Wings)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/800u.png" alt="Necrozma (Ultra)"><p class="pokemon_name dm">Necrozma (Ultra)</p></div>
+                  <div class="sprite_item other_sprite alola dm" data-type1="steel" data-type2="fairy"><img src="images/pokemon_images/801pb.png" alt="Magearna (Pokeball)"><p class="pokemon_name dm">Magearna (Pokeball)</p></div>
+                  <div class="sprite_item other_sprite alola megas dm" data-type1="steel" data-type2="fairy"><img src="images/pokemon_images/801pbm.png" alt="Mega Magearna (Pokeball)"><p class="pokemon_name dm">Mega Magearna (Pokeball)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="normal" data-type2="psychic"><img src="images/pokemon_images/876m.png" alt="Indeedee (Male)"><p class="pokemon_name dm">Indeedee (Male)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="fairy" data-type2=""><img src="images/pokemon_images/888.png" alt="Zacian (Crowned)"><p class="pokemon_name dm">Zacian (Crowned)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/889.png" alt="Zamazenta (Crowned)"><p class="pokemon_name dm">Zamazenta (Crowned)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/892r.png" alt="Urshifu (Rapid Strike)"><p class="pokemon_name dm">Urshifu (Rapid Strike)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="dark" data-type2="grass"><img src="images/pokemon_images/893d.png" alt="Zarude (Dada)"><p class="pokemon_name dm">Zarude (Dada)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/898ir.png" alt="Calyrex (Ice Rider)"><p class="pokemon_name dm">Calyrex (Ice Rider)</p></div>
+                  <div class="sprite_item other_sprite galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/898sr.png" alt="Calyrex (Shadow Rider)"><p class="pokemon_name dm">Calyrex (Shadow Rider)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2="ground"><img src="images/pokemon_images/901b.png" alt="Ursaluna (Bloodmoon)"><p class="pokemon_name dm">Ursaluna (Bloodmoon)</p></div>
+                  <div class="sprite_item other_sprite hisui dm" data-type1="fairy" data-type2="flying"><img src="images/pokemon_images/905t.png" alt="Enamorus (Therian Form)"><p class="pokemon_name dm">Enamorus (Therian Form)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/916f.png" alt="Oinkologne (Female)"><p class="pokemon_name dm">Oinkologne (Female)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/925f.png" alt="Maushold (Family of Four)"><p class="pokemon_name dm">Maushold (Family of Four)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/931b.png" alt="Squawkabilly (Blue Plumage)"><p class="pokemon_name dm">Squawkabilly (Blue Plumage)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/931y.png" alt="Squawkabilly (Yellow Plumage)"><p class="pokemon_name dm">Squawkabilly (Yellow Plumage)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2="flying"><img src="images/pokemon_images/931w.png" alt="Squawkabilly (White Plumage)"><p class="pokemon_name dm">Squawkabilly (White Plumage)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="water" data-type2=""><img src="images/pokemon_images/963z.png" alt="Palafin (Zero Form)"><p class="pokemon_name dm">Palafin (Zero Form)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978d.png" alt="Tatsugiri (Droopy)"><p class="pokemon_name dm">Tatsugiri (Droopy)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978s.png" alt="Tatsugiri (Stretchy)"><p class="pokemon_name dm">Tatsugiri (Stretchy)</p></div>
+                  <div class="sprite_item other_sprite paldea megas dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978md.png" alt="Mega Tatsugiri (Droopy)"><p class="pokemon_name dm">Mega Tatsugiri (Droopy)</p></div>
+                  <div class="sprite_item other_sprite paldea megas dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978ms.png" alt="Mega Tatsugiri (Stretchy)"><p class="pokemon_name dm">Mega Tatsugiri (Stretchy)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/982t.png" alt="Dudunsparce (Two Segment)"><p class="pokemon_name dm">Dudunsparce (Two Segment)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="ghost" data-type2=""><img src="images/pokemon_images/999r.png" alt="Gimmighoul (Roaming)"><p class="pokemon_name dm">Gimmighoul (Roaming)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/1017c.png" alt="Ogerpon (Cornerstone Mask)"><p class="pokemon_name dm">Ogerpon (Cornerstone Mask)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/1017h.png" alt="Ogerpon (Hearthflame Mask)"><p class="pokemon_name dm">Ogerpon (Hearthflame Mask)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/1017w.png" alt="Ogerpon (Wellspring Mask)"><p class="pokemon_name dm">Ogerpon (Wellspring Mask)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/1024t.png" alt="Terapagos (Terastal Form)"><p class="pokemon_name dm">Terapagos (Terastal Form)</p></div>
+                  <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/1024s.png" alt="Terapagos (Stellar Form)"><p class="pokemon_name dm">Terapagos (Stellar Form)</p></div>
+                  <!-- <div class="sprite_item other_sprite dm" data-type1="" data-type2=""><img src="" alt=""><p class="pokemon_name dm"></p></div> -->
+                </div>
+                <p class="regional_text filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text fairy_text">Canon / Side Game / Anime Unique Variants & Creatures</p>
                 <div id="variant_sprites">
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr20.png" alt="Venustoise"><p class="pokemon_name dm">Venustoise</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr15.png" alt="Peakychu"><p class="pokemon_name dm">Peakychu</p></div>
@@ -1577,6 +1670,7 @@
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr14.png" alt="Professor Tangrowth"><p class="pokemon_name dm">Professor Tangrowth</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="steel" data-type2="dragon"><img src="images/pokemon_images/vr3.png" alt="Primal Dialga"><p class="pokemon_name dm">Primal Dialga</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="water" data-type2="dark"><img src="images/pokemon_images/658a.png" alt="Ash-Greninja"><p class="pokemon_name dm">Ash-Greninja</p></div>
+                  <div class="sprite_item cs_variants dm" data-type1="fairy" data-type2=""><img src="images/pokemon_images/670ef.png" alt="Eternal Flower Floette"><p class="pokemon_name dm">Eternal Flower Floette</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr9.png" alt="Bittercold"><p class="pokemon_name dm">Bittercold</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr11.png" alt="Dark Matter"><p class="pokemon_name dm">Dark Matter</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr10.png" alt="Dark Rust"><p class="pokemon_name dm">Dark Rust</p></div>
@@ -1787,5 +1881,12 @@
           <p class="close-button">X</p>
         </div>
       </section>
+
+    <section id="confirmation_message_con" class="full-width-grid-con">
+      <h1 class="hidden">Confirmation Message</h1>
+      <div id="confirmation_message" class="col-start-2 col-span-1">
+        <p>Congratulations on making your Custom Dex!<br><br>A download should begin shortly!<br><br>If download doesn't begin, please check your browser's download settings and try again.</p>
+      </div>
+    </section>
 </body>
 </html>

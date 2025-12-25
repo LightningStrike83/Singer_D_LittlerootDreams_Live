@@ -99,13 +99,13 @@
 }
 
 
-#pokemon_sprites, #alolan_sprites, #galarian_sprites, #hisuian_sprites, #paldean_sprites, #mega_sprites, #gmax_sprites, #variant_sprites, #pokestar_sprites, #beta_sprites {
+#pokemon_sprites, #alolan_sprites, #galarian_sprites, #hisuian_sprites, #paldean_sprites, #mega_sprites, #gmax_sprites, #variant_sprites, #pokestar_sprites, #beta_sprites, #other_sprites {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta {
+.kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta, .other_sprite {
     border: 2px solid c.$dark-wood;
     text-align: center;
     width: 33.3%;
@@ -311,7 +311,7 @@
     margin-bottom: 10px;
 }
 
-#download-dex-con {
+#download-dex-con, #confirmation_message_con {
     height: 100vh;
     background-color: c.$transparentblack;
     position: fixed;
@@ -381,7 +381,7 @@
     border: 2px solid c.$dark-wood;
     margin-top: 10px;
     border-radius: 20px;
-
+    height: fit-content;
     h3 {
         border-radius: 20px;
         padding: 10px;
@@ -429,6 +429,95 @@
     margin-left: 10px;
 }
 
+#mode_select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid c.$dark-wood;
+    background-image: c.$wood;
+    border-radius: 20px;
+    height: fit-content;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+#mode_con {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+
+    p {
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+    
+    p.active {
+        background-color: green;
+        border: 2px solid c.$dark-wood;
+    }
+}
+
+.sprite_item {
+    position: relative;
+}
+
+.add_button, .subtract_button {
+    position: absolute;
+    top: 2.5px;
+    right: 2.5px;
+    z-index: 10;
+    p {
+        padding: 0 7.5px;
+        color: black;
+        border: 1px solid black;
+        border-radius: 50px;
+        cursor: pointer;
+        background-color: white;
+        &:hover {
+            color: white;
+            background-image: c.$wood;
+            border: 1px solid white;
+        }
+    }
+}
+
+.direction_con {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 2.5px;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    p {
+        padding: 0 5px;
+        color: black;
+        border: 1px solid black;
+        border-radius: 50px;
+        cursor: pointer;
+        background-color: white;
+        font-size: calc(100% - 4px)!important;
+        &:hover {
+            color: white;
+            background-image: c.$wood;
+            border: 1px solid white;
+        }
+    }
+
+
+}
+
+#confirmation_message_con {
+    visibility: hidden;
+    opacity: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 @media screen and (min-width: 428px) {
     .mobile_image {
         margin-top: 0px;
@@ -453,7 +542,7 @@
 
 @media screen and (min-width: 1024px) {
 
-    .kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta {
+    .kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta, .other_sprite {
         width: 20%;
     }
 
