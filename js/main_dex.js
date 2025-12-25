@@ -10,9 +10,11 @@ const dexName = document.querySelector("#custom-dex-form")
 const nameForm = document.querySelector("#download-dex-con")
 const typeCon = document.querySelector("#types_count")
 const countCon = document.querySelector("#count_con")
+const modeButton = document.querySelectorAll(".mode_select_button")
 
 let finalName = ""
 let count = 0
+let mode = "drag"
 
 function openTips() {
   const tipsBox = document.querySelector("#tips_box")
@@ -75,6 +77,8 @@ function populateBoxArea() {
     div.addEventListener("dragenter", dragEnter);
     div.addEventListener("dragleave", dragLeave);
     div.addEventListener("drop", drop);
+
+    checkMode()
   }
 
   count = inputValue;
@@ -296,6 +300,8 @@ function drop(event) {
         newBox.appendChild(number);
         newBox.appendChild(targetImage);
         home.appendChild(newBox);
+
+        checkMode()
       }
     }
 
@@ -331,6 +337,8 @@ function returnToOriginalPosition(event) {
   dragImages.forEach(function (image) {
   image.addEventListener("dragstart", dragStart);
   image.addEventListener("dragend", dragEnd);
+
+  checkMode()
 });
 
 function exportDivToImage(event) {
@@ -372,6 +380,14 @@ function exportDivToImage(event) {
   divExport.appendChild(p)
 
   divExport.style.backgroundImage = "linear-gradient(#319dff, #70afe2)"
+
+  if (mode === "click") {
+    let moveDiv = document.querySelectorAll(".direction_con")
+    let subtractButton = document.querySelectorAll(".subtract_button")
+
+    subtractButton.forEach(button => button.remove())
+    moveDiv.forEach(div => div.remove())
+  }
   
   html2canvas(divExport).then((canvas) => {
     const dataUrl = canvas.toDataURL("image/png");
@@ -400,6 +416,39 @@ function exportDivToImage(event) {
   divExport.style.backgroundImage = "none"
 
   clearText()
+  readdButtons()
+  openConfirmation()
+}
+
+function readdButtons() {
+  if (mode === "click") {
+    let pokedexBox = document.querySelectorAll(".pokedex_box")
+    
+    pokedexBox.forEach(div => {
+      const divMinus = document.createElement("div")
+      const moveDiv = document.createElement("div")
+      const p = document.createElement("p")
+      const forward = document.createElement("p")
+      const backward = document.createElement("p")
+      
+      divMinus.setAttribute("class", "subtract_button")
+      moveDiv.setAttribute("class", "direction_con")
+      
+      p.textContent = "-"
+      forward.textContent = "►"
+      backward.textContent = "◄"
+
+      divMinus.addEventListener("click", clickMinus)
+      forward.addEventListener("click", moveImage)
+      backward.addEventListener("click", moveImage)
+
+      divMinus.appendChild(p)
+      moveDiv.appendChild(backward)
+      moveDiv.appendChild(forward)
+      div.appendChild(divMinus)
+      div.appendChild(moveDiv)
+    })
+  }
 }
 
 function clearText() {
@@ -415,17 +464,36 @@ function openNameForm() {
   nameForm.style.opacity = "1"
 }
 
+function openConfirmation() {
+  const confirmationForm = document.querySelector("#confirmation_message_con")
+
+  confirmationForm.style.visibility = "visible"
+  confirmationForm.style.opacity = "1"
+
+  console.log("OPENED")
+
+  setTimeout(() => {
+    confirmationForm.style.visibility = "hidden"
+    confirmationForm.style.opacity = "0"
+  }, "5000");
+}
+
 function openTypeCount() {
   const typeTitle = document.querySelector("#type_title")
+  const typeArrows = document.querySelectorAll(".type_arrow")
 
   if (countCon.style.display === "flex") {
     countCon.style.display = "none"
     typeTitle.style.borderBottomLeftRadius = "20px"
     typeTitle.style.borderBottomRightRadius = "20px"
+
+    typeArrows.forEach(arrow => arrow.textContent = "▼")
   } else {
     countCon.style.display = "flex"
     typeTitle.style.borderBottomLeftRadius = "0px"
     typeTitle.style.borderBottomRightRadius = "0px"
+
+    typeArrows.forEach(arrow => arrow.textContent = "▲")
   }
 }
 
@@ -462,6 +530,198 @@ function countTypes() {
   })
 }
 
+function changeMode() {
+  if (this.textContent === "Drag and Drop") {
+    mode = "drag"
+    modeButton.forEach(button => button.classList.remove("active"))
+    this.classList.add("active")
+    checkMode()
+  } else if (this.textContent === "Click") {
+    mode = "click"
+    modeButton.forEach(button => button.classList.remove("active"))
+    this.classList.add("active")
+    checkMode()
+  }
+}
+
+function checkMode() {
+  let pokedexBox = document.querySelectorAll(".pokedex_box")
+  let addButton = document.querySelectorAll(".add_button")
+
+  if (mode === "drag") {
+    let moveDiv = document.querySelectorAll(".direction_con")
+    let subtractButton = document.querySelectorAll(".subtract_button")
+
+    spriteArea.addEventListener("dragover", dragOver);
+    spriteArea.addEventListener("dragenter", dragEnter);
+    spriteArea.addEventListener("dragleave", dragLeave);
+    spriteArea.addEventListener("drop", returnToOriginalPosition);
+
+    pokedexBox.forEach(div => {
+      div.addEventListener("dragover", dragOver);
+      div.addEventListener("dragenter", dragEnter);
+      div.addEventListener("dragleave", dragLeave);
+      div.addEventListener("drop", drop);
+    })
+
+    dragImages.forEach(image => {
+      image.addEventListener("dragstart", dragStart);
+      image.addEventListener("dragend", dragEnd);
+    })
+
+    addButton.forEach(button => button.remove())
+    subtractButton.forEach(button => button.remove())
+    moveDiv.forEach(div => div.remove())
+  } else if (mode === "click") {
+    spriteItem = document.querySelectorAll(".sprite_item")
+
+    spriteArea.removeEventListener("dragover", dragOver);
+    spriteArea.removeEventListener("dragenter", dragEnter);
+    spriteArea.removeEventListener("dragleave", dragLeave);
+    spriteArea.removeEventListener("drop", returnToOriginalPosition);
+
+    pokedexBox.forEach(div => {
+      div.removeEventListener("dragover", dragOver);
+      div.removeEventListener("dragenter", dragEnter);
+      div.removeEventListener("dragleave", dragLeave);
+      div.removeEventListener("drop", drop);
+
+      const divMinus = document.createElement("div")
+      const moveDiv = document.createElement("div")
+      const p = document.createElement("p")
+      const forward = document.createElement("p")
+      const backward = document.createElement("p")
+      
+      divMinus.setAttribute("class", "subtract_button")
+      moveDiv.setAttribute("class", "direction_con")
+      
+      p.textContent = "-"
+      forward.textContent = "►"
+      backward.textContent = "◄"
+
+      divMinus.addEventListener("click", clickMinus)
+      forward.addEventListener("click", moveImage)
+      backward.addEventListener("click", moveImage)
+
+      divMinus.appendChild(p)
+      moveDiv.appendChild(backward)
+      moveDiv.appendChild(forward)
+      div.appendChild(divMinus)
+      div.appendChild(moveDiv)
+    })
+
+    dragImages.forEach(image => {
+      image.removeEventListener("dragstart", dragStart);
+      image.removeEventListener("dragend", dragEnd);
+    })
+
+    spriteItem.forEach(sprite => {
+      const divAdd = document.createElement("div")
+      const p = document.createElement("p")
+      
+      divAdd.setAttribute("class", "add_button")
+      
+      p.textContent = "+"
+
+      divAdd.addEventListener("click", clickAdd)
+
+      divAdd.appendChild(p)
+      sprite.appendChild(divAdd)
+    })
+  }
+}
+
+function clickAdd() {
+  const parentNode = this.parentNode
+  const image = parentNode.querySelector("img")
+  const boxes = document.querySelectorAll(".pokedex_box")
+  const dataKey = Date.now();
+  const type1 = parentNode.dataset.type1
+  const type2 = parentNode.dataset.type2
+
+  for (const box of boxes) {
+    const boxImage = box.querySelector("img");
+
+    if (!boxImage) {
+      parentNode.setAttribute("data-key", `${dataKey}`)
+      image.setAttribute("data-key", `${dataKey}`)
+      image.setAttribute("data-type1", `${type1}`)
+      image.setAttribute("data-type2", `${type2}`)
+      box.appendChild(image)
+      break;
+    }
+  }
+
+  countTypes()
+}
+
+function clickMinus() {
+  const parentNode = this.parentNode
+  const image = parentNode.querySelector("img")
+  const data = image.dataset.key
+  const spriteHome = document.querySelector("#pokemon_sprites")
+  const originalHome = spriteHome.querySelector(`[data-key="${data}"]`)
+
+  originalHome.appendChild(image)
+
+  countTypes()
+}
+
+function moveImage() {
+  const parentNode = this.parentNode.parentNode;
+  let imageToMove = parentNode.querySelector("img");
+  let currentBox = parentNode.nextElementSibling;
+  let priorBox = parentNode.previousElementSibling;
+
+  if (this.textContent === "►") {
+    let checkBox = currentBox;
+    let hasEmpty = false;
+
+    while (checkBox && checkBox.classList.contains("pokedex_box")) {
+      if (!checkBox.querySelector("img")) {
+        hasEmpty = true;
+        break;
+      }
+      checkBox = checkBox.nextElementSibling;
+    }
+
+    if (!hasEmpty) {
+      alert("No empty boxes to push Pokemon to. Please remove a Pokemon, add more boxes, or move Pokemon backward.")
+      return;
+    }
+
+    while (currentBox && currentBox.classList.contains("pokedex_box") && imageToMove) {
+      const existingImage = currentBox.querySelector("img");
+      currentBox.appendChild(imageToMove);
+      imageToMove = existingImage;
+      currentBox = currentBox.nextElementSibling;
+    }
+  } else if (this.textContent === "◄") {
+    let checkBox = priorBox;
+    let hasEmpty = false;
+
+    while (checkBox && checkBox.classList.contains("pokedex_box")) {
+      if (!checkBox.querySelector("img")) {
+        hasEmpty = true;
+        break;
+      }
+      checkBox = checkBox.previousElementSibling;
+    }
+
+    if (!hasEmpty) {
+      alert("No empty boxes to push Pokemon to. Please remove a Pokemon, add more boxes, or move Pokemon forward.")
+      return;
+    }
+
+    while (priorBox && priorBox.classList.contains("pokedex_box") && imageToMove) {
+      const existingImage = priorBox.querySelector("img");
+      priorBox.appendChild(imageToMove);
+      imageToMove = existingImage;
+      priorBox = priorBox.previousElementSibling;
+    }
+  }
+}
+
 spriteArea.addEventListener("dragover", dragOver);
 spriteArea.addEventListener("dragenter", dragEnter);
 spriteArea.addEventListener("dragleave", dragLeave);
@@ -471,3 +731,4 @@ downloadButton.addEventListener("click", openNameForm)
 dexName.addEventListener("submit", exportDivToImage)
 tips.addEventListener("click", openTips)
 typeCon.addEventListener("click", openTypeCount)
+modeButton.forEach(button => button.addEventListener("click", changeMode))
