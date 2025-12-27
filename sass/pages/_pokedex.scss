@@ -85,6 +85,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    justify-content: space-between;
 }
 
 .pokedex_box.dark-mode {
@@ -343,7 +344,6 @@
 
 .mobile_image {
     margin-top: 5px;
-    margin-bottom: 30px;
 }
 
 #pd-input {
@@ -518,6 +518,29 @@
     text-align: center;
 }
 
+.select2-results__option {
+    color: black!important;
+}
+
+.select2-results__options {
+    display: flex;
+    flex-direction: column;
+}
+
+.select2 {
+    order: 1;
+}
+
+#dex_search {
+    margin-top: 10px;
+    input {
+        border-radius: 20px;
+        height: 100%;
+        margin-left: 5px;
+        padding: 5px;
+    }
+}
+
 @media screen and (min-width: 428px) {
     .mobile_image {
         margin-top: 0px;
@@ -539,8 +562,8 @@
         grid-column: 11/13;
     }
 
-    #mode_select {
-        display: flex;
+    .pokedex_box {
+        width: 20%;
     }
 }
 
@@ -548,6 +571,10 @@
 
     .kanto, .johto, .hoenn, .sinnoh, .unova, .kalos, .alola, .galar, .hisui, .paldea, .regionals, .megas, .gmaxes, .cs_variants, .pokestars, .beta, .other_sprite {
         width: 20%;
+    }
+
+    #mode_select {
+        display: flex;
     }
 
     .mobile_select {

@@ -25,6 +25,9 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script defer type="module" src="js/main_dex.js?version=2.0"></script>
     <script defer src="js/main_filter.js?version=2.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script defer src="js/main.js?version=2.0"></script>
 </head>
 <body class="dm">
@@ -334,7 +337,15 @@
                       <option value="rock">Rock</option>
                       <option value="steel">Steel</option>
                       <option value="water">Water</option>
-                    </select>
+                    </select><br><br>
+
+                    <search id="dex_search">
+                      <form action="./search/">
+                        <label for="pokemon">Find a Pokemon:</label>
+                        <input type="search" id="pokemon_search" name="p" placeholder="Pokemon Name"/>
+                        <button type="submit">Search</button>
+                      </form>
+                    </search>
                 </div>
                 <div id="pokemon_sprites">
                     <div class="sprite_item kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/001.png" alt="Bulbasaur"><p class="pokemon_name dm">Bulbasaur</p></div>
