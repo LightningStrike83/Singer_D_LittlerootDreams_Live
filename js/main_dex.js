@@ -1,3 +1,5 @@
+import { megaList, gmaxList, otherList, variantList, pokestarList, betaList } from "./additional_dex.js";
+
 const tips = document.querySelector("#tips_click");
 const pokemonSprites = document.querySelector("#pokemon_sprites");
 const spriteArea = document.querySelector("#sprite_area")
@@ -106,13 +108,44 @@ async function mobileList() {
       const blankOption = document.createElement("option");
       const allOption = document.createElement("option");
       const regionalOption = document.createElement("option");
+      const megaOption = document.createElement("option") 
+      const gmaxOption = document.createElement("option")
+      const formOption = document.createElement("option")
+      const variantOption = document.createElement("option")
+      const pokestarOption = document.createElement("option")
+      const betaOption = document.createElement("option")
+      const blankOption2 = document.createElement("option");
+      const blankOption3 = document.createElement("option");
+      const blankOption4 = document.createElement("option");
+      const blankOption5 = document.createElement("option");
+      const blankOption6 = document.createElement("option");
+      const blankOption7 = document.createElement("option");
 
       allOption.disabled = true;
       regionalOption.disabled = true;
       allOption.selected = true;
+      megaOption.disabled = true;
+      gmaxOption.disabled = true;
+      formOption.disabled = true;
+      variantOption.disabled = true;
+      pokestarOption.disabled = true;
+      betaOption.disabled = true;
+      blankOption.disabled = true
+      blankOption2.disabled = true
+      blankOption3.disabled = true
+      blankOption4.disabled = true
+      blankOption5.disabled = true
+      blankOption6.disabled = true
+      blankOption7.disabled = true
 
       allOption.innerHTML = "--Select A Pokemon--";
       regionalOption.innerHTML = "--Regional Forms--";
+      megaOption.innerHTML = "--Mega Evolutions--"
+      gmaxOption.innerHTML = "--GMax Forms--"
+      formOption.innerHTML = "--Other Form Models--"
+      variantOption.innerHTML = "--Variants & Other--"
+      pokestarOption.innerHTML = "--Pokestar Studios--"
+      betaOption.innerHTML = "--Beta + Demo--"
 
       mobileList.setAttribute("class", "mobile_select");
 
@@ -145,6 +178,78 @@ async function mobileList() {
               mobileList.appendChild(mobileRegionalOption);
             });
 
+            mobileList.appendChild(blankOption2);
+            mobileList.appendChild(megaOption);
+
+            megaList.forEach(mega => {
+              const mobileMegaOption = document.createElement("option");
+              mobileMegaOption.textContent = mega.name;
+              mobileMegaOption.value = mega.number;
+              mobileMegaOption.setAttribute("data-type1", `${mega.type1}`)
+              mobileMegaOption.setAttribute("data-type2", `${mega.type2}`)
+              mobileList.appendChild(mobileMegaOption);
+            })
+
+            mobileList.appendChild(blankOption3);
+            mobileList.appendChild(gmaxOption);
+
+            gmaxList.forEach(gmax => {
+              const mobileGmaxOption = document.createElement("option");
+              mobileGmaxOption.textContent = gmax.name;
+              mobileGmaxOption.value = gmax.number;
+              mobileGmaxOption.setAttribute("data-type1", `${gmax.type1}`)
+              mobileGmaxOption.setAttribute("data-type2", `${gmax.type2}`)
+              mobileList.appendChild(mobileGmaxOption);
+            })
+
+            mobileList.appendChild(blankOption4);
+            mobileList.appendChild(formOption);
+
+            otherList.forEach(form => {
+              const mobileformOption = document.createElement("option");
+              mobileformOption.textContent = form.name;
+              mobileformOption.value = form.number;
+              mobileformOption.setAttribute("data-type1", `${form.type1}`)
+              mobileformOption.setAttribute("data-type2", `${form.type2}`)
+              mobileList.appendChild(mobileformOption);
+            })
+
+            mobileList.appendChild(blankOption5);
+            mobileList.appendChild(variantOption);
+
+            variantList.forEach(variant => {
+              const mobilevariantOption = document.createElement("option");
+              mobilevariantOption.textContent = variant.name;
+              mobilevariantOption.value = variant.number;
+              mobilevariantOption.setAttribute("data-type1", `${variant.type1}`)
+              mobilevariantOption.setAttribute("data-type2", `${variant.type2}`)
+              mobileList.appendChild(mobilevariantOption);
+            })
+
+            mobileList.appendChild(blankOption6);
+            mobileList.appendChild(pokestarOption);
+
+            pokestarList.forEach(pokestar => {
+              const mobilepokestarOption = document.createElement("option");
+              mobilepokestarOption.textContent = pokestar.name;
+              mobilepokestarOption.value = pokestar.number;
+              mobilepokestarOption.setAttribute("data-type1", `${pokestar.type1}`)
+              mobilepokestarOption.setAttribute("data-type2", `${pokestar.type2}`)
+              mobileList.appendChild(mobilepokestarOption);
+            })
+
+            mobileList.appendChild(blankOption7);
+            mobileList.appendChild(betaOption);
+
+            betaList.forEach(beta => {
+              const mobilebetaOption = document.createElement("option");
+              mobilebetaOption.textContent = beta.name;
+              mobilebetaOption.value = beta.number;
+              mobilebetaOption.setAttribute("data-type1", `${beta.type1}`)
+              mobilebetaOption.setAttribute("data-type2", `${beta.type2}`)
+              mobileList.appendChild(mobilebetaOption);
+            })
+
             box.appendChild(mobileList);
 
             let spinnerFind = box.querySelector("#spinner")
@@ -171,37 +276,45 @@ function addPokemonImage(){
   const box = this.parentNode
   const img = document.createElement("img")
   const source = this.value
+  const name = this.options[this.selectedIndex].text
+  const type1 = this.options[this.selectedIndex].dataset.type1
+  const type2 = this.options[this.selectedIndex].dataset.type2
   const pokedexBoxes = document.querySelectorAll(".pokedex_box")
   let imgCheck = box.querySelector("img")
 
   if (imgCheck) {
     imgCheck.src = `images/pokemon_images/${source}.png`
-    img.setAttribute("alt", `Image of Pokemon ${source}`)
+    img.setAttribute("alt", `Image of ${name}`)
+    img.setAttribute("data-type1", `${type1}`)
+    img.setAttribute("data-type2", `${type2}`)
   } else {
     img.src = `images/pokemon_images/${source}.png`
     box.appendChild(img)
     img.setAttribute("class", "mobile_image")
-    img.setAttribute("alt", `Image of Pokemon ${source}`)
+    img.setAttribute("alt", `Image of ${name}`)
+    img.setAttribute("data-type1", `${type1}`)
+    img.setAttribute("data-type2", `${type2}`)
   }
 
   pokedexBoxes.forEach(pdBox => {
-    pdBox.style.minHeight = "min-content";
+    pdBox.style.height = "auto";
   });
   
-  resetBoxHeight()
+  // resetBoxHeight()
+  countTypes()
 }
 
-function resetBoxHeight() {
-  const pokedexBoxes = document.querySelectorAll(".pokedex_box")
-  const boxesWithImages = Array.from(pokedexBoxes).filter(box => box.querySelector("img"));
-  const dynamicHeight = boxesWithImages[0].offsetHeight;
+// function resetBoxHeight() {
+//   const pokedexBoxes = document.querySelectorAll(".pokedex_box")
+//   const boxesWithImages = Array.from(pokedexBoxes).filter(box => box.querySelector("img"));
+//   const dynamicHeight = boxesWithImages[0].offsetHeight;
 
-  pokedexBoxes.forEach(pdBox => {
-    if (!pdBox.querySelector("img")) {
-      pdBox.style.height = `${dynamicHeight}px`;
-    }
-  });
-}
+//   pokedexBoxes.forEach(pdBox => {
+//     if (!pdBox.querySelector("img")) {
+//       pdBox.style.height = `${dynamicHeight}px`;
+//     }
+//   });
+// }
 
 
 function dragStart(event) {
@@ -469,8 +582,6 @@ function openConfirmation() {
 
   confirmationForm.style.visibility = "visible"
   confirmationForm.style.opacity = "1"
-
-  console.log("OPENED")
 
   setTimeout(() => {
     confirmationForm.style.visibility = "hidden"
