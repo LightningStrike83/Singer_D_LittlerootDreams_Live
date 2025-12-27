@@ -24,8 +24,21 @@ class SpeciesController extends Species {
         return response()->json($species);
     }
 
-    public function getAllNoAltDex() {
-        $species = Species::select('number', 'name')->where('is_alt', '=', 'n')->orderBy('id', 'asc')->get();
+    public function getAllNoAltDex()
+    {
+        $species = Species::query()
+            ->select(
+                'species_controllers.number',
+                'species_controllers.name',
+                't1.type as type1',
+                't2.type as type2'
+            )
+            ->leftJoin('types as t1', 'species_controllers.type1', '=', 't1.id')
+            ->leftJoin('types as t2', 'species_controllers.type2', '=', 't2.id')
+            ->where('species_controllers.is_alt', '=', 'n')
+            ->orderBy('species_controllers.id', 'asc')
+            ->get();
+
         return response()->json($species);
     }
 

@@ -61,6 +61,7 @@ function populateBoxArea() {
       }
     }
     count = inputValue; 
+    countTypes()
     return;
   }
   
@@ -164,6 +165,13 @@ async function mobileList() {
               const mobileBaseOption = document.createElement("option");
               mobileBaseOption.textContent = pokemon.name;
               mobileBaseOption.value = pokemon.number;
+              mobileBaseOption.setAttribute("data-type1", `${pokemon.type1}`)
+              
+              if (pokemon.type2 === null) {
+                mobileBaseOption.setAttribute("data-type2", "")
+              } else {
+                mobileBaseOption.setAttribute("data-type2", `${pokemon.type2}`)
+              }
 
               mobileList.appendChild(mobileBaseOption);
             });
@@ -175,6 +183,9 @@ async function mobileList() {
               const mobileRegionalOption = document.createElement("option");
               mobileRegionalOption.textContent = pokemon.name;
               mobileRegionalOption.value = pokemon.number;
+              mobileRegionalOption.setAttribute("data-type1", `${pokemon.type1}`)
+              mobileRegionalOption.setAttribute("data-type2", `${pokemon.type2}`)
+
               mobileList.appendChild(mobileRegionalOption);
             });
 
@@ -256,6 +267,8 @@ async function mobileList() {
             spinnerFind.remove()
 
             mobileList.addEventListener("change", addPokemonImage);
+
+            convertList()
             return; // Exit the loop if successful
           } catch (error) {
             const p = document.createElement("p")
@@ -283,17 +296,21 @@ function addPokemonImage(){
   let imgCheck = box.querySelector("img")
 
   if (imgCheck) {
+    console.log(`${name}`)
     imgCheck.src = `images/pokemon_images/${source}.png`
-    img.setAttribute("alt", `Image of ${name}`)
-    img.setAttribute("data-type1", `${type1}`)
-    img.setAttribute("data-type2", `${type2}`)
+    imgCheck.alt = `${name}`
+    imgCheck.dataset.type1 = `${type1}`
+    imgCheck.dataset.type2 = `${type2}`
+    countTypes()
   } else {
+    console.log("boo")
     img.src = `images/pokemon_images/${source}.png`
     box.appendChild(img)
     img.setAttribute("class", "mobile_image")
     img.setAttribute("alt", `Image of ${name}`)
     img.setAttribute("data-type1", `${type1}`)
     img.setAttribute("data-type2", `${type2}`)
+    countTypes()
   }
 
   pokedexBoxes.forEach(pdBox => {
@@ -301,7 +318,6 @@ function addPokemonImage(){
   });
   
   // resetBoxHeight()
-  countTypes()
 }
 
 // function resetBoxHeight() {
@@ -463,9 +479,11 @@ function exportDivToImage(event) {
   const p = document.createElement("p")
   const title = document.createElement("h3")
   const form = document.querySelector("#custom-dex")
+  const select2 = document.querySelectorAll(".select2")
   let formName = form.value
 
   var x = window.matchMedia("(min-width: 1024px)")
+  var smallX = window.matchMedia("(min-width: 768px")
 
   event.preventDefault()
   finalName = formName
@@ -474,13 +492,11 @@ function exportDivToImage(event) {
   pokedexArea.classList.remove("m-col-end-13")
 
   mobileSelect.forEach(list => list.remove())
-  mobileImage.forEach(image => image.style.marginBottom = "0")
+  select2.forEach(select => select.remove())
 
   pokedexBox.forEach(box => {
-    if (x.matches) {
       box.style.width = "10%"
       box.style.minHeight = "min-content"
-    }
   })
 
   p.textContent = "Create your own at littlerootdreams.com"
@@ -513,14 +529,13 @@ function exportDivToImage(event) {
 
   mobileList()
 
-  pokedexArea.classList.add("m-col-start-7")
-  pokedexArea.classList.add("m-col-end-13")
-
   pokedexBox.forEach(box => {
-    box.style.width = "20%"
+    if (smallX.matches) {
+      box.style.width = "20%"
+    } else {
+      box.style.width = "25%"
+    }
   })
-
-  mobileImage.forEach(image => image.style.marginBottom = "20px")
 
   form.value = ""
   nameForm.style.visibility = "hidden"
@@ -831,6 +846,59 @@ function moveImage() {
       priorBox = priorBox.previousElementSibling;
     }
   }
+}
+
+function convertList() {
+    $(document).ready(function () {
+        $("select").select2();
+
+        // Remove old change listener if it exists
+        $("select").off("change", addPokemonImage);
+
+        // Use unified listener that works for both normal and Select2
+        $("select").on("change", addPokemonImageSelect2);
+        $("select").on("select2:select", addPokemonImageSelect2);
+    });
+}
+
+function addPokemonImageSelect2(e) {
+    // If triggered by Select2, e.params.data exists
+    let option, source, name, type1, type2, box;
+    
+    if (e.params && e.params.data) {
+        option = e.params.data.element; // original <option>
+        box = e.target.parentNode;
+        source = e.params.data.id;       // value
+        name = e.params.data.text;       // text
+        type1 = $(option).data('type1');
+        type2 = $(option).data('type2');
+    } else {
+        // fallback for normal <select> change
+        box = this.parentNode;
+        option = this.options[this.selectedIndex];
+        source = this.value;
+        name = option.text;
+        type1 = option.dataset.type1;
+        type2 = option.dataset.type2;
+    }
+
+    const img = box.querySelector("img") || document.createElement("img");
+
+    img.src = `images/pokemon_images/${source}.png`;
+    img.alt = `Image of ${name}`;
+    img.dataset.type1 = type1;
+    img.dataset.type2 = type2;
+
+    if (!box.querySelector("img")) {
+        img.classList.add("mobile_image");
+        box.appendChild(img);
+    }
+
+    countTypes();
+
+    document.querySelectorAll(".pokedex_box").forEach(pdBox => {
+        pdBox.style.height = "auto";
+    });
 }
 
 spriteArea.addEventListener("dragover", dragOver);
