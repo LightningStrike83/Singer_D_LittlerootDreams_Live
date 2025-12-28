@@ -343,7 +343,6 @@
                       <form action="./search/">
                         <label for="pokemon">Find a Pokemon:</label>
                         <input type="search" id="pokemon_search" name="p" placeholder="Pokemon Name"/>
-                        <button type="submit">Search</button>
                       </form>
                     </search>
                 </div>
@@ -1375,7 +1374,7 @@
                     <div class="sprite_item paldea dm" data-type1="poison" data-type2="ghost"><img src="images/pokemon_images/1025.png" alt="Pecharunt"><p class="pokemon_name dm">Pecharunt</p></div>
                 </div>
                 <h3 id="regional" class="filter_text alola_text galar_text hisui_text paldea_text ice_text normal_text dark_text electric_text psychic_text steel_text fairy_text ghost_text fire_text grass_text dragon_text ground_text rock_text poison_text">Regional Form Models</h3>
-                <p class="regional_text filter_text alola_text ice_text normal_text dark_text electric_text psychic_text steel_text fairy_text ghost_text fire_text grass_text dragon_text ground_text rock_text poison_text regionals_text">Alolan Forms</p>
+                <p id="alola_title" class="regional_text filter_text alola_text ice_text normal_text dark_text electric_text psychic_text steel_text fairy_text ghost_text fire_text grass_text dragon_text ground_text rock_text poison_text regionals_text">Alolan Forms</p>
                 <div id="alolan_sprites">
                     <div class="sprite_item regionals alola dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/019a.png" alt="Alolan Rattata"><p class="pokemon_name dm">Alolan Rattata</p></div>
                     <div class="sprite_item regionals alola dm" data-type1="dark" data-type2="normal"><img src="images/pokemon_images/020a.png" alt="Alolan Raticate"><p class="pokemon_name dm">Alolan Raticate</p></div>
@@ -1396,7 +1395,7 @@
                     <div class="sprite_item regionals alola dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/103a.png" alt="Alolan Exeggutor"><p class="pokemon_name dm">Alolan Exeggutor</p></div>
                     <div class="sprite_item regionals alola dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/105a.png" alt="Alolan Marowak"><p class="pokemon_name dm">Alolan Marowak</p></div>
             </div>
-                <p class="regional_text filter_text galar_text steel_text psychic_text fairy_text poison_text fighting_text ice_text flying_text dark_text ghost_text normal_text ice_text ground_text regionals_text regionals_text">Galarian Forms</p>
+                <p id="galar_title" class="regional_text filter_text galar_text steel_text psychic_text fairy_text poison_text fighting_text ice_text flying_text dark_text ghost_text normal_text ice_text ground_text regionals_text regionals_text">Galarian Forms</p>
                 <div id="galarian_sprites">
                     <div class="sprite_item regionals galar dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/052g.png" alt="Galarian Meowth"><p class="pokemon_name dm">Galarian Meowth</p></div>
                     <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/077g.png" alt="Galarian Ponyta"><p class="pokemon_name dm">Galarian Ponyta</p></div>
@@ -1418,7 +1417,7 @@
                     <div class="sprite_item regionals galar dm" data-type1="ghost" data-type2="ground"><img src="images/pokemon_images/562g.png" alt="Galarian Yamask"><p class="pokemon_name dm">Galarian Yamask</p></div>
                     <div class="sprite_item regionals galar dm" data-type1="steel" data-type2="ground"><img src="images/pokemon_images/618g.png" alt="Galarian Stunfisk"><p class="pokemon_name dm">Galarian Stunfisk</p></div>
                 </div>
-                <p class="regional_text filter_text hisui_text fire_text rock_text grass_text electric_text ghost_text poison_text dark_text fighting_text water_text normal_text psychic_text flying_text steel_text dragon_text ice_text regionals_text">Hisuian Forms</p>
+                <p id="hisui_title" class="regional_text filter_text hisui_text fire_text rock_text grass_text electric_text ghost_text poison_text dark_text fighting_text water_text normal_text psychic_text flying_text steel_text dragon_text ice_text regionals_text">Hisuian Forms</p>
                 <div id="hisuian_sprites">
                     <div class="sprite_item regionals hisui dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/058h.png" alt="Hisuian Growlithe"><p class="pokemon_name dm">Hisuian Growlithe</p></div>
                     <div class="sprite_item regionals hisui dm" data-type1="fire" data-type2="rock"><img src="images/pokemon_images/059h.png" alt="Hisuian Arcanine"><p class="pokemon_name dm">Hisuian Arcanine</p></div>
@@ -1437,7 +1436,7 @@
                     <div class="sprite_item regionals hisui dm" data-type1="ice" data-type2="rock"><img src="images/pokemon_images/713h.png" alt="Hisuian Avalugg"><p class="pokemon_name dm">Hisuian Avalugg</p></div>
                     <div class="sprite_item regionals hisui dm" data-type1="grass" data-type2="fighting"><img src="images/pokemon_images/724h.png" alt="Hisuian Decidueye"><p class="pokemon_name dm">Hisuian Decidueye</p></div>
                 </div>
-                <p class="regional_text filter_text paldea_text fighting_text fire_text water_text poison_text ground_text regionals_text">Paldean Forms</p>
+                <p id="paldea_title" class="regional_text filter_text paldea_text fighting_text fire_text water_text poison_text ground_text regionals_text">Paldean Forms</p>
                 <div id="paldean_sprites">
                     <div class="sprite_item regionals paldea dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/128p.png" alt="Paldean Tauros"><p class="pokemon_name dm">Paldean Tauros (Combat Breed)</p></div>
                     <div class="sprite_item regionals paldea dm" data-type1="fighting" data-type2="fire"><img src="images/pokemon_images/128pb.png" alt="Paldean Tauros Blaze Breed"><p class="pokemon_name dm">Paldean Tauros (Blaze Breed)</p></div>
@@ -1445,7 +1444,7 @@
                     <div class="sprite_item regionals paldea dm" data-type1="ground" data-type2="poison"><img src="images/pokemon_images/194p.png" alt="Paldean Wooper"><p class="pokemon_name dm">Paldean Wooper</p></div>
                 </div>
                 <h3 id="mega_gmax" class="filter_text kanto_text johto_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Mega and Gigantamax Forms</h3>
-                <p class="regional_text filter_text kanto_text johto_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Mega & Primal Pokemon</p>
+                <p id="mega_title" class="regional_text filter_text kanto_text johto_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Mega & Primal Pokemon</p>
                 <div id="mega_sprites">
                   <div class="sprite_item megas kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003m.png" alt="Mega Venusaur"><p class="pokemon_name dm">Mega Venusaur</p></div>
                   <div class="sprite_item megas kanto dm" data-type1="fire" data-type2="dragon"><img src="images/pokemon_images/006mx.png" alt="Mega Charizard X"><p class="pokemon_name dm">Mega Charizard X</p></div>
@@ -1543,7 +1542,7 @@
                   <div class="sprite_item megas paldea dm" data-type1="water" data-type2="dragon"><img src="images/pokemon_images/978m.png" alt="Mega Tatsugiri"><p class="pokemon_name dm">Mega Tatsugiri</p></div>
                   <div class="sprite_item megas paldea dm" data-type1="dragon" data-type2="ice"><img src="images/pokemon_images/998m.png" alt="Mega Baxcalibur"><p class="pokemon_name dm">Mega Baxcalibur</p></div>
                 </div>
-                <p class="regional_text filter_text kanto_text unova_text alola_text galar_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Gigantamax / Eternamax Pokemon</p>
+                <p id="gmax_title" class="regional_text filter_text kanto_text unova_text alola_text galar_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text poison_text psychic_text rock_text steel_text water_text">Gigantamax / Eternamax Pokemon</p>
                 <div id="gmax_sprites">
                   <div class="sprite_item gmaxes kanto dm" data-type1="grass" data-type2="poison"><img src="images/pokemon_images/003g.png" alt="GMax Venusaur"><p class="pokemon_name dm">G-Max Venusaur</p></div>
                   <div class="sprite_item gmaxes kanto dm" data-type1="fire" data-type2="flying"><img src="images/pokemon_images/006g.png" alt="GMax Charizard"><p class="pokemon_name dm">G-Max Charizard</p></div>
@@ -1669,7 +1668,7 @@
                   <div class="sprite_item other_sprite paldea dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/1024s.png" alt="Terapagos (Stellar Form)"><p class="pokemon_name dm">Terapagos (Stellar Form)</p></div>
                   <!-- <div class="sprite_item other_sprite dm" data-type1="" data-type2=""><img src="" alt=""><p class="pokemon_name dm"></p></div> -->
                 </div>
-                <p class="regional_text filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text fairy_text">Canon / Side Game / Anime Unique Variants & Creatures</p>
+                <p id="variant_title" class="regional_text filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text fairy_text">Canon / Side Game / Anime Unique Variants & Creatures</p>
                 <div id="variant_sprites">
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr20.png" alt="Venustoise"><p class="pokemon_name dm">Venustoise</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="bug" data-type2="flying"><img src="images/pokemon_images/vr19.png" alt="Butterfree (Pink)"><p class="pokemon_name dm">Butterfree (Pink)</p></div>
@@ -1696,7 +1695,7 @@
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr18.png" alt="Substitute Doll"><p class="pokemon_name dm">Substitute Doll</p></div>
                   <div class="sprite_item cs_variants dm" data-type1="" data-type2=""><img src="images/pokemon_images/vr12.png" alt="Dark Matter"><p class="pokemon_name dm">Void Shadow</p></div>
                 </div>
-                <p class="regional_text filter_text fighting_text grass_text dark_text psychic_text normal_text steel_text ghost_text electric_text fire_text">Pokestar Studios Opponents</p>
+                <p id="ps_title" class="regional_text filter_text fighting_text grass_text dark_text psychic_text normal_text steel_text ghost_text electric_text fire_text">Pokestar Studios Opponents</p>
                 <div id="pokestar_sprites">
                   <div class="sprite_item pokestars dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/ps2.png" alt="Black Belt"><p class="pokemon_name dm">Black Belt</p></div>
                   <div class="sprite_item pokestars dm" data-type1="grass" data-type2=""><img src="images/pokemon_images/ps1.png" alt="Black Door"><p class="pokemon_name dm">Black Door</p></div>
@@ -1713,7 +1712,7 @@
                   <div class="sprite_item pokestars dm" data-type1="electric" data-type2=""><img src="images/pokemon_images/ps14.png" alt="UFO"><p class="pokemon_name dm">UFO</p></div>
                   <div class="sprite_item pokestars dm" data-type1="fire" data-type2=""><img src="images/pokemon_images/ps16.png" alt="White Door"><p class="pokemon_name dm">White Door</p></div>
                 </div>
-                <p class="regional_text filter_text">Beta & Demo Unique Pokemon</p>
+                <p id="beta_title" class="regional_text filter_text">Beta & Demo Unique Pokemon</p>
                 <div id="beta_sprites">
                   <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta1.png" alt="Hanamogura"><p class="pokemon_name dm">Hanamogura</p></div>
                   <div class="sprite_item beta dm" data-type1="" data-type2=""><img src="images/pokemon_images/beta10.png" alt="Honoguma"><p class="pokemon_name dm">Honoguma</p></div>
