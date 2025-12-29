@@ -1,4 +1,5 @@
 import { megaList, gmaxList, otherList, variantList, pokestarList, betaList } from "./additional_dex.js";
+import { showSelection, checkRemaining } from "./main_filter.js";
 
 const tips = document.querySelector("#tips_click");
 const pokemonSprites = document.querySelector("#pokemon_sprites");
@@ -13,6 +14,7 @@ const nameForm = document.querySelector("#download-dex-con")
 const typeCon = document.querySelector("#types_count")
 const countCon = document.querySelector("#count_con")
 const modeButton = document.querySelectorAll(".mode_select_button")
+const saveButton = document.querySelector("#pd-save")
 
 let finalName = ""
 let count = 0
@@ -296,14 +298,12 @@ function addPokemonImage(){
   let imgCheck = box.querySelector("img")
 
   if (imgCheck) {
-    console.log(`${name}`)
     imgCheck.src = `images/pokemon_images/${source}.png`
     imgCheck.alt = `${name}`
     imgCheck.dataset.type1 = `${type1}`
     imgCheck.dataset.type2 = `${type2}`
     countTypes()
   } else {
-    console.log("boo")
     img.src = `images/pokemon_images/${source}.png`
     box.appendChild(img)
     img.setAttribute("class", "mobile_image")
@@ -684,6 +684,13 @@ function checkMode() {
     spriteArea.addEventListener("drop", returnToOriginalPosition);
 
     pokedexBox.forEach(div => {
+      const image = div.querySelector("img")
+
+      if (image) {
+        image.addEventListener("dragstart", dragStart);
+        image.addEventListener("dragend", dragEnd);
+      }
+
       div.addEventListener("dragover", dragOver);
       div.addEventListener("dragenter", dragEnter);
       div.addEventListener("dragleave", dragLeave);
@@ -699,7 +706,7 @@ function checkMode() {
     subtractButton.forEach(button => button.remove())
     moveDiv.forEach(div => div.remove())
   } else if (mode === "click") {
-    spriteItem = document.querySelectorAll(".sprite_item")
+    const spriteItem = document.querySelectorAll(".sprite_item")
 
     spriteArea.removeEventListener("dragover", dragOver);
     spriteArea.removeEventListener("dragenter", dragEnter);
@@ -707,6 +714,13 @@ function checkMode() {
     spriteArea.removeEventListener("drop", returnToOriginalPosition);
 
     pokedexBox.forEach(div => {
+      const image = div.querySelector("img")
+
+      if (image) {
+        image.removeEventListener("dragstart", dragStart);
+        image.removeEventListener("dragend", dragEnd);
+      }
+
       div.removeEventListener("dragover", dragOver);
       div.removeEventListener("dragenter", dragEnter);
       div.removeEventListener("dragleave", dragLeave);
@@ -852,28 +866,24 @@ function convertList() {
     $(document).ready(function () {
         $("select").select2();
 
-        // Remove old change listener if it exists
         $("select").off("change", addPokemonImage);
 
-        // Use unified listener that works for both normal and Select2
         $("select").on("change", addPokemonImageSelect2);
         $("select").on("select2:select", addPokemonImageSelect2);
     });
 }
 
 function addPokemonImageSelect2(e) {
-    // If triggered by Select2, e.params.data exists
     let option, source, name, type1, type2, box;
     
     if (e.params && e.params.data) {
-        option = e.params.data.element; // original <option>
+        option = e.params.data.element;
         box = e.target.parentNode;
-        source = e.params.data.id;       // value
-        name = e.params.data.text;       // text
+        source = e.params.data.id;
+        name = e.params.data.text;
         type1 = $(option).data('type1');
         type2 = $(option).data('type2');
     } else {
-        // fallback for normal <select> change
         box = this.parentNode;
         option = this.options[this.selectedIndex];
         source = this.value;
@@ -901,6 +911,99 @@ function addPokemonImageSelect2(e) {
     });
 }
 
+function saveDex() {
+    const pokedexArea = document.querySelector("#pokedex-area")
+    const compressedDex = LZString.compress(pokedexArea.innerHTML)
+
+    localStorage.setItem('dex', compressedDex)
+}
+
+function loadDex() {
+    const compressedDex = localStorage.getItem('dex')
+    const pokedexArea = document.querySelector("#pokedex-area")
+
+    if (compressedDex) {
+        const decompressedDex = LZString.decompress(compressedDex)
+
+        pokedexArea.innerHTML = decompressedDex
+
+        const addButtons = document.querySelectorAll(".add_button")
+        const subtractButtons = document.querySelectorAll(".subtract_button")
+        const directionCon = document.querySelectorAll(".direction_con")
+
+        addButtons.forEach(button => button.remove())
+        subtractButtons.forEach(button => button.remove())
+        directionCon.forEach(con => con.remove())
+
+        requestAnimationFrame(() => {
+            reattachListeners();
+        });
+    }
+}
+
+function reattachListeners() {
+  const pokedexBox = document.querySelectorAll(".pokedex_box")
+  const spriteArea = document.querySelector("#sprite_area")
+  const submitbutton = document.querySelector("#pd-submit-button")
+  const downloadButton = document.querySelector("#pd-download")
+  const dexName = document.querySelector("#custom-dex-form")
+  const saveButton = document.querySelector("#pd-save")
+  const filter = document.querySelector("#cd-filter-select")
+  const typeFilter = document.querySelector("#cd-type-select")
+  const dexSearch = document.querySelector("#pokemon_search")
+
+  var x = window.matchMedia("(min-width: 1024px)")
+
+  if (x.matches) {
+    pokedexBox.forEach(box => {
+      const image = box.querySelector("img")
+
+      box.addEventListener("dragover", dragOver);
+      box.addEventListener("dragenter", dragEnter);
+      box.addEventListener("dragleave", dragLeave);
+      box.addEventListener("drop", drop);
+
+      if (image) {
+        image.addEventListener("dragstart", dragStart);
+        image.addEventListener("dragend", dragEnd);
+      }
+
+      countTypes()
+    })
+
+    spriteArea.addEventListener("dragover", dragOver);
+    spriteArea.addEventListener("dragenter", dragEnter);
+    spriteArea.addEventListener("dragleave", dragLeave);
+    spriteArea.addEventListener("drop", returnToOriginalPosition);
+    submitbutton.addEventListener("click", populateBoxArea)
+    downloadButton.addEventListener("click", openNameForm)
+    dexName.addEventListener("submit", exportDivToImage)
+    saveButton.addEventListener("click", saveDex)
+
+    filter.addEventListener("change", showSelection)
+    typeFilter.addEventListener("change", showSelection)
+    dexSearch.addEventListener("input", showSelection)
+  } else {
+    const select2Elements = document.querySelectorAll(".select2")
+    const mobileSelect = document.querySelectorAll(".mobile_select")
+
+    mobileSelect.forEach(select => select.remove())
+    select2Elements.forEach(element => element.remove())
+
+    submitbutton.addEventListener("click", populateBoxArea)
+    downloadButton.addEventListener("click", openNameForm)
+    dexName.addEventListener("submit", exportDivToImage)
+    saveButton.addEventListener("click", saveDex)
+
+    mobileList()
+    countTypes()
+  }
+
+  
+
+  // mobileList.addEventListener("change", addPokemonImage);
+}
+
 spriteArea.addEventListener("dragover", dragOver);
 spriteArea.addEventListener("dragenter", dragEnter);
 spriteArea.addEventListener("dragleave", dragLeave);
@@ -911,3 +1014,7 @@ dexName.addEventListener("submit", exportDivToImage)
 tips.addEventListener("click", openTips)
 typeCon.addEventListener("click", openTypeCount)
 modeButton.forEach(button => button.addEventListener("click", changeMode))
+saveButton.addEventListener("click", saveDex)
+document.addEventListener("DOMContentLoaded", loadDex)
+
+localStorage.clear()

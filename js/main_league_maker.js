@@ -117,6 +117,8 @@ function trainerPopulation() {
         Promise.all(fetchPromises).then(() => {
             spinnerLoad.innerHTML = "";
             spinnerLoad.style.marginBottom = "0px"
+
+            convertList()
         });
 
     } else if (mode === "all") {
@@ -134,6 +136,8 @@ function trainerPopulation() {
 
                             trainerBox.appendChild(option);
                         });
+
+                        convertList()
                     })
             );
         });
@@ -266,6 +270,45 @@ function toTop() {
     } else {
       gsap.to(window, { duration: 2.5, scrollTo: (0)})
     }
+}
+
+function convertList() {
+    const trainerSelects = document.querySelectorAll(".trainer-select");
+
+    trainerSelects.forEach(select => {
+        const $select = $(select);
+
+        if (!$select.hasClass("select2-hidden-accessible")) {
+            $select.select2();
+        }
+
+        $select.off("select2:select");
+
+        $select.on("select2:select", addTrainerImageSelect2);
+    });
+}
+
+function addTrainerImageSelect2(e) {
+    const select = e.target;
+    const selectedOption = e.params.data.element;
+
+    const dataLink = select.dataset.link;
+    const divSelector = document.querySelector(`#${dataLink}`);
+    const trainerImage = divSelector.querySelector("div");
+    const trainerName = divSelector.querySelector(".trainer-name");
+
+    const trainerKey = selectedOption.dataset.trainer;
+
+    if (trainerKey === 'none') {
+        divSelector.style.display = "none";
+        return;
+    }
+
+    divSelector.style.display = "block";
+    trainerImage.style.backgroundImage =
+        `url('../images/trainer_images/${trainerKey}.png'), linear-gradient(#fff, #ededed)`;
+
+    trainerName.textContent = selectedOption.textContent;
 }
 
 modeButton.forEach(button => button.addEventListener("click", modeSelect))
