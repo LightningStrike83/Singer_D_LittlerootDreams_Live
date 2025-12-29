@@ -23,14 +23,15 @@
     <link rel="manifest" href="../images/favicon/site.webmanifest">
     <script defer src="js/main_darkmode.js?version=2.0"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script defer type="module" src="js/main_filter.js?version=2.0"></script>
     <script defer type="module" src="js/main_dex.js?version=2.0"></script>
-    <script defer src="js/main_filter.js?version=2.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
     <script defer src="js/main.js?version=2.0"></script>
 </head>
-<body class="dm">
+<body id="dex-body" class="dm">
     <div id="container">
       <div id="theme-mode-con" class="full-width-grid-con dm">
         <div id="theme-enable">
@@ -1395,7 +1396,7 @@
                     <div class="sprite_item regionals alola dm" data-type1="grass" data-type2="dragon"><img src="images/pokemon_images/103a.png" alt="Alolan Exeggutor"><p class="pokemon_name dm">Alolan Exeggutor</p></div>
                     <div class="sprite_item regionals alola dm" data-type1="fire" data-type2="ghost"><img src="images/pokemon_images/105a.png" alt="Alolan Marowak"><p class="pokemon_name dm">Alolan Marowak</p></div>
             </div>
-                <p id="galar_title" class="regional_text filter_text galar_text steel_text psychic_text fairy_text poison_text fighting_text ice_text flying_text dark_text ghost_text normal_text ice_text ground_text regionals_text regionals_text">Galarian Forms</p>
+                <p id="galar_title" class="regional_text filter_text galar_text steel_text psychic_text fairy_text poison_text fighting_text ice_text flying_text dark_text ghost_text normal_text ice_text ground_text regionals_text">Galarian Forms</p>
                 <div id="galarian_sprites">
                     <div class="sprite_item regionals galar dm" data-type1="steel" data-type2=""><img src="images/pokemon_images/052g.png" alt="Galarian Meowth"><p class="pokemon_name dm">Galarian Meowth</p></div>
                     <div class="sprite_item regionals galar dm" data-type1="psychic" data-type2=""><img src="images/pokemon_images/077g.png" alt="Galarian Ponyta"><p class="pokemon_name dm">Galarian Ponyta</p></div>
@@ -1580,7 +1581,7 @@
                   <div class="sprite_item gmaxes galar dm" data-type1="fighting" data-type2=""><img src="images/pokemon_images/892rg.png" alt="GMax Urshifu (Rapid Strike)"><p class="pokemon_name dm">G-Max Urshifu (Rapid Strike)</p></div>
                 </div>
                 <h3 id="other" class="filter_text psychic_text fighting_text electric_text flying_text steel_text dragon_text water_text dark_text fairy_text">Variants, Beta, and Other Pokemon</h3>
-                <p id="other_models" class="filter_text regional_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text megas_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text psychic_text rock_text steel_text water_text">Other Form Models</p>
+                <p id="other_models" class="filter_text regional_text hoenn_text sinnoh_text unova_text kalos_text alola_text galar_text paldea_text megas_text bug_text dark_text dragon_text electric_text fairy_text fighting_text fire_text flying_text ghost_text grass_text ground_text ice_text normal_text psychic_text rock_text steel_text water_text regionals_text">Other Form Models</p>
                 <div id="other_sprites">
                   <div class="sprite_item other_sprite hoenn dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/351f.png" alt="Castform (Sunny)"><p class="pokemon_name dm">Castform (Sunny)</p></div>
                   <div class="sprite_item other_sprite hoenn dm" data-type1="normal" data-type2=""><img src="images/pokemon_images/351w.png" alt="Castform (Rainy)"><p class="pokemon_name dm">Castform (Rainy)</p></div>
@@ -1787,7 +1788,10 @@
                     <button id="pd-submit-button" type="submit">Submit</button>
                 </div>
                 <div id="download">
-                    <button id="pd-download">Save Pokedex as Image</button>
+                    <button id="pd-download"><img class="dex_button_icon" src="images/image_icon.png" alt="Image Icon"><img class="dex_button_hover" src="images/image_icon_hover.png" alt="Image Icon">Save Pokedex as Image</button>
+                </div>
+                <div id="local_save">
+                  <button id="pd-save"><img class="dex_button_icon" src="images/save_icon.png" alt="Save Icon"><img class="dex_button_hover" src="images/save_icon_hover.png" alt="Save Icon">Save Pokedex to Local Storage</button>
                 </div>
                 <div id="pokedex_display"></div>
                 <div id="error-handle"></div>

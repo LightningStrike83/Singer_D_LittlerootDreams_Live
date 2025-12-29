@@ -235,6 +235,43 @@
 
 .type-select {
     width: 60%;
+    order: 1;
+}
+
+#league-body {
+    .select2-selection {
+        border-radius: 20px!important;
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+        font-size: calc(100% - 2px);
+        border: 1px solid c.$dark-wood!important;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: left!important;
+
+        .select2-results__option {
+            color: red !important;
+        }
+    }
+
+    .select2 {
+        width: 60%!important;
+    }
+
+    .select2-selection__rendered {
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    }
+
+    .select2-results__option {
+        color: black!important;
+        font-size: calc(100% - 2px)!important;
+    }
+}
+
+.select2-results__options {
+    display: flex!important;
+    flex-direction: column!important;
 }
 
 .gym-div {
@@ -282,13 +319,24 @@
         text-align: left;
     }
 
+    #selection-con {
+        .select2-selection {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .select2 {
+            width: 20%!important;
+        }
+    }
+
     .trainer-select {
-        margin-bottom: 10px;
-        width: auto;
+        margin-bottom: 0;
+        width: 20%;
     }
     
     .type-select {
-        width: auto;
+        width: 20%;
     }
 
     .gym-div, .e4-div, #champion-link, #superboss-link {

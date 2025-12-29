@@ -2,7 +2,11 @@ const filter = document.querySelector("#cd-filter-select")
 const typeFilter = document.querySelector("#cd-type-select")
 const dexSearch = document.querySelector("#pokemon_search")
 
-function showSelection() {
+export function showSelection() {
+    const filter = document.querySelector("#cd-filter-select")
+    const typeFilter = document.querySelector("#cd-type-select")
+    const dexSearch = document.querySelector("#pokemon_search")
+
     const sprites = document.querySelectorAll(".sprite_item")
     const filterSelection = filter.value
     const typeFilterSelection = typeFilter.value
@@ -10,6 +14,8 @@ function showSelection() {
         .toLowerCase()
         .replace(/[^a-z0-9]/gi, "")
         .trim()
+
+    console.log(typeFilterSelection)
 
     sprites.forEach(sprite => {
         let matchesRegion = true
@@ -47,7 +53,7 @@ function showSelection() {
     checkRemaining()
 }
 
-function checkRemaining() {
+export function checkRemaining() {
   const regionals = document.querySelectorAll(".regionals")
   const megagmaxTitle =  document.querySelector("#mega_gmax")
   const otherMainTitle = document.querySelector("#other")
@@ -58,7 +64,7 @@ function checkRemaining() {
   const paldeaSprites = document.querySelectorAll(".regionals.paldea")
   const megaSprites = document.querySelectorAll(".megas")
   const gmaxSprites = document.querySelectorAll(".gmaxes")
-  const otherSprites = document.querySelectorAll(".other_sprites")
+  const otherSprites = document.querySelectorAll(".other_sprite")
   const variantSprites = document.querySelectorAll(".cs_variants")
   const pokestarSprites = document.querySelectorAll(".pokestars")
   const betaSprites = document.querySelectorAll(".beta")
@@ -211,6 +217,10 @@ function checkRemaining() {
 
   if (o !== 0) {
     otherTitle.style.display = "block"
+    galarTitle.style.display = "none"
+    megaTitle.style.display = "none"
+    megagmaxTitle.style.display = "none"
+    regionalTitle.style.display = "none"
     o = 0
   } else {
     otherTitle.style.display = "none"
