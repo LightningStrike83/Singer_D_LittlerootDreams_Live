@@ -22,14 +22,14 @@
     margin-top: 10px;
 }
 
-#image-credit-con, #data-credit-con {
+#image-credit-con, #data-credit-con, #other-notes {
     padding-top: 10px;
     background-color: c.$body-wood;
     border: 2px solid c.$dark-wood;
     border-radius: 20px;
 }
 
-#image-credit-con.dark-mode, #data-credit-con {
+#image-credit-con.dark-mode, #data-credit-con.dark-mode, #other-notes.dark-mode {
     background-color: c.$night-wood;
 }
 

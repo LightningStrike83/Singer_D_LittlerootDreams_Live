@@ -155,10 +155,12 @@
 
 .regional_text {
     font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
     text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 #size {
@@ -174,10 +176,10 @@
     }
 }
 
-#download, #local_save {
+#download, #local_save, #clear_dex, #clear_save {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
     button {
         display: flex;
@@ -581,6 +583,53 @@
     }
 }
 
+#control_con {
+    margin-top: 20px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    padding-top: 10px;
+}
+
+#control_con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#control_home {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#save_message {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+
+    p {
+        font-size: calc(100%);
+    }
+}
+
+#ref_note {
+    padding-top: 5px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: calc(100% - 2px)!important;
+    text-align: center;
+    background-image: c.$wood;
+}
+
+#ref_link {
+    font-size: calc(100%)!important;
+    text-decoration: underline;
+}
+
 @media screen and (min-width: 428px) {
     .mobile_image {
         margin-top: 0px;
@@ -589,11 +638,24 @@
     .pd-tip {
         font-size: 12px!important;
     }
+
+    #control_home {
+        flex-direction: row;
+        #pd-clear {
+            margin-right: 50px;
+        }
+    }
 }
 
 @media screen and (min-width: 550px) {
     #tips-pokedex #tips_area {
         grid-column: 4/5;
+    }
+
+    #control_home {
+        #pd-clear {
+            margin-right: 200px;
+        }
     }
 }
 
@@ -604,6 +666,18 @@
 
     .pokedex_box {
         width: 20%;
+    }
+
+    #control_home {
+        #pd-clear {
+            margin-right: 0px;
+        }
+    }
+
+    #save_message {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 

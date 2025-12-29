@@ -15,10 +15,16 @@ const typeCon = document.querySelector("#types_count")
 const countCon = document.querySelector("#count_con")
 const modeButton = document.querySelectorAll(".mode_select_button")
 const saveButton = document.querySelector("#pd-save")
+const clearButton = document.querySelector("#pd-clear")
+const emptyButton = document.querySelector("#pd-empty")
+const saveText = document.querySelector("#saved_text")
+const dateIndicator = document.querySelector("#date_indicator")
 
 let finalName = ""
-let count = 0
 let mode = "drag"
+let defaultState = ""
+let count = 0
+let savedDate = ""
 
 function openTips() {
   const tipsBox = document.querySelector("#tips_box")
@@ -871,6 +877,8 @@ function convertList() {
         $("select").on("change", addPokemonImageSelect2);
         $("select").on("select2:select", addPokemonImageSelect2);
     });
+
+    checkInitialState()
 }
 
 function addPokemonImageSelect2(e) {
@@ -914,8 +922,32 @@ function addPokemonImageSelect2(e) {
 function saveDex() {
     const pokedexArea = document.querySelector("#pokedex-area")
     const compressedDex = LZString.compress(pokedexArea.innerHTML)
+    const now = new Date();
+
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1; // months are 0-based
+    let day = now.getDate();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+
+    const d = new Date(year, month - 1, day, hours, minutes);
+    
+    
+
+    savedDate = d.toLocaleString("en-CA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
 
     localStorage.setItem('dex', compressedDex)
+    localStorage.setItem('count', count)
+    localStorage.setItem('date', savedDate)
+
+    saveText.textContent = "Yes"
+    dateIndicator.textContent = savedDate
 }
 
 function loadDex() {
@@ -924,6 +956,13 @@ function loadDex() {
 
     if (compressedDex) {
         const decompressedDex = LZString.decompress(compressedDex)
+        const retrievedCount = localStorage.getItem('count')
+        const retrievedDate = localStorage.getItem('date')
+
+        console.log(retrievedDate)
+
+        count = retrievedCount
+        savedDate = retrievedDate
 
         pokedexArea.innerHTML = decompressedDex
 
@@ -938,6 +977,9 @@ function loadDex() {
         requestAnimationFrame(() => {
             reattachListeners();
         });
+
+        saveText.textContent = "Yes"
+        dateIndicator.textContent = savedDate
     }
 }
 
@@ -945,12 +987,10 @@ function reattachListeners() {
   const pokedexBox = document.querySelectorAll(".pokedex_box")
   const spriteArea = document.querySelector("#sprite_area")
   const submitbutton = document.querySelector("#pd-submit-button")
-  const downloadButton = document.querySelector("#pd-download")
-  const dexName = document.querySelector("#custom-dex-form")
-  const saveButton = document.querySelector("#pd-save")
   const filter = document.querySelector("#cd-filter-select")
   const typeFilter = document.querySelector("#cd-type-select")
   const dexSearch = document.querySelector("#pokemon_search")
+  const dragImages = document.querySelectorAll(".sprite_item img");
 
   var x = window.matchMedia("(min-width: 1024px)")
 
@@ -971,14 +1011,16 @@ function reattachListeners() {
       countTypes()
     })
 
+    dragImages.forEach(function (image) {
+      image.addEventListener("dragstart", dragStart);
+      image.addEventListener("dragend", dragEnd);
+      })
+
     spriteArea.addEventListener("dragover", dragOver);
     spriteArea.addEventListener("dragenter", dragEnter);
     spriteArea.addEventListener("dragleave", dragLeave);
     spriteArea.addEventListener("drop", returnToOriginalPosition);
     submitbutton.addEventListener("click", populateBoxArea)
-    downloadButton.addEventListener("click", openNameForm)
-    dexName.addEventListener("submit", exportDivToImage)
-    saveButton.addEventListener("click", saveDex)
 
     filter.addEventListener("change", showSelection)
     typeFilter.addEventListener("change", showSelection)
@@ -991,18 +1033,73 @@ function reattachListeners() {
     select2Elements.forEach(element => element.remove())
 
     submitbutton.addEventListener("click", populateBoxArea)
-    downloadButton.addEventListener("click", openNameForm)
-    dexName.addEventListener("submit", exportDivToImage)
-    saveButton.addEventListener("click", saveDex)
 
     mobileList()
     countTypes()
   }
-
-  
-
-  // mobileList.addEventListener("change", addPokemonImage);
 }
+
+function checkInitialState() {
+  const initialState = localStorage.getItem("initial")
+
+  if (initialState) {
+    const decompressedState = LZString.decompress(initialState)
+
+    defaultState = decompressedState
+  } else {
+    const pokedexArea = document.querySelector("#pokedex-area")
+    const initialDex = LZString.compress(pokedexArea.innerHTML)
+
+    localStorage.setItem('initial', initialDex)
+  }
+}
+
+function checkSize() {
+  var x = window.matchMedia("(min-width: 1024px)")
+
+  if (x.matches) {
+    window.addEventListener("DOMContentLoaded", checkInitialState)
+  }
+}
+
+function clearDex() {
+  const pokedexArea = document.querySelector("#pokedex-area")
+
+  pokedexArea.innerHTML = ""
+
+  count = 0
+
+  if (defaultState !== "") {
+    pokedexArea.innerHTML = defaultState
+
+    reattachListeners()
+  } else {
+    const initialState = localStorage.getItem("initial")
+
+    const decompressedState = LZString.decompress(initialState)
+
+    pokedexArea.innerHTML = decompressedState
+
+    requestAnimationFrame(() => {
+            reattachListeners();
+        });
+  }
+}
+
+function emptyStoredDex() {
+  const savedDex = localStorage.getItem('dex')
+
+  if (savedDex) {
+    localStorage.removeItem('dex')
+    localStorage.removeItem('date')
+    localStorage.removeItem('count')
+  }
+
+  saveText.textContent = "No"
+  dateIndicator.textContent = "N/A"
+}
+
+checkSize()
 
 spriteArea.addEventListener("dragover", dragOver);
 spriteArea.addEventListener("dragenter", dragEnter);
@@ -1016,5 +1113,8 @@ typeCon.addEventListener("click", openTypeCount)
 modeButton.forEach(button => button.addEventListener("click", changeMode))
 saveButton.addEventListener("click", saveDex)
 document.addEventListener("DOMContentLoaded", loadDex)
-
-localStorage.clear()
+downloadButton.addEventListener("click", openNameForm)
+dexName.addEventListener("submit", exportDivToImage)
+saveButton.addEventListener("click", saveDex)
+clearButton.addEventListener("click", clearDex)
+emptyButton.addEventListener("click", emptyStoredDex)
