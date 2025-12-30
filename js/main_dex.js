@@ -476,82 +476,77 @@ function returnToOriginalPosition(event) {
   checkMode()
 });
 
-function exportDivToImage(event) {
-  const divExport = document.querySelector("#pokedex_display")
-  const mobileSelect = document.querySelectorAll(".mobile_select")
-  const pokedexBox = document.querySelectorAll(".pokedex_box")
-  const mobileImage = document.querySelectorAll(".mobile_image")
-  const pokedexArea = document.querySelector("#pokedex_area")
-  const p = document.createElement("p")
-  const title = document.createElement("h3")
-  const form = document.querySelector("#custom-dex")
-  const select2 = document.querySelectorAll(".select2")
-  let formName = form.value
+async function exportDivToImage(event) {
+  event.preventDefault();
 
-  var x = window.matchMedia("(min-width: 1024px)")
-  var smallX = window.matchMedia("(min-width: 768px")
+  const divExport = document.querySelector("#pokedex_display");
+  const mobileSelect = document.querySelectorAll(".mobile_select");
+  const pokedexBox = document.querySelectorAll(".pokedex_box");
+  const pokedexArea = document.querySelector("#pokedex_area");
+  const form = document.querySelector("#custom-dex");
+  const select2 = document.querySelectorAll(".select2");
 
-  event.preventDefault()
-  finalName = formName
+  const p = document.createElement("p");
+  const title = document.createElement("h3");
 
-  pokedexArea.classList.remove("m-col-start-7")
-  pokedexArea.classList.remove("m-col-end-13")
+  let formName = form.value;
+  finalName = formName;
 
-  mobileSelect.forEach(list => list.remove())
-  select2.forEach(select => select.remove())
+  const smallX = window.matchMedia("(min-width: 768px)");
+
+  pokedexArea.classList.remove("m-col-start-7", "m-col-end-13");
+
+  mobileSelect.forEach(list => list.remove());
+  select2.forEach(select => select.remove());
 
   pokedexBox.forEach(box => {
-      box.style.width = "10%"
-      box.style.minHeight = "min-content"
-  })
-
-  p.textContent = "Create your own at littlerootdreams.com"
-  p.setAttribute("id", "pokedex-credit")
-
-  title.textContent = `${finalName}`
-  title.setAttribute("id", "my-pokedex-title")
-
-  divExport.appendChild(title)
-  divExport.appendChild(p)
-
-  divExport.style.backgroundImage = "linear-gradient(#319dff, #70afe2)"
-
-  if (mode === "click") {
-    let moveDiv = document.querySelectorAll(".direction_con")
-    let subtractButton = document.querySelectorAll(".subtract_button")
-
-    subtractButton.forEach(button => button.remove())
-    moveDiv.forEach(div => div.remove())
-  }
-  
-  html2canvas(divExport).then((canvas) => {
-    const dataUrl = canvas.toDataURL("image/png");
-
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = "my-pokedex.png"; 
-    link.click();
+    box.style.width = "10%";
   });
 
-  mobileList()
+  p.textContent = "Create your own at littlerootdreams.com";
+  p.id = "pokedex-credit";
 
-  pokedexBox.forEach(box => {
-    if (smallX.matches) {
-      box.style.width = "20%"
-    } else {
-      box.style.width = "25%"
-    }
-  })
+  title.textContent = finalName;
+  title.id = "my-pokedex-title";
 
-  form.value = ""
-  nameForm.style.visibility = "hidden"
-  nameForm.style.opacity = "0"
+  divExport.appendChild(title);
+  divExport.appendChild(p);
 
-  divExport.style.backgroundImage = "none"
+  divExport.style.backgroundImage = "linear-gradient(#319dff, #70afe2)";
 
-  clearText()
-  readdButtons()
-  openConfirmation()
+  if (mode === "click") {
+    document.querySelectorAll(".subtract_button").forEach(b => b.remove());
+    document.querySelectorAll(".direction_con").forEach(d => d.remove());
+  }
+
+  try {
+    await new Promise(requestAnimationFrame);
+
+    const canvas = await html2canvas(divExport);
+
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = "my-pokedex.png";
+    link.click();
+
+  } finally {
+    mobileList();
+
+    pokedexBox.forEach(box => {
+      box.style.width = smallX.matches ? "20%" : "25%";
+    });
+
+    form.value = "";
+    nameForm.style.visibility = "hidden";
+    nameForm.style.opacity = "0";
+
+    divExport.style.backgroundImage = "none";
+
+    clearText();
+    readdButtons();
+    openConfirmation();
+  }
 }
 
 function readdButtons() {

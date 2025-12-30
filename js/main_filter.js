@@ -15,8 +15,6 @@ export function showSelection() {
         .replace(/[^a-z0-9]/gi, "")
         .trim()
 
-    console.log(typeFilterSelection)
-
     sprites.forEach(sprite => {
         let matchesRegion = true
         let matchesType = true
@@ -217,10 +215,17 @@ export function checkRemaining() {
 
   if (o !== 0) {
     otherTitle.style.display = "block"
-    galarTitle.style.display = "none"
-    megaTitle.style.display = "none"
-    megagmaxTitle.style.display = "none"
-    regionalTitle.style.display = "none"
+    
+    const filter = document.querySelector("#cd-filter-select")
+    const filterSelection = filter.value
+
+    if (filterSelection === "other_sprite") {
+      galarTitle.style.display = "none"
+      megaTitle.style.display = "none"
+      megagmaxTitle.style.display = "none"
+      regionalTitle.style.display = "none"
+    }
+
     o = 0
   } else {
     otherTitle.style.display = "none"
