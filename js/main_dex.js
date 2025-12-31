@@ -496,6 +496,11 @@ async function exportDivToImage(event) {
   const exportCon = document.querySelector("#export_con")
   const title = document.querySelector("#my-pokedex-title")
   const creationCon = document.querySelector("#creation_con")
+  const spriteArea = document.querySelector("#sprite_area")
+  const spriteClone = spriteArea.cloneNode(true)
+  const pokedexArea = document.querySelector("#pokedex-area")
+
+  spriteArea.remove()
 
   exportCon.style.display = "grid"
 
@@ -535,6 +540,9 @@ async function exportDivToImage(event) {
     exportCon.style.display = "none"
 
     openConfirmation();
+
+    pokedexArea.appendChild(spriteClone)
+    reattachListeners()
   }
 }
 
