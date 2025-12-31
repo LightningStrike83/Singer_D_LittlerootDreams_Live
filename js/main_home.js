@@ -15,7 +15,7 @@ function updatePopulation() {
             const infoDiv = document.createElement("div")
 
             heading.textContent = update.title
-            text.textContent = update.text
+            text.innerHTML = update.text
             date.textContent = update.date
 
             heading.setAttribute("class", "update-title")
