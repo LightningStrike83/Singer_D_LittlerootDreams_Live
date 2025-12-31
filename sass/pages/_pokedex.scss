@@ -348,7 +348,7 @@
     margin-bottom: 10px;
 }
 
-#download-dex-con, #confirmation_message_con {
+#download-dex-con, #confirmation_message_con, #creation_con {
     height: 100vh;
     background-color: c.$transparentblack;
     position: fixed;
@@ -358,6 +358,10 @@
     visibility: hidden;
     opacity: 0;
     z-index: 20;
+}
+
+#creation_con {
+    z-index: 30;
 }
 
 #custom-dex-con {
@@ -542,7 +546,7 @@
     }
 }
 
-#confirmation_message_con {
+#confirmation_message_con, #creation_con {
     visibility: hidden;
     opacity: 0;
 
@@ -630,6 +634,17 @@
     text-decoration: underline;
 }
 
+#export_con {
+    background-image: linear-gradient(#319dff, #70afe2);
+    display: none;
+}
+
+#dex_append {
+    .pokedex_box {
+        width: 20%;
+    }
+}
+
 @media screen and (min-width: 428px) {
     .mobile_image {
         margin-top: 0px;
@@ -678,6 +693,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    #dex_append {
+        .pokedex_box {
+            width: 10%;
+        }
     }
 }
 
