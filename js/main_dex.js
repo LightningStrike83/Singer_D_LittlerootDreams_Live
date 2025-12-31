@@ -106,6 +106,16 @@ async function mobileList() {
 
     pokedexBox.forEach(box => {
       const spinner = document.createElement("div")
+      const mobileList = box.querySelector(".mobile_select")
+      const select2 = box.querySelector(".select2-container")
+
+      if (mobileList) {
+        mobileList.remove()
+      }
+
+      if (select2) {
+        select2.remove()
+      }
 
       spinner.setAttribute("id", "spinner")
       spinner.setAttribute("alt", "Loading spinner")
@@ -480,49 +490,31 @@ async function exportDivToImage(event) {
   event.preventDefault();
 
   const divExport = document.querySelector("#pokedex_display");
-  const mobileSelect = document.querySelectorAll(".mobile_select");
-  const pokedexBox = document.querySelectorAll(".pokedex_box");
-  const pokedexArea = document.querySelector("#pokedex_area");
+  const cloneExport = divExport.cloneNode(true)
   const form = document.querySelector("#custom-dex");
-  const select2 = document.querySelectorAll(".select2");
+  const hiddendex = document.querySelector("#dex_append")
+  const exportCon = document.querySelector("#export_con")
+  const title = document.querySelector("#my-pokedex-title")
+  const creationCon = document.querySelector("#creation_con")
 
-  const p = document.createElement("p");
-  const title = document.createElement("h3");
+  exportCon.style.display = "grid"
 
   let formName = form.value;
   finalName = formName;
 
   const smallX = window.matchMedia("(min-width: 768px)");
 
-  pokedexArea.classList.remove("m-col-start-7", "m-col-end-13");
-
-  mobileSelect.forEach(list => list.remove());
-  select2.forEach(select => select.remove());
-
-  pokedexBox.forEach(box => {
-    box.style.width = "10%";
-  });
-
-  p.textContent = "Create your own at littlerootdreams.com";
-  p.id = "pokedex-credit";
-
   title.textContent = finalName;
-  title.id = "my-pokedex-title";
 
-  divExport.appendChild(title);
-  divExport.appendChild(p);
+  cloneExport.querySelectorAll(".mobile_select, .select2-container, .direction_con, .subtract_button").forEach(el => el.remove());
 
-  divExport.style.backgroundImage = "linear-gradient(#319dff, #70afe2)";
+  hiddendex.appendChild(cloneExport)
 
-  if (mode === "click") {
-    document.querySelectorAll(".subtract_button").forEach(b => b.remove());
-    document.querySelectorAll(".direction_con").forEach(d => d.remove());
-  }
+  creationCon.style.visibility = "visible"
+  creationCon.style.opacity = "1"
 
   try {
-    await new Promise(requestAnimationFrame);
-
-    const canvas = await html2canvas(divExport);
+    const canvas = await html2canvas(exportCon);
 
     const dataUrl = canvas.toDataURL("image/png");
     const link = document.createElement("a");
@@ -531,62 +523,59 @@ async function exportDivToImage(event) {
     link.click();
 
   } finally {
-    mobileList();
+    const dexRemove = hiddendex.querySelector("#pokedex_display")
 
-    pokedexBox.forEach(box => {
-      box.style.width = smallX.matches ? "20%" : "25%";
-    });
+    creationCon.style.visibility = "hidden"
+    creationCon.style.opacity = "0"
 
     form.value = "";
-    nameForm.style.visibility = "hidden";
-    nameForm.style.opacity = "0";
 
-    divExport.style.backgroundImage = "none";
+    dexRemove.remove()
 
-    clearText();
-    readdButtons();
+    exportCon.style.display = "none"
+
     openConfirmation();
   }
 }
 
-function readdButtons() {
-  if (mode === "click") {
-    let pokedexBox = document.querySelectorAll(".pokedex_box")
+// function readdButtons() {
+//   if (mode === "click") {
+//     let pokedexBox = document.querySelectorAll(".pokedex_box")
     
-    pokedexBox.forEach(div => {
-      const divMinus = document.createElement("div")
-      const moveDiv = document.createElement("div")
-      const p = document.createElement("p")
-      const forward = document.createElement("p")
-      const backward = document.createElement("p")
+//     pokedexBox.forEach(div => {
+//       const divMinus = document.createElement("div")
+//       const moveDiv = document.createElement("div")
+//       const p = document.createElement("p")
+//       const forward = document.createElement("p")
+//       const backward = document.createElement("p")
       
-      divMinus.setAttribute("class", "subtract_button")
-      moveDiv.setAttribute("class", "direction_con")
+//       divMinus.setAttribute("class", "subtract_button")
+//       moveDiv.setAttribute("class", "direction_con")
       
-      p.textContent = "-"
-      forward.textContent = "►"
-      backward.textContent = "◄"
+//       p.textContent = "-"
+//       forward.textContent = "►"
+//       backward.textContent = "◄"
 
-      divMinus.addEventListener("click", clickMinus)
-      forward.addEventListener("click", moveImage)
-      backward.addEventListener("click", moveImage)
+//       divMinus.addEventListener("click", clickMinus)
+//       forward.addEventListener("click", moveImage)
+//       backward.addEventListener("click", moveImage)
 
-      divMinus.appendChild(p)
-      moveDiv.appendChild(backward)
-      moveDiv.appendChild(forward)
-      div.appendChild(divMinus)
-      div.appendChild(moveDiv)
-    })
-  }
-}
+//       divMinus.appendChild(p)
+//       moveDiv.appendChild(backward)
+//       moveDiv.appendChild(forward)
+//       div.appendChild(divMinus)
+//       div.appendChild(moveDiv)
+//     })
+//   }
+// }
 
-function clearText() {
-  const pokedexCredit = document.querySelector("#pokedex-credit")
-  const pokedexTitle = document.querySelector("#my-pokedex-title")
+// function clearText() {
+//   const pokedexCredit = document.querySelector("#pokedex-credit")
+//   const pokedexTitle = document.querySelector("#my-pokedex-title")
 
-  pokedexCredit.remove()
-  pokedexTitle.remove()
-}
+//   pokedexCredit.remove()
+//   pokedexTitle.remove()
+// }
 
 function openNameForm() {
   nameForm.style.visibility = "visible"
@@ -596,6 +585,9 @@ function openNameForm() {
 function openConfirmation() {
   const confirmationForm = document.querySelector("#confirmation_message_con")
 
+  nameForm.style.visibility = "hidden"
+  nameForm.style.opacity = "0"
+
   confirmationForm.style.visibility = "visible"
   confirmationForm.style.opacity = "1"
 
@@ -603,6 +595,7 @@ function openConfirmation() {
     confirmationForm.style.visibility = "hidden"
     confirmationForm.style.opacity = "0"
   }, "5000");
+
 }
 
 function openTypeCount() {
