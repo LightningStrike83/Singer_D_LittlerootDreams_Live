@@ -233,7 +233,7 @@
     width: 60%;
 }
 
-.type-select {
+.type-select:not(#am-type1, #am-type2) {
     width: 60%;
     order: 1;
 }
@@ -335,7 +335,7 @@
         width: 20%;
     }
     
-    .type-select {
+    .type-select:not(#am-type1, #am-type2) {
         width: 20%;
     }
 
