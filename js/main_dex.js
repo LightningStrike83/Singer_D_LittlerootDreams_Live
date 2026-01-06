@@ -314,13 +314,13 @@ function addPokemonImage(){
   let imgCheck = box.querySelector("img")
 
   if (imgCheck) {
-    imgCheck.src = `images/pokemon_images/${source}.png`
+    imgCheck.src = `images/pokemon_images/${source}.png?v=2`
     imgCheck.alt = `${name}`
     imgCheck.dataset.type1 = `${type1}`
     imgCheck.dataset.type2 = `${type2}`
     countTypes()
   } else {
-    img.src = `images/pokemon_images/${source}.png`
+    img.src = `images/pokemon_images/${source}.png?v=2`
     box.appendChild(img)
     img.setAttribute("class", "mobile_image")
     img.setAttribute("alt", `Image of ${name}`)
@@ -865,16 +865,33 @@ function moveImage() {
 }
 
 function convertList() {
-    $(document).ready(function () {
-        $("select").select2();
+    $("select").select2();
 
-        $("select").off("change", addPokemonImage);
+    $("select").off("change", addPokemonImage);
 
-        $("select").on("change", addPokemonImageSelect2);
-        $("select").on("select2:select", addPokemonImageSelect2);
-    });
+    $("select").on("change", addPokemonImageSelect2);
+    $("select").on("select2:select", addPokemonImageSelect2);
+
+    applySelect2iOSTouchFix();
 
     checkInitialState()
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
+    });
 }
 
 function addPokemonImageSelect2(e) {
@@ -898,7 +915,7 @@ function addPokemonImageSelect2(e) {
 
     const img = box.querySelector("img") || document.createElement("img");
 
-    img.src = `images/pokemon_images/${source}.png`;
+    img.src = `images/pokemon_images/${source}.png?v=2`;
     img.alt = `Image of ${name}`;
     img.dataset.type1 = type1;
     img.dataset.type2 = type2;
