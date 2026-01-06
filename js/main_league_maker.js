@@ -273,20 +273,40 @@ function toTop() {
 }
 
 function convertList() {
-    const trainerSelects = document.querySelectorAll(".trainer-select");
+  const trainerSelects = document.querySelectorAll(".trainer-select");
 
-    trainerSelects.forEach(select => {
-        const $select = $(select);
+  trainerSelects.forEach(select => {
+    const $select = $(select);
 
-        if (!$select.hasClass("select2-hidden-accessible")) {
-            $select.select2();
-        }
+    if (!$select.hasClass("select2-hidden-accessible")) {
+      $select.select2();
+    }
 
-        $select.off("select2:select");
+    $select.off("select2:select");
 
-        $select.on("select2:select", addTrainerImageSelect2);
+    $select.on("select2:select", addTrainerImageSelect2);
+  });
+
+  applySelect2iOSTouchFix();
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
     });
 }
+
 
 function addTrainerImageSelect2(e) {
     const select = e.target;
