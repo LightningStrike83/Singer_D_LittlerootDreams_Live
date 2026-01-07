@@ -1,0 +1,92 @@
+@use "../abstracts/colours" as c;
+
+#favourite-picker {
+    border-radius: 20px;
+    background-color: c.$body-wood;
+    border: 2px solid c.$dark-wood;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+#favourite-picker.dark-mode {
+    background-color: c.$night-wood;
+}
+
+#runner-up-con {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#top-con {
+    justify-self: center;
+    text-align: center;
+}
+
+#current-selection {
+    position: sticky;
+    top: 10px;
+    right: 10px;
+    border: 2px solid c.$dark-wood;
+    border-radius: 20px;
+    height: fit-content;
+    cursor: pointer;
+
+    p {
+        text-align: center;
+        background-image: c.$wood;
+        padding: 5px;
+        border-radius: 20px;
+    }
+
+    ul {
+        padding: 5px;
+
+        li {
+            margin-top: 10px;
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid c.$dark-wood;
+            }
+        }
+    }
+}
+
+#tracking-list {
+    display: none;
+    flex-direction: column;
+}
+
+#other-cons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .pick-select-con {
+        width: 33%;
+        align-self: center;
+    }
+}
+
+.pick-select-con {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    select {
+        width: max-content;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #current-selection {
+        order: 1;
+    }
+}
