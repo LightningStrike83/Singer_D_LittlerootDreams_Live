@@ -5,6 +5,7 @@ const selectList = document.querySelectorAll(".pick-select")
 let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src="../images/spinner.gif" alt="Loading spinner"> <p id="spinner-text">Populating Pokemon Lists...</p></div>`
 const errorHandle = document.querySelector("#error-handle")
 const baseURL = "https://littlerootdreams.com/lumen/public/"
+const topText = document.querySelector(".top-text")
 
 function openList() {
     const tracking = document.querySelector("#tracking-list")
@@ -178,6 +179,8 @@ async function populateLists() {
                         list.appendChild(mobilebetaOption);
                     })
 
+                    spinnerLoad.innerHTML = ""
+
                     return;
                 } catch (error) {
                     attempts++;
@@ -194,13 +197,82 @@ async function populateLists() {
         }
 
         await fetchWithRetry();
+
+        convertList()
     }
 }
 
-function updateFinalImage() {
+function convertList() {
+  selectList.forEach(select => {
+    const $select = $(select);
 
+    if (!$select.hasClass("select2-hidden-accessible")) {
+      $select.select2();
+    }
+
+    $select.off("select2:select");
+
+    $select.on("select2:select", updateFinalImage);
+  });
+
+  applySelect2iOSTouchFix();
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
+    });
+}
+
+function updateFinalImage() {
+    const dataLink = this.dataset.link
+    const listItem = document.querySelectorAll("#tracking-list span")
+    const podiumItem = document.querySelectorAll(".podium-link")
+
+    listItem.forEach(list => {
+        const listLink = list.dataset.link
+
+        if (listLink === dataLink) {
+            list.textContent = `${this.options[this.selectedIndex].innerText}`
+        }
+    })
+
+    podiumItem.forEach(item => {
+        const podiumLink = item.dataset.link
+        const image = item.querySelector("img")
+
+        console.log(podiumLink)
+
+        if (podiumLink === dataLink) {
+            image.src = `../images/pokemon_images/${this.options[this.selectedIndex].value}.png`
+        }
+    })
+}
+
+function toTop() {
+    var x = window.matchMedia("(min-width: 728px)")
+  
+    if (x.matches) {
+      gsap.to(window, { duration: 1, scrollTo: (0)})
+    } else {
+      gsap.to(window, { duration: 2.5, scrollTo: (0)})
+    }
 }
 
 currentSelection.addEventListener("click", openList)
 selectList.forEach(select => select.addEventListener("change", updateFinalImage))
 window.addEventListener("DOMContentLoaded", populateLists)
+document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollToPlugin)});
+topText.addEventListener("click", toTop)
