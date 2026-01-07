@@ -358,14 +358,14 @@ const megaList = [
   
   {
     name: "Primal Kyogre",
-    number: "384m",
+    number: "382m",
     type1: "water",
     type2: "",
   },
   
   {
     name: "Primal Groudon",
-    number: "385m",
+    number: "383m",
     type1: "ground",
     type2: "fire",
   },

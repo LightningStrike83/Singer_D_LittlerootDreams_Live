@@ -21,11 +21,16 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="MyWebSite">
     <link rel="manifest" href="../images/favicon/site.webmanifest">
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script type="module" defer src="js/main_30th.js?version=3.0"></script>
     <script defer src="js/main_darkmode.js?version=3.0"></script>
     <script defer src="js/main.js?version=3.0"></script>
 </head>
-<body class="dm">
+<body class="dm" id="anni-body">
     <div id="container">
       <div id="theme-mode-con" class="full-width-grid-con dm">
         <div id="theme-enable">
@@ -169,7 +174,7 @@
     <section id="error-handle" class="grid-con dm"></section>
 
     <section id="favourite-picker" class="grid-con dm">
-        <div id="current-selection" class="col-start-3 col-span-2 m-col-start-10 m-col-span-3">
+        <div id="current-selection" class="col-span-full m-col-start-10 m-col-span-3">
             <p>▼ Open Current List ▼</p>
             <ul id="tracking-list">
                 <li>1st: <span class="name-pop" data-link="1"></span></li>
@@ -209,7 +214,7 @@
             <div id="top-con">
                 <div class="pick-select-con">
                     <h3>Top Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="1">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
@@ -218,14 +223,14 @@
             <div id="runner-up-con">
                 <div class="pick-select-con">
                     <h3>2nd Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="2">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>3rd Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="3">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
@@ -234,193 +239,197 @@
             <div id="other-cons">
                 <div class="pick-select-con">
                     <h3>4th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="4">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>5th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="5">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>6th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="6">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>7th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="7">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>8th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="8">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>9th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="9">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>10th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="10">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>11th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="11">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>12th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="12">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>13th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="13">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>14th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="14">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>15th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="15">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>16th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="16">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>17th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="17">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>18th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="18">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>19th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="19">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>20th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="20">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>21st Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="21">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>22nd Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="22">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>23rd Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="23">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>24th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="24">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>25th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="25">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>26th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="26">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>27th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="27">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>28th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="28">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>29th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="29">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
 
                 <div class="pick-select-con">
                     <h3>30th Favourite</h3>
-                    <select class="pick-select">
+                    <select class="pick-select" data-link="30">
                         <option disabled selected value="">--Select A Pokemon--</option>
                     </select>
                 </div>
             </div>
+        </div>
+
+        <div id="anni-create" class="col-span-full">
+            <button>Create</button>
         </div>
     </section>
 
@@ -481,6 +490,172 @@
 
         <div class="col-span-1 mobile-close">
             <p class="close-button">X</p>
+        </div>
+    </section>
+
+    <section id="anni-canvas-con" class="full-width-grid-con">
+        <div class="left-border"></div>
+        <div class="right-border"></div>
+        <div class="col-span-full">
+            <p id="anni-title"><span id="anni-name"></span>'s<br> Top 30 For 30th</p>
+            <div id="anni-top" class="anni-canvas-con">
+                <div id="anni-top-con" class="podium-link" data-link="1">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>1</h3>
+                    <img id="gold-laurel" src="images/laurel-gold.png" alt="A golden laurel">
+                </div>
+            </div>
+            <div id="anni-runners" class="anni-canvas-con">
+                <div class="anni-runner-up-con podium-link" data-link="2">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3 id="second-text">2</h3>
+                    <img id="silver-laurel" src="images/laurel-silver.png" alt="A silver laurel">
+                </div>
+
+                <div class="anni-runner-up-con podium-link" data-link="3">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3 id="third-text">3</h3>
+                    <img id="bronze-laurel" src="images/laurel-bronze.png" alt="A bronze laurel">
+                </div>
+            </div>
+            <div id="anni-others" class="anni-canvas-con">
+                <div class="anni-other-con podium-link" data-link="4">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>4</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="5">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>5</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="6">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>6</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="7">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>7</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="8">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>8</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="9">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>9</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="10">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>10</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="11">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>11</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="12">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>12</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="13">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>13</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="14">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>14</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="15">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>15</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="16">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>16</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="17">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>17</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="18">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>18</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="19">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>19</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="20">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>20</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="21">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>21</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="22">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>22</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="23">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>23</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="24">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>24</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="25">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>25</h3>
+                </div>
+                
+                <div class="anni-other-con podium-link" data-link="26">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>26</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="27">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>27</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="28">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>28</h3>
+                </div>
+                
+                <div class="anni-other-con podium-link" data-link="29">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>29</h3>
+                </div>
+
+                <div class="anni-other-con podium-link" data-link="30">
+                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <h3>30</h3>
+                </div>
+            </div>
+
+            <p id="anni-credit">Create your own at littlerootdreams.com</p>
         </div>
     </section>
 </div>
