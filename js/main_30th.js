@@ -6,6 +6,9 @@ let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src
 const errorHandle = document.querySelector("#error-handle")
 const baseURL = "https://littlerootdreams.com/lumen/public/"
 const topText = document.querySelector(".top-text")
+const createButton = document.querySelector("#anni-create")
+const submitButton = document.querySelector("#anni-submit")
+const continueButton = document.querySelector("#anni-continue")
 
 function openList() {
     const tracking = document.querySelector("#tracking-list")
@@ -252,8 +255,6 @@ function updateFinalImage() {
         const podiumLink = item.dataset.link
         const image = item.querySelector("img")
 
-        console.log(podiumLink)
-
         if (podiumLink === dataLink) {
             image.src = `../images/pokemon_images/${this.options[this.selectedIndex].value}.png`
         }
@@ -270,9 +271,90 @@ function toTop() {
     }
 }
 
+function openNameForm() {
+    const nameCon = document.querySelector("#anni-name-con")
+
+    nameCon.style.visibility = "visible"
+    nameCon.style.opacity = "1"
+}
+
+function checkFinal() {
+    const nameCon = document.querySelector("#anni-name-con")
+    const nameInput = document.querySelector("#anni-name-input")
+    const nameValue = nameInput.value
+
+    let p = 0
+
+    nameCon.style.visibility = "hidden"
+    nameCon.style.opacity = "0"
+
+    selectList.forEach(select => {
+        if (select.value === "") {
+            p++
+        }
+    })
+
+    if (nameValue !== "") {
+        if (p === 0) {
+            create30thImage()
+        } else {
+            openWarning()
+        }
+    } else {
+        alert("Please enter a name")
+    }
+}
+
+function openWarning() {
+    const warningCon = document.querySelector("#anni-warning-con")
+
+    warningCon.style.visibility = "visible"
+    warningCon.style.opacity = "1"
+}
+
+function create30thImage(event) {
+    const anniCanvas = document.querySelector("#anni-canvas-con")
+    const nameInput = document.querySelector("#anni-name-input")
+    const nameValue = nameInput.value
+    const name = document.querySelector("#anni-name")
+    const warningCon = document.querySelector("#anni-warning-con")
+    const downloadCon = document.querySelector("#anni-downloading-con")
+
+    event.preventDefault()
+
+    warningCon.style.visibility = "hidden"
+    warningCon.style.opacity = "0"
+
+    anniCanvas.style.display = "grid"
+
+    name.textContent = nameValue
+
+    html2canvas(anniCanvas).then((canvas) => {
+        const dataUrl = canvas.toDataURL("image/png");
+    
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = "30-for-30th.png"; 
+        link.click();
+    });
+
+    anniCanvas.style.display = "none"
+
+    downloadCon.style.visibility = "visible"
+    downloadCon.style.opacity = "1"
+
+    setTimeout(() => {
+        downloadCon.style.visibility = "hidden"
+        downloadCon.style.opacity = "0"
+    }, "3000");
+}
+
 currentSelection.addEventListener("click", openList)
 selectList.forEach(select => select.addEventListener("change", updateFinalImage))
 window.addEventListener("DOMContentLoaded", populateLists)
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollToPlugin)});
 topText.addEventListener("click", toTop)
+createButton.addEventListener("click", openNameForm)
+submitButton.addEventListener("click", checkFinal)
+continueButton.addEventListener("click", create30thImage)
