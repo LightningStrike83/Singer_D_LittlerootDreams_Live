@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/png" href="../images/favicon/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg">
     <link rel="shortcut icon" href="../images/favicon/favicon.ico">
@@ -26,6 +29,7 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script type="module" defer src="js/main_30th.js?version=3.0"></script>
     <script defer src="js/main_darkmode.js?version=3.0"></script>
     <script defer src="js/main.js?version=3.0"></script>
@@ -493,164 +497,198 @@
         </div>
     </section>
 
+    <section id="anni-name-con" class="full-width-grid-con">
+        <h2 id="" class="hidden">Enter Name Screen</h2>
+        <div id="anni-name-info" class="col-start-2 col-span-1">
+            <p>Please Enter A Name:<br>(Max 16 characters)</p>
+            <input id="anni-name-input" type="text" maxlength="16">
+
+            <button id="anni-submit" type="submit">Submit</button>
+        </div>
+
+        <div class="col-span-1 mobile-close">
+            <p class="close-button">X</p>
+        </div>
+    </section>
+
+    <section id="anni-warning-con" class="full-width-grid-con">
+        <h2 id="" class="hidden">Image Warning</h2>
+        <div id="anni-warning-info" class="col-start-2 col-span-1">
+            <p>Warning:<br> There are still slots with missing Pokemon.<br> Continuing will place substitute dolls in the empty areas.<br><br>Continue?</p>
+
+            <button id="anni-continue">Continue</button>
+        </div>
+
+        <div class="col-span-1 mobile-close">
+            <p class="close-button">X</p>
+        </div>
+    </section>
+
+    <section id="anni-downloading-con" class="full-width-grid-con">
+        <h2 id="" class="hidden">Image Downloading</h2>
+        <div id="anni-downloading-info" class="col-start-2 col-span-1">
+            <p>Thank you!<br><br>Your image should begin downloading shortly!<br><br>Feel free to share your favourites on social media! <br><br>This message will close in 3 seconds.</p>
+        </div>
+    </section>
+
     <section id="anni-canvas-con" class="full-width-grid-con">
         <div class="left-border"></div>
         <div class="right-border"></div>
         <div class="col-span-full">
-            <p id="anni-title"><span id="anni-name"></span>'s<br> Top 30 For 30th</p>
+            <p id="anni-title"><span id="big-name"><span id="anni-name"></span>'s</span><br> Top <span class="text-30">30</span> For <span class="text-30">30</span>th</p>
             <div id="anni-top" class="anni-canvas-con">
                 <div id="anni-top-con" class="podium-link" data-link="1">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>1</h3>
                     <img id="gold-laurel" src="images/laurel-gold.png" alt="A golden laurel">
                 </div>
             </div>
             <div id="anni-runners" class="anni-canvas-con">
                 <div class="anni-runner-up-con podium-link" data-link="2">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3 id="second-text">2</h3>
                     <img id="silver-laurel" src="images/laurel-silver.png" alt="A silver laurel">
                 </div>
 
                 <div class="anni-runner-up-con podium-link" data-link="3">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3 id="third-text">3</h3>
                     <img id="bronze-laurel" src="images/laurel-bronze.png" alt="A bronze laurel">
                 </div>
             </div>
             <div id="anni-others" class="anni-canvas-con">
                 <div class="anni-other-con podium-link" data-link="4">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>4</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="5">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>5</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="6">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>6</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="7">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>7</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="8">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>8</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="9">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>9</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="10">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>10</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="11">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>11</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="12">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>12</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="13">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>13</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="14">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>14</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="15">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>15</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="16">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>16</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="17">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>17</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="18">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>18</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="19">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>19</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="20">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>20</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="21">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>21</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="22">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>22</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="23">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>23</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="24">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>24</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="25">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>25</h3>
                 </div>
                 
                 <div class="anni-other-con podium-link" data-link="26">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>26</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="27">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>27</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="28">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>28</h3>
                 </div>
                 
                 <div class="anni-other-con podium-link" data-link="29">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>29</h3>
                 </div>
 
                 <div class="anni-other-con podium-link" data-link="30">
-                    <img class="anni-image" src="images/pokemon_images/133.png">
+                    <img class="anni-image" src="images/pokemon_images/vr18.png">
                     <h3>30</h3>
                 </div>
             </div>

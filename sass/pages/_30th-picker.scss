@@ -36,8 +36,9 @@
     border-radius: 20px;
     height: fit-content;
     cursor: pointer;
-    z-index: 10;
+    z-index: 4;
     margin-bottom: 20px;
+    background-color: c.$dark-wood;
 
     p {
         text-align: center;
@@ -53,7 +54,7 @@
             margin-top: 10px;
 
             &:not(:last-of-type) {
-                border-bottom: 1px solid c.$dark-wood;
+                border-bottom: 1px solid c.$body-wood;
             }
         }
     }
@@ -102,7 +103,7 @@
 }
 
 .pick-select-con {
-    width: 33%;
+    width: 50%;
 }
 
 .pick-select-con {
@@ -142,6 +143,10 @@
         color: black!important;
         font-size: calc(100% - 2px)!important;
     }
+
+    .select2-selection__arrow {
+        top: 15%!important;
+    }
 }
 
 #anni-create {
@@ -153,6 +158,7 @@
     width: 150px;
     z-index: 5;
     position: relative;
+    filter: drop-shadow(3px 3px black);
 }
 
 .anni-canvas-con {
@@ -164,7 +170,8 @@
 }
 
 #anni-runners {
-    justify-content: space-evenly;
+    justify-content: space-around;
+    margin-top: 10px;
 
     img {
         width: 120px;
@@ -184,7 +191,7 @@
 #anni-others {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-top: 30px;
+    margin-top: 20px;
 
     img {
         width: 90px;
@@ -197,16 +204,25 @@
 
 .anni-other-con {
     width: 11%;
+
+    h3 {
+        text-shadow: 2px 2px black;
+    }
 }
 
 #anni-top-con {
     position: relative;
+    margin-top: 10px;
     h3 {
-        color: goldenrod;
         font-size: calc(100% + 30px)!important;
         z-index: 5;
-        text-shadow: 1.5px 2px black;
         position: relative;
+        color: transparent;
+        background: radial-gradient(#dec489, #f6e084 30%, #d1b372, #e3cc97, #bf9a53);
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.95));
     }
 }
 
@@ -217,33 +233,57 @@
 }
 
 #second-text {
-    color: silver;
     font-size: calc(100% + 24px)!important;
     z-index: 5;
-    text-shadow: 1.5px 2px black;
     position: relative;
+    color: transparent;
+    background: radial-gradient(#bcbfbf 25%, #a2a5a5, #7d7f7f, #3f4040, #b3b6b5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.95));
 }
 
 #third-text {
-    color: #9c7a3c;
     font-size: calc(100% + 24px)!important;
     z-index: 5;
-    text-shadow: 1.5px 2px black;
     position: relative;
+    color: transparent;
+    background: radial-gradient( #b08d57 25%, #895e1a, #9c7a3c, #b08d57, #804a00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.95));
 }
 
 #anni-title {
     text-align: center;
     font-size: calc(100% + 10px)!important;
     line-height: 40px;
+    font-family: 'Bowlby One','Concert One';
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 3px 3px black;
+    text-transform: uppercase;
+    color: #ffca02;
+    -webkit-text-stroke: 2px #20437b;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+.text-30 {
+    font-size: calc(100% + 14px);
 }
 
 #anni-canvas-con {
   position: relative;
   padding: 30px 10px;
   box-sizing: border-box;
-  background-color: maroon;
-  max-width: 360px;
+  background-image: radial-gradient(#A8142A 5%, #9B0D1C, #8D070E, #800000);
+  width: 400px;
+  display: none;
 }
 
 /* Top border — first 7 colours */
@@ -254,13 +294,13 @@
   width: 100%;
   height: 10px;
   background: linear-gradient(to right,
-    red 0%, red 14.2857%,
-    blue 14.2857%, blue 28.5714%,
-    green 28.5714%, green 42.8571%,
-    yellow 42.8571%, yellow 57.1428%,
-    goldenrod 57.1428%, goldenrod 71.4285%,
-    silver 71.4285%, silver 85.7142%,
-    blue 85.7142%, blue 100%
+    #da3914 0%, #da3914 14.2857%,
+    #2e50d8 14.2857%, #2e50d8 28.5714%,
+    #24a724 28.5714%, #24a724 42.8571%,
+    #ffd733 42.8571%, #ffd733 57.1428%,
+    #daa520 57.1428%, #daa520 71.4285%,
+    #c0c0c0 71.4285%, #c0c0c0 85.7142%,
+    #4fd9ff 85.7142%, #4fd9ff 100%
   );
   z-index: 1;
 }
@@ -272,12 +312,18 @@
   width: 10px;
   height: 100%;
   background: linear-gradient(to bottom,
-    red 0%, red 16.6667%,
-    blue 16.6667%, blue 33.3333%,
-    green 33.3333%, green 50%,
-    blue 50%, blue 66.6667%,
-    pink 66.6667%, pink 83.3333%,
-    yellow 83.3333%, yellow 100%
+    #cd2236 0%, #cd2236 8.3%,
+    #3d51a7 8.3%, #3d51a7 16.6%,
+    #009652 16.6%, #009652 25%,
+    #f15c01 25%, #f15c01 33.3%,
+    #9fdc00 33.3%, #9fdc00 41.6%,
+    #90beed 41.6%, #90beed 50%,
+    #efb4ce 50%, #efb4ce 58.3%,
+    #cfb35f 58.3%, #cfb35f 66.6%,
+    #e8b502 66.6%, #e8b502 75%,
+    #aab9cf 75%, #aab9cf 83.3%,
+    black 83.3%, black 91.6%,
+    white 91.6%, white 100%,
   );
   z-index: 1;
 }
@@ -290,12 +336,14 @@
   width: 100%;
   height: 10px;
   background: linear-gradient(to right,
-    purple 0%, purple 16.6667%,
-    yellow 16.6667%, yellow 33.3333%,
-    red 33.3333%, red 50%,
-    blue 50%, blue 66.6667%,
-    white 66.6667%, white 83.3333%,
-    black 83.3333%, black 100%
+    #57358c 0%, #57358c 12.5%,
+    #ed9d21 12.5%, #ed9d21 25%,
+    #26649c 25%, #26649c 37.5%,
+    #ab2813 37.5%, #ab2813 50%,
+    #ea1a3e 50%, #ea1a3e 62.5%,
+    #025da6 62.5%, #025da6 75%,
+    white 75%, white 87.5%,
+    black 87.5%, black 100%
   );
   z-index: 1;
 }
@@ -307,25 +355,57 @@
   width: 10px;
   height: 100%;
   background: linear-gradient(to bottom,
-    green 0%, green 16.6667%,
-    violet 16.6667%, violet 33.3333%,
-    red 33.3333%, red 50%,
-    white 50%, white 66.6667%,
-    magenta 66.6667%, magenta 83.3333%,
-    cyan 83.3333%, cyan 100%
+    #31ca56 0%, #31ca56 8.3%,
+    #8334b7 8.3%, #8334b7 16.6%,
+    #f34134 16.6%, #f34134 25%,
+    white 25%, white 33.3%,
+    #e39bc4 33.3%, #e39bc4 41.6%,
+    #44bae5 41.6%, #44bae5 50%,
+    #bf004f 50%, #bf004f 58.3%,
+    #00a1e9 58.3%, #00a1e9 66.6%,
+    #bf6e36 66.6%, #bf6e36 75%,
+    #f5da26 75%, #f5da26 83.3%,
+    #3a1449 83.3%, #3a1449 91.6%,
+    #e95b2b 91.6%, #e95b2b 100%,
   );
   z-index: 1;
 }
 
-
 #anni-credit {
-    margin-top: 30px;
+    margin-top: 15px;
     text-align: center;
     font-size: 16px!important;
+    text-shadow: 2px 2px black;
+}
+
+#anni-name-con, #anni-warning-con, #anni-downloading-con {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    background-color: c.$transparentblack;
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#anni-name-info, #anni-warning-info, #anni-downloading-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    p, input {
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (min-width: 768px) {
     #current-selection, #anni-create {
         order: 1;
+    }
+
+    .pick-select-con {
+        width: 33%;
     }
 }
