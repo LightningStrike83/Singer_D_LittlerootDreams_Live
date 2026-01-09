@@ -1,0 +1,39 @@
+@use "../abstracts/colours" as c;
+
+#ranker-select-con {
+    justify-content: center;
+    display: flex;
+}
+
+#ranker-title-con {
+    background-image: c.$wood;
+    border: 2px solid c.$dark-wood;
+    border-bottom: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#ranker-thumbnail {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+#ranker-title {
+    display: flex;
+    align-items: center;
+}
+
+#ranker-info-con {
+    border: 2px solid c.$dark-wood;
+    background-color: c.$wood;
+}
+
+#ranker-info-con.dark-mode {
+    background-color: c.$night-wood;
+}
