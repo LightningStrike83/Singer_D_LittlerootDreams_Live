@@ -16,8 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
-
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet"> -->
     <link rel="icon" type="image/png" href="../images/favicon/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg">
     <link rel="shortcut icon" href="../images/favicon/favicon.ico">
@@ -30,7 +29,9 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script type="module" defer src="js/main_30th.js?version=3.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@3.6.3/dist/dom-to-image-more.min.js"></script>
+    <script type="module" defer src="js/main_30th_populate.js?version=3.0"></script>
+    <script defer src="js/main_30th.js?version=3.0"></script>
     <script defer src="js/main_darkmode.js?version=3.0"></script>
     <script defer src="js/main.js?version=3.0"></script>
 </head>
@@ -499,35 +500,35 @@
 
     <section id="anni-name-con" class="full-width-grid-con">
         <h2 id="" class="hidden">Enter Name Screen</h2>
-        <div id="anni-name-info" class="col-start-2 col-span-1">
+        <div id="anni-name-info" class="col-span-full m-col-start-2 m-col-span-1">
             <p>Please Enter A Name:<br>(Max 16 characters)</p>
             <input id="anni-name-input" type="text" maxlength="16">
 
             <button id="anni-submit" type="submit">Submit</button>
         </div>
 
-        <div class="col-span-1 mobile-close">
+        <div class="col-span-1 col-start-4 m-col-start-12 mobile-close">
             <p class="close-button">X</p>
         </div>
     </section>
 
     <section id="anni-warning-con" class="full-width-grid-con">
         <h2 id="" class="hidden">Image Warning</h2>
-        <div id="anni-warning-info" class="col-start-2 col-span-1">
+        <div id="anni-warning-info" class="col-span-full m-col-start-2 m-col-span-1">
             <p>Warning:<br> There are still slots with missing Pokemon.<br> Continuing will place substitute dolls in the empty areas.<br><br>Continue?</p>
 
             <button id="anni-continue">Continue</button>
         </div>
 
-        <div class="col-span-1 mobile-close">
+        <div class="col-span-1 col-start-4 m-col-start-12 mobile-close">
             <p class="close-button">X</p>
         </div>
     </section>
 
     <section id="anni-downloading-con" class="full-width-grid-con">
         <h2 id="" class="hidden">Image Downloading</h2>
-        <div id="anni-downloading-info" class="col-start-2 col-span-1">
-            <p>Thank you!<br><br>Your image should begin downloading shortly!<br><br>Feel free to share your favourites on social media! <br><br>This message will close in 3 seconds.</p>
+        <div id="anni-downloading-info" class="col-span-full">
+            <p>Thank you!<br><br>Your image should begin downloading shortly!<br><br>Feel free to share your favourites on social media! <br><br>This message will close in 4 seconds.</p>
         </div>
     </section>
 
