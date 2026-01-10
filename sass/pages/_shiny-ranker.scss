@@ -31,9 +31,32 @@
 
 #ranker-info-con {
     border: 2px solid c.$dark-wood;
-    background-color: c.$wood;
+    background-color: c.$body-wood;
+    position: relative;
+}
+
+#ranker-big {
+    order: -1;
+    position: sticky;
+    top: 10px;
 }
 
 #ranker-info-con.dark-mode {
     background-color: c.$night-wood;
+}
+
+.method-con {
+    display: flex;
+    background-color: c.$dark-wood;
+    border-radius: 20px;
+    border: 2px solid white;
+    margin: 5px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 5px;
+}
+
+.method-cover {
+    max-width: 200px;
+    max-height: fit-content;
 }
