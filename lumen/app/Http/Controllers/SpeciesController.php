@@ -31,7 +31,8 @@ class SpeciesController extends Species {
                 'species_controllers.number',
                 'species_controllers.name',
                 't1.type as type1',
-                't2.type as type2'
+                't2.type as type2',
+                'id'
             )
             ->leftJoin('types as t1', 'species_controllers.type1', '=', 't1.id')
             ->leftJoin('types as t2', 'species_controllers.type2', '=', 't2.id')
