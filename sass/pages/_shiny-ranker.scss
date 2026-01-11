@@ -39,6 +39,12 @@
     order: -1;
     position: sticky;
     top: 10px;
+    height: min-content;
+
+    p {
+        margin-top: 10px;
+        text-align: center;
+    }
 }
 
 #ranker-info-con.dark-mode {
@@ -52,11 +58,110 @@
     border: 2px solid white;
     margin: 5px;
     align-items: center;
-    justify-content: space-evenly;
-    padding: 10px 5px;
+    justify-content: space-between;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .method-cover {
-    max-width: 200px;
     max-height: fit-content;
+    max-height: 100px;
+    margin-bottom: 5px;
+}
+
+.ranker-vote {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.ranker-upvote {
+    margin-bottom: 10px;
+}
+
+.ranker-game-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ranker-div-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 3px solid white;
+    padding-bottom: 5px;
+}
+
+.ranker-master-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.ranker-info-title {
+    font-size: calc(100% + 2px);
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.ranker-size-class {
+    width: 18.5%;
+}
+
+.ranker-game-title {
+    font-size: calc(100% - 2px)!important;
+    text-align: center;
+}
+
+.rates-text {
+    text-align: center;
+}
+
+.ranker-instructions-link {
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    width: 100%;
+    font-size: calc(100% - 5px)!important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ranker-notes-title {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+}
+
+.ranker-notes-div {
+    border-top: 2px solid white;
+    padding-top: 5px;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.ranker-notes-text {
+    margin-top: 10px;
+    display: none;
+    align-self: flex-start;
+}
+
+#ranker-sorry-con {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
