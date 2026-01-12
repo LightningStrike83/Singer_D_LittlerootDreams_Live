@@ -1,0 +1,44 @@
+@use "../abstracts/colours" as c;
+
+#pop-con, #needed-con, #count-con {
+    margin-top: 20px;
+    height: 70vh;
+    border: 3px solid white;
+    overflow-y: scroll;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: c.$body-wood;
+
+    &:not(#pop-con) {
+        padding-top: 10px;
+    }
+}
+
+.init-mon, .selected-name {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+#pop-con.dark-mode, #needed-con.dark-mode, #count-con.dark-mode {
+    background-color: c.$night-wood;
+}
+
+.helper-count {
+    margin-left: 50px;
+}
+
+#helper-label {
+    margin-left: 25px;
+}
+
+#helper-search {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    margin-left: 5px;
+}
