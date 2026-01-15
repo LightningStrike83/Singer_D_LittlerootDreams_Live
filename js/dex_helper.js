@@ -20,6 +20,29 @@ function populateList() {
             popCon.appendChild(p)
         })
     })
+    .then(fetchRegionals)
+    .catch(error => {
+    });
+}
+
+function fetchRegionals() {
+    console.log("success")
+
+    fetch(`${baseURL}custom/regional`)
+    .then(response => response.json())
+    .then(function(response) {
+        console.log(response)
+        response.forEach(pokemon => {
+            const p = document.createElement("p")
+
+            p.innerHTML = `${pokemon.id}. <span class="name-search">${pokemon.name}</span>`
+            p.setAttribute("data-key", `${pokemon.id}`)
+            p.addEventListener("click", addNumber)
+            p.setAttribute("class", "init-mon")
+
+            popCon.appendChild(p)
+        })
+    })
     .catch(error => {
     });
 }

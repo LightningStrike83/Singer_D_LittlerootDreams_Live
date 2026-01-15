@@ -5,7 +5,6 @@ function populateList() {
     fetch(`${baseURL}gen/all-no-alt/dex`)
     .then(response => response.json())
     .then(function(response) {
-        console.log(response)
         response.forEach(pokemon => {
             const option = document.createElement("option")
 
@@ -16,7 +15,110 @@ function populateList() {
             rankSelect.appendChild(option)
         })
     })
+    .then(fetchRegionals)
     .catch(error => {
+    });
+}
+
+function fetchRegionals() {
+    fetch(`${baseURL}custom/regional`)
+    .then(response => response.json())
+    .then(function(response) {
+        const blank = document.createElement("option")
+        const regionalTitle = document.createElement("option")
+
+        blank.disabled = true
+        regionalTitle.disabled = true
+        regionalTitle.innerText = "--Regional Forms--"
+
+        rankSelect.appendChild(blank)
+        rankSelect.appendChild(regionalTitle)
+
+        response.forEach(pokemon => {
+            const option = document.createElement("option")
+
+            option.value = pokemon.number
+            option.innerText = pokemon.name
+            option.setAttribute("data-key", `${pokemon.id}`)
+            option.style.order = "1"
+
+
+            rankSelect.appendChild(option)
+        })
+    })
+    .then(finishOthers)
+    .catch(error => {
+    });
+}
+
+function finishOthers() {
+    const blank = document.createElement("option")
+    const otherTitle = document.createElement("option")
+    const rockruff = document.createElement("option")
+    const pikachu = document.createElement("option")
+    const basculin = rankSelect.querySelector('option[value="550h"]');
+    const gimmighoul = document.createElement("option")
+    const lycanrocDusk = document.createElement("option")
+
+    blank.disabled = true
+    otherTitle.disabled = true
+    otherTitle.innerText = "--Other Shiny Targets--"
+
+    rockruff.value = "744ot"
+    rockruff.setAttribute("data-key", "1328")
+    rockruff.innerText = "Rockruff (Own Tempo)"
+
+    pikachu.value = "025pc"
+    pikachu.setAttribute("data-key", "1368")
+    pikachu.innerText = "Pikachu (Partner Cap)"
+
+    gimmighoul.value = "999r"
+    gimmighoul.setAttribute("data-key", "1329")
+    gimmighoul.innerText = "Gimmighoul (Roaming)"
+
+    lycanrocDusk.value = "745d"
+    lycanrocDusk.setAttribute("data-key", "1218")
+    lycanrocDusk.innerText = "Lycanroc (Dusk)"
+
+    rankSelect.appendChild(blank)
+    rankSelect.appendChild(otherTitle)
+    rankSelect.appendChild(basculin)
+    rankSelect.appendChild(gimmighoul)
+    rankSelect.appendChild(lycanrocDusk)
+    rankSelect.appendChild(pikachu)
+    rankSelect.appendChild(rockruff)
+
+    convertList()
+}
+
+function convertList() {
+  const $select = $(rankSelect);
+
+    if (!$select.hasClass("select2-hidden-accessible")) {
+      $select.select2();
+    }
+
+    $select.off("select2:select");
+
+    $select.on("select2:select", displayShinyMethods);
+
+  applySelect2iOSTouchFix();
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
     });
 }
 
@@ -102,8 +204,6 @@ function displayShinyMethods() {
                 const notesDiv = document.createElement("div")
                 const notesTitle = document.createElement("p")
                 const notesText = document.createElement("p")
-
-                console.log(method)
 
                 div.setAttribute("class", "method-con")
                 div.setAttribute("data-game", `${method.game}`)
