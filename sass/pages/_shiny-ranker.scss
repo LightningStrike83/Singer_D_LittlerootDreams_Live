@@ -110,7 +110,7 @@
 .ranker-info-title {
     font-size: calc(100% + 2px);
     border-bottom: 1px solid white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
     padding-bottom: 5px;
     width: 100%;
@@ -196,4 +196,36 @@
     .select2-selection__arrow {
         top: 15%!important;
     }
+}
+
+#rank-game-filter {
+    margin-top: 10px;
+    width: -webkit-fill-available;
+}
+
+#ranker-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#ranker-con {
+    #spinner-con {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.method-desc, .ranker-na-charm {
+    font-size: calc(100% - 2px)!important;
+}
+
+.ranker-na-charm {
+    text-align: center;
+}
+
+.ranker-vote-text, .ranker-upvote {
+    font-size: calc(100% + 10px)!important;
+    text-shadow: 1.5px 1.5px black;
 }
