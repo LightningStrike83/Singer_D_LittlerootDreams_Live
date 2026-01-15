@@ -1,5 +1,7 @@
 const baseURL = "https://littlerootdreams.com/lumen/public/"
 const rankSelect = document.querySelector("#rank-select")
+const rankerLoad = document.querySelector("#ranker-loading")
+let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src="../images/spinner.gif" alt="Loading spinner"> <p id="spinner-text">Populating Shiny Methods...</p></div>`
 
 function populateList() {
     fetch(`${baseURL}gen/all-no-alt/dex`)
@@ -89,6 +91,8 @@ function finishOthers() {
     rankSelect.appendChild(rockruff)
 
     convertList()
+
+    rankerLoad.style.display = "none"
 }
 
 function convertList() {
@@ -133,12 +137,28 @@ function displayShinyMethods() {
     const rankerInfoCon = document.querySelector("#ranker-info-con")
     const previousImage = document.querySelector("#ranker-big")
     const name = document.querySelector("#ranker-box-title")
+    const filterGame = document.createElement("select")
+    const initialOption = document.createElement("option")
+    const allOption = document.createElement("option")
 
     if (previousImage) {
         previousImage.remove()
     }
 
     rankerCon.innerHTML = ""
+
+    rankerCon.innerHTML = spinner
+
+    initialOption.disabled = true
+    initialOption.selected = true
+    initialOption.innerText = "--Filter The Games--"
+
+    allOption.innerText = "All Games"
+    allOption.value = "all"
+
+    filterGame.appendChild(initialOption)
+    filterGame.appendChild(allOption)
+    filterGame.setAttribute("id", "rank-game-filter")
 
     bigDiv.setAttribute("id", "ranker-support-con")
     bigDiv.setAttribute("class", "m-col-span-2")
@@ -204,9 +224,13 @@ function displayShinyMethods() {
                 const notesDiv = document.createElement("div")
                 const notesTitle = document.createElement("p")
                 const notesText = document.createElement("p")
+                const gameOption = document.createElement("option")
+
+                console.log(method)
 
                 div.setAttribute("class", "method-con")
                 div.setAttribute("data-game", `${method.game}`)
+                div.setAttribute("data-pk", `${method.key_id}`)
                 masterDiv.setAttribute("class", "ranker-master-div")
 
                 methodTitle.setAttribute("class", "ranker-div-title")
@@ -216,6 +240,7 @@ function displayShinyMethods() {
                 textTitle.setAttribute("class", "ranker-info-title")
                 infoDiv.setAttribute("class", "ranker-information ranker-size-class")
                 description.innerHTML = `${method.description}`
+                description.setAttribute("class", "method-desc")
                 instructions.textContent = `${method.instructions}`
                 instructionsButton.textContent = "▼ View Method Instructions ▼"
                 instructionsButton.setAttribute("class", "ranker-instructions-link")
@@ -241,6 +266,7 @@ function displayShinyMethods() {
                     charmText.innerHTML = "1/1024"
                 } else if (method.odds_charm === "") {
                     charmText.innerHTML = "--The shiny charm is not applicable to this game and method--"
+                    charmText.setAttribute("class", "ranker-na-charm")
                 } else {
                     charmText.innerHTML = `${method.odds_charm}`
                 }
@@ -253,6 +279,7 @@ function displayShinyMethods() {
                 arrow.textContent = "▲"
                 arrow.setAttribute("class", "ranker-upvote")
                 vote.textContent = `${method.votes}`
+                vote.setAttribute("class", "ranker-vote-text")
                 voteDiv.setAttribute("class", "ranker-vote ranker-size-class")
 
                 voteDiv.appendChild(votesTitle)
@@ -281,6 +308,9 @@ function displayShinyMethods() {
                 div.appendChild(methodTitle)
                 div.appendChild(masterDiv)
 
+                gameOption.innerText = method.title
+                gameOption.value = method.game
+
                 if (method.species_notes !== "" || method.game_notes !== "") {
                     notesTitle.textContent = "▼ See Notes ▼"
                     notesTitle.setAttribute("class", "ranker-notes-title")
@@ -305,6 +335,7 @@ function displayShinyMethods() {
                     
                 }
 
+                filterGame.appendChild(gameOption)
                 rankerCon.appendChild(div)
             })
         }
@@ -312,10 +343,57 @@ function displayShinyMethods() {
         infoCount.textContent = `Number of Shiny Methods: ${length}`
 
         bigDiv.appendChild(infoCount)
+        bigDiv.appendChild(filterGame)
     })
+    .then(organizeFilter)
     .catch(error => {
     });
 }
+
+function organizeFilter() {
+  const filter = document.querySelector("#rank-game-filter");
+  const options = Array.from(filter.options);
+  const spinnerCon = document.querySelector("#spinner-con")
+
+  const map = new Map();
+
+  options.forEach(option => {
+    if (!map.has(option.value)) {
+      map.set(option.value, option);
+    }
+  });
+
+  const sorted = Array.from(map.values()).sort((a, b) =>
+    a.textContent.localeCompare(b.textContent, undefined, {
+      sensitivity: "base"
+    })
+  );
+
+  filter.innerHTML = "";
+  sorted.forEach(option => filter.appendChild(option));
+
+  spinnerCon.remove()
+  
+  filter.addEventListener("change", filterGames)
+}
+
+function filterGames() {
+    const key = `${this.options[this.selectedIndex].value}`
+    const methods = document.querySelectorAll(".method-con")
+
+    methods.forEach(con => {
+        const conKey = con.dataset.game
+
+        if (key === "all") {
+            con.style.display = "flex"
+        } else if (conKey !== key) {
+            con.style.display = "none"
+        } else {
+            con.style.display = "flex"
+        }
+    })
+}
+
 
 function openInstructions() {
 
