@@ -225,6 +225,8 @@ function displayShinyMethods() {
                 const notesTitle = document.createElement("p")
                 const notesText = document.createElement("p")
                 const gameOption = document.createElement("option")
+                const methodTitleDiv = document.createElement("div")
+                const methodImage = document.createElement("img")
 
                 console.log(method)
 
@@ -233,16 +235,23 @@ function displayShinyMethods() {
                 div.setAttribute("data-pk", `${method.key_id}`)
                 masterDiv.setAttribute("class", "ranker-master-div")
 
-                methodTitle.setAttribute("class", "ranker-div-title")
+                methodTitleDiv.setAttribute("class", "ranker-div-title")
                 methodTitle.textContent = `${method.shiny_method_name}`
+
+                methodImage.src = `../images/${method.method_type}.png`
+                methodImage.setAttribute("class", "method-icon")
+
+                methodTitleDiv.appendChild(methodImage)
+                methodTitleDiv.appendChild(methodTitle)
 
                 textTitle.textContent = "Information"
                 textTitle.setAttribute("class", "ranker-info-title")
                 infoDiv.setAttribute("class", "ranker-information ranker-size-class")
                 description.innerHTML = `${method.description}`
                 description.setAttribute("class", "method-desc")
-                instructions.textContent = `${method.instructions}`
-                instructionsButton.textContent = "▼ View Method Instructions ▼"
+                instructions.innerHTML = `${method.instructions}`
+                instructions.setAttribute("class", "ranker-instructions-text")
+                instructionsButton.textContent = "▼ View Method Instructions and Notes ▼"
                 instructionsButton.setAttribute("class", "ranker-instructions-link")
                 instructionsButton.addEventListener("click", openInstructions)
 
@@ -265,14 +274,14 @@ function displayShinyMethods() {
                 if (method.game === "14" && method.shiny_method_name === "Masuda Method (Gen 5)") {
                     charmText.innerHTML = "1/1024"
                 } else if (method.odds_charm === "") {
-                    charmText.innerHTML = "--The shiny charm is not applicable to this game and method--"
+                    charmText.innerHTML = "--The shiny charm is not applicable to this Pokemon, game, and method--"
                     charmText.setAttribute("class", "ranker-na-charm")
                 } else {
                     charmText.innerHTML = `${method.odds_charm}`
                 }
 
-                oddsDiv.setAttribute("class", "ranker-size-class")
-                charmDiv.setAttribute("class", "ranker-size-class")
+                oddsDiv.setAttribute("class", "ranker-size-class ranker-odds-div")
+                charmDiv.setAttribute("class", "ranker-size-class ranker-odds-charm-div")
 
                 votesTitle.setAttribute("class", "ranker-info-title")
                 votesTitle.textContent = "Votes"
@@ -305,35 +314,32 @@ function displayShinyMethods() {
                 masterDiv.appendChild(oddsDiv)
                 masterDiv.appendChild(charmDiv)
                 masterDiv.appendChild(voteDiv)
-                div.appendChild(methodTitle)
+                div.appendChild(methodTitleDiv)
                 div.appendChild(masterDiv)
 
                 gameOption.innerText = method.title
                 gameOption.value = method.game
 
-                if (method.species_notes !== "" || method.game_notes !== "") {
-                    notesTitle.textContent = "▼ See Notes ▼"
-                    notesTitle.setAttribute("class", "ranker-notes-title")
-                    notesTitle.addEventListener("click", openNotes)
-                    
-                    if (method.species_notes !== "" && method.game_notes !== "") {
-                        notesText.innerHTML = `${method.species_notes} <br> ${method.game_notes}`
-                    } else if (method.species_notes !== "") {
-                        notesText.innerHTML = `${method.species_notes}`
-                    } else if (method.game_notes !== "") {
-                        notesText.innerHTML = `${method.game_notes}`
-                    }
+                notesDiv.appendChild(instructionsButton)
+                notesDiv.appendChild(instructions)
 
-                    notesDiv.setAttribute("class", "ranker-notes-div")
+                if (method.species_notes !== "" || method.game_notes !== "") {  
+                    if (method.species_notes !== "" && method.game_notes !== "") {
+                        notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.species_notes} <br> ${method.game_notes}`
+                    } else if (method.species_notes !== "") {
+                        notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.species_notes}`
+                    } else if (method.game_notes !== "") {
+                        notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.game_notes}`
+                    }
                     notesText.setAttribute("class", "ranker-notes-text")
 
-                    notesDiv.appendChild(notesTitle)
                     notesDiv.appendChild(notesText)
-
-                    div.appendChild(notesDiv)
                 } else {
                     
                 }
+
+                notesDiv.setAttribute("class", "ranker-notes-div")
+                div.appendChild(notesDiv)
 
                 filterGame.appendChild(gameOption)
                 rankerCon.appendChild(div)
@@ -396,7 +402,19 @@ function filterGames() {
 
 
 function openInstructions() {
+    const parentNode = this.parentNode
+    const text = parentNode.querySelector(".ranker-instructions-text")
+    const notes = parentNode.querySelector(".ranker-notes-text")
 
+    if (text.style.display === "block") {
+        text.style.display = "none"
+        notes.style.display = "none"
+        this.textContent = "▼ View Method Instructions and Notes ▼"
+    } else {
+        text.style.display = "block"
+        notes.style.display = "block"
+        this.textContent = "▲ Hide Method Instructions and Notes ▲"
+    }
 }
 
 function openNotes() {
