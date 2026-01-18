@@ -17,9 +17,13 @@
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 #ranker-thumbnail {
+    display: none;
     max-width: 50px;
     margin-right: 10px;
 }
@@ -36,12 +40,15 @@
     padding-bottom: 10px;
 }
 
+#stick-con {
+    position: relative;
+}
+
 #ranker-big {
     order: -1;
     position: sticky;
     top: 10px;
     height: min-content;
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -49,6 +56,10 @@
     p {
         margin-top: 10px;
         text-align: center;
+    }
+
+    p, img {
+        display: none;
     }
 }
 
@@ -107,7 +118,7 @@
     padding-bottom: 7.5px;
 
     p {
-        margin-top: 5px;
+        font-size: 18px!important;
     }
 }
 
@@ -141,17 +152,21 @@
 }
 
 .rates-text {
+    font-size: 18px!important;
     text-align: center;
+    width: 60%;
+    margin-left: 10px;
 }
 
 .ranker-instructions-link {
     text-align: center;
     cursor: pointer;
     text-decoration: underline;
-    text-underline-offset: 5px;
+    text-underline-offset: 3px;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 14px!important;
 }
 
 .ranker-notes-title {
@@ -211,8 +226,9 @@
 }
 
 #rank-game-filter {
-    margin-top: 10px;
+    margin-top: 15px;
     width: -webkit-fill-available;
+    margin-bottom: 15px;
 }
 
 #ranker-loading {
@@ -233,11 +249,18 @@
     font-size: calc(100% - 2px)!important;
 }
 
+.ranker-na-charm {
+    width: 60%;
+    margin-left: 10px;
+    font-size: 12px!important;
+}
+
 .ranker-notes-text {
     display: none;
 }
 
 .ranker-instructions-text {
+    margin-top: 10px;
     display: none;
 }
 
@@ -258,6 +281,7 @@
 .method-icon {
     max-height: 30px;
     margin-right: 10px;
+    filter: drop-shadow(black 2px 2px);
 }
 
 .ranker-subtext {
@@ -267,6 +291,64 @@
 .ranker-information {
     order: 1;
     width: 90%;
+}
+
+#ranker-box-title {
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px!important;
+}
+
+.odds-title {
+    border-right: 1px solid white;
+    border-bottom: none;
+    width: 50%;
+    padding-right: 10px;
+    margin-bottom: 0;
+    height: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranker-odds-div, .ranker-odds-charm-div {
+    width: 100%!important;
+    display: flex;
+    align-items: center;
+}
+
+.ranker-odds-div {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.ranker-odds-charm-div {
+    border-bottom: 2px solid white;
+    padding-bottom: 30px;
+}
+
+.ranker-upvote.ranker-voted {
+    color: rgb(29, 181, 29)!important;
+    text-shadow: none!important;
+    &:hover {
+        opacity: 100%;
+        color: rgb(29, 181, 29);
+    }
+}
+
+.ranker-upvote {
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+    align-self: center;
+    width: fit-content;
+    padding: 5px;
+    &:hover {
+        color: black;
+        text-shadow: 1px 1px white;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -279,11 +361,22 @@
     }
 
     .ranker-notes-div {
+        margin-top: 20px;
         padding-left: 20px;
     }
 
     .ranker-information {
         width: 90%;
+    }
+
+    #ranker-big {
+        p, img {
+            display: block;
+        }
+    }
+
+    #ranker-title-con {
+        position: static;
     }
 }
 
@@ -308,11 +401,49 @@
     .ranker-game-div, .ranker-vote, .ranker-information {
         order: 0;
     }
+
+    .ranker-odds-div, .ranker-odds-charm-div {
+        flex-direction: column;
+    }
+
+    .odds-title {
+        border-right: none;
+        border-bottom: 1px solid white;
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .ranker-odds-div {
+        border-top: none;
+        border-bottom: none;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .ranker-odds-charm-div {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .rates-text, .ranker-na-charm {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .ranker-na-charm {
+        font-size: 16px!important;
+    }
 }
 
 
 @media screen and (min-width: 1200px) {
     .ranker-size-class {
         width: 18.5%!important;
+    }
+
+    #ranker-box-title {
+        margin-top: 10px;
+        font-size: 22px!important;
     }
 }

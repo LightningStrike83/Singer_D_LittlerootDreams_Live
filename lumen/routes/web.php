@@ -65,3 +65,5 @@ $router->get("/moves", "MoveController@getAll");
 $router->get("/svmoves", "MoveController@getSVMoves");
 $router->get("/pokemon-ability/{id}", "SpeciesAbilityController@getOne");
 $router->get("/methods/{id}", "SpeciesShinyMethodController@getMethods");
+$router->get("/methods-votes/{id}", "SpeciesShinyMethodController@getOne");
+$router->post("/votes/submit/{id}", "SpeciesShinyMethodController@increaseVote");
