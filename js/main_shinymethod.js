@@ -3,6 +3,8 @@ const rankSelect = document.querySelector("#rank-select")
 const rankerLoad = document.querySelector("#ranker-loading")
 let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src="../images/spinner.gif" alt="Loading spinner"> <p id="spinner-text">Populating Shiny Methods...</p></div>`
 
+let votes = []
+
 function populateList() {
     fetch(`${baseURL}gen/all-no-alt/dex`)
     .then(response => response.json())
@@ -161,7 +163,7 @@ function displayShinyMethods() {
     filterGame.setAttribute("id", "rank-game-filter")
 
     bigDiv.setAttribute("id", "ranker-support-con")
-    bigDiv.setAttribute("class", "m-col-span-2")
+    bigDiv.setAttribute("class", "col-span-full m-col-start-1 m-col-span-2")
     bigDiv.setAttribute("id", "ranker-big")
     
     bigImage.src = `images/pokemon_images/shiny_forms/${this.value}.png`
@@ -171,10 +173,12 @@ function displayShinyMethods() {
     thumbnail.src = `images/pokemon_images/shiny_forms/${this.value}.png`
     thumbnail.setAttribute("alt", `Thumbnail of Shiny ${this.options[this.selectedIndex].innerText}`)
     thumbnail.style.filter = "drop-shadow(3px 3px black)"
+    thumbnail.style.display = "block"
 
     bigDiv.appendChild(bigImage)
     rankerInfoCon.appendChild(bigDiv)
     name.textContent = `${this.options[this.selectedIndex].innerText}`
+    name.style.padding = "0"
 
     rankerCon.style.display = "block"
 
@@ -228,8 +232,6 @@ function displayShinyMethods() {
                 const methodTitleDiv = document.createElement("div")
                 const methodImage = document.createElement("img")
 
-                console.log(method)
-
                 div.setAttribute("class", "method-con")
                 div.setAttribute("data-game", `${method.game}`)
                 div.setAttribute("data-pk", `${method.key_id}`)
@@ -238,7 +240,7 @@ function displayShinyMethods() {
                 methodTitleDiv.setAttribute("class", "ranker-div-title")
                 methodTitle.textContent = `${method.shiny_method_name}`
 
-                methodImage.src = `../images/${method.method_type}.png`
+                methodImage.src = `../images/method_icons/${method.method_type}.png`
                 methodImage.setAttribute("class", "method-icon")
 
                 methodTitleDiv.appendChild(methodImage)
@@ -251,7 +253,7 @@ function displayShinyMethods() {
                 description.setAttribute("class", "method-desc")
                 instructions.innerHTML = `${method.instructions}`
                 instructions.setAttribute("class", "ranker-instructions-text")
-                instructionsButton.textContent = "▼ View Method Instructions and Notes ▼"
+                instructionsButton.textContent = "▼ View Method Instructions & Notes ▼"
                 instructionsButton.setAttribute("class", "ranker-instructions-link")
                 instructionsButton.addEventListener("click", openInstructions)
 
@@ -264,9 +266,9 @@ function displayShinyMethods() {
                 gameName.setAttribute("class", "ranker-game-title")
 
                 oddsTitle.textContent = "Odds (No Charm)"
-                oddsTitle.setAttribute("class", "ranker-info-title")
+                oddsTitle.setAttribute("class", "ranker-info-title odds-title")
                 charmTitle.textContent = "Odds (Shiny Charm)"
-                charmTitle.setAttribute("class", "ranker-info-title")
+                charmTitle.setAttribute("class", "ranker-info-title odds-title")
                 noCharmText.innerHTML = `${method.odds_nocharm}`
                 charmText.setAttribute("class", "rates-text")
                 noCharmText.setAttribute("class", "rates-text")
@@ -287,6 +289,7 @@ function displayShinyMethods() {
                 votesTitle.textContent = "Votes"
                 arrow.textContent = "▲"
                 arrow.setAttribute("class", "ranker-upvote")
+                arrow.addEventListener("click", upvoteMethod)
                 vote.textContent = `${method.votes}`
                 vote.setAttribute("class", "ranker-vote-text")
                 voteDiv.setAttribute("class", "ranker-vote ranker-size-class")
@@ -352,6 +355,7 @@ function displayShinyMethods() {
         bigDiv.appendChild(filterGame)
     })
     .then(organizeFilter)
+    .then(applyVote)
     .catch(error => {
     });
 }
@@ -408,26 +412,83 @@ function openInstructions() {
 
     if (text.style.display === "block") {
         text.style.display = "none"
-        notes.style.display = "none"
+        
+        if(notes) {
+            notes.style.display = "none"
+        }
+
         this.textContent = "▼ View Method Instructions and Notes ▼"
     } else {
         text.style.display = "block"
-        notes.style.display = "block"
+        
+        if(notes) {
+            notes.style.display = "block"
+        }
+
         this.textContent = "▲ Hide Method Instructions and Notes ▲"
     }
 }
 
-function openNotes() {
-    const parentNode = this.parentNode
-    const text = parentNode.querySelector(".ranker-notes-text")
+function upvoteMethod() {
+    const greatGrandParentCon = this.parentNode.parentNode.parentNode
+    const key = greatGrandParentCon.dataset.pk
+    const rankerVoteText = greatGrandParentCon.querySelector(".ranker-vote-text")
 
-    if (text.style.display === "block") {
-        text.style.display = "none"
-        this.textContent = "▼ See Notes ▼"
-    } else {
-        text.style.display = "block"
-        this.textContent = "▲ Close Notes ▲"
+    console.log(votes)
+
+    if (votes.includes(key)) {
+        console.log("you already voted");
+        return;
+    }
+
+    votes.push(key);
+
+    localStorage.setItem('vote-list', votes)
+
+    fetch(`${baseURL}methods-votes/${key}`)
+    .then(response => response.json())
+    .then(response => {
+        let currentVotes = Number(response[0].votes);
+        currentVotes++;
+
+        return fetch(`${baseURL}votes/submit/${key}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ currentVotes })
+        });
+    })
+    .then(response => response.json())
+    .then(response => {
+        fetch(`${baseURL}methods-votes/${key}`)
+        .then(response => response.json())
+        .then(response => {
+            rankerVoteText.textContent = response[0].votes
+            this.classList.add("ranker-voted");
+        })
+    });
+}
+
+function loadVotes() {
+    console.log("loaded")
+    const voteList = localStorage.getItem("vote-list")
+
+    if (voteList) {
+        votes = voteList
     }
 }
 
+function applyVote() {
+    const methodCon = document.querySelectorAll(".method-con");
+
+    methodCon.forEach(method => {
+        if (votes.includes(method.dataset.pk)) {
+            const arrow = method.querySelector(".ranker-upvote");
+            arrow.classList.add("ranker-voted");
+        }
+    });
+}
+
 rankSelect.addEventListener("change", displayShinyMethods)
+window.addEventListener("load", loadVotes)
