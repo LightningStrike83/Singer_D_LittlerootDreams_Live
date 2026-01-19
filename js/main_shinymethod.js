@@ -5,6 +5,8 @@ let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src
 
 let votes = []
 
+let generation = 0
+
 function populateList() {
     fetch(`${baseURL}gen/all-no-alt/dex`)
     .then(response => response.json())
@@ -15,6 +17,7 @@ function populateList() {
             option.value = pokemon.number
             option.innerText = pokemon.name
             option.setAttribute("data-key", `${pokemon.id}`)
+            option.setAttribute("data-generation", `${pokemon.generation}`)
 
             rankSelect.appendChild(option)
         })
@@ -45,6 +48,7 @@ function fetchRegionals() {
             option.innerText = pokemon.name
             option.setAttribute("data-key", `${pokemon.id}`)
             option.style.order = "1"
+            option.setAttribute("data-generation", `${pokemon.generation}`)
 
 
             rankSelect.appendChild(option)
@@ -70,18 +74,22 @@ function finishOthers() {
 
     rockruff.value = "744ot"
     rockruff.setAttribute("data-key", "1328")
+    rockruff.setAttribute("data-generation", "0")
     rockruff.innerText = "Rockruff (Own Tempo)"
 
     pikachu.value = "025pc"
     pikachu.setAttribute("data-key", "1368")
+    pikachu.setAttribute("data-generation", "0")
     pikachu.innerText = "Pikachu (Partner Cap)"
 
     gimmighoul.value = "999r"
     gimmighoul.setAttribute("data-key", "1329")
+    gimmighoul.setAttribute("data-generation", "0")
     gimmighoul.innerText = "Gimmighoul (Roaming)"
 
     lycanrocDusk.value = "745d"
     lycanrocDusk.setAttribute("data-key", "1218")
+    lycanrocDusk.setAttribute("data-generation", "0")
     lycanrocDusk.innerText = "Lycanroc (Dusk)"
 
     rankSelect.appendChild(blank)
@@ -133,6 +141,7 @@ populateList()
 function displayShinyMethods() {
     const thumbnail = document.querySelector("#ranker-thumbnail")
     const key = `${this.options[this.selectedIndex].dataset.key}`
+    const generationKey = `${this.options[this.selectedIndex].dataset.generation}`
     const bigDiv = document.createElement("div")
     const bigImage = document.createElement("img")
     const rankerCon = document.querySelector("#ranker-con")
@@ -146,6 +155,8 @@ function displayShinyMethods() {
     if (previousImage) {
         previousImage.remove()
     }
+
+    generation = generationKey
 
     rankerCon.innerHTML = ""
 
@@ -202,6 +213,34 @@ function displayShinyMethods() {
             div.appendChild(p)
             rankerCon.appendChild(div)
         } else {
+            const standardDiv = document.createElement("div")
+            const standardTitle = document.createElement("p")
+            const standardInformationDiv = document.createElement("div")
+            const standardText = document.createElement("p")
+            const ratesInformation = document.createElement("p")
+
+            standardDiv.setAttribute("id", "standard-div")
+            standardInformationDiv.setAttribute("id", "standard-hide")
+
+            standardTitle.setAttribute("id", "standard-open")
+            standardTitle.textContent = "▼ Open Standard Rates ▼"
+            standardTitle.addEventListener("click", openStandardInformation)
+
+            standardText.innerHTML = 'The following information are the standard rates if the Pokemon can appear in the games listed and can be shiny hunted. Please refer to <a id="serebii-ranker-redirect" target="_blank" href="https://www.serebii.net/games/shiny.shtml">Serebii</a> for shiny locked Pokemon information.'
+            standardText.setAttribute("id", "ranker-text-desc")
+
+            if (generation >= 5 || generation === 0) {
+                ratesInformation.innerHTML = '<span class="rate-information-info">Pokemon Black 2 and White 2: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span><br><span class="rate-information-info">Pokemon Go (Community Day): <span class="rate-text">1 / 25</span></span><br><span class="rate-information-info">Pokemon Go (Hatch / Raid / Research Day): <span class="rate-text">1 / 10</span></span>'
+            } else {
+                ratesInformation.innerHTML = '<span class="rate-information-info">Generations 2 - 5: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span><br><span class="rate-information-info">Pokemon Go (Community Day): <span class="rate-text">1 / 25</span></span><br><span class="rate-information-info">Pokemon Go (Hatch / Raid / Research Day): <span class="rate-text">1 / 10</span></span>'
+            }
+
+            standardInformationDiv.appendChild(standardText)
+            standardInformationDiv.appendChild(ratesInformation)
+            standardDiv.appendChild(standardTitle)
+            standardDiv.appendChild(standardInformationDiv)
+            rankerCon.appendChild(standardDiv)
+
             response.forEach(method => {
                 const div = document.createElement("div")
                 const gameDiv = document.createElement("div")
@@ -433,17 +472,30 @@ function upvoteMethod() {
     const greatGrandParentCon = this.parentNode.parentNode.parentNode
     const key = greatGrandParentCon.dataset.pk
     const rankerVoteText = greatGrandParentCon.querySelector(".ranker-vote-text")
-
-    console.log(votes)
+    var button = this.getBoundingClientRect();
 
     if (votes.includes(key)) {
-        console.log("you already voted");
+        const alreadyVoted = document.querySelector("#already-voted-con")
+        
+        
+        alreadyVoted.style.display = "block"
+
+        let boxDimensions = alreadyVoted.getBoundingClientRect()
+        let halfWidth = boxDimensions.width / 2
+
+        alreadyVoted.style.left = `${button.left + window.scrollX - halfWidth}px`; 
+        alreadyVoted.style.top = `${button.top + window.scrollY + 30}px`;
+
+        setTimeout(() => {
+            alreadyVoted.style.display = "none"
+        }, 2500);
+
         return;
     }
 
     votes.push(key);
 
-    localStorage.setItem('vote-list', votes)
+    localStorage.setItem("vote-list", JSON.stringify(votes));
 
     fetch(`${baseURL}methods-votes/${key}`)
     .then(response => response.json())
@@ -464,15 +516,28 @@ function upvoteMethod() {
         fetch(`${baseURL}methods-votes/${key}`)
         .then(response => response.json())
         .then(response => {
+            const votedMessage = document.querySelector("#vote-con")
+
             rankerVoteText.textContent = response[0].votes
             this.classList.add("ranker-voted");
+
+            votedMessage.style.display = "block"
+
+            let boxDimensions = votedMessage.getBoundingClientRect()
+            let halfWidth = boxDimensions.width / 2
+
+            votedMessage.style.left = `${button.left + window.scrollX - halfWidth + 10}px`; 
+            votedMessage.style.top = `${button.top + window.scrollY + 20}px`;
+
+            setTimeout(() => {
+                votedMessage.style.display = "none"
+            }, 2500);
         })
     });
 }
 
 function loadVotes() {
-    console.log("loaded")
-    const voteList = localStorage.getItem("vote-list")
+    let voteList = JSON.parse(localStorage.getItem("vote-list")) || [];
 
     if (voteList) {
         votes = voteList
@@ -488,6 +553,19 @@ function applyVote() {
             arrow.classList.add("ranker-voted");
         }
     });
+}
+
+function openStandardInformation() {
+    const standardHide = document.querySelector("#standard-hide")
+    const standardOpen = document.querySelector("#standard-open")
+
+    if (standardHide.style.display === "block") {
+        standardHide.style.display = "none"
+        standardOpen.textContent = "▼ Open Standard Rates ▼"
+    } else {
+        standardHide.style.display = "block"
+        standardOpen.textContent = "▲ Close Standard Rates ▲"
+    }
 }
 
 rankSelect.addEventListener("change", displayShinyMethods)
