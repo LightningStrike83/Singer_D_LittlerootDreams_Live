@@ -488,11 +488,17 @@ function minimizeStorage() {
     if (storage.style.display === "none") {
         storage.style.display = "flex"
         thisText.textContent = "Minimize -"
+        thisText.style.paddingTop = "0px"
+        thisText.style.paddingBottom = "0px"
         this.style.marginBottom = "20px"
         close.style.marginTop = "20px"
     } else {
+        console.log(thisText)
+
         storage.style.display = "none"
         thisText.textContent = "Maximize +"
+        thisText.style.paddingTop = "15px"
+        thisText.style.paddingBottom = "15px"
         this.style.marginBottom = "0"
         close.style.marginTop = "0"
     }
