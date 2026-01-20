@@ -1740,6 +1740,111 @@ const pokestarList = [
 
 const betaList = [ 
     {
+        name: "Beta Venusaur",
+        number: "beta59",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Kokani",
+        number: "beta60",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Kasanagi",
+        number: "beta61",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Kasanagi Evolution",
+        number: "beta62",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Beta Spearow",
+        number: "beta63",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "beta Clefairy",
+        number: "beta64",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Beta Seel",
+        number: "beta65",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Beta Dragonair",
+        number: "beta66",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Gyaon",
+        number: "beta67",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Deer",
+        number: "beta68",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Crocky",
+        number: "beta69",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Balloonda",
+        number: "beta70",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Cactus",
+        number: "beta71",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Jagg",
+        number: "beta72",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Elephant",
+        number: "beta73",
+        type1: "",
+        type2: "",
+    },
+    
+    {
         name: "Hanamogura",
         number: "beta1",
         type1: "grass",
