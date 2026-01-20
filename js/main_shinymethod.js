@@ -100,6 +100,10 @@ function finishOthers() {
     rankSelect.appendChild(pikachu)
     rankSelect.appendChild(rockruff)
 
+    const darmanitanZen = rankSelect.querySelector('option[value="555gz"]')
+
+    darmanitanZen.remove();
+
     convertList()
 
     rankerLoad.style.display = "none"
@@ -156,9 +160,11 @@ function displayShinyMethods() {
         previousImage.remove()
     }
 
-    generation = generationKey
+    generation = Number(generationKey)
 
     rankerCon.innerHTML = ""
+    rankerCon.classList.remove("m-col-span-full")
+    rankerCon.classList.add("m-col-span-10")
 
     rankerCon.innerHTML = spinner
 
@@ -230,9 +236,9 @@ function displayShinyMethods() {
             standardText.setAttribute("id", "ranker-text-desc")
 
             if (generation >= 5 || generation === 0) {
-                ratesInformation.innerHTML = '<span class="rate-information-info">Pokemon Black 2 and White 2: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span><br><span class="rate-information-info">Pokemon Go (Community Day): <span class="rate-text">1 / 25</span></span><br><span class="rate-information-info">Pokemon Go (Hatch / Raid / Research Day): <span class="rate-text">1 / 10</span></span>'
+                ratesInformation.innerHTML = '<span class="rate-information-info">Pokemon Black 2 and White 2: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span>'
             } else {
-                ratesInformation.innerHTML = '<span class="rate-information-info">Generations 2 - 5: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span><br><span class="rate-information-info">Pokemon Go (Community Day): <span class="rate-text">1 / 25</span></span><br><span class="rate-information-info">Pokemon Go (Hatch / Raid / Research Day): <span class="rate-text">1 / 10</span></span>'
+                ratesInformation.innerHTML = '<span class="rate-information-info">Generations 2 - 5: <span class="rate-text">1 / 8192</span></span><br><span class="rate-information-info">Black 2 and White 2 (Shiny Charm): <span class="rate-text">1 / 2371</span></span><br><span class="rate-information-info">Generations 6 - 9: <span class="rate-text">1 / 4096 </span></span><br><span class="rate-information-info">Generations 6 - 9 (Shiny Charm): <span class="rate-text">1 / 1365</span></span><br><span class="rate-information-info">Pokemon Legends ZA (Shiny Charm): <span class="rate-text">1 / 1024</span></span><br><span class="rate-information-info">Pokemon Go: <span class="rate-text">1 / 512</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Grunts): <span class="rate-text">1 / 256</span></span><br><span class="rate-information-info">Pokemon Go (Go Rocket Leader): <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (In Person Go Fest) <span class="rate-text">1 / 64</span></span><br><span class="rate-information-info">Pokemon Go (Global Go Fest): <span class="rate-text">1 / 128</span></span>'
             }
 
             standardInformationDiv.appendChild(standardText)
@@ -293,7 +299,7 @@ function displayShinyMethods() {
                 instructions.innerHTML = `${method.instructions}`
                 instructions.setAttribute("class", "ranker-instructions-text")
                 instructionsButton.textContent = "▼ View Method Instructions & Notes ▼"
-                instructionsButton.setAttribute("class", "ranker-instructions-link")
+                instructionsButton.setAttribute("class", "ranker-instructions-link-button")
                 instructionsButton.addEventListener("click", openInstructions)
 
                 gameTitle.textContent = "Game"
