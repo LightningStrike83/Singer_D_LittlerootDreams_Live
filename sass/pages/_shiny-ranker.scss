@@ -53,6 +53,10 @@
     align-items: center;
     justify-content: center;
 
+    img {
+        margin-top: 10px;
+    }
+
     p {
         margin-top: 10px;
         text-align: center;
@@ -179,7 +183,7 @@
     margin-left: 10px;
 }
 
-.ranker-instructions-link {
+.ranker-instructions-link, .ranker-instructions-link-button {
     text-align: center;
     cursor: pointer;
     text-decoration: underline;
@@ -412,6 +416,20 @@
     display: none;
 }
 
+
+#ranker-init {
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+#ranker-note {
+    font-weight: bold;
+    // font-size: calc(100% + 2px);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 @media screen and (min-width: 768px) {
     .ranker-size-class {
         width: 45%;
@@ -512,5 +530,9 @@
         #standard-open {
             font-size: 18px!important;
         }
+    }
+
+    .ranker-instructions-link-button {
+        font-size: 18px!important;
     }
 }

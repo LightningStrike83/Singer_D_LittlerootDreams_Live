@@ -81,13 +81,23 @@ function create30thImage() {
     const nameInput = document.querySelector("#anni-name-input");
     const nameValue = nameInput.value;
     const downloadCon = document.querySelector("#anni-downloading-con");
+    const node = document.querySelector("#anni-canvas-con");
 
     prepareCanvas(nameValue).then(() => {
-        // At this point, the DOM updates are applied and painted
-        domtoimage.toPng(document.querySelector("#anni-canvas-con"), {
+        const scale = 3; // increase for more quality (2–4 is good)
+        const rect = node.getBoundingClientRect();
+
+        domtoimage.toPng(node, {
             bgcolor: null,
             quality: 1,
-            style: { transform: 'scale(1)' }
+            width: rect.width * scale,
+            height: rect.height * scale,
+            style: {
+                transform: `scale(${scale})`,
+                transformOrigin: "top left",
+                width: `${rect.width}px`,
+                height: `${rect.height}px`
+            }
         })
         .then(dataUrl => {
             const link = document.createElement('a');
@@ -95,9 +105,7 @@ function create30thImage() {
             link.href = dataUrl;
             link.click();
 
-            // Hide canvas and show download confirmation
-            const anniCanvas = document.querySelector("#anni-canvas-con");
-            anniCanvas.style.display = "none";
+            node.style.display = "none";
 
             downloadCon.style.visibility = "visible";
             downloadCon.style.opacity = "1";
@@ -114,20 +122,19 @@ function create30thImage() {
 }
 
 
+
 function prepareCanvas(nameValue) {
     const warningCon = document.querySelector("#anni-warning-con");
     const anniCanvas = document.querySelector("#anni-canvas-con");
     const name = document.querySelector("#anni-name");
 
     return new Promise(resolve => {
-        // Apply DOM changes
         warningCon.style.visibility = "hidden";
         warningCon.style.opacity = "0";
 
         anniCanvas.style.display = "grid";
         name.textContent = nameValue;
 
-        // Wait for the browser to paint these changes
         requestAnimationFrame(() => {
             resolve();
         });
