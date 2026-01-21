@@ -11,6 +11,7 @@ const errorCon = document.querySelector("#error-con")
 const dynamicError = document.querySelector("#dynamic-error")
 const topText = document.querySelector(".top-text")
 const initialText = document.querySelector("#am-initial")
+const allButton = document.querySelector("#all-moves")
 
 function listPopulation() {
      fetch(`${baseURL}abilities`)
@@ -44,6 +45,7 @@ function listPopulation() {
                 moveList.appendChild(option)
             })
         })
+        .then(convertList)
         .catch(error => {
             
         })
@@ -71,10 +73,70 @@ function svMoves() {
                 moveList.appendChild(option)
             })
         })
+        .then(convertList)
         .catch(error => {
             
         })
     })
+}
+
+function showAllMoves() {
+    const moves = document.querySelectorAll(".move")
+
+    moves.forEach(move => move.remove())
+    
+    moveLists.forEach(moveList => {
+        fetch(`${baseURL}moves`)
+        .then(response => response.json())
+        .then(function(response){
+            response.forEach(move => {
+                const option = document.createElement("option")
+
+                option.textContent = move.move
+                option.setAttribute("data-movekey", `${move.id}`)
+                option.setAttribute("class", "move")
+
+                moveList.appendChild(option)
+            })
+        })
+        .then(convertList)
+        .catch(error => {
+            
+        })
+    })
+}
+
+function convertList() {
+    const selectList = document.querySelectorAll("select")
+
+    selectList.forEach(select => {
+        const $select = $(select);
+
+        if (!$select.hasClass("select2-hidden-accessible")) {
+        $select.select2();
+        }
+
+        $select.off("select2:select");
+    });
+
+    applySelect2iOSTouchFix();
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
+    });
 }
 
 function calculatePokemon() {
@@ -747,3 +809,4 @@ function toTop() {
 svButton.addEventListener("click", svMoves)
 calculateButton.addEventListener("click", calculatePokemon)
 topText.addEventListener("click", toTop)
+allButton.addEventListener("click", showAllMoves)

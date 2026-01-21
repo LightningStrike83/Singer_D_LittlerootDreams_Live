@@ -5,10 +5,14 @@ const topText = document.querySelector(".top-text")
 const modeInfo = document.querySelector("#mode-info")
 const usageDirection = document.querySelector("#usage-direction")
 const modeExplanation = document.querySelector("#usage_legend")
+const usageSearch = document.querySelector("#usage-search")
 let request = usageSelect.value
 let savedVariable = ""
 let savedText = ""
 let spinner = `<img id="spinner" src="../images/spinner.gif" alt="Loading spinner"><br> <p id="spinner-text">Loading...</p>`
+let externalIcon = `<svg class="usage-external-icon" id="Layer_1" fill="white" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.01 23.01">
+  <path d="M21.98,0s-.07,0-.11,0h-5.87c-.55,0-1.01.43-1.01.99,0,.55.43,1.01.99,1.01,0,0,.02,0,.03,0h3.59l-10.29,10.29c-.4.38-.41,1.02-.03,1.41s1.02.41,1.41.03c0,0,.02-.02.03-.03L21,3.42v3.59c0,.55.43,1.01.99,1.01.55,0,1.01-.43,1.01-.99,0,0,0-.02,0-.03V1.14c.08-.55-.31-1.05-.85-1.13-.05,0-.11-.01-.17,0ZM2,4.01c-1.09,0-2,.91-2,2v15c0,1.09.91,2,2,2h15c1.09,0,2-.91,2-2v-12.58l-2,2v10.58H2V6.01h10.58l2-2H2Z"/>
+</svg>`
 
 function linePopulation() {
     const lineSelect = document.querySelector("#line-selection")
@@ -28,7 +32,7 @@ function linePopulation() {
             option.textContent = line.species
             option.setAttribute("data-line", `${line.id}`)
 
-            li.textContent = line.species
+            li.innerHTML = `• <span class="line-identifier">${line.species}</span>`
             li.setAttribute("data-line", `${line.id}`)
             li.setAttribute("class", "pokemon-line")
             li.addEventListener("click", displayTrainers)
@@ -36,6 +40,7 @@ function linePopulation() {
             mobileSelect.appendChild(option)
         })
     })
+    .then(convertList)
     .catch(error => {
         const lineSelect = document.querySelector("#line-selection")
         const p = document.createElement("p")
@@ -46,10 +51,42 @@ function linePopulation() {
     })
 }
 
+function convertList() {
+  const $select = $(mobileSelect);
+
+    if (!$select.hasClass("select2-hidden-accessible")) {
+      $select.select2();
+    }
+
+    $select.off("select2:select");
+
+    $select.on("select2:select", displayTrainers);
+
+  applySelect2iOSTouchFix();
+}
+
+function applySelect2iOSTouchFix() {
+  $(".select2-container")
+    .off("touchstart")
+    .on("touchstart", function (e) {
+      e.stopPropagation();
+    })
+    .siblings("select")
+    .off("select2:open")
+    .on("select2:open", function () {
+      $(".select2-results__options")
+        .off("touchstart")
+        .on("touchstart", "li", function (e) {
+          e.stopPropagation();
+        });
+    });
+}
+
 function displayTrainers(e) {
     var mobileTarget = mobileSelect.value
     const lineNumber = e?.currentTarget?.dataset?.line || mobileTarget || savedVariable;
     var x = window.matchMedia("(min-width: 728px)")
+    const usageIcon = document.querySelector("#usage-icon")
 
     fetch(`${baseURL}trainer-lines/${request}/${lineNumber}`)
         .then(response => response.json())
@@ -74,10 +111,26 @@ function displayTrainers(e) {
             response.forEach(trainer => {
                 const li = document.createElement("li");
                 li.setAttribute("class", "usage-trainer-name");
-                li.textContent = trainer.name;
-                ul.appendChild(li);
+
+                if (trainer.link !== "") {
+                    const a = document.createElement("a");
+
+                    li.innerHTML = `• ${trainer.name} ${externalIcon}`;
+                    a.href = trainer.link
+                    a.target = "_blank"
+
+                    a.setAttribute("class", "usage-trainer-link")
+                    a.appendChild(li)
+                    ul.appendChild(a);
+                } else {
+                    li.innerHTML = `• ${trainer.name}`;
+                    li.setAttribute("class", "no-link-trainer")
+                    
+                    ul.appendChild(li)
+                }
             });
 
+            usageIcon.style.display = "block"
             displayUsage.setAttribute("class", "populated")
             displayUsage.appendChild(ul);
             savedText = lineName
@@ -132,6 +185,27 @@ function openModeExplanations() {
     explanationCon.style.visibility = "visible"
 }
 
+function searchLines() {
+    const lineSelect = document.querySelector("#line-selection")
+    const names = lineSelect.querySelectorAll(".pokemon-line")
+    const text = usageSearch.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]/gi, "")
+        .trim()
+
+    names.forEach(name => {
+        const nameText = name.textContent
+            .toLowerCase()
+            .replace(/[^a-z0-9]/gi, "")
+
+        if (!nameText.includes(text)) {
+            name.style.display = "none"
+        } else {
+            name.style.display = "block"
+        }
+    })
+}
+
 linePopulation()
 changeModeText()
 directionText()
@@ -142,3 +216,4 @@ modeExplanation.addEventListener("click", openModeExplanations)
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollToPlugin)});
 topText.addEventListener("click", toTop)
+usageSearch.addEventListener("input", searchLines)

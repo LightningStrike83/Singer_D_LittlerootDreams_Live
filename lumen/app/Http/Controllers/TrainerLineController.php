@@ -15,12 +15,12 @@ class TrainerLineController extends Controller {
      */
 
      public function getAll() {
-        $trainerline = TrainerLine::join('trainers', 'trainer_lines.trainer', '=', 'trainers.id')->join('lines', 'trainer_lines.line', '=', 'lines.id')->select('trainer', 'line', "name", "species", "trainer_lines.id")->orderBy('trainer_lines.id', 'asc')->get();
+        $trainerline = TrainerLine::join('trainers', 'trainer_lines.trainer', '=', 'trainers.id')->join('lines', 'trainer_lines.line', '=', 'lines.id')->select('trainer', 'link', 'line', "name", "species", "trainer_lines.id")->orderBy('trainer_lines.id', 'asc')->get();
         return response()->json($trainerline);
     }
 
     public function getTrainer($id) {
-        $trainerline = TrainerLine::join('trainers', 'trainer_lines.trainer', '=', 'trainers.id')->join('lines', 'trainer_lines.line', '=', 'lines.id')->select('trainer', 'line', "name", "species", "trainer_lines.id")->orderBy('trainers.name', 'asc')->where('trainer_lines.line', '=', $id)->get();
+        $trainerline = TrainerLine::join('trainers', 'trainer_lines.trainer', '=', 'trainers.id')->join('lines', 'trainer_lines.line', '=', 'lines.id')->select('trainer', 'link', 'line', "name", "species", "trainer_lines.id")->orderBy('trainers.name', 'asc')->where('trainer_lines.line', '=', $id)->get();
         return response()->json($trainerline);
     }
 }

@@ -274,6 +274,41 @@
     font-size: calc(100% + 16px);
 }
 
+#border-example {
+    height: 100px;
+    width: 50px;
+    position: relative;
+    display: flex;
+    margin-left: 20px;
+}
+
+#anni-radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        margin-bottom: 0!important;
+    }
+
+    label {
+        &:first-of-type {
+            margin-right: 30px;
+        }
+    }
+}
+
+#anni-border-con {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#anni-final-divider {
+    border-bottom: 3px solid white;
+    width: 100%;
+}
+
 #anni-canvas-con {
   position: relative;
   padding: 20px 10px;
@@ -283,7 +318,7 @@
   display: none;
 }
 
-#anni-canvas-con::before {
+.border-request::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
@@ -301,7 +336,25 @@
   z-index: 2;
 }
 
-#anni-canvas-con .right-border {
+#border-example::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right,
+    #da3914 0%, #da3914 14.2857%,
+    #2e50d8 14.2857%, #2e50d8 28.5714%,
+    #24a724 28.5714%, #24a724 42.8571%,
+    #ffd733 42.8571%, #ffd733 57.1428%,
+    #daa520 57.1428%, #daa520 71.4285%,
+    #c0c0c0 71.4285%, #c0c0c0 85.7142%,
+    #4fd9ff 85.7142%, #4fd9ff 100%
+  );
+  z-index: 2;
+}
+
+.border-request .right-border {
   position: absolute;
   top: 0; right: 0;
   width: 5px;
@@ -323,7 +376,29 @@
   z-index: 1;
 }
 
-#anni-canvas-con::after {
+#border-example .right-border {
+    position: absolute;
+    top: 0; right: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+        #cd2236 0%, #cd2236 8.3%,
+        #3d51a7 8.3%, #3d51a7 16.6%,
+        #009652 16.6%, #009652 25%,
+        #f15c01 25%, #f15c01 33.3%,
+        #9fdc00 33.3%, #9fdc00 41.6%,
+        #90beed 41.6%, #90beed 50%,
+        #efb4ce 50%, #efb4ce 58.3%,
+        #ebdf89 58.3%, #ebdf89 66.6%,
+        #e8b502 66.6%, #e8b502 75%,
+        #aab9cf 75%, #aab9cf 83.3%,
+        black 83.3%, black 91.6%,
+        white 91.6%, white 100%,
+    );
+    z-index: 1;
+}
+
+.border-request::after {
   content: "";
   position: absolute;
   bottom: 0; left: 0;
@@ -342,7 +417,26 @@
   z-index: 2;
 }
 
-#anni-canvas-con .left-border {
+#border-example::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to left,
+    black 0%, black 12.5%,
+    white 12.5%, white 25%,
+    #025da6 25%, #025da6 37.5%,
+    #ea1a3e 37.5%, #ea1a3e 50%,
+    #ab2813 50%, #ab2813 62.5%,
+    #26649c 62.5%, #26649c 75%,
+    #ed9d21 75%, #ed9d21 87.5%,
+    #57358c 87.5%, #57358c 100%
+  );
+  z-index: 2;
+}
+
+.border-request .left-border {
   position: absolute;
   top: 0; left: 0;
   width: 5px;
@@ -364,6 +458,28 @@
   z-index: 1;
 }
 
+#border-example .left-border {
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to top,
+        #e95b2b 0%, #e95b2b 8.3%,
+        #3a1449 8.3%, #3a1449 16.6%,
+        #f5da26 16.6%, #f5da26 25%,
+        #bf6e36 25%, #bf6e36 33.3%,
+        #00a1e9 33.3%, #00a1e9 41.6%,
+        #bf004f 41.6%, #bf004f 50%,
+        #44bae5 50%, #44bae5 58.3%,
+        #e39bc4 58.3%, #e39bc4 66.6%,
+        white 66.6%, white 75%,
+        #f34134 75%, #f34134 83.3%,
+        #8334b7 83.3%, #8334b7 91.6%,
+        #31ca56 91.6%, #31ca56 100%,
+    );
+    z-index: 1;
+}
+
 #anni-credit {
     margin-top: 15px;
     text-align: center;
@@ -375,7 +491,7 @@
     height: 100vh;
     position: fixed;
     width: 100%;
-    background-color: c.$transparentblack;
+    background-color: rgba(20, 20, 20, 0.95);
     z-index: 20;
     visibility: hidden;
     opacity: 0;
@@ -401,6 +517,10 @@
     }
 }
 
+#anni-name-input {
+    margin-bottom: 30px!important;
+}
+
 @media screen and (min-width: 768px) {
     #current-selection, #anni-create {
         order: 1;
@@ -415,4 +535,25 @@
             order: 1;
         }
     }
+
+    #anni-border-con {
+        width: 60%;
+    }
+
+    #anni-radio {
+        label {
+            &:first-of-type {
+                margin-right: 50px;
+            }
+        }
+    }
+
+    #anni-border-con {
+        margin-top: 50px;
+    }
+
+    #anni-name-input {
+        margin-bottom: 50px!important;
+    }
+
 }

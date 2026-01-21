@@ -70,8 +70,6 @@
 .pokemon-line {
     cursor: pointer;
     transition: all ease-in-out 0.5s;
-    list-style: disc;
-    list-style-position: inside;
     &:hover {
         text-decoration: underline;
         opacity: 70%;
@@ -83,19 +81,30 @@
 }
 
 #display-usage ul {
+    position: relative;
+    clip-path: inset(0 0 5% 0);
+    padding-top: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;
     li {
-        list-style: disc;
-        margin-left: 10%;
         padding: 0;
     }
+}
+
+#display-usage ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+  width: 95%;
+  border-top: 3px solid white;
 }
 
 #display-usage-con {
     text-align: center;
     border-top: 3px solid c.$dark-wood;
+    padding-bottom: 10px;
 }
 
 #mode-info-con {
@@ -131,6 +140,7 @@
 #usage-icon {
     margin-right: 10px;
     width: 60px;
+    display: none;
 }
 
 #usage-select {
@@ -139,6 +149,24 @@
 }
 
 .usage-trainer-name {
+    margin-bottom: 10px;
+    text-underline-offset: 3px;
+    display: flex;
+}
+
+.usage-external-icon {
+    width: 12px;
+    margin-left: 7.5px;
+}
+
+.usage-trainer-link {
+    width: fit-content;
+    float: none;
+    margin-left: 10%;
+}
+
+.no-link-trainer {
+    margin-left: 10%;
     margin-bottom: 10px;
 }
 
@@ -215,6 +243,51 @@
     padding-top: 1.5px;
 }
 
+#usage-search-con {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    label {
+        margin: 0 5px;
+    }
+
+    input {
+        margin: 0 5px;
+    }
+}
+
+#usage-page {
+    .select2-selection {
+        border-radius: 20px!important;
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+        font-size: calc(100% - 2px);
+        border: 1px solid c.$dark-wood!important;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: left!important;
+    }
+
+    .select2-selection__rendered {
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    }
+
+    .select2-results__option {
+        color: black!important;
+        font-size: calc(100% - 2px)!important;
+    }
+
+    .select2-selection__arrow {
+        top: 15%!important;
+    }
+
+    .select2 {
+        align-self: center;
+    }
+}
+
 @media screen and (min-width: 768px) {
     #display-usage-con {
         border-left: 3px solid c.$dark-wood;
@@ -271,5 +344,23 @@
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
         background-image: none;
+    }
+
+    #usage-search-con {
+        display: flex;
+    }
+
+    #usage-page {
+        .select2 {
+            display: none!important;
+        }
+    }
+
+    #usage-info {
+        margin-bottom: 0;
+    }
+
+    #usage-title {
+        margin-bottom: 0;
     }
 }
