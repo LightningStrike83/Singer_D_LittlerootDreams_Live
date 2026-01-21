@@ -129,6 +129,18 @@ function prepareCanvas(nameValue) {
     const name = document.querySelector("#anni-name");
 
     return new Promise(resolve => {
+        const canvasCheck = document.querySelectorAll(".border-input")
+
+        canvasCheck.forEach(input => {
+            if (input.checked === true) {
+                if (input.checked && input.id === "border") {
+                    anniCanvas.classList.add("border-request")
+                } else if (!input.checked && input.id === "border") {
+                    anniCanvas.classList.remove("border-request")
+                }
+            }
+        })
+
         warningCon.style.visibility = "hidden";
         warningCon.style.opacity = "0";
 

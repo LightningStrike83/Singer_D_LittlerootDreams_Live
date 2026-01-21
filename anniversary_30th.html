@@ -180,7 +180,7 @@
     <section id="desc-box-tracker" class="grid-con">
         <div class="col-span-full dm" id="instructions">
             <h2 class="hidden">30th Anniversary Instructions</h2>
-            <p id="instructions_text" class="dm">Happy 30th anniversary of Pokemon! Celebrate the occassion of the beloved franchise by showing off your favourite Pokemon!<br>Use the select lists to select the Pokemon you wish to feature, and click the submit button to create an image featuring your top 30 favourites!</p>
+            <p id="instructions_text" class="dm">Happy 30th anniversary of Pokemon! Celebrate the occassion of the beloved franchise by showing off your favourite Pokemon!<br>Use the select lists to select the Pokemon you wish to feature, and click the finalize button to add personalized details and create an image featuring your top 30 favourites!</p>
         </div>
     </section>
 
@@ -444,7 +444,7 @@
         </div>
 
         <div id="anni-create" class="col-span-full">
-            <button>Create</button>
+            <button>Finalize</button>
         </div>
     </section>
 
@@ -515,6 +515,24 @@
         <div id="anni-name-info" class="col-span-full m-col-start-2 m-col-span-1">
             <p>Please Enter A Name:<br>(Max 16 characters)</p>
             <input id="anni-name-input" type="text" maxlength="16">
+
+            <div id="anni-final-divider"></div>
+
+            <div id="anni-border-con">
+                <p>Add a special game coloured border?:</p>
+                <div id="anni-radio">
+                    <input type="radio" name="border" id="no-border" class="border-input" checked>
+                    <label for="no-border">No Border</label>
+
+                    <input type="radio" name="border" id="border" class="border-input">
+                    <label for="border">Border</label>
+
+                    <div id="border-example">
+                        <div class="left-border"></div>
+                        <div class="right-border"></div>
+                    </div>
+                </div>
+            </div>
 
             <button id="anni-submit" type="submit">Submit</button>
         </div>

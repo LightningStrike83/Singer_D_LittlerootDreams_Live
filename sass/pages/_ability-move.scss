@@ -44,7 +44,11 @@
 }
 
 #am-type-con {
+    margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
     select {
         margin-left: 10px;
         margin-right: 10px;
@@ -58,8 +62,9 @@
 #move-con {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 #button-con {
@@ -67,8 +72,8 @@
     flex-direction: column;
 }
 
-#sv-moves {
-    margin-bottom: 20px;
+#sv-moves, #all-moves {
+    margin-bottom: 15px;
 }
 
 #results-title {
@@ -128,6 +133,41 @@
     text-align: center;
 }
 
+#calculator {
+    .select2-selection {
+        border-radius: 20px!important;
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+        font-size: calc(100% - 2px);
+        border: 1px solid c.$dark-wood!important;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: left!important;
+    }
+
+    .select2-selection__rendered {
+        color: black!important;
+        font-family: 'Roboto Slab', 'Noto Serif', Arial, Helvetica, sans-serif;
+    }
+
+    .select2-results__option {
+        color: black!important;
+        font-size: calc(100% - 2px)!important;
+    }
+
+    .select2-selection__arrow {
+        top: 15%!important;
+    }
+
+    .select2 {
+        align-self: center;
+        width: auto!important;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+}
+
 @media screen and (min-width: 500px) {
     #move-con {
         justify-content: space-around;
@@ -139,9 +179,13 @@
 }
 
 @media screen and (min-width: 728px) {
-    #sv-moves {
+    #sv-moves, #all-moves {
         order: 1;
         margin-bottom: 0;
+    }
+
+    #am-type-con {
+        margin-top: 15px;
     }
 
     #button-con {
