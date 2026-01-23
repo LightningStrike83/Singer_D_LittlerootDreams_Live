@@ -373,7 +373,7 @@ function displayShinyMethods() {
 
                 if (method.species_notes !== "" || method.game_notes !== "") {  
                     if (method.species_notes !== "" && method.game_notes !== "") {
-                        notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.species_notes} <br> ${method.game_notes}`
+                        notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.species_notes} <br><br> ${method.game_notes}`
                     } else if (method.species_notes !== "") {
                         notesText.innerHTML = `<br><span class="note-bold">Notes:</span><br>${method.species_notes}`
                     } else if (method.game_notes !== "") {
