@@ -4,6 +4,8 @@ const topText = document.querySelector(".top-text")
 const createButton = document.querySelector("#anni-create")
 const submitButton = document.querySelector("#anni-submit")
 const continueButton = document.querySelector("#anni-continue")
+const previewButton = document.querySelector("#anni-preview-button")
+const previewClose = document.querySelector("#preview-close")
 
 function openList() {
     const tracking = document.querySelector("#tracking-list")
@@ -153,6 +155,18 @@ function prepareCanvas(nameValue) {
     });
 }
 
+function openPreview() {
+    const previewCon = document.querySelector("#preview-con")
+
+    previewCon.style.display = "flex"
+}
+
+function closePreview() {
+    const previewCon = document.querySelector("#preview-con")
+
+    previewCon.style.display = "none"
+}
+
 currentSelection.addEventListener("click", openList)
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollToPlugin)});
@@ -160,3 +174,5 @@ topText.addEventListener("click", toTop)
 createButton.addEventListener("click", openNameForm)
 submitButton.addEventListener("click", checkFinal)
 continueButton.addEventListener("click", create30thImage)
+previewButton.addEventListener("click", openPreview)
+previewClose.addEventListener("click", closePreview)
