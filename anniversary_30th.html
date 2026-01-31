@@ -189,40 +189,44 @@
     <section id="error-handle" class="grid-con dm"></section>
 
     <section id="favourite-picker" class="grid-con dm">
-        <div id="current-selection" class="col-span-full m-col-start-10 m-col-span-3">
-            <p>▼ Open Current List ▼</p>
-            <ul id="tracking-list">
-                <li>1st: <span class="name-pop" data-link="1"></span></li>
-                <li>2nd: <span class="name-pop" data-link="2"></span></li>
-                <li>3rd: <span class="name-pop" data-link="3"></span></li>
-                <li>4th: <span class="name-pop" data-link="4"></span></li>
-                <li>5th: <span class="name-pop" data-link="5"></span></li>
-                <li>6th: <span class="name-pop" data-link="6"></span></li>
-                <li>7th: <span class="name-pop" data-link="7"></span></li>
-                <li>8th: <span class="name-pop" data-link="8"></span></li>
-                <li>9th: <span class="name-pop" data-link="9"></span></li>
-                <li>10th: <span class="name-pop" data-link="10"></span></li>
-                <li>11th: <span class="name-pop" data-link="11"></span></li>
-                <li>12th: <span class="name-pop" data-link="12"></span></li>
-                <li>13th: <span class="name-pop" data-link="13"></span></li>
-                <li>14th: <span class="name-pop" data-link="14"></span></li>
-                <li>15th: <span class="name-pop" data-link="15"></span></li>
-                <li>16th: <span class="name-pop" data-link="16"></span></li>
-                <li>17th: <span class="name-pop" data-link="17"></span></li>
-                <li>18th: <span class="name-pop" data-link="18"></span></li>
-                <li>19th: <span class="name-pop" data-link="19"></span></li>
-                <li>20th: <span class="name-pop" data-link="20"></span></li>
-                <li>21st: <span class="name-pop" data-link="21"></span></li>
-                <li>22nd: <span class="name-pop" data-link="22"></span></li>
-                <li>23rd: <span class="name-pop" data-link="23"></span></li>
-                <li>24th: <span class="name-pop" data-link="24"></span></li>
-                <li>25th: <span class="name-pop" data-link="25"></span></li>
-                <li>26th: <span class="name-pop" data-link="26"></span></li>
-                <li>27th: <span class="name-pop" data-link="27"></span></li>
-                <li>28th: <span class="name-pop" data-link="28"></span></li>
-                <li>29th: <span class="name-pop" data-link="29"></span></li>
-                <li>30th: <span class="name-pop" data-link="30"></span></li>
-            </ul>
+        <div id="anni-select-con" class="col-span-full m-col-start-10 m-col-span-3">
+            <div id="current-selection">
+                <p>▼ Open Current List ▼</p>
+                <ul id="tracking-list">
+                    <li>1st: <span class="name-pop" data-link="1"></span></li>
+                    <li>2nd: <span class="name-pop" data-link="2"></span></li>
+                    <li>3rd: <span class="name-pop" data-link="3"></span></li>
+                    <li>4th: <span class="name-pop" data-link="4"></span></li>
+                    <li>5th: <span class="name-pop" data-link="5"></span></li>
+                    <li>6th: <span class="name-pop" data-link="6"></span></li>
+                    <li>7th: <span class="name-pop" data-link="7"></span></li>
+                    <li>8th: <span class="name-pop" data-link="8"></span></li>
+                    <li>9th: <span class="name-pop" data-link="9"></span></li>
+                    <li>10th: <span class="name-pop" data-link="10"></span></li>
+                    <li>11th: <span class="name-pop" data-link="11"></span></li>
+                    <li>12th: <span class="name-pop" data-link="12"></span></li>
+                    <li>13th: <span class="name-pop" data-link="13"></span></li>
+                    <li>14th: <span class="name-pop" data-link="14"></span></li>
+                    <li>15th: <span class="name-pop" data-link="15"></span></li>
+                    <li>16th: <span class="name-pop" data-link="16"></span></li>
+                    <li>17th: <span class="name-pop" data-link="17"></span></li>
+                    <li>18th: <span class="name-pop" data-link="18"></span></li>
+                    <li>19th: <span class="name-pop" data-link="19"></span></li>
+                    <li>20th: <span class="name-pop" data-link="20"></span></li>
+                    <li>21st: <span class="name-pop" data-link="21"></span></li>
+                    <li>22nd: <span class="name-pop" data-link="22"></span></li>
+                    <li>23rd: <span class="name-pop" data-link="23"></span></li>
+                    <li>24th: <span class="name-pop" data-link="24"></span></li>
+                    <li>25th: <span class="name-pop" data-link="25"></span></li>
+                    <li>26th: <span class="name-pop" data-link="26"></span></li>
+                    <li>27th: <span class="name-pop" data-link="27"></span></li>
+                    <li>28th: <span class="name-pop" data-link="28"></span></li>
+                    <li>29th: <span class="name-pop" data-link="29"></span></li>
+                    <li>30th: <span class="name-pop" data-link="30"></span></li>
+                </ul>
+            </div>
+
+            <button id="anni-preview-button">Preview</button>
         </div>
 
         <div class="pick-con col-span-full m-col-span-9">
@@ -513,7 +517,7 @@
     <section id="anni-name-con" class="full-width-grid-con">
         <h2 id="" class="hidden">Enter Name Screen</h2>
         <div id="anni-name-info" class="col-span-full m-col-start-2 m-col-span-1">
-            <p>Please Enter A Name:<br>(Max 16 characters)</p>
+            <p>Please Enter Your Name, a Nickname, or a Trainer Name:<br>(Max 16 characters)</p>
             <input id="anni-name-input" type="text" maxlength="16">
 
             <div id="anni-final-divider"></div>
@@ -725,6 +729,174 @@
             </div>
 
             <p id="anni-credit">Create your own at littlerootdreams.com</p>
+        </div>
+    </section>
+
+    <section id="preview-con" class="full-width-grid-con">
+        <div id="anni-preview-con">
+            <div class="preview-close-con">
+                <p id="preview-close">X</p>
+                <p id="preview-note">Notes: <br>-Substitute Dolls are used as placeholders<br>-These notes will not appear during export<br>-This preview is just for placement only; the export will be at a different size<br>-The preview requires scrolling to view all content</p>
+            </div>
+            <div class="col-span-full">
+                <p id="preview-title">Your Name Here<br> Top <span class="text-30">30</span> For <span class="text-30">30</span>th</p>
+                <div id="anni-top" class="anni-canvas-con">
+                    <div id="anni-top-con" class="podium-link" data-link="1">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>1</h3>
+                        <img id="gold-laurel" src="images/laurel-gold.png" alt="A golden laurel">
+                    </div>
+                </div>
+                <div id="anni-runners" class="anni-canvas-con">
+                    <div class="anni-runner-up-con podium-link" data-link="2">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3 id="second-text">2</h3>
+                        <img id="silver-laurel" src="images/laurel-silver.png" alt="A silver laurel">
+                    </div>
+
+                    <div class="anni-runner-up-con podium-link" data-link="3">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3 id="third-text">3</h3>
+                        <img id="bronze-laurel" src="images/laurel-bronze.png" alt="A bronze laurel">
+                    </div>
+                </div>
+                <div id="anni-others" class="anni-canvas-con">
+                    <div class="anni-other-con podium-link" data-link="4">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>4</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="5">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>5</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="6">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>6</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="7">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>7</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="8">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>8</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="9">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>9</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="10">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>10</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="11">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>11</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="12">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>12</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="13">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>13</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="14">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>14</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="15">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>15</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="16">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>16</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="17">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>17</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="18">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>18</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="19">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>19</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="20">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>20</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="21">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>21</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="22">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>22</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="23">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>23</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="24">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>24</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="25">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>25</h3>
+                    </div>
+                    
+                    <div class="anni-other-con podium-link" data-link="26">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>26</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="27">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>27</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="28">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>28</h3>
+                    </div>
+                    
+                    <div class="anni-other-con podium-link" data-link="29">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>29</h3>
+                    </div>
+
+                    <div class="anni-other-con podium-link" data-link="30">
+                        <img class="anni-image" src="images/pokemon_images/vr18.png">
+                        <h3>30</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

@@ -29,17 +29,27 @@
     align-items: center;
 }
 
-#current-selection {
+#anni-select-con {
     position: sticky;
-    top: 10px;
+    top: 0;
     right: 10px;
+    height: fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    z-index: 4;
+    background-color: c.$body-wood;
+    padding-top: 10px;
+}
+
+#current-selection {
     border: 2px solid c.$dark-wood;
     border-radius: 20px;
     height: fit-content;
     cursor: pointer;
-    z-index: 4;
     margin-bottom: 20px;
     background-color: c.$dark-wood;
+    width: 75%;
 
     p {
         text-align: center;
@@ -101,6 +111,7 @@
 
 .pick-select-con {
     width: 50%;
+    z-index: 1;
 }
 
 .pick-select-con {
@@ -309,13 +320,136 @@
     width: 100%;
 }
 
-#anni-canvas-con {
+#anni-canvas-con, #anni-preview-con {
   position: relative;
   padding: 20px 10px;
   box-sizing: border-box;
   background-image: radial-gradient(#A8142A 5%, #9B0D1C, #8D070E, #800000);
   width: 500px;
-  display: none;
+}
+
+#anni-canvas-con {
+    display: none;
+}
+
+#anni-preview-button {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#preview-con {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    z-index: 5;
+    background-color: rgba(20, 20, 20, 0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+#anni-preview-con {
+    max-width: 500px;
+    max-height: 100vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+  
+     &::-webkit-scrollbar-thumb {
+        background: c.$dark-wood;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+        background: c.$rhea-wood;
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: c.$dark-wood!important;
+    }
+  
+    &::-webkit-scrollbar-button:vertical:decrement {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,2 14,10 2,10" fill="white"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:vertical:increment {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="2,6 14,6 8,14" fill="white"/></svg>') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+
+    &::-webkit-scrollbar-button:horizontal:decrement {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%222%2C8 10%2C2 10%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+    
+    &::-webkit-scrollbar-button:horizontal:increment {
+        background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2216%22 height%3D%2216%22%3E%3Cpolygon points%3D%226%2C2 14%2C8 6%2C14%22 fill%3D%22white%22/%3E%3C/svg%3E') no-repeat center center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 9px;
+    }
+}
+
+#preview-close {
+    font-size: 40px!important;
+    margin-bottom: 10px;
+    text-align: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#preview-note {
+    margin-bottom: 10px;
+    font-size: 14px!important;
+    border-bottom: 3px solid white;
+    padding-bottom: 10px;
+}
+
+#preview-title {
+    text-align: center;
+    font-size: calc(100% + 7px)!important;
+    line-height: 45px;
+    font-family: 'BowlbyOne';
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 3px 3px black;
+    text-transform: uppercase;
+    color: #ffca02;
+    -webkit-text-stroke: 2px #20437b;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+#anni-preview-con {
+    #anni-top-con {
+        img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    #anni-runners {
+        img {
+            width: 120px;
+            height: 120px;
+        }
+    }
 }
 
 .border-request::before {
@@ -522,12 +656,21 @@
 }
 
 @media screen and (min-width: 768px) {
-    #current-selection, #anni-create {
+    #anni-select-con, #anni-create {
         order: 1;
+    }
+
+    #anni-select-con {
+        flex-direction: column;
+        align-items: center;
     }
 
     .pick-select-con {
         width: 33%;
+    }
+
+    #current-selection {
+        width: 100%;
     }
 
     #anni-name-con, #anni-warning-con, #anni-downloading-con {
@@ -556,4 +699,7 @@
         margin-bottom: 50px!important;
     }
 
+    #preview-title {
+        font-size: calc(100% + 14px)!important;
+    }
 }
