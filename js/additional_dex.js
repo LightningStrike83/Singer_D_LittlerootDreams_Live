@@ -1483,6 +1483,20 @@ const variantList = [
     },
 
     {
+        name: "Mr. Windychu",
+        number: "vr25",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Ms. Wavychu",
+        number: "vr26",
+        type1: "",
+        type2: "",
+    },
+
+    {
         name: "Peakychu",
         number: "vr15",
         type1: "",
@@ -2244,6 +2258,29 @@ const betaList = [
     },
 ]
 
+const gen10List = [ 
+    {
+        name: "Browt",
+        number: "1026",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Pombon",
+        number: "1029",
+        type1: "",
+        type2: "",
+    },
+
+    {
+        name: "Gecqua",
+        number: "1032",
+        type1: "",
+        type2: "",
+    },
+]
+
 const sample = [ 
     {
         name: "",
@@ -2254,4 +2291,4 @@ const sample = [
 
 ]
 
-export {megaList, gmaxList, otherList, variantList, pokestarList, betaList}
+export {megaList, gmaxList, otherList, variantList, pokestarList, betaList, gen10List}

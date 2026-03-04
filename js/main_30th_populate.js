@@ -1,4 +1,4 @@
-import { megaList, gmaxList, otherList, variantList, pokestarList, betaList } from "./additional_dex.js";
+import { megaList, gmaxList, otherList, variantList, pokestarList, betaList, gen10List } from "./additional_dex.js";
 
 const selectList = document.querySelectorAll(".pick-select")
 let spinner = `<div id="spinner-con" class="col-span-full"><img id="spinner" src="../images/spinner.gif" alt="Loading spinner"> <p id="spinner-text">Populating Pokemon Lists...</p></div>`
@@ -77,6 +77,15 @@ async function populateLists() {
 
                         list.appendChild(mobileBaseOption);
                     });
+
+                    gen10List.forEach(pokemon => {
+                        const mobilegen10Option = document.createElement("option");
+                        mobilegen10Option.textContent = pokemon.name;
+                        mobilegen10Option.value = pokemon.number;
+                        mobilegen10Option.setAttribute("data-type1", `${pokemon.type1}`)
+                        mobilegen10Option.setAttribute("data-type2", `${pokemon.type2}`)
+                        list.appendChild(mobilegen10Option);
+                    })
 
                     list.appendChild(blankOption);
                     list.appendChild(regionalOption);
