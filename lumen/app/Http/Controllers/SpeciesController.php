@@ -32,7 +32,7 @@ class SpeciesController extends Species {
                 'species_controllers.name',
                 't1.type as type1',
                 't2.type as type2',
-                'id',
+                'species_controllers.id',
                 'generation'
             )
             ->leftJoin('types as t1', 'species_controllers.type1', '=', 't1.id')
@@ -65,7 +65,7 @@ class SpeciesController extends Species {
     }
 
     public function getRegionals() {
-        $species = Species::select('number', 'name', 'generation')->where('is_regional', '=', 'y')->orderBy('number', 'asc')->get();
+        $species = Species::select('number', 'name', 'id', 'generation')->where('is_regional', '=', 'y')->orderBy('number', 'asc')->get();
         return response()->json($species);
     }
 
