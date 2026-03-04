@@ -1,4 +1,4 @@
-import { megaList, gmaxList, otherList, variantList, pokestarList, betaList } from "./additional_dex.js";
+import { megaList, gmaxList, otherList, variantList, pokestarList, betaList, gen10List } from "./additional_dex.js";
 import { showSelection, checkRemaining } from "./main_filter.js";
 
 const tips = document.querySelector("#tips_click");
@@ -193,6 +193,15 @@ async function mobileList() {
 
               mobileList.appendChild(mobileBaseOption);
             });
+
+            gen10List.forEach(gen10 => {
+              const mobilegen10Option = document.createElement("option");
+              mobilegen10Option.textContent = gen10.name;
+              mobilegen10Option.value = gen10.number;
+              mobilegen10Option.setAttribute("data-type1", `${gen10.type1}`)
+              mobilegen10Option.setAttribute("data-type2", `${gen10.type2}`)
+              mobileList.appendChild(mobilegen10Option);
+            })
 
             mobileList.appendChild(blankOption);
             mobileList.appendChild(regionalOption);
