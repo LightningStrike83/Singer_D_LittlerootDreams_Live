@@ -53,6 +53,7 @@ $router->get("/custom/ash", "SpeciesController@getAshPokes");
 $router->get("/custom/gift", "SpeciesController@getGifts");
 $router->get("/custom/champion", "SpeciesController@getChampion");
 $router->get("/types/{type}", "SpeciesController@getTypes");
+$router->get("/fully-evolved", "SpeciesController@getEvolved");
 $router->post("/guess-who/add", "GuessWhoGameController@save");
 $router->get("/guess-who/{id}", "GuessWhoGameController@getOne");
 $router->get("/league-trainers/all", "LeagueTrainerController@getAll");
