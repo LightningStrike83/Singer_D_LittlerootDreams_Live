@@ -1,0 +1,193 @@
+@use "../abstracts/colours" as c;
+
+#bst-game-con {
+    border: 3px solid c.$dark-wood;
+    background-color: c.$body-wood;
+    border-radius: 20px;
+    padding: 20px 10px;
+    position: relative;
+    height: 525px;
+}
+
+#bst-select-con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+}
+
+#bst-main-title, #bst-sub-title {
+    font-family: 'Silkscreen';
+    text-align: center;
+}
+
+#bst-main-title {
+    font-size: 48px!important;
+    margin-bottom: 20px;
+    line-height: 50px;
+}
+
+#bst-sub-title {
+    font-size: 30px!important;
+    margin-bottom: 20px;
+}
+
+#bst-con {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#bst-mode-explain {
+    align-self: flex-end;
+}
+
+#mode-explain-con {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4E3524;
+    padding: 20px;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    height: 525px;
+}
+
+.mode-explain {
+    margin-bottom: 20px;
+}
+
+#mode-explain-close {
+    font-size: 30px!important;
+    text-align: right;
+    cursor: pointer;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+#explain-button-con {
+    display: flex;
+    flex-direction: column;
+}
+
+#bst-loading-con {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4E3524;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+        margin-bottom: 10px;
+    }
+}
+
+#bst-active-game {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+#bst-left-con {
+    background-color: green;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#bst-right-con {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.populate-game {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bst-pokemon-image {
+    width: 100px;
+}
+
+.bst-pokemon-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16.6%;
+}
+
+.bst-pokemon-con.vgc-mode {
+    width: 25%;
+}
+
+.game-content {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.team-bst-text {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px!important;
+}
+
+#active-score-con {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    #bst-active-game {
+        flex-direction: row;
+    }
+
+    #bst-left-con {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 20px;
+    }
+
+    #bst-right-con {
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 20px;
+    }
+
+    .bst-pokemon-con {
+        width: 33.3%;
+    }
+
+    .bst-pokemon-con.vgc-mode {
+        width: 50%;
+    }
+}

@@ -139,5 +139,10 @@ class SpeciesController extends Species {
         $species = Species::select('id', 'number', 'name', 'in_ScarVio')->where("id", "=", $id)->orderBy('number', 'asc')->get();
         return response()->json($species);
     }
+
+    public function getEvolved() {
+        $species = Species::select('id', 'number', 'name', 'bst')->where("fully_evolved", "=", "y")->orderBy('number', 'asc')->get();
+        return response()->json($species);
+    }
 }
 
