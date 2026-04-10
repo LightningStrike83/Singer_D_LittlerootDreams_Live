@@ -15,12 +15,12 @@ class SpeciesController extends Species {
      */
 
      public function getAll() {
-        $species = Species::select('number', 'name')->orderBy('number', 'asc')->get();
+        $species = Species::select('number', 'name', 'bst')->orderBy('number', 'asc')->get();
         return response()->json($species);
     }
 
     public function getAllNoAlt() {
-        $species = Species::select('number', 'name')->where('is_alt', '=', 'n')->orderBy('number', 'asc')->get();
+        $species = Species::select('number', 'name', 'id', 'bst')->where('is_alt', '=', 'n')->orderBy('number', 'asc')->get();
         return response()->json($species);
     }
 
