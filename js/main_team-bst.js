@@ -5,13 +5,15 @@ const startGameButtons = document.querySelectorAll(".bst-start-game-button")
 const loadingCon = document.querySelector("#bst-loading-con")
 const baseURL = "https://littlerootdreams.com/lumen/public/"
 const currentScore = document.querySelector("#current-score")
-const classicHighScore = localStorage.getItem("classic-hs")
-const vgcHighScore = localStorage.getItem("vgc-hs")
-const chaosHighScore = localStorage.getItem("chaos-hs")
 const highScoreText = document.querySelector("#high-score")
+const playAgainButton = document.querySelector("#bst-play-again")
+const submitScoreButton = document.querySelector("#bst-submit-score")
 
+let classicHighScore = localStorage.getItem("classic-hs")
+let vgcHighScore = localStorage.getItem("vgc-hs")
+let chaosHighScore = localStorage.getItem("chaos-hs")
+let storageCheck = ""
 let mode = ""
-
 let preloadResults = []
 
 function openModeExplanations() {
@@ -24,7 +26,14 @@ function closeModeExplanations() {
 
 function startGame() {
     const finalModeText = document.querySelector("#final-mode-text")
-    mode = this.dataset.mode
+    
+    if (this?.dataset?.mode !== undefined) {
+        mode = this.dataset.mode;
+
+        playAgainButton.setAttribute("data-mode", mode)
+    } else {
+        mode = playAgainButton.dataset.mode;
+    }
 
     let inquiry = ""
 
@@ -34,6 +43,7 @@ function startGame() {
         inquiry = "gen/all-no-alt"
         finalModeText.textContent = "Classic Mode"
         highScoreText.textContent = classicHighScore
+        storageCheck = classicHighScore
 
         if (!classicHighScore) {
             highScoreText.textContent = "0"
@@ -42,6 +52,7 @@ function startGame() {
         inquiry = "fully-evolved"
         finalModeText.textContent = "VGC Mode"
         highScoreText.textContent = vgcHighScore
+        storageCheck = vgcHighScore
 
         if (!vgcHighScore) {
             highScoreText.textContent = "0"
@@ -50,6 +61,7 @@ function startGame() {
         inquiry = "gen/all"
         finalModeText.textContent = "Chaos Mode"
         highScoreText.textContent = chaosHighScore
+        storageCheck = chaosHighScore
 
         if (!chaosHighScore) {
             highScoreText.textContent = "0"
@@ -184,6 +196,14 @@ function higherLower() {
 
     statCon.style.display = "flex"
 
+     if (Number(leftScore.textContent) > Number(rightScore.textContent)) {
+            leftScoreCon.style.border = "7.5px solid #32CD32"
+            rightScoreCon.style.border = "7.5px solid #DC143C"
+     } else if (Number(leftScore.textContent) < Number(rightScore.textContent)) {
+            rightScoreCon.style.border = "7.5px solid #32CD32"
+            leftScoreCon.style.border = "7.5px solid #DC143C"
+     }
+
     setTimeout(() => {
         if (Number(leftScore.textContent) > Number(rightScore.textContent)) {
             if (bstRightCon.classList.contains("selected")) {
@@ -214,6 +234,10 @@ function higherLower() {
                     statCon.style.display = "none"
                     populateBoxes()
                 })
+
+                if (Number(currentScore.textContent) > Number(highScoreText.textContent)) {
+                    highScoreText.textContent = currentScore.textContent
+                }
             }
         } else if (Number(leftScore.textContent) < Number(rightScore.textContent)) {
             if (bstLeftCon.classList.contains("selected")) {
@@ -244,6 +268,10 @@ function higherLower() {
                     statCon.style.display = "none"
                     populateBoxes()
                 })
+
+                if (Number(currentScore.textContent) > Number(highScoreText.textContent)) {
+                    highScoreText.textContent = currentScore.textContent
+                }
             }
         } else if (Number(leftScore.textContent) === Number(rightScore.textContent)) {
             statBox.forEach(box => {
@@ -267,6 +295,9 @@ function gameOverBST() {
     const resultsCon = document.querySelector("#results-con")
     const highScoreMessage = document.querySelector("#high-score-congrats")
     const highScore = document.querySelector("#high-score")
+    const selectedBox = document.querySelectorAll(".selected")
+
+    selectedBox.forEach(box => box.classList.remove("selected"))
 
     scoreCon.style.display = "none"
     activeGame.style.display = "none"
@@ -280,17 +311,45 @@ function gameOverBST() {
         highScoreMessage.style.display = "none"
     }
 
-    if (Number(finalScore.textContent) > Number(highScoreText.textContent)) {
+    if (Number(finalScore.textContent) > Number(storageCheck)) {
         if (mode === "classic") {    
             localStorage.setItem("classic-hs", finalScore.textContent)
         } else if (mode === "vgc") {
             localStorage.setItem("vgc-hs", finalScore.textContent)
+            console.log(finalScore.textContent)
+            console.log("stored")
         } else if (mode === "chaos") {
             localStorage.setItem("chaos-hs", finalScore.textContent)
         }
     }
 }
 
+function playAgain() {
+    const resultsCon = document.querySelector("#results-con")
+    const populateGame = document.querySelectorAll(".populate-game")
+    const statBox = document.querySelectorAll(".stat-box")
+    
+    classicHighScore = localStorage.getItem("classic-hs")
+    vgcHighScore = localStorage.getItem("vgc-hs")
+    chaosHighScore = localStorage.getItem("chaos-hs")
+
+    populateGame.forEach(game => {
+        game.innerHTML = ""
+    })
+
+    statBox.forEach(box => {
+        box.innerHTML = ""
+    })
+
+    currentScore.textContent = 0
+
+    resultsCon.style.display = "none"
+
+    startGame()
+}
+
 explainButton.addEventListener("click", openModeExplanations)
 explainClose.addEventListener("click", closeModeExplanations)
 startGameButtons.forEach(button => button.addEventListener("click", startGame))
+playAgainButton.addEventListener("click", playAgain)
+submitScoreButton.addEventListener("click", openSubmitScore)
