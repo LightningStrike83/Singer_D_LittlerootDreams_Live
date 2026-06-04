@@ -32,6 +32,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+    <script defer type="module" src="js/main_team-submitscore.js"></script>
     <script defer src="js/main_team-bst.js?version=4.0"></script>
     <script defer src="js/main.js?version=4.0"></script>
 </head>
@@ -174,7 +175,7 @@
     <section id="instructions-pokedex" class="grid-con">
         <div class="col-span-full dm" id="instructions">
             <h2 class="hidden">Instructions</h2>
-            <p id="instructions_text" class="dm">Guess the combined BST of randomly generated Pokemon teams and aim for a high score! Choose between 3 different modes!</p>
+            <p id="instructions_text" class="dm">Guess which of the two randomly generated teams have a higher combined BST and aim for a high score! Choose between 3 different modes!<br>Tap on the team that you think has the higher BST!</p>
         </div>
     </section>
 
@@ -190,6 +191,7 @@
               <button class="bst-start-game-button" data-mode="classic">Play Classic Game</button>
               <button class="bst-start-game-button" data-mode="vgc">Play VGC Mode</button>
               <button class="bst-start-game-button" data-mode="chaos">Play Chaos Mode</button>
+              <button id="bst-leaderboard-button">View Leaderboard</button>
             </div>
         </div>
 
@@ -216,8 +218,9 @@
             <p id="final-score"></p>
           </div>
           <div id="final-button-con">
-            <button id="bst-play-again">Play Again?</button>
-            <button id="bst-submit-score">Submit Score?</button>
+            <button id="bst-play-again">Play Again</button>
+            <button id="bst-submit-score">Submit Score To Leaderboard</button>
+            <button class="bst-main-menu">Main Menu</button>
           </div>
         </div>
 
@@ -248,7 +251,32 @@
           <p>Loading Game...</p>
         </div>
 
-        <div id="submit-score-box"></div>
+        <div id="submit-score-box">
+          <div>
+            <label for="bst-name">
+              Enter Name:
+              <input type="text" name="bst-name">
+            </label>
+            <button>Submit</button>
+          </div>
+        </div>
+
+        <div id="bst-leaderboard-con">
+          <div id="leaderboard-select">
+            <button>Classic</button>
+            <button>VGC</button>
+            <button>Chaos</button>
+          </div>
+          <div id="main-leaderboard-results" class="leaderboard-results">
+            <p class="leaderboard-title"></p>
+            <div id="leaderboard-list"></div>
+          </div>
+          <button class="bst-main-menu">Main Menu</button>
+        </div>
+
+        <div id="bst-submit-leaderboard-con">
+          <button class="bst-main-menu">Main Menu</button>
+        </div>
     </section>
 
     <section id="td_arrow_con" class="grid-con to-top">

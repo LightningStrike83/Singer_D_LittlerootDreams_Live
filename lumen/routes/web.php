@@ -68,3 +68,6 @@ $router->get("/pokemon-ability/{id}", "SpeciesAbilityController@getOne");
 $router->get("/methods/{id}", "SpeciesShinyMethodController@getMethods");
 $router->get("/methods-votes/{id}", "SpeciesShinyMethodController@getOne");
 $router->post("/votes/submit/{id}", "SpeciesShinyMethodController@increaseVote");
+$router->get("/bst/classic/100", "ClassicHighScoreController@get100");
+$router->get("/bst/chaos/100", "ChaosHighScoreController@get100");
+$router->get("/bst/vgc/100", "VGCHighScoreController@get100");

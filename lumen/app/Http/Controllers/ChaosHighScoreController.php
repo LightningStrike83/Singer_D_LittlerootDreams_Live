@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Models\ChaosHighScore;
+
+
+class ChaosHighScoreController extends Controller {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+    public function get100() {
+        $score = ChaosHighScore::select('id', 'name', 'score')->orderBy('score', 'desc')->limit(100)->get();
+        return response()->json($score);
+    }
+}
+
