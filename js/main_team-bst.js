@@ -8,6 +8,8 @@ const currentScore = document.querySelector("#current-score")
 const highScoreText = document.querySelector("#high-score")
 const playAgainButton = document.querySelector("#bst-play-again")
 const submitScoreButton = document.querySelector("#bst-submit-score")
+const leaderboardButton = document.querySelector("#bst-leaderboard-button")
+const mainmenuButtons = document.querySelectorAll(".bst-main-menu")
 
 let classicHighScore = localStorage.getItem("classic-hs")
 let vgcHighScore = localStorage.getItem("vgc-hs")
@@ -15,6 +17,7 @@ let chaosHighScore = localStorage.getItem("chaos-hs")
 let storageCheck = ""
 let mode = ""
 let preloadResults = []
+let scoreSubmit = ""
 
 function openModeExplanations() {
     explainBox.style.display = "flex"
@@ -26,6 +29,8 @@ function closeModeExplanations() {
 
 function startGame() {
     const finalModeText = document.querySelector("#final-mode-text")
+
+    scoreSubmit = ""
     
     if (this?.dataset?.mode !== undefined) {
         mode = this.dataset.mode;
@@ -326,12 +331,20 @@ function gameOverBST() {
 
 function playAgain() {
     const resultsCon = document.querySelector("#results-con")
-    const populateGame = document.querySelectorAll(".populate-game")
-    const statBox = document.querySelectorAll(".stat-box")
     
     classicHighScore = localStorage.getItem("classic-hs")
     vgcHighScore = localStorage.getItem("vgc-hs")
     chaosHighScore = localStorage.getItem("chaos-hs")
+
+    resultsCon.style.display = "none"
+
+    resetGame()
+    startGame()
+}
+
+function resetGame() {
+    const populateGame = document.querySelectorAll(".populate-game")
+    const statBox = document.querySelectorAll(".stat-box")
 
     populateGame.forEach(game => {
         game.innerHTML = ""
@@ -342,10 +355,35 @@ function playAgain() {
     })
 
     currentScore.textContent = 0
+}
 
+function openSubmitScore() {
+    const finalScore = document.querySelector("#final-score")
+    const submitCon = document.querySelector("#submit-score-box")
+    const resultsCon = document.querySelector("#results-con")
+
+    scoreSubmit = Number(finalScore)
+
+    submitCon.style.display = "flex"
     resultsCon.style.display = "none"
+}
 
-    startGame()
+function openLeaderBoard() {
+    const leaderboardCon = document.querySelector("#bst-leaderboard-con")
+
+    leaderboardCon.style.display = "flex"
+}
+
+function returnToMainMenu() {
+    const resultsCon = document.querySelector("#results-con")
+    const leaderboardCon = document.querySelector("#bst-leaderboard-con")
+    const leaderboardSubmitCon = document.querySelector("#bst-submit-leaderboard-con")
+
+    leaderboardCon.style.display = "none"
+    resultsCon.style.display = "none"
+    leaderboardSubmitCon.style.display = "none"
+
+    resetGame()
 }
 
 explainButton.addEventListener("click", openModeExplanations)
@@ -353,3 +391,5 @@ explainClose.addEventListener("click", closeModeExplanations)
 startGameButtons.forEach(button => button.addEventListener("click", startGame))
 playAgainButton.addEventListener("click", playAgain)
 submitScoreButton.addEventListener("click", openSubmitScore)
+leaderboardButton.addEventListener("click", openLeaderBoard)
+mainmenuButtons.forEach(button => button.addEventListener("click", returnToMainMenu))
