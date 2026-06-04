@@ -105,19 +105,21 @@
 }
 
 #bst-left-con {
-    background-color: green;
+    background-color: c.$body-wood;
     height: 100%;
     width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    border-bottom: 2.5px solid c.$dark-wood;
 }
 
 #bst-right-con {
-    background-color: red;
+    background-color: c.$body-wood;
     height: 100%;
     width: 100%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    border-top: 2.5px solid c.$dark-wood;
 }
 
 .populate-game {
@@ -136,6 +138,10 @@
     justify-content: center;
     align-items: center;
     width: 16.6%;
+
+    p {
+        text-align: center;
+    }
 }
 
 .bst-pokemon-con.vgc-mode {
@@ -253,9 +259,19 @@
         border-bottom-left-radius: 20px;
     }
 
+    #bst-left-con {
+        border-bottom: none;
+        border-right: 2.5px solid c.$dark-wood;
+    }
+
     #bst-right-con, #bst-right-score {
         border-bottom-left-radius: 0px;
         border-top-right-radius: 20px;
+    }
+
+    #bst-right-con {
+        border-top: none;
+        border-left: 2.5px solid c.$dark-wood;
     }
 
     .bst-pokemon-con {
