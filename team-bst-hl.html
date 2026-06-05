@@ -32,7 +32,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
-    <script defer type="module" src="js/main_team-submitscore.js"></script>
     <script defer src="js/main_team-bst.js?version=4.0"></script>
     <script defer src="js/main.js?version=4.0"></script>
 </head>
@@ -254,10 +253,10 @@
         <div id="submit-score-box">
           <div>
             <label for="bst-name">
-              Enter Name:
-              <input type="text" name="bst-name">
+              Enter Name (Max 16 Characters):
+              <input id="bst-name" type="text" name="bst-name" maxlength="16">
             </label>
-            <button>Submit</button>
+            <button id="bst-submit-button">Submit</button>
           </div>
         </div>
 

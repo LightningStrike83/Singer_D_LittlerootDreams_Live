@@ -11,7 +11,7 @@ class ClassicHighScore extends Model
      *
      * @var array
      */
-    protected $fillable = ["id", "name", "score"];
+    protected $fillable = ["name", "score"];
 
     /**
      * The attributes excluded from the model's JSON form.
