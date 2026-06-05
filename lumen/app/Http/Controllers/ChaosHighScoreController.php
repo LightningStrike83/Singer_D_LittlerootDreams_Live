@@ -18,5 +18,14 @@ class ChaosHighScoreController extends Controller {
         $score = ChaosHighScore::select('id', 'name', 'score')->orderBy('score', 'desc')->limit(100)->get();
         return response()->json($score);
     }
+
+    public function saveScore(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'score' => 'required',
+        ]);
+        $score = ChaosHighScore::create($request->all());
+        return response()->json($score, 201);
+    }
 }
 

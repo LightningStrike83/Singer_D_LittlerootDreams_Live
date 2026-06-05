@@ -10,6 +10,7 @@ const playAgainButton = document.querySelector("#bst-play-again")
 const submitScoreButton = document.querySelector("#bst-submit-score")
 const leaderboardButton = document.querySelector("#bst-leaderboard-button")
 const mainmenuButtons = document.querySelectorAll(".bst-main-menu")
+const bstSubmit = document.querySelector("#bst-submit-button")
 
 let classicHighScore = localStorage.getItem("classic-hs")
 let vgcHighScore = localStorage.getItem("vgc-hs")
@@ -362,7 +363,8 @@ function openSubmitScore() {
     const submitCon = document.querySelector("#submit-score-box")
     const resultsCon = document.querySelector("#results-con")
 
-    scoreSubmit = Number(finalScore)
+    scoreSubmit = Number(finalScore.textContent)
+    console.log(scoreSubmit)
 
     submitCon.style.display = "flex"
     resultsCon.style.display = "none"
@@ -386,6 +388,42 @@ function returnToMainMenu() {
     resetGame()
 }
 
+function submitScore() {
+    const bstName = document.querySelector("#bst-name")
+    const nameSubmission = bstName.value
+
+    console.log(scoreSubmit)
+
+    let scoreData = {
+        name: nameSubmission,
+        score: scoreSubmit,
+    }
+
+    if (scoreData === "") {
+        alert('Please enter a name for submission')
+    } else {
+        fetch(`${baseURL}bst/submit/${mode}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(scoreData)
+        })
+            .then(response =>
+                response.json().catch(() => {
+                    throw new Error("Invalid JSON response");
+                })
+            )
+            .then(response => {
+                alert('Submitted')
+            })
+            .catch(error => {
+
+            });
+    }
+}
+
 explainButton.addEventListener("click", openModeExplanations)
 explainClose.addEventListener("click", closeModeExplanations)
 startGameButtons.forEach(button => button.addEventListener("click", startGame))
@@ -393,3 +431,4 @@ playAgainButton.addEventListener("click", playAgain)
 submitScoreButton.addEventListener("click", openSubmitScore)
 leaderboardButton.addEventListener("click", openLeaderBoard)
 mainmenuButtons.forEach(button => button.addEventListener("click", returnToMainMenu))
+bstSubmit.addEventListener("click", submitScore)
