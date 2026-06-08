@@ -11,6 +11,10 @@ const submitScoreButton = document.querySelector("#bst-submit-score")
 const leaderboardButton = document.querySelector("#bst-leaderboard-button")
 const mainmenuButtons = document.querySelectorAll(".bst-main-menu")
 const bstSubmit = document.querySelector("#bst-submit-button")
+const leaderboardSwitchButtons = document.querySelectorAll(".leaderboard-switch")
+const gameCon = document.querySelector("#bst-game-con")
+
+var x = window.matchMedia("(min-width: 650px)")
 
 let classicHighScore = localStorage.getItem("classic-hs")
 let vgcHighScore = localStorage.getItem("vgc-hs")
@@ -19,6 +23,7 @@ let storageCheck = ""
 let mode = ""
 let preloadResults = []
 let scoreSubmit = ""
+let lbMode = "classic"
 
 function openModeExplanations() {
     explainBox.style.display = "flex"
@@ -30,6 +35,8 @@ function closeModeExplanations() {
 
 function startGame() {
     const finalModeText = document.querySelector("#final-mode-text")
+
+    gameCon.style.height = "601px"
 
     scoreSubmit = ""
     
@@ -96,6 +103,8 @@ function populateBoxes() {
     let s = 0
 
     populateGame.forEach(box => {
+        let n = 1
+
         if (box.hasChildNodes()) {
             s++
             return
@@ -109,6 +118,7 @@ function populateBoxes() {
         const div = document.createElement("div")
 
         div.setAttribute("class", "game-content")
+        div.setAttribute("id", `gamecontent-${s}`)
 
         if (mode === "vgc") {
             max = 4
@@ -155,10 +165,36 @@ function populateBoxes() {
                 innerdiv.classList.add("vgc-mode")
             }
 
+            if (x.matches) {
+                if (mode === "vgc") {
+                    if (n === 1 || n === 2) {
+                        name.style.color = "#fff"
+                    }
+                } else {
+                    if (n === 1 || n === 2 || n === 3) {
+                        name.style.color = "#fff"
+                    }
+                }
+            }
+
+            if (mode === "vgc") {
+                if (n === 3 || n === 4) {
+                    img.style.marginTop = "25px"
+                    img.setAttribute("class", "ending-images")
+                }
+            } else {
+                if (n === 4 || n === 5 || n === 6) {
+                    img.style.marginTop = "25px"
+                    img.setAttribute("class", "ending-images")
+                }
+            }
+
             innerdiv.appendChild(img)
             innerdiv.appendChild(name)
             
             div.appendChild(innerdiv)
+
+            n++
         })
 
         let statTotal = randomizedPokemon.reduce((sum, pokemon) => {return sum + Number(pokemon.bst);}, 0)
@@ -184,6 +220,8 @@ function populateBoxes() {
 
         box.addEventListener("click", higherLower)
     })
+
+    checkTextSize()
 }
 
 function higherLower() {
@@ -303,6 +341,8 @@ function gameOverBST() {
     const highScore = document.querySelector("#high-score")
     const selectedBox = document.querySelectorAll(".selected")
 
+    gameCon.style.height = "525px"
+
     selectedBox.forEach(box => box.classList.remove("selected"))
 
     scoreCon.style.display = "none"
@@ -374,6 +414,52 @@ function openLeaderBoard() {
     const leaderboardCon = document.querySelector("#bst-leaderboard-con")
 
     leaderboardCon.style.display = "flex"
+
+    loadLeaderboard()
+}
+
+function loadLeaderboard() {
+    const leaderboardTitle = document.querySelector(".leaderboard-title")
+    const leaderboardList = document.querySelector("#leaderboard-list")
+
+    let lbTitle = ""
+
+    let count = 1
+
+    if (lbMode === "classic") {
+        lbTitle = "Classic"
+    } else if (lbMode === "chaos") {
+        lbTitle = "Chaos"
+    } else if (lbMode === "vgc") {
+        lbTitle = "VGC"
+    }
+
+    leaderboardTitle.textContent = ""
+    leaderboardList.innerHTML = ""
+
+    leaderboardTitle.textContent = `${lbTitle} Mode`
+
+    fetch(`${baseURL}bst/${lbMode}/100`)
+    .then(response => response.json())
+    .then(function(response){
+        console.log(response)
+        response.forEach(score => {
+            const div = document.createElement("div")
+            const p = document.createElement("p")
+            const submittedScore = document.createElement ("p")
+
+            p.textContent = `${count}. ${score.name}`
+            submittedScore.textContent = `${score.score}`
+
+            div.setAttribute("class", "leaderboard-score")
+
+            div.appendChild(p)
+            div.appendChild(submittedScore)
+            leaderboardList.appendChild(div)
+
+            count ++
+        })
+    })
 }
 
 function returnToMainMenu() {
@@ -391,8 +477,6 @@ function returnToMainMenu() {
 function submitScore() {
     const bstName = document.querySelector("#bst-name")
     const nameSubmission = bstName.value
-
-    console.log(scoreSubmit)
 
     let scoreData = {
         name: nameSubmission,
@@ -416,12 +500,112 @@ function submitScore() {
                 })
             )
             .then(response => {
-                alert('Submitted')
+                const submitCon = document.querySelector("#submit-score-box")
+                const submitLeaderboardCon = document.querySelector("#bst-submit-leaderboard-con")
+                const submitLBTitle = document.querySelector("#submit-title-mode")
+
+                let submitTitle = ""
+
+                submitCon.style.display = "none"
+                submitLeaderboardCon.style.display = "flex"
+                
+                if (mode === "classic") {
+                    submitTitle = "Classic"
+                } else if (mode === "chaos") {
+                    submitTitle = "Chaos"
+                } else if (mode === "vgc") {
+                    submitTitle = "VGC"
+                }
+
+                submitLBTitle.textContent = submitTitle
+
+                fetch(`${baseURL}bst/${mode}/100`)
+                .then(response => response.json())
+                .then(function(response){
+                    const submitLeaderboardList = document.querySelector("#submit-leaderboard-list")
+                    const submittedEntry = document.querySelector("#bst-submitted-entry")
+                    const entryText = document.createElement("p")
+                    const entryName = document.createElement("p")
+                    const entryScore = document.createElement("p")
+
+                    let count = 1
+
+                    submitLeaderboardList.innerHTML = ""
+                    submittedEntry.innerHTML = ""
+
+                    response.forEach(score => {
+                        const div = document.createElement("div")
+                        const p = document.createElement("p")
+                        const submittedScore = document.createElement ("p")
+
+                        p.textContent = `${count}. ${score.name}`
+                        submittedScore.textContent = `${score.score}`
+
+                        div.setAttribute("class", "leaderboard-score")
+
+                        div.appendChild(p)
+                        div.appendChild(submittedScore)
+                        submitLeaderboardList.appendChild(div)
+
+                        count ++
+                    })
+
+                    entryText.textContent = "Your Results:"
+                    entryName.textContent = scoreData.name
+                    entryScore.textContent = scoreData.score
+
+                    submittedEntry.appendChild(entryText)
+                    submittedEntry.appendChild(entryName)
+                    submittedEntry.appendChild(entryScore)
+                })
             })
             .catch(error => {
 
             });
     }
+}
+
+function switchLeaderboardResults() {
+    lbMode = this.dataset.button
+
+    loadLeaderboard()
+}
+
+function checkTextSize() {
+    const pokemonName = document.querySelectorAll(".bst-pokemon-con p")
+
+    pokemonName.forEach(name => {
+        fitText(name)
+    })
+}
+
+function fitText(name, min = 10, max = 18) {
+  const parent = name.parentElement;
+
+  if (x.matches) {
+    max = 18
+  } else {
+    max = 15
+  }
+
+  const resize = () => {
+    let size = max;
+
+    name.style.fontSize = size + "px";
+
+    const available = parent.clientWidth;
+
+    console.log(available)
+
+    while (name.scrollWidth > available && size > min) {
+      size--;
+      name.style.setProperty("font-size", size + "px", "important");
+    }
+  };
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(resize);
+  });
 }
 
 explainButton.addEventListener("click", openModeExplanations)
@@ -432,3 +616,4 @@ submitScoreButton.addEventListener("click", openSubmitScore)
 leaderboardButton.addEventListener("click", openLeaderBoard)
 mainmenuButtons.forEach(button => button.addEventListener("click", returnToMainMenu))
 bstSubmit.addEventListener("click", submitScore)
+leaderboardSwitchButtons.forEach(button => button.addEventListener("click", switchLeaderboardResults))

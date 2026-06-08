@@ -183,8 +183,10 @@
           <button id="bst-mode-explain">Open Mode Explanations</button>
         </div>
         <div id="bst-con" class="col-span-full">
-            <p id="bst-main-title">Higher or Lower</p>
-            <p id="bst-sub-title">Pokemon Team BST</p>
+            <div id="bst-title-con">
+              <p id="bst-main-title">Higher or Lower</p>
+              <p id="bst-sub-title">Pokemon Team BST</p>
+            </div>
 
             <div id="bst-select-con">
               <button class="bst-start-game-button" data-mode="classic">Play Classic Game</button>
@@ -252,8 +254,8 @@
 
         <div id="submit-score-box">
           <div>
-            <label for="bst-name">
-              Enter Name (Max 16 Characters):
+            <label for="bst-name" id="bst-name-label">
+              Enter Name (Max 16 Characters):<br>
               <input id="bst-name" type="text" name="bst-name" maxlength="16">
             </label>
             <button id="bst-submit-button">Submit</button>
@@ -262,9 +264,9 @@
 
         <div id="bst-leaderboard-con">
           <div id="leaderboard-select">
-            <button>Classic</button>
-            <button>VGC</button>
-            <button>Chaos</button>
+            <button class="leaderboard-switch" data-button="classic">Classic</button>
+            <button class="leaderboard-switch" data-button="vgc">VGC</button>
+            <button class="leaderboard-switch" data-button="chaos">Chaos</button>
           </div>
           <div id="main-leaderboard-results" class="leaderboard-results">
             <p class="leaderboard-title"></p>
@@ -274,6 +276,11 @@
         </div>
 
         <div id="bst-submit-leaderboard-con">
+          <div id="submit-leaderboard-results" class="leaderboard-results">
+            <p class="leaderboard-title"><span id="submit-title-mode"></span> Mode</p>
+            <div id="submit-leaderboard-list"></div>
+            <div id="bst-submitted-entry"></div>
+          </div>
           <button class="bst-main-menu">Main Menu</button>
         </div>
     </section>

@@ -7,16 +7,39 @@
     padding: 20px 10px;
     position: relative;
     height: 525px;
+    background-image: url(../images/bst-bgs/plateau-dark.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    button {
+        font-size: 16px!important;
+    }
+}
+
+#bst-title-con {
+    border: 5px solid c.$dark-wood;
+    background-color: c.$body-wood;
+    width: fit-content;
+    border-radius: 20px;
+    padding: 10px 10px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        width: fit-content;
+    }
+    margin-bottom: 20px;
 }
 
 #bst-select-con {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     button {
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         width: fit-content;
     }
 }
@@ -27,14 +50,13 @@
 }
 
 #bst-main-title {
-    font-size: 48px!important;
+    font-size: 42px!important;
     margin-bottom: 20px;
-    line-height: 50px;
+    line-height: 40px;
 }
 
 #bst-sub-title {
-    font-size: 30px!important;
-    margin-bottom: 20px;
+    font-size: 24px!important;
 }
 
 #bst-con {
@@ -97,8 +119,8 @@
 
 #bst-active-game {
     position: absolute;
-    height: 100%;
     width: 100%;
+    height: 356px;
     display: none;
     flex-direction: column;
     border-radius: 20px;
@@ -110,15 +132,13 @@
     width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    border-bottom: 2.5px solid c.$dark-wood;
-    background-image: url(../images/bst-bgs/pokeball.jpg);
+    border-bottom: 10px solid black;
+    background-color: #c91b1c;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    padding: 0px 10px;
     cursor: pointer;
-    &:hover {
-        background-image: url(../images/bst-bgs/pokeball-dark.jpg);
-    }
 }
 
 #bst-right-con {
@@ -127,15 +147,13 @@
     width: 100%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    border-top: 2.5px solid c.$dark-wood;
-    background-image: url(../images/bst-bgs/pokeball.jpg);
+    border-top: 10px solid black;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center calc(50% - 15px);
+    padding: 0px 10px;
     cursor: pointer;
-    &:hover {
-        background-image: url(../images/bst-bgs/pokeball-dark.jpg);
-    }
+    background-color: white;
 }
 
 .populate-game {
@@ -144,23 +162,27 @@
     flex-wrap: wrap;
 }
 
-.bst-pokemon-image {
-    width: 100px;
-}
-
 .bst-pokemon-con {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 15%;
-    margin: 5px;
+    width: 30%;
+
+    img {
+        height: 50px;
+        filter: drop-shadow(2px 2px black);
+    }
 
     p {
         text-align: center;
         color: black;
         font-weight: bold;
-        letter-spacing: 2px;
+        display: inline-block;
+        white-space: nowrap;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 100%;
     //     text-shadow:
     // -1px -1px 0 black,
     //  1px -1px 0 black,
@@ -170,7 +192,7 @@
 }
 
 .bst-pokemon-con.vgc-mode {
-    width: 25%;
+    width: 45%;
 }
 
 .game-content {
@@ -178,15 +200,34 @@
     width: 100%;
     flex-wrap: wrap;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+#gamecontent-0 {
+    padding-top: 52px;
+
+    p {
+        color: white;
+    }
+}
+
+#gamecontent-1 {
+    img {
+        margin-top: 20px!important;
+    }
+
+    p {
+        color: black;
+    }
 }
 
 .team-bst-text {
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
-    font-size: 30px!important;
+    margin-bottom: 10px;
+    font-size: 20px!important;
     color: black;
+    margin-top: 15px;
 }
 
 #active-score-con {
@@ -199,6 +240,10 @@
     justify-content: space-between;
     padding: 10px;
     align-items: center;
+
+    p {
+        font-size: 14px!important;
+    }
 }
 
 #bst-score-con {
@@ -221,7 +266,7 @@
     border-top-right-radius: 20px;
 
     p {
-        font-size: 48px!important;
+        font-size: 40px!important;
         line-height: 60px;
         text-shadow: 5px 3px black;        
     }
@@ -235,7 +280,7 @@
     border-bottom-right-radius: 20px;
 
     p {
-        font-size: 48px!important;
+        font-size: 40px!important;
         line-height: 60px;
         text-shadow: 5px 3px black;
     }
@@ -261,7 +306,10 @@
     background-color: c.$body-wood;
     border-radius: 20px;
     padding: 10px;
-
+    background-image: url(../images/bst-bgs/kalos-league-dark.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     button {
         width: fit-content;
     }
@@ -273,24 +321,27 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    background-color: c.$body-wood;
+    border: 5px solid c.$dark-wood;
+    border-radius: 20px;
+    padding: 10px 20px;
 
     p {
-        margin-bottom: 75px;
+        line-height: 75px;
     }
 }
 
 #final-score-text, #final-score, #high-score-congrats {
-    font-size: 42px!important;
+    font-size: 36px!important;
 }
 
 #final-mode-text {
     margin-bottom: 10px!important;
-    font-size: 54px!important;
-    margin-bottom: 55px!important;
+    font-size: 42px!important;
 }
 
 #final-score {
-    font-size: 72px!important;
+    font-size: 60px!important;
 }
 
 #submit-score-box {
@@ -307,6 +358,10 @@
     background-color: c.$body-wood;
     border-radius: 20px;
     padding: 10px;
+    background-image: url(../images/bst-bgs/submit.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     div {
         display: flex;
@@ -318,6 +373,16 @@
             justify-self: center;
             align-self: center;
         }
+    }
+}
+
+#bst-name-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+        margin-top: 10px;
     }
 }
 
@@ -346,7 +411,7 @@
     align-items: center;
     justify-content: center;
     button {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 }
 
@@ -365,15 +430,93 @@
     margin-bottom: 20px;
     width: 95%;
     border-radius: 20px;
+    padding-top: 5px;
+    overflow-y: scroll;
 }
 
-.bst-pokemon-con.vgc-mode {
-    width: 20%;
+.leaderboard-score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 15px 5px 15px;
+    border-bottom: 2px solid c.$dark-wood;
+
+    p {
+        color: black;
+    }
+    margin-bottom: 5px;
 }
 
-@media screen and (min-width: 768px) {
+.leaderboard-title {
+    text-align: center;
+    color: black;
+    border-bottom: 5px solid c.$dark-wood;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+#submit-leaderboard-results {
+    position: relative;
+}
+
+#bst-submitted-entry {
+    position: sticky;
+    bottom: 0;
+    left: -10px;
+    background-color: rgb(24, 24, 24);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px 10px 15px;
+}
+
+@media screen and (min-width: 428px) {
+    #bst-main-title {
+        font-size: 48px!important;
+        margin-bottom: 20px;
+        line-height: 50px;
+    }
+
+    #bst-sub-title {
+        font-size: 30px!important;
+        margin-bottom: 10px;
+    }
+
+    #bst-title-con {
+        padding: 15px 20px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    #bst-game-con {
+        height: 525px;
+    }
+
+    .game-content {
+        padding-top: 0;
+    }
+
+    .bst-pokemon-con {
+        width: 30%;
+
+        img {
+            height: 100px;
+        }
+    }
+
+    .bst-pokemon-con.vgc-mode {
+        width: 45%;
+    }
+
     #bst-active-game, #bst-score-con {
         flex-direction: row;
+    }
+
+    #bst-active-game {
+        height: 100%;
     }
 
     #bst-left-con, #bst-left-score {
@@ -384,6 +527,10 @@
     #bst-left-con {
         border-bottom: none;
         border-right: 2.5px solid c.$dark-wood;
+        background-image: url(../images/bst-bgs/pokeball.jpg);
+        &:hover {
+            background-image: url(../images/bst-bgs/pokeball-dark.jpg);
+        }
     }
 
     #bst-right-con, #bst-right-score {
@@ -394,14 +541,10 @@
     #bst-right-con {
         border-top: none;
         border-left: 2.5px solid c.$dark-wood;
-    }
-
-    .bst-pokemon-con {
-        width: 30%;
-    }
-
-    .bst-pokemon-con.vgc-mode {
-        width: 48%;
+        background-image: url(../images/bst-bgs/pokeball.jpg);
+        &:hover {
+            background-image: url(../images/bst-bgs/pokeball-dark.jpg);
+        }
     }
 
     .leaderboard-results {
@@ -412,6 +555,76 @@
         button {
             margin-left: 50px;
             margin-right: 50px;
+        }
+    }
+
+    .team-bst-text {
+        font-size: 30px!important;
+        margin-bottom: 20px;
+    }
+
+    #bst-right-con {
+        background-position: center;
+    }
+
+    .game-content {
+        padding-top: 52px;
+    }
+
+    #gamecontent-1 {
+        img {
+            margin-top: 0!important;
+        }
+    }
+
+    #gamecontent-1 img.ending-images {
+        margin-top: 25px!important;
+    }
+
+    #gamecontent-0 p {
+        color: black;
+    }
+
+    #gamecontent-0 p.team-bst-text {
+        color: black;
+    }
+
+    #bst-left-score {
+        p {
+            font-size: 48px!important;
+            line-height: 60px;    
+        }
+    }
+
+    #bst-right-score {
+        p {
+            font-size: 48px!important;
+            line-height: 60px;
+        }
+    }
+
+    #final-text-con {
+        p {
+            line-height: 85px;
+        }
+    }
+
+    #final-score-text, #final-score, #high-score-congrats {
+        font-size: 42px!important;
+    }
+
+    #final-mode-text {
+        margin-bottom: 10px!important;
+        font-size: 54px!important;
+    }
+
+    #final-score {
+        font-size: 72px!important;
+    }
+
+    #active-score-con {
+        p {
+            font-size: 20px!important;
         }
     }
 }
