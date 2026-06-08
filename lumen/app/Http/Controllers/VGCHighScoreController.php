@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\VGCHighScore;
+use App\Models\vgcHighScore;
 
 
-class VGCHighScoreController extends Controller {
+class vgcHighScoreController extends Controller {
     /**
      * Create a new controller instance.
      *
@@ -15,7 +15,7 @@ class VGCHighScoreController extends Controller {
      */
 
     public function get100() {
-        $score = VGCHighScore::select('id', 'name', 'score')->orderBy('score', 'desc')->limit(100)->get();
+        $score = vgcHighScore::select('id', 'name', 'score')->orderBy('score', 'desc')->limit(100)->get();
         return response()->json($score);
     }
 
@@ -24,7 +24,7 @@ class VGCHighScoreController extends Controller {
             'name' => 'required',
             'score' => 'required',
         ]);
-        $score = ClassicHighScore::create($request->all());
+        $score = vgcHighScore::create($request->all());
         return response()->json($score, 201);
     }
 }
