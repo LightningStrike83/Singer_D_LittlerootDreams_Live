@@ -19,24 +19,30 @@ var x = window.matchMedia("(min-width: 650px)")
 let classicHighScore = localStorage.getItem("classic-hs")
 let vgcHighScore = localStorage.getItem("vgc-hs")
 let chaosHighScore = localStorage.getItem("chaos-hs")
+let easyHighScore = localStorage.getItem("easy-hs")
 let storageCheck = ""
 let mode = ""
 let preloadResults = []
 let scoreSubmit = ""
 let lbMode = "classic"
+let baseHeight = "520px"
 
 function openModeExplanations() {
     explainBox.style.display = "flex"
+
+    const modeHeight = explainBox.getBoundingClientRect()
+
+    gameCon.style.height = `${modeHeight.height}px`
 }
 
 function closeModeExplanations() {
     explainBox.style.display = "none"
+
+    gameCon.style.height = baseHeight
 }
 
 function startGame() {
     const finalModeText = document.querySelector("#final-mode-text")
-
-    gameCon.style.height = "601px"
 
     scoreSubmit = ""
     
@@ -79,6 +85,15 @@ function startGame() {
         if (!chaosHighScore) {
             highScoreText.textContent = "0"
         }
+    } else if (mode === "easy") {
+        inquiry = "gen/all-no-alt"
+        finalModeText.textContent = "Easy Mode"
+        highScoreText.textContent = easyHighScore
+        storageCheck = easyHighScore
+
+        if (!easyHighScore) {
+            highScoreText.textContent = "0"
+        }
     }
 
     fetch(`${baseURL}${inquiry}`)
@@ -93,6 +108,11 @@ function startGame() {
         populateBoxes()
 
         activeGame.style.display = "flex"
+
+        let activeSize = activeGame.getBoundingClientRect()
+        let additionalSize = activeSize.height + 5
+
+        gameCon.style.height = `${additionalSize}px`
     })
 }
 
@@ -137,7 +157,7 @@ function populateBoxes() {
                 let pokemonID = Math.floor(Math.random() * preloadResults.length)
                 pokemonCheck = preloadResults[pokemonID]
 
-                if (mode === "classic" || mode === "vgc") {
+                if (mode === "classic" || mode === "vgc" || mode === "easy") {
                     if (
                         !randomizedPokemon.some(c => c.id === pokemonCheck.id)
                     ) {
@@ -179,18 +199,33 @@ function populateBoxes() {
 
             if (mode === "vgc") {
                 if (n === 3 || n === 4) {
-                    img.style.marginTop = "25px"
+                    img.style.marginTop = "30px"
                     img.setAttribute("class", "ending-images")
                 }
             } else {
                 if (n === 4 || n === 5 || n === 6) {
-                    img.style.marginTop = "25px"
+                    img.style.marginTop = "30px"
                     img.setAttribute("class", "ending-images")
                 }
             }
 
             innerdiv.appendChild(img)
             innerdiv.appendChild(name)
+
+            if (mode === "easy") {
+                const bstInfo = document.createElement("p")
+
+                bstInfo.textContent = `Pokemon BST: ${pokemon.bst}`
+                bstInfo.setAttribute("class", "easy-bst-text")
+
+                if (x.matches) {
+                    if (n === 1 || n === 2 || n === 3) {
+                        bstInfo.style.color = "#fff"
+                    }
+                }
+
+                innerdiv.appendChild(bstInfo)
+            }
             
             div.appendChild(innerdiv)
 
@@ -341,7 +376,7 @@ function gameOverBST() {
     const highScore = document.querySelector("#high-score")
     const selectedBox = document.querySelectorAll(".selected")
 
-    gameCon.style.height = "525px"
+    gameCon.style.height = baseHeight
 
     selectedBox.forEach(box => box.classList.remove("selected"))
 
@@ -362,10 +397,10 @@ function gameOverBST() {
             localStorage.setItem("classic-hs", finalScore.textContent)
         } else if (mode === "vgc") {
             localStorage.setItem("vgc-hs", finalScore.textContent)
-            console.log(finalScore.textContent)
-            console.log("stored")
         } else if (mode === "chaos") {
             localStorage.setItem("chaos-hs", finalScore.textContent)
+        } else if (mode === "easy") {
+            localStorage.setItem("easy-hs", finalScore.textContent)
         }
     }
 }
@@ -376,8 +411,13 @@ function playAgain() {
     classicHighScore = localStorage.getItem("classic-hs")
     vgcHighScore = localStorage.getItem("vgc-hs")
     chaosHighScore = localStorage.getItem("chaos-hs")
+    easyHighScore = localStorage.getItem("easy-hs")
+
+    retrievedScore = ""
 
     resultsCon.style.display = "none"
+
+    console.log(easyHighScore)
 
     resetGame()
     startGame()
@@ -404,7 +444,6 @@ function openSubmitScore() {
     const resultsCon = document.querySelector("#results-con")
 
     scoreSubmit = Number(finalScore.textContent)
-    console.log(scoreSubmit)
 
     submitCon.style.display = "flex"
     resultsCon.style.display = "none"
@@ -432,6 +471,8 @@ function loadLeaderboard() {
         lbTitle = "Chaos"
     } else if (lbMode === "vgc") {
         lbTitle = "VGC"
+    } else if (lbMode === "easy") {
+        lbTitle = "Easy"
     }
 
     leaderboardTitle.textContent = ""
@@ -442,7 +483,6 @@ function loadLeaderboard() {
     fetch(`${baseURL}bst/${lbMode}/100`)
     .then(response => response.json())
     .then(function(response){
-        console.log(response)
         response.forEach(score => {
             const div = document.createElement("div")
             const p = document.createElement("p")
@@ -594,8 +634,6 @@ function fitText(name, min = 10, max = 18) {
     name.style.fontSize = size + "px";
 
     const available = parent.clientWidth;
-
-    console.log(available)
 
     while (name.scrollWidth > available && size > min) {
       size--;

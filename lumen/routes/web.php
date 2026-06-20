@@ -71,6 +71,8 @@ $router->post("/votes/submit/{id}", "SpeciesShinyMethodController@increaseVote")
 $router->get("/bst/classic/100", "ClassicHighScoreController@get100");
 $router->get("/bst/chaos/100", "ChaosHighScoreController@get100");
 $router->get("/bst/vgc/100", "vgcHighScoreController@get100");
+$router->get("/bst/easy/100", "EasyHighScoreController@get100");
 $router->post("/bst/submit/classic", "ClassicHighScoreController@saveScore");
 $router->post("/bst/submit/chaos", "ChaosHighScoreController@saveScore");
 $router->post("/bst/submit/vgc", "vgcHighScoreController@saveScore");
+$router->post("/bst/submit/easy", "EasyHighScoreController@saveScore");

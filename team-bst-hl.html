@@ -189,6 +189,7 @@
             </div>
 
             <div id="bst-select-con">
+              <button class="bst-start-game-button" data-mode="easy">Play Easy Game</button>
               <button class="bst-start-game-button" data-mode="classic">Play Classic Game</button>
               <button class="bst-start-game-button" data-mode="vgc">Play VGC Mode</button>
               <button class="bst-start-game-button" data-mode="chaos">Play Chaos Mode</button>
@@ -202,6 +203,10 @@
             <p>Current Score: <span id="current-score">0</span></p>
           </div>
           <div id="bst-left-con" class="populate-game"></div>
+
+          <div id="bst-or-con">
+            <p>OR</p>
+          </div>
 
           <div id="bst-right-con" class="populate-game"></div>
         </div>
@@ -227,8 +232,14 @@
 
         <div id="mode-explain-con">
           <p id="mode-explain-close">X</p>
+          <p class="mode-explain">Easy Game:<br>
+          • Pokemon 1-1025 eligible<br>
+          • BST of individual Pokemon will be revealed<br>
+          • Alternate forms excluded<br>
+          • No repeats in teams<br>
+          • 6 Pokemon per team</p>
           <p class="mode-explain">Classic Game:<br>
-          • All Pokemon eligible<br>
+          • Pokemon 1-1025 eligible<br>
           • Alternate forms excluded<br>
           • No repeats in teams<br>
           • 6 Pokemon per team</p>
@@ -264,6 +275,7 @@
 
         <div id="bst-leaderboard-con">
           <div id="leaderboard-select">
+            <button class="leaderboard-switch" data-button="easy">Easy</button>
             <button class="leaderboard-switch" data-button="classic">Classic</button>
             <button class="leaderboard-switch" data-button="vgc">VGC</button>
             <button class="leaderboard-switch" data-button="chaos">Chaos</button>
